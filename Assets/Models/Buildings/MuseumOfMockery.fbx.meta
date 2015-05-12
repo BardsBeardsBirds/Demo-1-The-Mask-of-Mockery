@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 8ef08114ce0b4e84fb0eaa1ed492a61d
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: altar
+    100002: //RootNode
+    100004: polySurface156
+    100006: polySurface184
+    100008: polySurface185
+    100010: polySurface186
+    100012: polySurface187
+    100014: polySurface188
+    100016: polySurface189
+    100018: polySurface190
+    100020: polySurface191
+    100022: polySurface192
+    100024: polySurface194
+    100026: polySurface195
+    100028: transform27
+    100030: transform28
+    100032: polySurface196
+    100034: ceiling
+    100036: Exterior
+    100038: Panel_Middle
+    100040: Panel_Rights
+    100042: polySurface198
+    100044: polySurface199
+    100046: polySurface200
+    100048: polySurface201
+    100050: polySurface202
+    100052: polySurface203
+    100054: polySurface204
+    100056: polySurface206
+    100058: transform24
+    100060: transform25
+    100062: transform31
+    100064: Vessel
+    100066: polySurface207
+    100068: polySurface208
+    100070: polySurface209
+    100072: transform33
+    100074: polySurface210
+    100076: Floor
+    100078: Interior
+    100080: Interior 1
+    100082: MuseumDoorLeft
+    100084: MuseumDoorRight
+    100086: PanelMiddle
+    100088: PanelRights
+    100090: sideDoor
+    100092: Altar
+    100094: Ceiling
+    100096: SideDoor
+    100098: group10
+    100100: group11
+    100102: group12
+    100104: group13
+    100106: group14
+    100108: group9
+    100110: pCube41
+    100112: pCube41 1
+    100114: pCube41 2
+    100116: pCube41 3
+    100118: pCube41 4
+    100120: pCube41 5
+    100122: polySurface167
+    100124: polySurface167 1
+    100126: polySurface167 2
+    100128: polySurface167 3
+    100130: polySurface167 4
+    100132: polySurface167 5
+    100134: group5
+    100136: pCube42
+    100138: pCylinder2
+    100140: group6
+    100142: group7
+    100144: pCube42 1
+    100146: pCube42 2
+    100148: pCylinder2 1
+    100150: pCylinder2 2
+    100152: Block
+    100154: Block 1
+    100156: Block 2
+    100158: Block 3
+    100160: Block 4
+    100162: Block 5
+    100164: TempleDoorButton1
+    100166: TempleDoorButton2
+    100168: TempleDoorButton3
+    100170: TempleDoorButton4
+    100172: TempleDoorButton5
+    100174: TempleDoorButton6
+    100176: Wheel
+    100178: Wheel 1
+    100180: Wheel 2
+    100182: Wheel 3
+    100184: Wheel 4
+    100186: Wheel 5
+    400000: altar
+    400002: //RootNode
+    400004: polySurface156
+    400006: polySurface184
+    400008: polySurface185
+    400010: polySurface186
+    400012: polySurface187
+    400014: polySurface188
+    400016: polySurface189
+    400018: polySurface190
+    400020: polySurface191
+    400022: polySurface192
+    400024: polySurface194
+    400026: polySurface195
+    400028: transform27
+    400030: transform28
+    400032: polySurface196
+    400034: ceiling
+    400036: Exterior
+    400038: Panel_Middle
+    400040: Panel_Rights
+    400042: polySurface198
+    400044: polySurface199
+    400046: polySurface200
+    400048: polySurface201
+    400050: polySurface202
+    400052: polySurface203
+    400054: polySurface204
+    400056: polySurface206
+    400058: transform24
+    400060: transform25
+    400062: transform31
+    400064: Vessel
+    400066: polySurface207
+    400068: polySurface208
+    400070: polySurface209
+    400072: transform33
+    400074: polySurface210
+    400076: Floor
+    400078: Interior
+    400080: Interior 1
+    400082: MuseumDoorLeft
+    400084: MuseumDoorRight
+    400086: PanelMiddle
+    400088: PanelRights
+    400090: sideDoor
+    400092: Altar
+    400094: Ceiling
+    400096: SideDoor
+    400098: group10
+    400100: group11
+    400102: group12
+    400104: group13
+    400106: group14
+    400108: group9
+    400110: pCube41
+    400112: pCube41 1
+    400114: pCube41 2
+    400116: pCube41 3
+    400118: pCube41 4
+    400120: pCube41 5
+    400122: polySurface167
+    400124: polySurface167 1
+    400126: polySurface167 2
+    400128: polySurface167 3
+    400130: polySurface167 4
+    400132: polySurface167 5
+    400134: group5
+    400136: pCube42
+    400138: pCylinder2
+    400140: group6
+    400142: group7
+    400144: pCube42 1
+    400146: pCube42 2
+    400148: pCylinder2 1
+    400150: pCylinder2 2
+    400152: Block
+    400154: Block 1
+    400156: Block 2
+    400158: Block 3
+    400160: Block 4
+    400162: Block 5
+    400164: TempleDoorButton1
+    400166: TempleDoorButton2
+    400168: TempleDoorButton3
+    400170: TempleDoorButton4
+    400172: TempleDoorButton5
+    400174: TempleDoorButton6
+    400176: Wheel
+    400178: Wheel 1
+    400180: Wheel 2
+    400182: Wheel 3
+    400184: Wheel 4
+    400186: Wheel 5
+    2300000: altar
+    2300002: polySurface156
+    2300004: polySurface184
+    2300006: polySurface185
+    2300008: polySurface186
+    2300010: polySurface187
+    2300012: polySurface188
+    2300014: polySurface190
+    2300016: polySurface191
+    2300018: polySurface192
+    2300020: polySurface194
+    2300022: polySurface195
+    2300024: polySurface196
+    2300026: ceiling
+    2300028: Exterior
+    2300030: Panel_Middle
+    2300032: Panel_Rights
+    2300034: polySurface199
+    2300036: polySurface200
+    2300038: polySurface201
+    2300040: polySurface202
+    2300042: polySurface203
+    2300044: polySurface204
+    2300046: polySurface206
+    2300048: Vessel
+    2300050: polySurface207
+    2300052: polySurface208
+    2300054: polySurface209
+    2300056: polySurface210
+    2300058: Floor
+    2300060: Interior 1
+    2300062: MuseumDoorLeft
+    2300064: MuseumDoorRight
+    2300066: PanelMiddle
+    2300068: PanelRights
+    2300070: sideDoor
+    2300072: Altar
+    2300074: Ceiling
+    2300076: SideDoor
+    2300078: pCube41
+    2300080: pCube41 1
+    2300082: pCube41 2
+    2300084: pCube41 3
+    2300086: pCube41 4
+    2300088: pCube41 5
+    2300090: polySurface167
+    2300092: polySurface167 1
+    2300094: polySurface167 2
+    2300096: polySurface167 3
+    2300098: polySurface167 4
+    2300100: polySurface167 5
+    2300102: pCube42
+    2300104: pCylinder2
+    2300106: pCube42 1
+    2300108: pCube42 2
+    2300110: pCylinder2 1
+    2300112: pCylinder2 2
+    2300114: Block
+    2300116: Block 1
+    2300118: Block 2
+    2300120: Block 3
+    2300122: Block 4
+    2300124: Block 5
+    2300126: Wheel
+    2300128: Wheel 1
+    2300130: Wheel 2
+    2300132: Wheel 3
+    2300134: Wheel 4
+    2300136: Wheel 5
+    3300000: altar
+    3300002: polySurface156
+    3300004: polySurface184
+    3300006: polySurface185
+    3300008: polySurface186
+    3300010: polySurface187
+    3300012: polySurface188
+    3300014: polySurface190
+    3300016: polySurface191
+    3300018: polySurface192
+    3300020: polySurface194
+    3300022: polySurface195
+    3300024: polySurface196
+    3300026: ceiling
+    3300028: Exterior
+    3300030: Panel_Middle
+    3300032: Panel_Rights
+    3300034: polySurface199
+    3300036: polySurface200
+    3300038: polySurface201
+    3300040: polySurface202
+    3300042: polySurface203
+    3300044: polySurface204
+    3300046: polySurface206
+    3300048: Vessel
+    3300050: polySurface207
+    3300052: polySurface208
+    3300054: polySurface209
+    3300056: polySurface210
+    3300058: Floor
+    3300060: Interior 1
+    3300062: MuseumDoorLeft
+    3300064: MuseumDoorRight
+    3300066: PanelMiddle
+    3300068: PanelRights
+    3300070: sideDoor
+    3300072: Altar
+    3300074: Ceiling
+    3300076: SideDoor
+    3300078: pCube41
+    3300080: pCube41 1
+    3300082: pCube41 2
+    3300084: pCube41 3
+    3300086: pCube41 4
+    3300088: pCube41 5
+    3300090: polySurface167
+    3300092: polySurface167 1
+    3300094: polySurface167 2
+    3300096: polySurface167 3
+    3300098: polySurface167 4
+    3300100: polySurface167 5
+    3300102: pCube42
+    3300104: pCylinder2
+    3300106: pCube42 1
+    3300108: pCube42 2
+    3300110: pCylinder2 1
+    3300112: pCylinder2 2
+    3300114: Block
+    3300116: Block 1
+    3300118: Block 2
+    3300120: Block 3
+    3300122: Block 4
+    3300124: Block 5
+    3300126: Wheel
+    3300128: Wheel 1
+    3300130: Wheel 2
+    3300132: Wheel 3
+    3300134: Wheel 4
+    3300136: Wheel 5
+    4300000: polySurface156
+    4300002: polySurface184
+    4300004: polySurface187
+    4300006: polySurface186
+    4300008: polySurface185
+    4300010: altar
+    4300012: polySurface188
+    4300014: polySurface191
+    4300016: polySurface192
+    4300018: polySurface194
+    4300020: polySurface195
+    4300022: polySurface190
+    4300024: polySurface196
+    4300026: ceiling
+    4300028: Vessel
+    4300030: polySurface200
+    4300032: polySurface201
+    4300034: polySurface202
+    4300036: polySurface203
+    4300038: polySurface204
+    4300040: polySurface206
+    4300042: polySurface199
+    4300044: Panel_Middle
+    4300046: Panel_Rights
+    4300048: Exterior
+    4300050: polySurface208
+    4300052: polySurface209
+    4300054: polySurface207
+    4300056: polySurface210
+    4300058: MuseumDoorRight
+    4300060: MuseumDoorLeft
+    4300062: Interior
+    4300064: SideDoor
+    4300066: Floor
+    4300068: PanelMiddle
+    4300070: PanelRights
+    4300072: sideDoor
+    4300074: Altar
+    4300076: Ceiling
+    4300078: polySurface167
+    4300080: pCube41
+    4300082: polySurface167
+    4300084: pCube41
+    4300086: polySurface167
+    4300088: pCube41
+    4300090: polySurface167
+    4300092: pCube41
+    4300094: polySurface167
+    4300096: pCube41
+    4300098: polySurface167
+    4300100: pCube41
+    4300102: pCube42
+    4300104: pCylinder2
+    4300106: pCube42
+    4300108: pCylinder2
+    4300110: pCube42
+    4300112: pCylinder2
+    4300114: Block
+    4300116: Wheel
+    4300118: Block
+    4300120: Wheel
+    4300122: Block
+    4300124: Wheel
+    4300126: Block
+    4300128: Wheel
+    4300130: Block
+    4300132: Wheel
+    4300134: Block
+    4300136: Wheel
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
