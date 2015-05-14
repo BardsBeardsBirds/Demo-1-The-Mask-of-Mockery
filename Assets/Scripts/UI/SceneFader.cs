@@ -15,7 +15,6 @@ public class SceneFader : MonoBehaviour
     public bool IsFadingToBlack = false;
     public bool IsFadingToClear = false;
 
-
     public void Awake()
     {
         BlackImage = this.gameObject.GetComponent<Image>();
@@ -27,7 +26,6 @@ public class SceneFader : MonoBehaviour
             ClearToBlack();
         if (IsFadingToClear)
             BlackToClear();
-
     }
 
     public void BlackToClear()
@@ -42,7 +40,6 @@ public class SceneFader : MonoBehaviour
 
         if (BlackImage.color.a <= 0.05f)
         {
-
             if (ClearFader == ToClear.StartFromNew)
             {
                 IntroMode introManager = new IntroMode();
@@ -85,14 +82,12 @@ public class SceneFader : MonoBehaviour
 
                 GameManager.NewGame = false;
 
-            //    loader.LoadGameData();
                 GameManager.Instance.FadeBlackToClear();
 
                 PauseMenu p = GameManager.Instance.PauseMenuWindow.GetComponent<PauseMenu>();
                 p.ResumeGame();
 
-             //   GameManager.GamePlayingMode = GameManager.GameMode.Running;
-                CharacterControllerLogic.Instance.GoToIdleState();///
+                CharacterControllerLogic.Instance.GoToIdleState();
 
                 Destroy(this.gameObject);
 

@@ -7,10 +7,15 @@ public class PickUpItemListener : MonoBehaviour
 
     public ItemType thisItemType;
     public PickUpItemListener Instance;
+    public GameObject PickUpSoundGo;
 
     public void Awake()
     {
         Instance = this;
+
+        PickUpSoundGo = GameObject.Find("PickupCoinsAudio");
+        PickUpSoundGo.GetComponent<AudioSource>().clip = Resources.Load("Audio/Effects/PickingUp/Coins") as AudioClip ;
+
     }
 
     public void OnTriggerEnter()
@@ -22,6 +27,7 @@ public class PickUpItemListener : MonoBehaviour
             GameManager.Instance.ChangeMoney(1);
             particleEffect = GameObject.Instantiate(Resources.Load("Prefabs/Particles/PickupYellow")) as GameObject;
             particleEffect.transform.position = Instance.transform.position;
+            PickUpSoundGo.GetComponent<AudioSource>().Play();
         }
         else if (Instance.thisItemType == ItemType.TenCoins)
         {
@@ -29,10 +35,12 @@ public class PickUpItemListener : MonoBehaviour
             GameManager.Instance.ChangeMoney(1);
             particleEffect = GameObject.Instantiate(Resources.Load("Prefabs/Particles/PickupRed")) as GameObject;
             particleEffect.transform.position = Instance.transform.position;
+            PickUpSoundGo.GetComponent<AudioSource>().Play();
         }
         else if (Instance.thisItemType == ItemType.HundredCoins)
         {
             GameManager.Instance.ChangeMoney(100);
+            PickUpSoundGo.GetComponent<AudioSource>().Play();
         }
         Destroy();
     }

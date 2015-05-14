@@ -46,7 +46,8 @@ public static class ObjectCommentary
         {1033, "It looks delicious."},
         {1034, "Investigate tear collector skull"},
 
-        {1035, "I think it wants me to go out"},
+        {1035, "I hope it is filled with booty"},
+        {1036, "I think it wants me to go out"},
 
         {1040, "The gate looks solid and ornamented."},
         {1041, "Ancient drawings depicting the Denchy Flood."},
@@ -94,10 +95,11 @@ public static class ObjectCommentary
         {2031, "This is not the time for joy riding"}, // deleted cart
         {2032, "Nah, that is silly."},
         {2033, "You never know.."},
-        {2034, "Interact with tearcollector skull"},
-        {2035, "No, I need the Mask of Mockery."},
+        {2034, "No, I need the Mask of Mockery."},
+        {2035, "I already plundered it."},
 
         {2036, "That would confuse fellow travelers."},
+        {2037, "That would confuse fellow travelers."},
 
         {2040, "Open sesame!"},
         {2041, "I better leave it alone."},
@@ -276,8 +278,11 @@ public static class ObjectCommentary
             case ObjectsInLevel.TearCollectorSkull:
                 CurrentDialogueIDs.Add(1034);
                 break;
-            case ObjectsInLevel.CaveSign:
+            case ObjectsInLevel.TreasureChest:
                 CurrentDialogueIDs.Add(1035);
+                break;
+            case ObjectsInLevel.CaveSign:
+                CurrentDialogueIDs.Add(1036);
                 break;
             case ObjectsInLevel.MuseumDoor:
                 CurrentDialogueIDs.Add(1040);
@@ -430,6 +435,13 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.TearCollectorSkull:
                 CurrentDialogueIDs.Add(2034);
+                break;
+            case ObjectsInLevel.TreasureChest:
+                GameObject chest = GameManager.Instance.InGameObjectM.TreasureChests[0];
+                if(!chest.GetComponentInChildren<ButtonPush>().OpenChest)
+                    chest.GetComponentInChildren<ButtonPush>().OpenChest = true;
+                else
+                CurrentDialogueIDs.Add(2035);   // if already open
                 break;
             case ObjectsInLevel.CaveSign:
                 CurrentDialogueIDs.Add(2036);

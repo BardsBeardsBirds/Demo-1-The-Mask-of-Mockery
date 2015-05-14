@@ -19,6 +19,6 @@ public class SentinelBlocker : MonoBehaviour
             Sentinel.Instance.HoldItThere();
         }
         else
-            Debug.LogError("We are already blocking!!");
+            Debug.LogWarning("We are already blocking!!");
     }
 }

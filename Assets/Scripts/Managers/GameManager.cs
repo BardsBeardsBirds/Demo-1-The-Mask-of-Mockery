@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject SuperCanvas;
     public static GameObject Player;
     public Inventory IInventory;
+    public InGameObjectManager InGameObjectM;
 
     private GameObject _ay;
     private GameObject _benny;
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
     public static AudioSource AudioSource2;
 
     private bool _showConsole = false;
-
 
     public static bool InCutScene = false;
     public static bool GameIsOver { get; set; }
@@ -78,9 +78,7 @@ public class GameManager : MonoBehaviour
         if (NewGame)
             SetInitialBools();
 
-
-        InGameObjectManager.Instance.LoadInGameObjectsInfo();
-  
+        InGameObjectManager.Instance.LoadInGameObjectsInfo();  
     }
 
     public void Start()
@@ -102,9 +100,8 @@ public class GameManager : MonoBehaviour
         GameManagerObj.AddComponent<DialogueMenu>();
         GameManagerObj.AddComponent<DialoguePlayback>();
         GameManagerObj.AddComponent<UIDrawer>();
+        InGameObjectM = GameManagerObj.AddComponent<InGameObjectManager>();
 
-        GameObject inGameObjectsManager = (GameObject)Instantiate(Resources.Load("Prefabs/Managers/InGameObjectsManager"));
-        inGameObjectsManager.transform.SetParent(this.transform);
     }
 
     private void FindCharacters()
@@ -345,8 +342,6 @@ public class GameManager : MonoBehaviour
 
     public void FadeBlackToClear()
     {
-       // GameObject sceneFaderGO = GameObject.Instantiate(Resources.Load("Prefabs/UI/ScreenFaderBlackToClear")) as GameObject;
-      //  sceneFaderGO.transform.SetParent(GameObject.Find("Canvas").transform);
         GameObject sceneFaderGO = null;
 
         foreach (Transform trans in SuperCanvas.transform)
@@ -357,7 +352,7 @@ public class GameManager : MonoBehaviour
 
         if (sceneFaderGO == null)
             Debug.Log("could not find fader go!");
- //       GameObject sceneFaderGO = GameObject.Find("ScreenFaderBlackToClear");
+
         sceneFaderGO.SetActive(true);
 
         SceneFader fader = sceneFaderGO.GetComponent<SceneFader>();
@@ -368,7 +363,6 @@ public class GameManager : MonoBehaviour
             fader.BlackImage.color = new Color(0, 0, 0, 1);
             fader.ClearFader = SceneFader.ToClear.StartFromLoad;
             Debug.Log("fader from load");
-
         }
 
         fader.IsFadingToClear = true;

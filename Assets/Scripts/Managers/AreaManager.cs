@@ -17,7 +17,6 @@ public class AreaManager : MonoBehaviour
     {
         Instance = this;
         AmbientPlayer = GameObject.Find("AmbientPlayer");
-        Debug.Log(AmbientPlayer);
         Mixer = GameManager.Instance.Mixer;
     }
 

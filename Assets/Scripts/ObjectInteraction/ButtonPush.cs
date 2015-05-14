@@ -10,7 +10,7 @@ public class ButtonPush : MonoBehaviour
 
     public ButtonTypes ButtonType;
     public bool InRange = false;
-
+    public bool OpenChest = false;
     private Animator animator;
     private GameObject button;  //reference to button
 
@@ -32,9 +32,7 @@ public class ButtonPush : MonoBehaviour
                 return;
 
             animator.SetBool("Activated", false);
-        }
-
-        
+        }       
     }
 
     public void OnTriggerEnter()
@@ -51,24 +49,30 @@ public class ButtonPush : MonoBehaviour
     {
         if (ButtonType == ButtonTypes.Chest)
         {
-            if (InRange && (animator.GetBool("Activated") == false) && Input.GetKeyDown(KeyCode.E))
+            if (InRange && (animator.GetBool("Activated") == false) && Input.GetKeyDown(KeyCode.E)  )
             {
-                Debug.Log("PLAY");
-                animator.SetBool("Activated", true);
-
-
-                GameObject reward;
-                reward = GameObject.Instantiate(Resources.Load("Prefabs/Items/Coinage/MoneyThrower30")) as GameObject;
-                reward.transform.parent = this.transform.parent;
-                reward.transform.localPosition = new Vector3(0, 0, 0);
-                reward.transform.rotation = reward.transform.parent.rotation;
-                Animator coinAnimator = reward.transform.gameObject.GetComponent<Animator>();
-                coinAnimator.SetBool("ThrowMoney", true);
-                
+                OpenChest = true;
+    //            if (OpenChest)
             }
+            if (OpenChest && (animator.GetBool("Activated") == false))
+                    Open();
         }        
     }
 
-   
+   public void Open()
+    {
+        Debug.Log("PLAY");
+        animator.SetBool("Activated", true);
+
+
+        GameObject reward;
+        reward = GameObject.Instantiate(Resources.Load("Prefabs/Items/Coinage/MoneyThrower30")) as GameObject;
+        reward.transform.parent = this.transform.parent;
+        reward.transform.localPosition = new Vector3(0, 0, 0);
+        reward.transform.rotation = reward.transform.parent.rotation;
+        Animator coinAnimator = reward.transform.gameObject.GetComponent<Animator>();
+        coinAnimator.SetBool("ThrowMoney", true);
+                
+    }
 }
 

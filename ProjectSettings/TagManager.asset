@@ -10,6 +10,7 @@ TagManager:
   - Inventory
   - Fader
   - CameraTarget
+  - TreasureChest
   layers:
   - Default
   - TransparentFX

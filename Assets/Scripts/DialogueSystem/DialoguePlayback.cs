@@ -282,7 +282,7 @@ public class DialoguePlayback : MonoBehaviour
     #region ObjectCommentary
     public void PlaybackCommentary(SpeechType speechType, ObjectsInLevel objectInLevel)
     {
-       // Debug.LogWarning(speechType + " " + objectInLevel);
+        Debug.LogWarning(speechType + " " + objectInLevel);
         StartCoroutine(ObjectCommentary.CommentaryRoutine(speechType, objectInLevel));
     }
 

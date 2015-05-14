@@ -26,6 +26,7 @@
         BeehiveHut,
         Carrot,
         TearCollectorSkull,
+        TreasureChest,
 
         CaveSign,
 

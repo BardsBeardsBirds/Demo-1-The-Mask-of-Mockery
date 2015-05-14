@@ -13,7 +13,6 @@ public class Area : MonoBehaviour
             Debug.LogError("There is an area not assigned");
 
         AreaSoundtrack = Resources.Load("Audio/Music/" + FindName()) as AudioClip;
-
     }
 
     public void OnTriggerEnter () 
@@ -29,15 +28,11 @@ public class Area : MonoBehaviour
             return;
         }
 
-        //if (AudioManager.CurrentSoundtrack == null || AudioManager.CurrentSoundtrack.name != AreaSoundtrack.name)
-        //    AudioManager.Instance.PlaySoundtrack(AreaSoundtrack);
-
         if (Name == AreaEnum.Crater)
             ArrangeParticleSystems.LoadParticleSystem();
 
         if (Name == AreaEnum.Pathway)
             ArrangeParticleSystems.DeleteParticleSystem();
-
 	}
 
     private string FindName()

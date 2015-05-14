@@ -57,7 +57,8 @@ public class MouseClickOnObject : MonoBehaviour
         {ObjectsInLevel.BeehiveHut, "Guard house"},
         {ObjectsInLevel.Carrot, "Carrot"},
         {ObjectsInLevel.TearCollectorSkull, "Creepy mask"},
-        
+        {ObjectsInLevel.TreasureChest, "Treasure chest"},
+
         {ObjectsInLevel.CaveSign, "Sign"},
 
         {ObjectsInLevel.MuseumDoor, "Door"},
@@ -110,7 +111,8 @@ public class MouseClickOnObject : MonoBehaviour
         {ObjectsInLevel.BeehiveHut, "Pick up the guard house"},
         {ObjectsInLevel.Carrot, "Pick up the carrot"},
         {ObjectsInLevel.TearCollectorSkull, "Talk to creepy mask"},
-        
+        {ObjectsInLevel.TreasureChest, "Open chest"},
+
         {ObjectsInLevel.CaveSign, "Pick up the sign"},
 
         {ObjectsInLevel.MuseumDoor, "Open door"},
@@ -163,7 +165,8 @@ public class MouseClickOnObject : MonoBehaviour
         {ObjectsInLevel.BeehiveHut, "Investigate guard house"},
         {ObjectsInLevel.Carrot, "Investigate carrot"},
         {ObjectsInLevel.TearCollectorSkull, "Investigate mask"},
-        
+        {ObjectsInLevel.TreasureChest, "Investigate treasure chest"},
+
         {ObjectsInLevel.CaveSign, "Investigate sign"},
 
         {ObjectsInLevel.MuseumDoor, "Investigate door"},

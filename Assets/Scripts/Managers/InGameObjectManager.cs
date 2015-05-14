@@ -6,6 +6,7 @@ public class InGameObjectManager : MonoBehaviour
 {
     public static InGameObjectManager Instance;
     public List<GameObject> Objects = new List<GameObject>();
+    public List<GameObject> TreasureChests = new List<GameObject>();
 
     public static bool PickedUpCarrot = false;
     public static bool PickedUpMaskOfMockery = false;
@@ -13,8 +14,14 @@ public class InGameObjectManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        Debug.Log(this.gameObject.name + "deze");
         Objects.Add(GameObject.Find("Carrot"));
         Objects.Add(GameObject.Find("MaskOfMockery"));
+
+        foreach (GameObject chest in GameObject.FindGameObjectsWithTag("TreasureChest"))
+        {
+            TreasureChests.Add((chest) as GameObject);
+        }     
     }
 
     public void TurnOffObject(GameObject obj)
