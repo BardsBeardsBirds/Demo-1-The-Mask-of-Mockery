@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         InitialiseInventoryItems.Clear();
         ResetAmounts();
-        Debug.Log("cleared list");
+        Debug.Log("cleared inventory list");
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
         Instance.Tooltip = Resources.Load("Prefabs/UI/InventoryWindow/Tooltip") as GameObject;
@@ -195,7 +195,7 @@ public class Inventory : MonoBehaviour
 
     public void LoadItemsFromSave()
     {
-        Debug.Log(InitialiseInventoryItems.Count);
+      //  Debug.Log(InitialiseInventoryItems.Count);
         for (int i = 0; i < InitialiseInventoryItems.Count; i++)
         {
             Debug.Log("Add " + InitialiseInventoryItems[i]);

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class RotateTowards : MonoBehaviour
 {
     private enum LeftRight { Left, Right };
@@ -10,11 +9,15 @@ public class RotateTowards : MonoBehaviour
     public Transform Target;
     public float Speed;
     public float Timer;
+    private float _distance;
 
     public void Start()
     {
         GameManager.InCutScene = true;
     //    Debug.LogWarning("to the right " + Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) + " and to the left " + Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position));
+        
+        _distance = Vector3.Distance(Target.transform.position, From.transform.position);
+
         if (Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) < Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position))
         {
        //     Debug.Log("Turn Right");
@@ -33,12 +36,17 @@ public class RotateTowards : MonoBehaviour
       //  Debug.Log("this is the rotate timer " + Timer);
         if (Timer > 0)
         {
+            if (_distance < 2f)
+            {
+                Timer = 0;
+                EndTimer();
+                return;
+            }
+
             Timer -= Time.deltaTime;
 
             if (Timer <= 0)
-            {
                 EndTimer();
-            }
             else
             {
               //  Vector3 targetDir = Target.position - From.transform.position;
@@ -61,14 +69,12 @@ public class RotateTowards : MonoBehaviour
                     else
                         EndTimer();
                 }
-
             }
         }
     }
 
     private void EndTimer()
     {
-        Debug.Log("end Timer");
         CharacterControllerLogic.Instance.ForceSpeed(0);
         CharacterControllerLogic.Instance.ForceTurningAngle(0);
         if (Sentinel.PushBack)

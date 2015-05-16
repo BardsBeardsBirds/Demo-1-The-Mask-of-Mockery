@@ -14,7 +14,6 @@ public class InGameObjectManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        Debug.Log(this.gameObject.name + "deze");
         Objects.Add(GameObject.Find("Carrot"));
         Objects.Add(GameObject.Find("MaskOfMockery"));
 
