@@ -23,13 +23,13 @@ public static class ObjectCommentary
         {1004, "Unwavering."},
         {1005, "Dangerous and hairy. Useful to scare children away on a late night party."},
         {1006, "This is a very strange costume. I wonder if this intriguing outfit is popular."},
-        {1007, "A lute! It looks nice."},
+        {1007, "A lute! It looks nice. It's a bit out of tune though."},
         {1008, " "},
         {1009, "An antique brass cash register."},
         {1010, "Big red clown noses, indispensable assets to turn someone into a clown."},
         {1011, "A box of cachoo sneeze powder™. I have not seen that since my 6th birthday."},
         {1012, "A picture of the owner, or maybe a close associate."},
-        {1013, "I wonder what face is concealed behind the thick layers of schmink."},
+        {1013, "I wonder what face is concealed behind the thick layers of paint."},
         {1014, "Pretty Avant Garde, isn’t it?"},
         {1015, "Investigate wall painting."},
         {1016, "I heard a rumour that these wigs are made of the beards of the unfaithful bards."},
@@ -50,7 +50,7 @@ public static class ObjectCommentary
         {1036, "I think it wants me to go out"},
 
         {1040, "The gate looks solid and ornamented."},
-        {1041, "Ancient drawings depicting the Denchy Flood."},
+        {1041, "Ancient drawings depicting the Drenchy Flood."},
         {1042, "The deity looks a bit confused about what’s going on."},
         {1043, "People desperately hold on to their raft while a scary looking deity stares at them in apathy."},
         {1044, "It is a scene from the Anchorian Flooding Myth."},
@@ -64,12 +64,12 @@ public static class ObjectCommentary
         {1053, "To what other treasures this door might lead?"},
         {1054, "Hm.. the wall here seems damaged."},
         {1055, "This must be the famous mask of Mockery!"},
-        {1060, "Around the wheel different colours are painted."},
+        {1060, "Around the wheel different colours are painted."},//////////////
     };
 
     public static Dictionary<int, string> InteractionLines = new Dictionary<int, string>()
     {
-        {0000, "Let's get closer."},
+        {0000, "Let's get closer."},/////////////
         {2001, "Interact with the Grumpy Clown."},
         {2002, "Interact with Benny."},
         {2003, "Interact with Ay."},
@@ -116,7 +116,7 @@ public static class ObjectCommentary
         {2052, "Nah, I’ll save that for another adventure."},
         {2053, "Nah, I’ll save that for another adventure."},
         {2054, "Finally!"},  //mask of mockery
-        {2060, " "},    //wheel
+        {2060, " "},    //wheel/////////////////////
     };
 
     public static IEnumerator LetsGetCloserRoutine()

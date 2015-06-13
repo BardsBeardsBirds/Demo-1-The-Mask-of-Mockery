@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
 
             Debug.Log(WorldEvents.EmmonWasBlockedBySentinel);
             Debug.Log(WorldEvents.EmmonHasRoughneckShot);
-            Debug.Log(WorldEvents.EmmonHasMaskOfMockery);
+            Debug.Log(InGameObjectManager.PickedUpMaskOfMockery);
             Debug.Log(WorldEvents.EmmonKnowsAy);
             Debug.Log(WorldEvents.EmmonKnowsBenny);
             Debug.Log(WorldEvents.BennyHasOfferedLute);
@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("reset all events");
         WorldEvents.EmmonWasBlockedBySentinel = false;
         WorldEvents.EmmonHasRoughneckShot = false;
-        WorldEvents.EmmonHasMaskOfMockery = false;
+        //WorldEvents.EmmonHasMaskOfMockery = false;
         WorldEvents.EmmonKnowsAy = false;
         WorldEvents.EmmonKnowsBenny = false;
         WorldEvents.BennyHasOfferedLute = false;

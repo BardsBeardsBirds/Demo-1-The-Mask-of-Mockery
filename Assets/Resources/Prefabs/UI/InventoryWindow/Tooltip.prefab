@@ -93,7 +93,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Carrot
+  m_Text: The Mask of Mockery
 --- !u!114 &11407746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Carrot
+  m_Text: Mask of Mockery
 --- !u!114 &11480580
 MonoBehaviour:
   m_ObjectHideFlags: 1

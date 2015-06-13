@@ -11,7 +11,7 @@ public class InventoryCommentary
 
     public static Dictionary<int, string> InvestigationLines = new Dictionary<int, string>()
     {
-        {5001, "It is a roughneck shot. Prepared by Ay."},
+        {5001, "It is a roughneck shot. Ay prepared it."},
         {5002, "It is orange."},
         {5003, "What a beautiful mask!"},
 

@@ -104,21 +104,21 @@ public class BennyTwospoons : MonoBehaviour
     #region SpeakingLines
     public static Dictionary<int, string> SpeakingLines = new Dictionary<int, string>() 
     { 
-        {1000, "Hello!"},
+        {1000, "Hello!"},/////////////////////////////
         {1001, "Hi there, I am Benny Twospoons and you are visiting party shop The Two Spoons."},
         {1002, "Here you can find any attribute you could ever want to start a party with: we have costumes, fake noses, masks, garlands, candles, balloons, ehh.. oh you know the drill."},
         {1003, "You don't happen to have a musical instrument, do you?"},
         {1004, "No. This is a party shop, boy. Well, I guess I have that old lute over there.."},
         {1005, "Oh that could be exactly what I need!"},
         {1006, "I see you found clothes to wear that form a nice addition to your store."},
-        {1007, "To be honest, I wear these clothes also outside work hours. They are my day and night outfit."},
+        {1007, "To be honest, I wear these clothes also outside work hours. They are my outfit day and night."},
         {1008, "Ooh!"},
         {1009, "You see, I used to be a circus clown for many years. I think this line of work thoroughly affects you. Once a clown, forever a clown... always."},
-        {1010, "So you were, sorry, you are a clown?"},
+        {1010, "So you're a clown?"},
         {1011, "I used to work at the Jolly Fair. Even though those days are not over, I am still a clown by heart."},
-        {1012, "And that’s not all: I might not be performing anymore, I still want to reach out to my fellow buffoons and support their cause. Especially in these dark days clowns are very important."},
+        {1012, "And that’s not all: I might not be performing anymore, but I still want to reach out to my fellow buffoons and support their cause. Especially in these dark days clowns are very important."},
         {1013, "You take your former profession still very seriously!"},
-        {1014, "Of course I do! Those were my best years. Success smiled upon me. The  audience knew how to value my clownsmanship."},
+        {1014, "Of course I do! Those were my best years. Success smiled upon me. The audience knew how to value my clownsmanship."},
         {1015, "What happened?"},
         {1016, "Och, didn’t you know that the Jolly Fair went bankrupt a long time ago? With the public, we clowns abandoned the place as well. "},
         {1017, "Bye Benny"},
@@ -131,10 +131,10 @@ public class BennyTwospoons : MonoBehaviour
         {1923, "That is such good news! I feared I wouldn't be able to find a musical instrument"},
         {1024, "Wait a minute, what do you need this lute for?"},
         {1025, "I am a collector of instruments for the Outside-In Art Gallery. Your lute would greatly enhance our collection."},
-        {1026, "I need a lute to play my devestating songs that will overthrow an evil conspiracy at the Royal court!"},
+        {1026, "I need a lute to play my devestating songs that will overthrow an evil conspiracy at the Royal Court!"},
         {1027, "I want to bring an ode to Olivia, my secret love. I need the lute to accompany me and obscure my failing voice."},
         {1028, "No, of course I don’t need this lute. But your lute might be infected by vicious woodworm. I love your shop and want to take the lute in order to prevent the worms from eating your precious costumes. "},
-        {1029, "Oh.. well.. in that case… Unfortunately I can’t give it to you. The lute. It is special to me. You see, when I just started at the Jolly Fair, I was a young clown with no act. All the bigger clowns made fun of me. "},
+        {1029, "Oh.. well.. in that case… Unfortunately I can’t give it to you. The lute. It is special to me. You see, when I just started down at the Jolly Fair, I was a young clown with no act. All the bigger clowns made fun of me. "},
         {1030, "As they were professional comedians, you can imagine how their clever jokes were hurting me. I decided I needed to add a special feature to my show that could amaze them. A song and dance act that would impress everyone."},
         {1031, "It was therefore that I started manufacturing this very instrument, single-handedly. You’ll never believe how I made it."},
         {1032, "You went to the forest and looked for the tallest tree."},
@@ -143,22 +143,22 @@ public class BennyTwospoons : MonoBehaviour
         {1035, "You used dark magic to give it soporific power."},
         {1036, "No, I went to the forest and looked for the tallest tree. And from this giant’s timber, I sawed long, mighty planks. Twelve feet, these beauties were!"},
         {1037, "Why was it necessary to have this kind of planks for a simple lute?"},
-        {1038, "I am a clown, Emmon. I use gimmicks to perform my arts."},
+        {1038, "I am a clown, Emmon. I use these gimmicks to perform my arts."},
         {1039, "But this lute seems to be rather normally sized."},
-        {1040, "Well… it must have gotten smaller. You know how these things erode over time?"},
+        {1040, "Well… it just must have gotten smaller or something. You know how these things erode over time?"},
         {1041, "I don’t believe a word you are saying."},
-        {1042, "Well, I am not giving the lute away easy anyway. Benny wants something good in return."},
+        {1042, "Well, I am not giving the lute away for easy anyway. Benny wants something good in return."},
         {1043, "What do you want for this lute? Maybe we can make a deal."},
         {1044, "As you can see, my clown shop is near perfection. Rarely so much fun was brought together in one place."},
-        {1045, "However, lately I have heard about an item, which is missing from my collection, that can make me a lot of money - I m-mean, an article that would refine this house of fun."},
+        {1045, "However, lately I have heard about an item, which is missing from my collection, that can make me a lot of money - I mean, an article that would refine this place as a house of fun."},
         {1046, "Tell me more."},
         {1047, "It is called the Mask of Mockery. A mask with an insultingly mocking smile. Imagine the face of unsuspecting customers when they see me, wearing this tremendous mask. It will baffle them!"},
         {1048, "Unfortunately the Mask of Mockery has been long lost. It is said the last wearer of the mask put it on and disappeared in the wilderness. But I am sure that it must be somewhere close!"},
         {1049, "I will find this mask for you if you give me that lute in return!"},
         {1050, "I like the sound of that."},
-        {1051, "Hi"},
-        {1052, "Hi"},
-        {1053, "Hi"},
+        {1051, "Hi."},
+        {1052, "Hi!"},
+        {1053, "Hi.."},
         {1054, "I'm back!"},
         {1055, "I feel I'm getting closer to the Mask of Mockery!"},
         {1056, "Are you?"},
@@ -189,7 +189,7 @@ public class BennyTwospoons : MonoBehaviour
         {1081, "I’m sorry, but I promised that costume to the Duke of Prunes. He wanted to use it for the graduation party of his son."},
         {1082, "On second thought, I’m not sure how you could help me "},
         {1083, "That sentinel was no match for me. He’s sleeping with the fishes."},
-        {1084, "Good. Very good. Well, did you find the mask?"},
+        {1084, "Good. Very good. But, did you find the mask?"},
         {1085, "As you know, in Baton nothing goes without a hitch. There are still some things I have to work out. "},
         {1086, "What are you waiting for then? Go back and find me that mask, you rascal!"},
         {1087, "This will make your day: I found you The Mask Of Mockery."},
@@ -285,7 +285,7 @@ public class BennyTwospoons : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(1043);
         }
 
-        if (characterSituation > 2 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1073)) //I feel I'm getting closer to the Mask of Mockery!
+        if (characterSituation > 2 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1073 || lastLineID == 1082)) //I feel I'm getting closer to the Mask of Mockery!
         {
             DialogueMenu.AddToDialogueOptions(1055);
         }
@@ -296,7 +296,8 @@ public class BennyTwospoons : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(1061);
         }
 
-        if (characterSituation == 4 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062)) ////about this mask
+        if (characterSituation == 4 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062)
+            && DialogueOptions[1063] == "") ////about this mask
         {
             DialogueMenu.AddToDialogueOptions(1063);
         }
@@ -653,6 +654,8 @@ public class BennyTwospoons : MonoBehaviour
             AddToDialogue(1064);
             AddToDialogue(1065);
             AddToDialogue(1066);
+
+            DialoguePlayback.DeleteLineID = 1063;
         }
 
         if (dialogueOptionID == 1067)

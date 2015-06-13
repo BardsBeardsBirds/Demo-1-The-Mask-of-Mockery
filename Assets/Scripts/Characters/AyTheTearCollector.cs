@@ -162,13 +162,13 @@ public class AyTheTearCollector : MonoBehaviour
         {2038, "Keep your ears peeled, for I am going to sing!"},
         {2039, "My dark lord’s vow forbids me to listen to such worldly matters, leave me out of this!"},
         {2040, "I once sang at the Royal Palace. It made a lasting impression…"},
-        {2041, "Please! We don’t want to repeat that pandemonium!"},
+        {2041, "Oh please! We don’t want to repeat that pandemonium!"},
         {2042, "If you don’t give me the lute, I might accidentally hum a melody!"},
         {2043, "If you don’t control yourself, I might accidentally hit you with this stick."},
         {2044, "La.. la.. la.."},
         {2045, "What was that..?!"},
         {2046, "Do you know Benny Twospoons?"},
-        {2047, "That clown that has his shop across the street? Of course! He is nothing but trouble for me. You can imagine a jokester like him works against my… tear trade efficiency."},
+        {2047, "That clown that has his shop across the street? Of course I know him! He is nothing but trouble for me. You can imagine a jokester like him works against my… tear trade efficiency."},
         {2048, "He told me about some Mask of Mockery. He is willing to trade his lute for that mask."},
         {2049, "The Mask of Mockery?? That mask is part of the Three Masks of Displeasure. "},
         {2050, "There are the Mask of Mockery, the Hood of Apathy and the Guise of Cynicism. The last two I already got a hold of. "},
@@ -185,7 +185,7 @@ public class AyTheTearCollector : MonoBehaviour
         {2061, "Walk straight to the valley, be persistent and brave, Just climb up the hill and get into the cave,"},
         {2062, "Thou will find a platform with a transportation device, Get to the temple, the stronghold of the wise,"},
         {2063, "Open the gate where thou shalt find the mask, Bring it back to me  and.. well, that’s the end of your task - I mean THY task."},
-        {2064, "Valley, cave, platform. Got it. "},
+        {2064, "Valley, cave, temple. Got it. "},
         {2065, "Where did you say that I can find the mask?"},
         {2066, "That poem is supposed to help you remember!"},
         {2067, "Oh wait, there was a valley, a cave and then a platform to the temple. I remember now."},
@@ -231,7 +231,7 @@ public class AyTheTearCollector : MonoBehaviour
         {2107, "Only a tiny sip."},
         {2108, "Well, a real tiny one then. Because frankly I’m starting to like you… in a peculiar way. You are lucky I have a small bottle here with me. Most of my concoctions are locked inside my house. There you go."},
         {2109, "Thank you, your Lordship. You will not regret this."},
-        {2110, "Get lost, before I change my mind, by the Great Builders."},
+        {2110, "Get lost, before I change my mind, by the Great Builders."},    ////////////////***MISSING***
         {2111, "You know what, let's talk about something else."},
         {2112, "Thanks for the potion, chief. I feel like I can compete with the heroes of our time!"},
         {2113, "Don’t forget that once the effects of the potion wear off, you will be a pathetic minstrel again."},
@@ -318,12 +318,13 @@ public class AyTheTearCollector : MonoBehaviour
 
         if ((lastLineID == 2013 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2123) &&
             (characterSituation < 5) &&
+            DialogueOptions[2014] == "" &&
             WorldEvents.BennyHasOfferedLute == true)
         {
             DialogueMenu.AddToDialogueOptions(2046);
         }
 
-        if ((lastLineID == 2013 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2123) &&
+        if ((lastLineID == 2013 || lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2123) &&
             (characterSituation < 5) &&
             DialogueOptions[2046] == "")
         {

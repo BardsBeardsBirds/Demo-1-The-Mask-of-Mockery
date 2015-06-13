@@ -15,7 +15,7 @@ public class DialogueSituationSelector
             CharacterSituation = 3;
         if (WorldEvents.EmmonHasRoughneckShot)
             CharacterSituation = 4;
-        if (WorldEvents.EmmonHasMaskOfMockery)
+        if (InGameObjectManager.PickedUpMaskOfMockery)
         {
             if (AyTheTearCollector.DialogueOptions[2114] == "")
                 CharacterSituation = 6;
@@ -39,7 +39,7 @@ public class DialogueSituationSelector
             CharacterSituation = 4;
         if (WorldEvents.EmmonHasPassedTheSentinel)
             CharacterSituation = 5;
-        if (WorldEvents.EmmonHasMaskOfMockery)
+        if (InGameObjectManager.PickedUpMaskOfMockery)
             CharacterSituation = 6;
 
         BennyTwospoons.CharacterSituation = CharacterSituation;
