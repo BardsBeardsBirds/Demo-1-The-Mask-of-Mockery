@@ -4,7 +4,7 @@ public static class WorldEvents
 {
     public static bool EmmonWasBlockedBySentinel = false;
     public static bool EmmonHasRoughneckShot = false;
-    public static bool EmmonHasMaskOfMockery = false;
+  //  public static bool EmmonHasMaskOfMockery = false;
     public static bool EmmonKnowsAy = false;
     public static bool EmmonKnowsBenny = false;
     public static bool BennyHasOfferedLute = false;

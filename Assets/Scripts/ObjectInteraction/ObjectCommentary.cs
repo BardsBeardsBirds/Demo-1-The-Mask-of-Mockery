@@ -31,7 +31,7 @@ public static class ObjectCommentary
         {1012, "A picture of the owner, or maybe a close associate."},
         {1013, "I wonder what face is concealed behind the thick layers of paint."},
         {1014, "Pretty Avant Garde, isn’t it?"},
-        {1015, "Investigate wall painting."},
+        {1015, "The heydays of the circus."},//////////////////////
         {1016, "I heard a rumour that these wigs are made of the beards of the unfaithful bards."},
         {1017, "I wonder what the clown has hidden away down there."},
         {1018, "It looks handmade."},
@@ -42,11 +42,11 @@ public static class ObjectCommentary
         {1025, "investigate rocking horse"},
     //    {1026, "That’s right. Exploding birthday cake candles. You can choose how many candles you want, depending on what anniversary you’re celebrating."},
         {1030, "The Two Spoons."},
-        {1032, "Investigate the beehive hut"},
+        {1032, "Investigate the beehive hut"},///////////////
         {1033, "It looks delicious."},
-        {1034, "Investigate tear collector skull"},
+        {1034, "The skull blends in nicely with the overall creepiness of this place."},/////////////////////
 
-        {1035, "I hope it is filled with booty"},
+        {1035, "I hope it is filled with booty"},////////////////////////**********
         {1036, "I think it wants me to go out"},
 
         {1040, "The gate looks solid and ornamented."},
@@ -64,19 +64,20 @@ public static class ObjectCommentary
         {1053, "To what other treasures this door might lead?"},
         {1054, "Hm.. the wall here seems damaged."},
         {1055, "This must be the famous mask of Mockery!"},
-        {1060, "Around the wheel different colours are painted."},//////////////
+        {1060, "Hm.. All sides of the wheel have different colours."},//////////////
     };
 
     public static Dictionary<int, string> InteractionLines = new Dictionary<int, string>()
     {
         {0000, "Let's get closer."},/////////////
+        {0001, "Let's get closer."},/////////////
         {2001, "Interact with the Grumpy Clown."},
         {2002, "Interact with Benny."},
         {2003, "Interact with Ay."},
         {2004, "Interact with the Sentinel."},
         {2005, "No thanks. I prefer my human form."},
         {2006, "Never!"},
-        {2007, "Benny won't give the lute for free."},
+        {2007, "Benny won't give the lute for free."},////////////////////
         {2008, "I don’t think the clown would appreciate me messing with his administration."},
         {2009, "I would rather paint mine."},
         {2010, "No, that would make me sneeze."},
@@ -96,7 +97,7 @@ public static class ObjectCommentary
         {2032, "Nah, that is silly."},
         {2033, "You never know.."},
         {2034, "No, I need the Mask of Mockery."},
-        {2035, "I already plundered it."},
+        {2035, "I already plundered it."},  ////////*****************
 
         {2036, "That would confuse fellow travelers."},
         {2037, "That would confuse fellow travelers."},

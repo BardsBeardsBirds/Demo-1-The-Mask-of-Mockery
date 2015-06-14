@@ -164,7 +164,7 @@ public class SaveAndLoadGame
         Debug.Log("saving world events");
         data.EmmonWasBlockedBySentinel = WorldEvents.EmmonWasBlockedBySentinel;
         data.EmmonHasRoughneckShot = WorldEvents.EmmonHasRoughneckShot;
-        data.EmmonHasMaskOfMockery = WorldEvents.EmmonHasMaskOfMockery;
+        //data.EmmonHasMaskOfMockery = WorldEvents.EmmonHasMaskOfMockery;
         data.EmmonKnowsAy = WorldEvents.EmmonKnowsAy;
         data.EmmonKnowsBenny = WorldEvents.EmmonKnowsBenny;
         data.BennyHasOfferedLute = WorldEvents.BennyHasOfferedLute;
@@ -178,7 +178,7 @@ public class SaveAndLoadGame
         Debug.Log("loading world events");
         WorldEvents.EmmonWasBlockedBySentinel = data.EmmonWasBlockedBySentinel;
         WorldEvents.EmmonHasRoughneckShot = data.EmmonHasRoughneckShot;
-        WorldEvents.EmmonHasMaskOfMockery = data.EmmonHasMaskOfMockery;
+        //WorldEvents.EmmonHasMaskOfMockery = data.EmmonHasMaskOfMockery;
         WorldEvents.EmmonKnowsAy = data.EmmonKnowsAy;
         WorldEvents.EmmonKnowsBenny = data.EmmonKnowsBenny;
         WorldEvents.BennyHasOfferedLute = data.BennyHasOfferedLute;
