@@ -186,16 +186,16 @@ public class GameManager : MonoBehaviour
             //    Debug.Log(SlotScript.IInventory.Items[i].IType);
             //}
 
-            Debug.Log(WorldEvents.EmmonWasBlockedBySentinel);
-            Debug.Log(WorldEvents.EmmonHasRoughneckShot);
-            Debug.Log(InGameObjectManager.PickedUpMaskOfMockery);
-            Debug.Log(WorldEvents.EmmonKnowsAy);
-            Debug.Log(WorldEvents.EmmonKnowsBenny);
-            Debug.Log(WorldEvents.BennyHasOfferedLute);
-            Debug.Log(WorldEvents.EmmonSawTheLute);            
-            Debug.Log(WorldEvents.EmmonKnowsMaskLocation);
-            Debug.Log(WorldEvents.EmmonHasPassedTheSentinel);
-            Debug.Log(WorldEvents.MissionAccomplished);
+            Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonWasBlockedBySentinel);
+            Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
+            Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
+            Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
+            Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
+            Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
+            Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
+            Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
+            Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
+            Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
 
         //    Inventory.Instance.AddItem(2);
         }
@@ -366,6 +366,26 @@ public class GameManager : MonoBehaviour
         }
 
         fader.IsFadingToClear = true;
+    }
+
+    public void LoadEventConsequences()
+    {
+        Debug.Log(WorldEvents.EmmonKnowsAy);
+        if (WorldEvents.EmmonKnowsAy)
+        {
+            ObjectCommentary.InvestigationLines[1003] = "";
+            MouseClickOnObject.ObjectLines[ObjectsInLevel.AyTheTearCollector] = "Ay the Tear Collector";
+            MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.AyTheTearCollector] = "Investigate Ay";
+            MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.AyTheTearCollector] = "Talk to Ay";
+        }
+
+        if (WorldEvents.EmmonKnowsBenny)
+        {
+            ObjectCommentary.InvestigationLines[1020] = "";
+            MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";
+            MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.BennyTwospoons] = "Investigate Benny Twospoons";
+            MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.BennyTwospoons] = "Talk to Benny Twospoons";
+        }
     }
 
     public void GameStateToRunning()

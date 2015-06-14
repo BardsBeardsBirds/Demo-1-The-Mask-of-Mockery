@@ -24,7 +24,7 @@ public static class ObjectCommentary
         {1005, "Dangerous and hairy. Useful to scare children away on a late night party."},
         {1006, "This is a very strange costume. I wonder if this intriguing outfit is popular."},
         {1007, "A lute! It looks nice. It's a bit out of tune though."},
-        {1008, " "},
+        {1008, "It is Ay, the town's tear collector."},
         {1009, "An antique brass cash register."},
         {1010, "Big red clown noses, indispensable assets to turn someone into a clown."},
         {1011, "A box of cachoo sneeze powder™. I have not seen that since my 6th birthday."},
@@ -40,7 +40,7 @@ public static class ObjectCommentary
         {1022, "Exploding candles."},
         {1023, "That’s right. Exploding birthday cake candles. You can choose how many candles you want, depending on what anniversary you’re celebrating."},
         {1025, "investigate rocking horse"},
-    //    {1026, "That’s right. Exploding birthday cake candles. You can choose how many candles you want, depending on what anniversary you’re celebrating."},
+        {1026, "The owner must be proud of his credentials."},
         {1030, "The Two Spoons."},
         {1032, "Investigate the beehive hut"},///////////////
         {1033, "It looks delicious."},
@@ -206,9 +206,16 @@ public static class ObjectCommentary
                     CurrentDialogueIDs.Add(1002);
                 break;
             case ObjectsInLevel.AyTheTearCollector:
-                CurrentDialogueIDs.Add(1003);
-                ChangeLine = "It is Ay, the town's tear collector";
-                ChangeIndex = 1003;
+                if (InvestigationLines[1003] == "")
+                {
+                    CurrentDialogueIDs.Add(1008);
+                }
+                else
+                {
+                    CurrentDialogueIDs.Add(1003);
+                    ChangeLine = "";
+                    ChangeIndex = 1003;
+                }
                 break;
             case ObjectsInLevel.Sentinel:
                 CurrentDialogueIDs.Add(1004);
@@ -253,9 +260,16 @@ public static class ObjectCommentary
                 CurrentDialogueIDs.Add(1018);
                 break;
             case ObjectsInLevel.ClownCertificate:
-                CurrentDialogueIDs.Add(1020);
-                ChangeLine = "The owner must be proud of his credentials";
-                ChangeIndex = 1020;
+                if (InvestigationLines[1020] == "")
+                {
+                    CurrentDialogueIDs.Add(1026);
+                }
+                else
+                {
+                    CurrentDialogueIDs.Add(1020);
+                    ChangeLine = "";
+                    ChangeIndex = 1020;
+                }
                 break;
             case ObjectsInLevel.LapelFlowers:
                 CurrentDialogueIDs.Add(1021);

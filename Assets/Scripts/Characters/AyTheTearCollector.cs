@@ -451,7 +451,9 @@ public class AyTheTearCollector : MonoBehaviour
                 DialogueMenu.AddToDialogueOptions(2003);
                 DialogueMenu.AddToDialogueOptions(2004);
                 DialogueMenu.FindDialogueOptionText();
-                MouseClickOnObject.ObjectLines[ObjectsInLevel.AyTheTearCollector] = "Ay the Tear Collector";    
+                MouseClickOnObject.ObjectLines[ObjectsInLevel.AyTheTearCollector] = "Ay the Tear Collector";
+                MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.AyTheTearCollector] = "Investigate Ay";
+                MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.AyTheTearCollector] = "Talk to Ay";    
                 break;
             case 2: //SITUATION 2   // I'm back, rejoice!  
                 AddToDialogue(2123);

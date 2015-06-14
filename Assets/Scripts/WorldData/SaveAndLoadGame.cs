@@ -41,11 +41,13 @@ public class SaveAndLoadGame
                 GameManager.Instance.SetPlayerPosition();
                 loadInventoryItemsInGame(data);
                 InGameObjectManager.Instance.LoadInGameObjectsInfo();   //see what objects should be turned off
+                GameManager.Instance.LoadEventConsequences();           //load the consequences of any world event
                 //Debug.LogWarning("we loaded a game from inside the game");
                 GameManager.Instance.GameStateToRunning();
             }
             else  // we load from main menu
             {
+                GameManager.Instance.LoadEventConsequences();           //load the consequences of any world event
                 GameManager.Instance.GameStateToRunning();
                 Debug.LogWarning("we came from main menu");
             }

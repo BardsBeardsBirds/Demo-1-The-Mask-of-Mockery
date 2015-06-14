@@ -210,28 +210,14 @@ public class BennyTwospoons : MonoBehaviour
     public void Start()
     {
         Instance = this;
- //       ThisCollider = GetComponent<SphereCollider>();
-  //      ThisCollider.isTrigger = true;
+
         Animator = GetComponentInChildren<Animator>();
     }
 
     public void StartDialogue()
     {
-     //   Animator.SetBool("DialogueState", true);
-
-    //    TimeManager.NPCDialogueZoek = true;
-
         DialogueManager.StartDialogueState(NPCEnum.NPCs.BennyTwospoons);
     }
-
-    //public void OnTriggerExit(Collider other)
-    //{
-    //    Animator.SetBool("DialogueState", false);
-    //    Animator.SetBool("Talking", false);
-    //    Animator.SetBool("Listening", false);
-
-    //    DialogueManager.EndDialogueState();
-    //}
 
     public void DialogueLineNumberToSituation(int lastLineID)   //the last line of dialogue determines which situation will follow
     {
@@ -386,7 +372,9 @@ public class BennyTwospoons : MonoBehaviour
                     AddToDialogue(1001);
                     AddToDialogue(1002);
                     WorldEvents.EmmonKnowsBenny = true;
-                    MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";    
+                    MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";
+                    MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.BennyTwospoons] = "Investigate Benny Twospoons";
+                    MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.BennyTwospoons] = "Talk to Benny Twospoons";    
                     
                     DialoguePlayback.Instance.PlaybackDialogue(1000);
                 }

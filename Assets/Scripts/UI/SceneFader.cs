@@ -15,8 +15,11 @@ public class SceneFader : MonoBehaviour
     public bool IsFadingToBlack = false;
     public bool IsFadingToClear = false;
 
+    private bool _loaded = false;
     public void Awake()
     {
+        _loaded = false;
+
         BlackImage = this.gameObject.GetComponent<Image>();
     }
 
@@ -30,6 +33,14 @@ public class SceneFader : MonoBehaviour
 
     public void BlackToClear()
     {
+        if (ClearFader == ToClear.StartFromLoad && !_loaded)
+        {
+            //  GameManager.GamePlayingMode = GameManager.GameMode.Running;
+            SaveAndLoadGame loadGame = new SaveAndLoadGame();
+            loadGame.LoadGameData();
+            _loaded = true;
+        }
+
         BlackImage.color = Color.Lerp(BlackImage.color, new Color(0, 0, 0, 0), _fadeToClearSpeed * Time.deltaTime);
         if (BlackImage.color.a <= 0.65f)
         {
@@ -50,13 +61,12 @@ public class SceneFader : MonoBehaviour
                 /////////////////
 
             }
-            else if(ClearFader == ToClear.StartFromLoad)
-            {
-
-              //  GameManager.GamePlayingMode = GameManager.GameMode.Running;
-                SaveAndLoadGame loadGame = new SaveAndLoadGame();
-                loadGame.LoadGameData();
-            }
+            //else if (ClearFader == ToClear.StartFromLoad)
+            //{
+            //    //  GameManager.GamePlayingMode = GameManager.GameMode.Running;
+            //    SaveAndLoadGame loadGame = new SaveAndLoadGame();
+            //    loadGame.LoadGameData();
+            //}
 
             IsFadingToClear = false;
             this.gameObject.SetActive(false);
