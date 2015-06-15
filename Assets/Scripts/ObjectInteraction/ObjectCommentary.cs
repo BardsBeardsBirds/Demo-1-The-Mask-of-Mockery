@@ -31,7 +31,7 @@ public static class ObjectCommentary
         {1012, "A picture of the owner, or maybe a close associate."},
         {1013, "I wonder what face is concealed behind the thick layers of paint."},
         {1014, "Pretty Avant Garde, isn’t it?"},
-        {1015, "The heydays of the circus."},//////////////////////
+        {1015, "The heydays of the circus."},
         {1016, "I heard a rumour that these wigs are made of the beards of the unfaithful bards."},
         {1017, "I wonder what the clown has hidden away down there."},
         {1018, "It looks handmade."},
@@ -42,9 +42,8 @@ public static class ObjectCommentary
         {1025, "investigate rocking horse"},
         {1026, "The owner must be proud of his credentials."},
         {1030, "The Two Spoons."},
-        {1032, "Investigate the beehive hut"},///////////////
         {1033, "It looks delicious."},
-        {1034, "The skull blends in nicely with the overall creepiness of this place."},/////////////////////
+        {1034, "The skull blends in nicely with the overall creepiness of this place."},
 
         {1035, "I hope it is filled with booty"},////////////////////////**********
         {1036, "I think it wants me to go out"},
@@ -64,20 +63,20 @@ public static class ObjectCommentary
         {1053, "To what other treasures this door might lead?"},
         {1054, "Hm.. the wall here seems damaged."},
         {1055, "This must be the famous mask of Mockery!"},
-        {1060, "Hm.. All sides of the wheel have different colours."},//////////////
+        {1060, "Hm.. All sides of the wheel have different colours."},
     };
 
     public static Dictionary<int, string> InteractionLines = new Dictionary<int, string>()
     {
-        {0000, "Let's get closer."},/////////////
-        {0001, "Let's get closer."},/////////////
+        {10001, "Let's get closer."},
+        {10002, "Let's get closer."},
         {2001, "Interact with the Grumpy Clown."},
         {2002, "Interact with Benny."},
         {2003, "Interact with Ay."},
         {2004, "Interact with the Sentinel."},
         {2005, "No thanks. I prefer my human form."},
         {2006, "Never!"},
-        {2007, "Benny won't give the lute for free."},////////////////////
+        {2007, "Benny won't give the lute for free."},
         {2008, "I don’t think the clown would appreciate me messing with his administration."},
         {2009, "I would rather paint mine."},
         {2010, "No, that would make me sneeze."},
@@ -93,7 +92,6 @@ public static class ObjectCommentary
         {2022, "Interact with exploding candles"},
         
         {2030, "How?"},
-        {2031, "This is not the time for joy riding"}, // deleted cart
         {2032, "Nah, that is silly."},
         {2033, "You never know.."},
         {2034, "No, I need the Mask of Mockery."},
@@ -117,14 +115,14 @@ public static class ObjectCommentary
         {2052, "Nah, I’ll save that for another adventure."},
         {2053, "Nah, I’ll save that for another adventure."},
         {2054, "Finally!"},  //mask of mockery
-        {2060, " "},    //wheel/////////////////////
+        {2060, " "},    
     };
 
     public static IEnumerator LetsGetCloserRoutine()
     {
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
 
-        var id = 0000;
+        int id = 10001;
         DialoguePlayback.SetCurrentDialogueLine(InteractionLines[id]);
 
         DialoguePlayback.Instance.ShowDialogueLines();

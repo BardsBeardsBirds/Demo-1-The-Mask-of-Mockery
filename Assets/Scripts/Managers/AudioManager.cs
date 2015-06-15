@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDialogueAudio(string audioPath)
     {
+        Debug.Log("play: " + audioPath);
         _audioPath = audioPath;
 
         _dialogueAudioClip = Resources.Load(("Audio/Dialogues/") + _audioPath) as AudioClip;

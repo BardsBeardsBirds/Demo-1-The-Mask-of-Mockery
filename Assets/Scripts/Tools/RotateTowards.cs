@@ -14,48 +14,51 @@ public class RotateTowards : MonoBehaviour
     public void Start()
     {
         GameManager.InCutScene = true;
-    //    Debug.LogWarning("to the right " + Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) + " and to the left " + Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position));
+        Debug.LogWarning("to the right " + Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) + " and to the left " + Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position));
         
         _distance = Vector3.Distance(Target.transform.position, From.transform.position);
 
-        if (Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) < Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position))
+        if (Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) <= Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position))
         {
-       //     Debug.Log("Turn Right");
+            Debug.Log("Turn Right");
             _leftRight = LeftRight.Right;
         }
         else
         {
-      //      Debug.Log("Turn Left");
+            Debug.Log("Turn Left");
             _leftRight = LeftRight.Left;
         }
     }
 
     public void Update()
     {
-      //  Debug.Log("bestemming: " + Target.position);
-      //  Debug.Log("this is the rotate timer " + Timer);
+       // Debug.Log("bestemming: " + Target.position);
+        Debug.LogWarning("this is the rotate timer " + Timer + " angle: " + Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position));
         if (Timer > 0)
         {
-            if (_distance < 2f)
-            {
-                Timer = 0;
-                EndTimer();
-                return;
-            }
-
             Timer -= Time.deltaTime;
 
             if (Timer <= 0)
                 EndTimer();
             else
             {
-              //  Vector3 targetDir = Target.position - From.transform.position;
-                if (Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position) > 5)
+
+                if (Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position) > 5f) //only if we have to turn more than 5 degree
                 {
-                    if (_leftRight == LeftRight.Right)
+                    if (_leftRight == LeftRight.Right && Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position) > 90)//we want to go right, but only if the angle towards the left is more than 90. Otherwise we turned too far.
+                    {
                         CharacterControllerLogic.Instance.ForceTurningAngle(90);
-                    else
+                    }
+                    else if (_leftRight == LeftRight.Left && Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) > 90) //we want to go left, but only if the angle towards the right is more than 90. Otherwise we turned too far.
+                    {
+                        //Debug.LogWarning("to the right " + Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position));
                         CharacterControllerLogic.Instance.ForceTurningAngle(-90);
+                    }
+                    else
+                    {
+                        EndTimer();
+                        Timer = 0;
+                    }
                 }
                 else
                 {
@@ -67,7 +70,10 @@ public class RotateTowards : MonoBehaviour
                         From.transform.position = Vector3.MoveTowards(From.transform.position, Target.position, 6 * Time.deltaTime);
                     }
                     else
+                    {
                         EndTimer();
+                        Timer = 0;
+                    }
                 }
             }
         }
