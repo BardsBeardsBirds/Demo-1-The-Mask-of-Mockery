@@ -445,6 +445,7 @@ public static class ObjectCommentary
                 ItemManager.AddItem(2);
                 InGameObjectManager.PickedUpCarrot = true;
                 InGameObjectManager.Instance.TurnOffObject(GameObject.Find("Carrot"));
+                AudioManager.PickUpAudio();
                 break;
             case ObjectsInLevel.TearCollectorSkull:
                 CurrentDialogueIDs.Add(2034);
@@ -502,6 +503,7 @@ public static class ObjectCommentary
                 CurrentDialogueIDs.Add(2054);
                 ItemManager.AddItem(3); //Add mask of mockery to inventory
                 InGameObjectManager.PickedUpMaskOfMockery = true;
+                AudioManager.PickUpAudio();
                 break;
             case ObjectsInLevel.Wheel1:
                 GateWheel.ChooseWheelNumber(1);

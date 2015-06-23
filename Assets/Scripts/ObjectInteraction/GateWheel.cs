@@ -122,6 +122,8 @@ public class GateWheel : ButtonPush
         var wheelRotationAngle = wheel.gameObject.transform.rotation.y;
         //  Debug.LogWarning("Turn it around" + wheelRotationAngle + " index " + index);
 
+        AudioManager.TurnWheelAudio();
+
         _rotatorTimer = _rotatorTimer + 1;
 
         if (_rotatorTimer == 15)
@@ -138,6 +140,11 @@ public class GateWheel : ButtonPush
             if (_wheelColourIndex == _blueIndex + 1 || (_wheelColourIndex == 0 && _blueIndex == 6))
                 AmountOfBlueButtons = AmountOfBlueButtons - 1;
             //   Debug.LogWarning("how many blue? " + AmountOfBlueButtons);
+
+            if(GateWheel.AmountOfBlueButtons == 6)
+            {
+                AudioManager.OpenDoorAudio();
+            }
         }
     }
 

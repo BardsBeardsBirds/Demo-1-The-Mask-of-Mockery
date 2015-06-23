@@ -43,7 +43,7 @@ public class Footsteps
             CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Walking)
         {
             if (!_footstepSource.isPlaying)
-                PlayWalkingFootstep();
+                PlayWalkingFootstep(Emmon.Instance.Ground);
         }
         if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Running)
         {
@@ -62,7 +62,7 @@ public class Footsteps
         }
     }
 
-    public void PlayWalkingFootstep()
+    public void PlayWalkingFootstep(CharacterControllerLogic.WalkGround ground)
     {
         int randomClip = Random.Range(0, FootstepWalkClips.Count);
         _footstepSource.clip = FootstepWalkClips[randomClip];

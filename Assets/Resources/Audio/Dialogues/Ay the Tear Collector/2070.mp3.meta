@@ -1,12 +1,21 @@
 fileFormatVersion: 2
 guid: 846a7c11e7ded3e47ab8cf656a27587d
+timeCreated: 1434729395
+licenseType: Pro
 AudioImporter:
-  serializedVersion: 4
-  format: 0
-  quality: -1
-  stream: 1
-  3D: 1
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 1
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
   forceToMono: 0
-  useHardware: 0
-  loopable: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

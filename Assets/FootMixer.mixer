@@ -6,7 +6,7 @@ AudioMixerController:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FootMixer
-  m_OutputGroup: {fileID: 24300001, guid: 6d252474e2d62244a97f3a53424a7822, type: 2}
+  m_OutputGroup: {fileID: 24338062, guid: 6d252474e2d62244a97f3a53424a7822, type: 2}
   m_MasterGroup: {fileID: 24300001}
   m_Snapshots:
   - {fileID: 24500003}

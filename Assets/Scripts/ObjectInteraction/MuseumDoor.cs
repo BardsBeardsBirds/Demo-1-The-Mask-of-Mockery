@@ -8,6 +8,7 @@ public class MuseumDoor : MonoBehaviour
     public MuseumDoor Instance;
     public MuseumDoors WhichMuseumDoor;
 
+
     public void Awake()
     {
         Instance = this;
@@ -17,7 +18,12 @@ public class MuseumDoor : MonoBehaviour
     {
         if (GateWheel.AmountOfBlueButtons < 6)
             return;
+        else
+            OpenDoor();
+    }
 
+    public void OpenDoor()
+    {
         if (WhichMuseumDoor == MuseumDoors.DoorLeft)
         {
             var target = new Vector3(-56.486f, 33.08f, 90.953f);
@@ -29,5 +35,7 @@ public class MuseumDoor : MonoBehaviour
             Instance.transform.position = Vector3.MoveTowards(Instance.transform.position, target, 1 * Time.deltaTime);
         }
     }
+
+
 }
 

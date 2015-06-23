@@ -6,6 +6,8 @@ public class Emmon : MonoBehaviour
 {
     public static Emmon Instance;
 
+    public CharacterControllerLogic.WalkGround Ground = CharacterControllerLogic.WalkGround.None;
+
     public GameObject WaterRings = null;
     public GameObject InWaterGo;
     public bool InWater = false;

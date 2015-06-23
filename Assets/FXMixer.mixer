@@ -19,6 +19,9 @@ AudioMixerController:
     - 5c260a69e8f1d3a4dbad7e023ca1ffd7
     - 071186e1a728ec845beaad8b341345d2
     - 888439240a3a0e344b1a0601f233e521
+    - 8e490f62ff750774b8c6bf39b2973e81
+    - 1d982361bde1dd94680df9c7e24f4075
+    - 26eb71bd184bc5940a1aab933e57ae66
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -32,10 +35,29 @@ AudioMixerGroupController:
   m_GroupID: 5c260a69e8f1d3a4dbad7e023ca1ffd7
   m_Children:
   - {fileID: 24386686}
+  - {fileID: 24371160}
+  - {fileID: 24301038}
   m_Volume: 7c541d3858bc7bf4c9e418472dc3aaee
   m_Pitch: 9c0211fcb476739449148ce9cce859fa
   m_Effects:
   - {fileID: 24400002}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24301038
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PuzzleWheel
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 1d982361bde1dd94680df9c7e24f4075
+  m_Children: []
+  m_Volume: 8f37f4ee7bb3d9549b421a41511783f6
+  m_Pitch: 71640cc569055f346b3129b6ab3fdb2c
+  m_Effects:
+  - {fileID: 24476002}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -58,6 +80,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &24371160
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: TempelDoor
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 8e490f62ff750774b8c6bf39b2973e81
+  m_Children: []
+  m_Volume: da163c7800d306948887ba197f3d5266
+  m_Pitch: 6c4db3a425d9c254aade2ee078711201
+  m_Effects:
+  - {fileID: 24451596}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &24386686
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -68,10 +107,28 @@ AudioMixerGroupController:
   m_GroupID: 071186e1a728ec845beaad8b341345d2
   m_Children:
   - {fileID: 24353512}
+  - {fileID: 24398264}
   m_Volume: 493e5aca862394443a8ba786594400c8
   m_Pitch: 398ee01dc49e75f48b85047e4d1f1259
   m_Effects:
   - {fileID: 24445596}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24398264
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: General
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 26eb71bd184bc5940a1aab933e57ae66
+  m_Children: []
+  m_Volume: 795b03aeb35d25e40a95eb16c28237e8
+  m_Pitch: b45f655d33bdf0d4887193a29cfb8964
+  m_Effects:
+  - {fileID: 24478896}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -115,6 +172,45 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &24451596
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 6acf41445313d4e4da596c65c9a2219c
+  m_EffectName: Attenuation
+  m_MixLevel: 5ea56f7ad52a9dc489cfdd2590edceaf
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24476002
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8935689172fc7f8489875eece304a0a5
+  m_EffectName: Attenuation
+  m_MixLevel: 8008062c3bcfcb44e89a68274ceadf43
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24478896
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 776646c39f0cc6b4d92a34148e215698
+  m_EffectName: Attenuation
+  m_MixLevel: c7f9179966227254da20b2a96874afa4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &24499088
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -145,5 +241,8 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 4947075f35e900e41af4532beb2f0683
   m_FloatValues:
+    da163c7800d306948887ba197f3d5266: -6.99106598
     ecc7b08e8555f1641831a0f49c8531a2: -6.55661535
+    795b03aeb35d25e40a95eb16c28237e8: -7.43692923
+    8f37f4ee7bb3d9549b421a41511783f6: -9.83328629
   m_TransitionOverrides: {}

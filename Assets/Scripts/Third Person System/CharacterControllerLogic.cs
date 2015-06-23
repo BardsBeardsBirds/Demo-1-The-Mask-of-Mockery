@@ -11,6 +11,11 @@ public class CharacterControllerLogic : MonoBehaviour
         Dead, Talking, TalkingLastLine
     }
 
+    public enum WalkGround
+    {
+        Concrete, ConcreteGritty, CreakyFloor, CreakyRug, Deck, Dirt, Gravel, Leaves, Marble, Metal, Mud, SandDry, SandWet, Snow, Wood, WoodRug, WoodSolid, None
+    }
+
     public static CharacterControllerLogic Instance;
 
     [SerializeField]

@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Items\StandardNPC.cs" />
      <Compile Include="Assets\Scripts\Locations\Area.cs" />
      <Compile Include="Assets\Scripts\Locations\AreaEnum.cs" />
+     <Compile Include="Assets\Scripts\Locations\GroundTerrain.cs" />
      <Compile Include="Assets\Scripts\Locations\SentinelBlocker.cs" />
      <Compile Include="Assets\Scripts\Locations\WaterBehaviour.cs" />
      <Compile Include="Assets\Scripts\Managers\AreaManager.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\Sound\AmbientSoundtracks.cs" />
      <Compile Include="Assets\Scripts\Sound\Footsteps.cs" />
      <Compile Include="Assets\Scripts\Sound\MainMenuSound.cs" />
+     <Compile Include="Assets\Scripts\Sound\SetReverb.cs" />
      <Compile Include="Assets\Scripts\Sound\UISounds.cs" />
      <Compile Include="Assets\Scripts\Third Person System\CharacterControllerLogic.cs" />
      <Compile Include="Assets\Scripts\Third Person System\DebugDraw.cs" />

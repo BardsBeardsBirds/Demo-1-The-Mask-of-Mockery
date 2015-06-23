@@ -14,17 +14,7 @@ public class IntroMode
     public void StartIntro()
     {
         GameManager.Instance.GameStateToIntro();
-        //SaveAndLoadGame loadGame = new SaveAndLoadGame();
 
-       // if(!GameManager.NewGame)
-      //  loadGame.LoadGameData();    
-
-
-        //GameObject sceneFaderGO = GameObject.Find("ScreenFader");
-        //Image blackImage = sceneFaderGO.GetComponent<Image>();
-        //blackImage.color = new Color(0, 0, 0, 1);
-        //SceneFader sceneFader = sceneFaderGO.GetComponent<SceneFader>();
-        //sceneFader.SceneStarting = true;
         StartIntroText();
     }
 
@@ -74,12 +64,12 @@ public class IntroMode
 
     private void AddLines()
     {
-        CurrentTextIDs.Add(3000);
-        CurrentTextIDs.Add(3001);
-        CurrentTextIDs.Add(3002);
-        CurrentTextIDs.Add(3003);
-        CurrentTextIDs.Add(3004);
-        CurrentTextIDs.Add(3005);
+        CurrentTextIDs.Add(4000);
+        CurrentTextIDs.Add(4001);
+        CurrentTextIDs.Add(4002);
+        CurrentTextIDs.Add(4003);
+        CurrentTextIDs.Add(4004);
+        CurrentTextIDs.Add(4005);
     }
 
     private static void ClearTextList()

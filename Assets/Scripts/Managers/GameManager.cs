@@ -127,8 +127,8 @@ public class GameManager : MonoBehaviour
     {
         Player = GameObject.Find("Emmon");
 
-        Player.transform.position = new Vector3(-58f, 6f, 158f);
-        Player.transform.rotation = new Quaternion(0.0f, 0.4f, 0.0f, -0.9f);
+        Player.transform.position = new Vector3(-31f, 5.5f, 145f);
+        Player.transform.rotation = new Quaternion(0.0f, -0.1f, 0.0f, -1.0f);
     }
 
     public void ChangeMoney(int amount)
