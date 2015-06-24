@@ -5,7 +5,7 @@ using System.Linq;
 
 public static class ArrangeParticleSystems
 {
-    public static void LoadParticleSystem()
+    public static void LoadWaterfallParticlesAndSound()
     {
         GameObject instance;
         if (GameObject.Find("Waterfall Particles") == null)
@@ -18,7 +18,7 @@ public static class ArrangeParticleSystems
         }
     }
 
-    public static void DeleteParticleSystem()
+    public static void DeleteWaterfallParticlesAndSound()
     {
         GameManager.Destroy("Waterfall Particles");
     }

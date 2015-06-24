@@ -29,10 +29,10 @@ public class Area : MonoBehaviour
         }
 
         if (Name == AreaEnum.Crater)
-            ArrangeParticleSystems.LoadParticleSystem();
+            ArrangeParticleSystems.LoadWaterfallParticlesAndSound();
 
         if (Name == AreaEnum.Pathway)
-            ArrangeParticleSystems.DeleteParticleSystem();
+            ArrangeParticleSystems.DeleteWaterfallParticlesAndSound();
 	}
 
     private string FindName()
