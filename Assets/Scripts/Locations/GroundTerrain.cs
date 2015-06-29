@@ -6,7 +6,7 @@ public class GroundTerrain : MonoBehaviour
 {
     public GroundTerrain Instance;
     public CharacterControllerLogic.WalkGround Ground;
-    public static SetReverb Reverb;
+    public static SetReverb Reverb = new SetReverb();
     public ReverbLevel ReverbAmount;
 
     public void Awake()
@@ -18,8 +18,6 @@ public class GroundTerrain : MonoBehaviour
             Debug.LogError("Please assign this piece of ground material");
         }
 
-        Reverb = new SetReverb();
-      //  Reverb.FindMixer();
     }
 
     public void OnTriggerEnter()

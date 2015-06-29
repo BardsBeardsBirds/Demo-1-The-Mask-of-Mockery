@@ -16,7 +16,7 @@ public class SetReverb : MonoBehaviour
         switch (reverbLevel)
         {
             case ReverbLevel.None:
-                AudioManager.Instance.SetSendLevel(-80f);
+                AudioManager.Instance.SetSendLevel(-60f);
                 break;
             case ReverbLevel.Low:
                 AudioManager.Instance.SetSendLevel(-20f);
@@ -34,17 +34,4 @@ public class SetReverb : MonoBehaviour
                 break;
         }
     }
-
-    //public void FindMixer()
-    //{
-    //    Mixer = AudioManager.Instance.MainMixer;
-    //}
-
-    //public void SetSendLevel(float lvl)
-    //{
-    //    float waka = 0;
-    //    Mixer.GetFloat("FootstepsReverbSend", out waka);
-    //    Debug.Log(waka);
-    //    Mixer.SetFloat("FootstepsReverbSend", lvl);
-    //}
 }

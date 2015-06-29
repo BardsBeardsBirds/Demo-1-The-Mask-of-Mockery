@@ -95,31 +95,121 @@ public class Footsteps
     public void Awake()
     {
         _footstepSource = GameObject.Find("Footsteps").GetComponent<AudioSource>();
-        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
 
-        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        //Concrete
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 1") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 2") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 3") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 4") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 5") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 6") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 7") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 8") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 9") as AudioClip);
+        ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 10") as AudioClip);
 
-        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 1") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 2") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 3") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 4") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 5") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 6") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 7") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 8") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 9") as AudioClip);
+        ConcreteRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole run 10") as AudioClip);
 
-        ConcreteTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 1") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 2") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 3") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 4") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 5") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 6") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 7") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 8") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 9") as AudioClip);
+        ConcreteSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole sprint 10") as AudioClip);
 
+        ConcreteTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole turn 1") as AudioClip);
+        ConcreteTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole turn 2") as AudioClip);
+        ConcreteTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole turn 3") as AudioClip);
+        ConcreteTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole turn 4") as AudioClip);
 
-        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        //Concrete Gritty
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 1") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 2") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 3") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 4") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 5") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 6") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 7") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 8") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 9") as AudioClip);
+        ConcreteGrittyWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole walk 10") as AudioClip);
 
-        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 1") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 2") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 3") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 4") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 5") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 6") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 7") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 8") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 9") as AudioClip);
+        ConcreteGrittyRunClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole run 10") as AudioClip);
 
-        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 1") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 2") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 3") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 4") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 5") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 6") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 7") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 8") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 9") as AudioClip);
+        ConcreteGrittySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole sprint 10") as AudioClip);
 
-        ConcreteGrittyTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        ConcreteGrittyTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole turn 1") as AudioClip);
+        ConcreteGrittyTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole turn 2") as AudioClip);
+        ConcreteGrittyTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/ConcreteGritty/Male leather sole turn 3") as AudioClip);
 
+        //Creaky Floor
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 1") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 2") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 3") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 4") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 5") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 6") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 7") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 8") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 9") as AudioClip);
+        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers walk 10") as AudioClip);
 
-        CreakyFloorWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 1") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 2") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 3") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 4") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 5") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 6") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 7") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 8") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 9") as AudioClip);
+        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers run 10") as AudioClip);
 
-        CreakyFloorRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 1") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 2") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 3") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 4") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 5") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 6") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 7") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 8") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 9") as AudioClip);
+        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers sprint 10") as AudioClip);
 
-        CreakyFloorSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
-
-        CreakyFloorTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        CreakyFloorTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers turn 1") as AudioClip);
+        CreakyFloorTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers turn 2") as AudioClip);
+        CreakyFloorTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/CreakyFloor/Male sneakers turn 3") as AudioClip);
 
 
         CreakyRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
@@ -140,32 +230,122 @@ public class Footsteps
 
         DeckTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
 
+        //Dirt
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 1") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 2") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 3") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 4") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 5") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 6") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 7") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 8") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 9") as AudioClip);
+        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole walk 10") as AudioClip);
 
-        DirtWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 1") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 2") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 3") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 4") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 5") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 6") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 7") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 8") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 9") as AudioClip);
+        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole run 10") as AudioClip);
 
-        DirtRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 1") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 2") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 3") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 4") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 5") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 6") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 7") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 8") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 9") as AudioClip);
+        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole sprint 10") as AudioClip);
 
-        DirtSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        DirtTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole turn 1") as AudioClip);
+        DirtTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole turn 2") as AudioClip);
+        DirtTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole turn 3") as AudioClip);
+        DirtTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Dirt/Male leather sole turn 4") as AudioClip);
 
-        DirtTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        //Gravel
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 1") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 2") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 3") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 4") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 5") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 6") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 7") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 8") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 9") as AudioClip);
+        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe walk 10") as AudioClip);
 
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 1") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 2") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 3") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 4") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 5") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 6") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 7") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 8") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 9") as AudioClip);
+        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe run 10") as AudioClip);
 
-        GravelWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 1") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 2") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 3") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 4") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 5") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 6") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 7") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 8") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 9") as AudioClip);
+        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe sprint 10") as AudioClip);
 
-        GravelRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        GravelTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe turn 1") as AudioClip);
+        GravelTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe turn 2") as AudioClip);
+        GravelTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe turn 3") as AudioClip);
+        GravelTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Gravel/Male shoe turn 4") as AudioClip);
 
-        GravelSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        //Leaves
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 1") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 2") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 3") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 4") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 5") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 6") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 7") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 8") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 9") as AudioClip);
+        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe walk 10") as AudioClip);
 
-        GravelTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 1") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 2") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 3") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 4") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 5") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 6") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 7") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 8") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 9") as AudioClip);
+        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe run 10") as AudioClip);
 
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 1") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 2") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 3") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 4") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 5") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 6") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 7") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 8") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 9") as AudioClip);
+        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe sprint 10") as AudioClip);
 
-        LeavesWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
-
-        LeavesRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
-
-        LeavesSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
-
-        LeavesTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        LeavesTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe turn 1") as AudioClip);
+        LeavesTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe turn 2") as AudioClip);
+        LeavesTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe turn 3") as AudioClip);
+        LeavesTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Leaves/Male shoe turn 4") as AudioClip);
 
 
         MarbleWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
@@ -185,33 +365,120 @@ public class Footsteps
 
         MetalTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
 
+        //Mud
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 1") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 2") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 3") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 4") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 5") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 6") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 7") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 8") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 9") as AudioClip);
+        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole walk 10") as AudioClip);
 
-        MudWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 1") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 2") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 3") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 4") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 5") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 6") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 7") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 8") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 9") as AudioClip);
+        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole run 10") as AudioClip);
 
-        MudRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 1") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 2") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 3") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 4") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 5") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 6") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 7") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 8") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 9") as AudioClip);
+        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole sprint 10") as AudioClip);
 
-        MudSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        MudTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole turn 1") as AudioClip);
+        MudTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole turn 2") as AudioClip);
+        MudTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole turn 3") as AudioClip);
+        MudTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Mud/Male leather sole turn 4") as AudioClip);
 
-        MudTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        //Sand Dry
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 1") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 2") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 3") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 4") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 5") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 6") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 7") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 8") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 9") as AudioClip);
+        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole walk 10") as AudioClip);
 
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 1") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 2") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 3") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 4") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 5") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 6") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 7") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 8") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 9") as AudioClip);
+        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole run 10") as AudioClip);
 
-        SandDryWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 1") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 2") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 3") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 4") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 5") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 6") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 7") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 8") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 9") as AudioClip);
+        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole sprint 10") as AudioClip);
 
-        SandDryRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        SandDryTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole turn 1") as AudioClip);
+        SandDryTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole turn 2") as AudioClip);
+        SandDryTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/SandDry/Male leather sole turn 3") as AudioClip);
 
-        SandDrySprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        //Sand Wet
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 1") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 2") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 3") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 4") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 5") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 6") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 7") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 8") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 9") as AudioClip);
+        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole walk 10") as AudioClip);
 
-        SandDryTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 1") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 2") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 3") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 4") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 5") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 6") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 7") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 8") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 9") as AudioClip);
+        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole run 10") as AudioClip);
 
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 1") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 2") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 3") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 4") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 5") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 6") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 7") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 8") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 9") as AudioClip);
+        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole sprint 10") as AudioClip);
 
-        SandWetWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
-
-        SandWetRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
-
-        SandWetSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
-
-        SandWetTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
-
+        SandWetTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole turn 1") as AudioClip);
+        SandWetTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole turn 2") as AudioClip);
+        SandWetTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/SandWet/Male leather sole turn 3") as AudioClip);
 
         SnowWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
 
@@ -221,48 +488,127 @@ public class Footsteps
 
         SnowTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
 
+        //Wood
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 1") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 2") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 3") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 4") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 5") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 6") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 7") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 8") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 9") as AudioClip);
+        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole walk 10") as AudioClip);
 
-        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
-        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_2") as AudioClip);
-        WoodWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_3") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 1") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 2") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 3") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 4") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 5") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 6") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 7") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 8") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 9") as AudioClip);
+        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 10") as AudioClip);
 
-        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
-        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_2") as AudioClip);
-        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_3") as AudioClip);
-        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_4") as AudioClip);
-        WoodRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_5") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 1") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 2") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 3") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 4") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 5") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 6") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 7") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 8") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 9") as AudioClip);
+        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole run 10") as AudioClip);
 
-        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
-        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_2") as AudioClip);
-        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_3") as AudioClip);
-        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_4") as AudioClip);
-        WoodSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_5") as AudioClip);
+        WoodTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole turn 1") as AudioClip);
+        WoodTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole turn 2") as AudioClip);
+        WoodTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/Wood/Male leather sole turn 3") as AudioClip);
 
-        WoodTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
-        WoodTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_2") as AudioClip);
-        WoodTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_3") as AudioClip);
+        //Wood Rug
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 1") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 2") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 3") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 4") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 5") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 6") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 7") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 8") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 9") as AudioClip);
+        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole walk 10") as AudioClip);
 
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 1") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 2") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 3") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 4") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 5") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 6") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 7") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 8") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 9") as AudioClip);
+        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 10") as AudioClip);
 
-        WoodRugWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 1") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 2") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 3") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 4") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 5") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 6") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 7") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 8") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 9") as AudioClip);
+        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole run 10") as AudioClip);
 
-        WoodRugRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
+        WoodRugTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole turn 1") as AudioClip);
+        WoodRugTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole turn 2") as AudioClip);
+        WoodRugTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodRug/Male leather sole turn 3") as AudioClip);
 
-        WoodRugSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
+        //Wood Solid
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 1") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 2") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 3") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 4") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 5") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 6") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 7") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 8") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 9") as AudioClip);
+        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole walk 10") as AudioClip);
 
-        WoodRugTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 1") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 2") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 3") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 4") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 5") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 6") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 7") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 8") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 9") as AudioClip);
+        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 10") as AudioClip);
 
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 1") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 2") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 3") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 4") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 5") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 6") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 7") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 8") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 9") as AudioClip);
+        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole run 10") as AudioClip);
 
-        WoodSolidWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_walk_carpet_1") as AudioClip);
-
-        WoodSolidRunClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_run_carpet_1") as AudioClip);
-
-        WoodSolidSprintClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_sprint_carpet_1") as AudioClip);
-
-        WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/footsteps_lending_carpet_1") as AudioClip);
+        WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole turn 1") as AudioClip);
+        WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole turn 2") as AudioClip);
+        WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole turn 3") as AudioClip);
     }
 
     public void Update()
     {
+        if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Falling ||
+            CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Sliding)
+            return;
+
      //   float speed = GameManager.Player.GetComponent<Animator>().GetFloat("Speed");
         if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.WalkBackwards ||
             CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Walking)
@@ -392,102 +738,104 @@ public class Footsteps
 
     public void PlayRunningFootstep(CharacterControllerLogic.WalkGround ground)
     {
+        Debug.Log(ground);
+
         int randomClip = 0;
         switch (ground)
         {
             case CharacterControllerLogic.WalkGround.Concrete:
-                randomClip = Random.Range(0, ConcreteRunClips.Count);
-                _footstepSource.clip = ConcreteRunClips[randomClip];
+                randomClip = Random.Range(0, ConcreteSprintClips.Count);
+                _footstepSource.clip = ConcreteSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.ConcreteGritty:
-                randomClip = Random.Range(0, ConcreteGrittyRunClips.Count);
-                _footstepSource.clip = ConcreteGrittyRunClips[randomClip];
+                randomClip = Random.Range(0, ConcreteGrittySprintClips.Count);
+                _footstepSource.clip = ConcreteGrittySprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.CreakyFloor:
-                randomClip = Random.Range(0, CreakyFloorRunClips.Count);
-                _footstepSource.clip = CreakyFloorRunClips[randomClip];
+                randomClip = Random.Range(0, CreakyFloorSprintClips.Count);
+                _footstepSource.clip = CreakyFloorSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.CreakyRug:
-                randomClip = Random.Range(0, CreakyRugRunClips.Count);
-                _footstepSource.clip = CreakyRugRunClips[randomClip];
+                randomClip = Random.Range(0, CreakyRugSprintClips.Count);
+                _footstepSource.clip = CreakyRugSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Deck:
-                randomClip = Random.Range(0, DeckRunClips.Count);
-                _footstepSource.clip = DeckRunClips[randomClip];
+                randomClip = Random.Range(0, DeckSprintClips.Count);
+                _footstepSource.clip = DeckSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Dirt:
-                randomClip = Random.Range(0, DirtRunClips.Count);
-                _footstepSource.clip = DirtRunClips[randomClip];
+                randomClip = Random.Range(0, DirtSprintClips.Count);
+                _footstepSource.clip = DirtSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Gravel:
-                randomClip = Random.Range(0, GravelRunClips.Count);
-                _footstepSource.clip = GravelRunClips[randomClip];
+                randomClip = Random.Range(0, GravelSprintClips.Count);
+                _footstepSource.clip = GravelSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Leaves:
-                randomClip = Random.Range(0, LeavesRunClips.Count);
-                _footstepSource.clip = LeavesRunClips[randomClip];
+                randomClip = Random.Range(0, LeavesSprintClips.Count);
+                _footstepSource.clip = LeavesSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Marble:
-                randomClip = Random.Range(0, MarbleRunClips.Count);
-                _footstepSource.clip = MarbleRunClips[randomClip];
+                randomClip = Random.Range(0, MarbleSprintClips.Count);
+                _footstepSource.clip = MarbleSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Metal:
-                randomClip = Random.Range(0, MetalRunClips.Count);
-                _footstepSource.clip = MetalRunClips[randomClip];
+                randomClip = Random.Range(0, MetalSprintClips.Count);
+                _footstepSource.clip = MetalSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Mud:
-                randomClip = Random.Range(0, MudRunClips.Count);
-                _footstepSource.clip = MudRunClips[randomClip];
+                randomClip = Random.Range(0, MudSprintClips.Count);
+                _footstepSource.clip = MudSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.SandDry:
-                randomClip = Random.Range(0, SandDryRunClips.Count);
-                _footstepSource.clip = SandDryRunClips[randomClip];
+                randomClip = Random.Range(0, SandDrySprintClips.Count);
+                _footstepSource.clip = SandDrySprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.SandWet:
-                randomClip = Random.Range(0, SandWetRunClips.Count);
-                _footstepSource.clip = SandWetRunClips[randomClip];
+                randomClip = Random.Range(0, SandWetSprintClips.Count);
+                _footstepSource.clip = SandWetSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Snow:
-                randomClip = Random.Range(0, SnowRunClips.Count);
-                _footstepSource.clip = SnowRunClips[randomClip];
+                randomClip = Random.Range(0, SnowSprintClips.Count);
+                _footstepSource.clip = SnowSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.Wood:
-                randomClip = Random.Range(0, WoodRunClips.Count);
-                _footstepSource.clip = WoodRunClips[randomClip];
+                randomClip = Random.Range(0, WoodSprintClips.Count);
+                _footstepSource.clip = WoodSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.WoodRug:
-                randomClip = Random.Range(0, WoodRugRunClips.Count);
-                _footstepSource.clip = WoodRugRunClips[randomClip];
+                randomClip = Random.Range(0, WoodRugSprintClips.Count);
+                _footstepSource.clip = WoodRugSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.WoodSolid:
-                randomClip = Random.Range(0, WoodSolidRunClips.Count);
-                _footstepSource.clip = WoodSolidRunClips[randomClip];
+                randomClip = Random.Range(0, WoodSolidSprintClips.Count);
+                _footstepSource.clip = WoodSolidSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             case CharacterControllerLogic.WalkGround.None:
-                randomClip = Random.Range(0, WoodRunClips.Count);
-                _footstepSource.clip = WoodRunClips[randomClip];
+                randomClip = Random.Range(0, WoodSprintClips.Count);
+                _footstepSource.clip = WoodSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
             default:
-                randomClip = Random.Range(0, WoodRunClips.Count);
-                _footstepSource.clip = WoodRunClips[randomClip];
+                randomClip = Random.Range(0, WoodSprintClips.Count);
+                _footstepSource.clip = WoodSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
         }
@@ -495,9 +843,105 @@ public class Footsteps
 
     public void PlaySprintingFootstep(CharacterControllerLogic.WalkGround ground)
     {
-        int randomClip = Random.Range(0, WoodWalkClips.Count);
-        _footstepSource.clip = WoodWalkClips[randomClip];
-        _footstepSource.Play();
+        int randomClip = 0;
+        switch (ground)
+        {
+            case CharacterControllerLogic.WalkGround.Concrete:
+                randomClip = Random.Range(0, ConcreteSprintClips.Count);
+                _footstepSource.clip = ConcreteSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.ConcreteGritty:
+                randomClip = Random.Range(0, ConcreteGrittySprintClips.Count);
+                _footstepSource.clip = ConcreteGrittySprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.CreakyFloor:
+                randomClip = Random.Range(0, CreakyFloorSprintClips.Count);
+                _footstepSource.clip = CreakyFloorSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.CreakyRug:
+                randomClip = Random.Range(0, CreakyRugSprintClips.Count);
+                _footstepSource.clip = CreakyRugSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Deck:
+                randomClip = Random.Range(0, DeckSprintClips.Count);
+                _footstepSource.clip = DeckSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Dirt:
+                randomClip = Random.Range(0, DirtSprintClips.Count);
+                _footstepSource.clip = DirtSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Gravel:
+                randomClip = Random.Range(0, GravelSprintClips.Count);
+                _footstepSource.clip = GravelSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Leaves:
+                randomClip = Random.Range(0, LeavesSprintClips.Count);
+                _footstepSource.clip = LeavesSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Marble:
+                randomClip = Random.Range(0, MarbleSprintClips.Count);
+                _footstepSource.clip = MarbleSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Metal:
+                randomClip = Random.Range(0, MetalSprintClips.Count);
+                _footstepSource.clip = MetalSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Mud:
+                randomClip = Random.Range(0, MudSprintClips.Count);
+                _footstepSource.clip = MudSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.SandDry:
+                randomClip = Random.Range(0, SandDrySprintClips.Count);
+                _footstepSource.clip = SandDrySprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.SandWet:
+                randomClip = Random.Range(0, SandWetSprintClips.Count);
+                _footstepSource.clip = SandWetSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Snow:
+                randomClip = Random.Range(0, SnowSprintClips.Count);
+                _footstepSource.clip = SnowSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.Wood:
+                randomClip = Random.Range(0, WoodSprintClips.Count);
+                _footstepSource.clip = WoodSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.WoodRug:
+                randomClip = Random.Range(0, WoodRugSprintClips.Count);
+                _footstepSource.clip = WoodRugSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.WoodSolid:
+                randomClip = Random.Range(0, WoodSolidSprintClips.Count);
+                _footstepSource.clip = WoodSolidSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            case CharacterControllerLogic.WalkGround.None:
+                randomClip = Random.Range(0, WoodSprintClips.Count);
+                _footstepSource.clip = WoodSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+            default:
+                randomClip = Random.Range(0, WoodSprintClips.Count);
+                _footstepSource.clip = WoodSprintClips[randomClip];
+                _footstepSource.Play();
+                break;
+        }
     }
 
     public void PlayTurningFootstep(CharacterControllerLogic.WalkGround ground)
