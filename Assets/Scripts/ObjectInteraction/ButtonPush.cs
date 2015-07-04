@@ -10,10 +10,10 @@ public class ButtonPush : MonoBehaviour
 
     public ButtonTypes ButtonType;
     public bool InRange = false;
-    public bool OpenChest = false;
+    public bool ChestIsOpen = false;
     private Animator animator;
     private GameObject button;  //reference to button
-
+    private GameObject _thrower;
 
     private Vector2 uvOffset = Vector2.zero;
 
@@ -51,27 +51,28 @@ public class ButtonPush : MonoBehaviour
         {
             if (InRange && (animator.GetBool("Activated") == false) && Input.GetKeyDown(KeyCode.E)  )
             {
-                OpenChest = true;
-    //            if (OpenChest)
+                ChestIsOpen = true;
             }
-            if (OpenChest && (animator.GetBool("Activated") == false))
-                    Open();
+            else if (ChestIsOpen && (animator.GetBool("Activated") == false))
+                    OpenChest();
         }        
     }
 
-   public void Open()
+   public void OpenChest()
     {
         Debug.Log("PLAY");
         animator.SetBool("Activated", true);
 
+        AudioManager.OpenChestAudio(Instance.transform.parent.gameObject);
 
         GameObject reward;
         reward = GameObject.Instantiate(Resources.Load("Prefabs/Items/Coinage/MoneyThrower30")) as GameObject;
         reward.transform.parent = this.transform.parent;
         reward.transform.localPosition = new Vector3(0, 0, 0);
-        reward.transform.rotation = reward.transform.parent.rotation;
+        reward.transform.rotation = new Quaternion(0, 0, 0, 1);
         Animator coinAnimator = reward.transform.gameObject.GetComponent<Animator>();
         coinAnimator.SetBool("ThrowMoney", true);
+        _thrower = reward;       
                 
     }
 }

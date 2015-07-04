@@ -143,7 +143,7 @@ public class GateWheel : ButtonPush
 
             if(GateWheel.AmountOfBlueButtons == 6)
             {
-                AudioManager.OpenDoorAudio();
+                AudioManager.OpenTempleDoorAudio();
             }
         }
     }

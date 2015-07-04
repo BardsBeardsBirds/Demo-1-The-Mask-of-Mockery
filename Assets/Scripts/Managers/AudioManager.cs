@@ -26,6 +26,9 @@ public class AudioManager : MonoBehaviour
     private static AudioSource _doorSoundSource;
     private static AudioClip _doorOpeningSound;
 
+    private static AudioSource _chestSoundSource;
+    private static AudioClip _chestOpeningSound;
+
     public static List<AudioClip> _wheelTurnClips = new List<AudioClip>();
     private static AudioSource _wheelSoundSource;
 
@@ -48,6 +51,9 @@ public class AudioManager : MonoBehaviour
 
         _doorSoundSource = GameObject.Find("TempleDoorAudio").GetComponent<AudioSource>();
         _doorOpeningSound = Resources.Load("Audio/Effects/Doors/OpeningGate") as AudioClip;
+
+        _chestOpeningSound = Resources.Load("Audio/Effects/ChestOpening") as AudioClip;
+
         _wheelSoundSource = GameObject.Find("PuzzleWheelAudio").GetComponent<AudioSource>();
         _wheelTurnClips.Add(Resources.Load("Audio/Effects/Doors/wheel turn 1") as AudioClip);
         _wheelTurnClips.Add(Resources.Load("Audio/Effects/Doors/wheel turn 2") as AudioClip);
@@ -91,10 +97,17 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public static void OpenDoorAudio()
+    public static void OpenTempleDoorAudio()
     {
         _doorSoundSource.clip = _doorOpeningSound;
         _doorSoundSource.Play();
+    }
+
+    public static void OpenChestAudio(GameObject source)
+    {
+        _chestSoundSource = source.GetComponent<AudioSource>();
+        _chestSoundSource.clip = _chestOpeningSound;
+        _chestSoundSource.Play();
     }
 
     public static void TurnWheelAudio()

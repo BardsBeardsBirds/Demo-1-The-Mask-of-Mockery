@@ -19,7 +19,8 @@ public class MoneyThrower : MonoBehaviour
             replacement = GameObject.Instantiate(Resources.Load("Prefabs/Items/Coinage/MoneyThrower30Replacer")) as GameObject;
             replacement.transform.parent = this.transform.parent;
             replacement.transform.localPosition = new Vector3(0, 0, 0);
-            replacement.transform.rotation = replacement.transform.parent.rotation;
+            replacement.transform.rotation = new Quaternion(0, 0, 0, 1);
+
             GameManager.Destroy(this.transform.gameObject);         
         }
     }

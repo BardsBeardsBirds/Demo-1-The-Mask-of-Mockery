@@ -452,8 +452,8 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.TreasureChest:
                 GameObject chest = GameManager.Instance.InGameObjectM.TreasureChests[0];
-                if(!chest.GetComponentInChildren<ButtonPush>().OpenChest)
-                    chest.GetComponentInChildren<ButtonPush>().OpenChest = true;
+                if(!chest.GetComponentInChildren<ButtonPush>().ChestIsOpen)
+                    chest.GetComponentInChildren<ButtonPush>().ChestIsOpen = true;
                 else
                 CurrentDialogueIDs.Add(2035);   // if already open
                 break;
