@@ -16,7 +16,7 @@ public class MuseumDoor : MonoBehaviour
 
     public void Update()
     {
-        if (GateWheel.AmountOfBlueButtons < 6)
+        if (GateWheel.AmountOfCorrectButtons < 6)
             return;
         else
             OpenDoor();

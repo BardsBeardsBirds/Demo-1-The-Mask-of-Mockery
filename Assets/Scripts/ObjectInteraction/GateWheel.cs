@@ -8,18 +8,18 @@ public class GateWheel : ButtonPush
     public static GateWheel Instance;
 
     public enum Wheels { Wheel1, Wheel2, Wheel3, Wheel4, Wheel5, Wheel6 };
-    public enum WheelColours { Blue, Other };
+    public enum WheelColours { Correct, Other };
 
     public List<WheelColours> WheelButtonColours = new List<WheelColours>();
     public Wheels WheelNumber;
     public Wheels OriginalNumber;
     public static bool WheelTurns = false;
-    public static int AmountOfBlueButtons = 1;
+    public static int AmountOfCorrectButtons = 1;
 
     private float _wheelTimer = 0;
     private int _rotatorTimer = 0;
     private int _wheelColourIndex = 0;
-    private int _blueIndex = 0;
+    private int _turnsToCorrectOne = 0;
     private static int _wheelNumber = 0;
 
     public new void  Awake()
@@ -32,59 +32,119 @@ public class GateWheel : ButtonPush
 
         switch (WheelNumber)
         {
+            //case Wheels.Wheel1:
+            //    _blueIndex = 5;
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Correct);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    break;
+            //case Wheels.Wheel2:
+            //    _blueIndex = 5;
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Correct);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    break;
+            //case Wheels.Wheel3:
+            //    _blueIndex = 3;
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Correct);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    break;
+            //case Wheels.Wheel4:
+            //    _blueIndex = 3;
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Correct);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    break;
+            //case Wheels.Wheel5:
+            //    _blueIndex = 4;
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Correct);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    break;
+            //case Wheels.Wheel6:
+            //    _blueIndex = 0;
+            //    WheelButtonColours.Add(WheelColours.Correct);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    WheelButtonColours.Add(WheelColours.Other);
+            //    break;
             case Wheels.Wheel1:
-                _blueIndex = 5;
+                _turnsToCorrectOne = 2;
+                WheelButtonColours.Add(WheelColours.Other);
+                WheelButtonColours.Add(WheelColours.Correct);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Blue);
                 WheelButtonColours.Add(WheelColours.Other);
                 break;
             case Wheels.Wheel2:
-                _blueIndex = 5;
+                _turnsToCorrectOne = 5;
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Blue);
+                WheelButtonColours.Add(WheelColours.Other);                
+                WheelButtonColours.Add(WheelColours.Correct);
                 WheelButtonColours.Add(WheelColours.Other);
                 break;
             case Wheels.Wheel3:
-                _blueIndex = 3;
+                _turnsToCorrectOne = 1;
+                WheelButtonColours.Add(WheelColours.Other);
+                WheelButtonColours.Add(WheelColours.Correct);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Blue);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 break;
             case Wheels.Wheel4:
-                _blueIndex = 3;
+                _turnsToCorrectOne = 5;
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Blue);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
+                WheelButtonColours.Add(WheelColours.Correct);
                 WheelButtonColours.Add(WheelColours.Other);
                 break;
             case Wheels.Wheel5:
-                _blueIndex = 4;
+                _turnsToCorrectOne = 6;
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
-                WheelButtonColours.Add(WheelColours.Blue);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
+                WheelButtonColours.Add(WheelColours.Correct);
                 break;
             case Wheels.Wheel6:
-                _blueIndex = 0;
-                WheelButtonColours.Add(WheelColours.Blue);
+                _turnsToCorrectOne = 0;
+                WheelButtonColours.Add(WheelColours.Correct);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
                 WheelButtonColours.Add(WheelColours.Other);
@@ -134,14 +194,17 @@ public class GateWheel : ButtonPush
             if (_wheelColourIndex == 7)
                 _wheelColourIndex = 0;
 
-            if (WheelButtonColours[_wheelColourIndex] == WheelColours.Blue)
-                AmountOfBlueButtons = AmountOfBlueButtons + 1;
+            if (WheelButtonColours[_wheelColourIndex] == WheelColours.Correct)
+            {
+                AmountOfCorrectButtons = AmountOfCorrectButtons + 1;
+                Debug.Log("Right one!");
+            }
 
-            if (_wheelColourIndex == _blueIndex + 1 || (_wheelColourIndex == 0 && _blueIndex == 6))
-                AmountOfBlueButtons = AmountOfBlueButtons - 1;
+            if (_wheelColourIndex == _turnsToCorrectOne + 1 || (_wheelColourIndex == 0 && _turnsToCorrectOne == 6))
+                AmountOfCorrectButtons = AmountOfCorrectButtons - 1;
             //   Debug.LogWarning("how many blue? " + AmountOfBlueButtons);
 
-            if(GateWheel.AmountOfBlueButtons == 6)
+            if(GateWheel.AmountOfCorrectButtons == 6)
             {
                 AudioManager.OpenTempleDoorAudio();
             }
