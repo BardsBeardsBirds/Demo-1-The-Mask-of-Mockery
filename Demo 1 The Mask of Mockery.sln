@@ -7,8 +7,6 @@ Project("{EB279B68-0241-637C-F48B-8E280D5FAF1E}") = "Demo 1 The Mask of Mockery"
 EndProject
 Project("{EB279B68-0241-637C-F48B-8E280D5FAF1E}") = "Demo 1 The Mask of Mockery", "Assembly-CSharp-Editor-firstpass.csproj", "{6DB33E78-8ECD-BB9E-C6AA-5B04ED427F23}"
 EndProject
-Project("{EB279B68-0241-637C-F48B-8E280D5FAF1E}") = "Demo 1 The Mask of Mockery", "Assembly-UnityScript-firstpass.unityproj", "{D103359E-3E4A-24AE-8534-6A3F06E58DC3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,15 +25,11 @@ Global
 		{6DB33E78-8ECD-BB9E-C6AA-5B04ED427F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DB33E78-8ECD-BB9E-C6AA-5B04ED427F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DB33E78-8ECD-BB9E-C6AA-5B04ED427F23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D103359E-3E4A-24AE-8534-6A3F06E58DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D103359E-3E4A-24AE-8534-6A3F06E58DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D103359E-3E4A-24AE-8534-6A3F06E58DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D103359E-3E4A-24AE-8534-6A3F06E58DC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																		GlobalSection(MonoDevelopProperties) = preSolution
+																																																	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

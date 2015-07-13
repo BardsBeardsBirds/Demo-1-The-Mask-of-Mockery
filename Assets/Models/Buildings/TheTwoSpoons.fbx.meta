@@ -276,6 +276,9 @@ ModelImporter:
     100540: polySurface359
     100542: polySurface360
     100544: ShelfHats
+    100546: wall3_painted
+    100548: Ball1
+    100550: WallRight
     400000: Armadillo_Costume
     400002: Bill_under
     400004: Bill_upper
@@ -549,6 +552,9 @@ ModelImporter:
     400540: polySurface359
     400542: polySurface360
     400544: ShelfHats
+    400546: wall3_painted
+    400548: Ball1
+    400550: WallRight
     2300000: Armadillo_Costume
     2300002: Bill_under
     2300004: Bill_upper
@@ -755,6 +761,9 @@ ModelImporter:
     2300406: Front
     2300408: polySurface359
     2300410: polySurface360
+    2300412: wall3_painted
+    2300414: Ball1
+    2300416: WallRight
     3300000: Armadillo_Costume
     3300002: Bill_under
     3300004: Bill_upper
@@ -961,6 +970,9 @@ ModelImporter:
     3300406: Front
     3300408: polySurface359
     3300410: polySurface360
+    3300412: wall3_painted
+    3300414: Ball1
+    3300416: WallRight
     4300000: pCube37
     4300002: pCube36
     4300004: pCube35
@@ -1167,6 +1179,9 @@ ModelImporter:
     4300406: polySurface360
     4300408: Frame
     4300410: Front
+    4300412: wall3_painted
+    4300414: Ball1
+    4300416: WallRight
     9500000: //RootNode
   materials:
     importMaterials: 1
