@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI\CritterStates.cs" />
+     <Compile Include="Assets\Scripts\AI\Rabbit.cs" />
      <Compile Include="Assets\Scripts\Characters\AyTheTearCollector.cs" />
      <Compile Include="Assets\Scripts\Characters\BennyTwospoons.cs" />
      <Compile Include="Assets\Scripts\Characters\NPCenum.cs" />

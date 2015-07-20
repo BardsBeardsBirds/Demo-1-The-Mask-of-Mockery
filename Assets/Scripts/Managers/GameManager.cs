@@ -390,7 +390,6 @@ public class GameManager : MonoBehaviour
 
     public void GameStateToRunning()
     {
-        Debug.Log("set to running");
         GamePlayingMode = GameMode.Running;
     }
 

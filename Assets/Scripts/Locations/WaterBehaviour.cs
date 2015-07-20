@@ -12,15 +12,12 @@ public class WaterBehaviour : MonoBehaviour
 
     public void Awake()
     {
-   //         Debug.DrawRay(this.transform.position, WaterAboveObject, Color.magenta);
         WaterAboveObject = new Vector3(0, 0.85f, 0);
         WaterLevel = WaterAboveObject.y + this.transform.position.y;
     }
 
     public void Update()
    {
-    //    Debug.DrawRay(this.transform.position, WaterAboveObject, Color.magenta);
-    //    Debug.Log(this.transform.position.y);
         if(_waterTimer > 0)
         {
             _waterTimer -= Time.deltaTime;
@@ -62,20 +59,5 @@ public class WaterBehaviour : MonoBehaviour
         _waterTimer = _waterRingDuration;
 
         Emmon.Instance.WaterRings.GetComponentInChildren<ParticleSystem>().emissionRate = 0;
-
-     //   StartCoroutine(TurnOffWater());
-
-
     }
-
-
-    //public IEnumerator TurnOffWater()
-    //{
-        
-    //    Debug.Log("We are in the routine");
-
-    //    yield return new WaitForSeconds(_waterRingDuration);
-
-
-    //}
 }

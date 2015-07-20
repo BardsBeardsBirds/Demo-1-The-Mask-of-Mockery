@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1e0f4a906904efe4b883c3f55d4fb685
-timeCreated: 1437147592
+timeCreated: 1437308555
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -46,9 +46,6 @@ ModelImporter:
     100076: Spine_2
     100078: Spine_3
     100080: Spine_4
-    100082: Rabbit 2
-    100084: Back_CTRL
-    100086: Body_CTRL
     400000: Head
     400002: Hips
     400004: L_Arm
@@ -90,16 +87,10 @@ ModelImporter:
     400076: Spine_2
     400078: Spine_3
     400080: Spine_4
-    400082: Rabbit 2
-    400084: Back_CTRL
-    400086: Body_CTRL
-    2300000: Rabbit 2
-    3300000: Rabbit 2
     4300000: Rabbit
-    7400000: Run
+    7400000: Take 001
     9500000: //RootNode
     13700000: Rabbit 1
-    13700002: Rabbit 2
   materials:
     importMaterials: 1
     materialName: 0
@@ -117,7 +108,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Run
+      name: Take 001
       takeName: Take 001
       firstFrame: 1
       lastFrame: 28
@@ -127,7 +118,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -248,7 +239,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
-  copyAvatar: 1
+  copyAvatar: 0
   humanDescription:
     human: []
     skeleton: []
@@ -259,9 +250,8 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: Hips
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 8851d3208e4f7664b836cd97cc41f9b4,
-    type: 3}
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   additionalBone: 0
   userData: 

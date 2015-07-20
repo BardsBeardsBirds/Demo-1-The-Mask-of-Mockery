@@ -1,19 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance;
     public bool DialogueIsPlaying = false;
-   // public static bool RotatePlayer;
     private DialogueTimer _dialogueTimer;
     private ObjectInteractionTimer _objectInteractionTimer;
     private IntroTimer _introTimer;
-  //  private RotateTowards _rotateTimer;
 
     public void Awake()
     {
         Instance = this;
-      //  _rotateTimer = new RotateTowards();
         _dialogueTimer = new DialogueTimer();
         _introTimer = new IntroTimer();
         _objectInteractionTimer = new ObjectInteractionTimer();
@@ -21,9 +19,6 @@ public class TimeManager : MonoBehaviour
 
     public void Update()
     {
-        //if(RotatePlayer)
-        //    _rotateTimer.Update(GameManager.Player.transform, GameObject.Find("Ay the Tear Collector").transform, 4f);
-
         if (DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.NPCDialogue || DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.NPCDialogue)
             _dialogueTimer.Update();
         else if (DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.ObjectInteraction || DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.InventoryCommentary)
@@ -68,8 +63,9 @@ public class TimeManager : MonoBehaviour
         rotateTowards.Speed = speed;
         rotateTowards.Timer = timerLength;
     }
-    //public void SetRotationTimer(float timerLength)
-    //{
-    //    _rotateTimer.SetTimer(timerLength);
-    //}
+
+    public static IEnumerator WaitUntilEndOfClip(float clipLength)
+    {
+        yield return new WaitForSeconds((float)clipLength);
+    }
 }

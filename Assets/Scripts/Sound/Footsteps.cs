@@ -738,7 +738,7 @@ public class Footsteps
 
     public void PlayRunningFootstep(CharacterControllerLogic.WalkGround ground)
     {
-        Debug.Log(ground);
+  //      Debug.Log(ground);
 
         int randomClip = 0;
         switch (ground)
