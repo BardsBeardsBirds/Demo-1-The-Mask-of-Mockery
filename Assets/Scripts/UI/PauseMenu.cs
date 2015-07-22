@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PauseMenuStates {Main, Help, None};
+
 public class PauseMenu : MonoBehaviour
 {
     public PauseMenu Instance;
+    public PauseMenuStates MenuState;
 
     public void Start()
     {
@@ -15,6 +18,9 @@ public class PauseMenu : MonoBehaviour
     {
         Transform mainPanel = Instance.transform.FindChild("MainPanel");
         mainPanel.gameObject.SetActive(true);
+
+        MenuState = PauseMenuStates.Main;
+
         GameManager.Instance.GameStateToPaused();//////
         Time.timeScale = 0;
     }
@@ -22,15 +28,24 @@ public class PauseMenu : MonoBehaviour
     public void UnpauseGame()
     {
         AudioManager.Instance.UISoundsScript.PlayClick();   // sound
-        ResumeGame();
+        //reset player locomotion
+        CharacterControllerLogic.Instance.UnpauseGame();
         GameManager.Instance.GameStateToRunning();/////
+
+        ClosePanel();
+
+        MenuState = PauseMenuStates.None;
+
+        Time.timeScale = 1;
+
+
     }
 
     public void ResumeGame()
     {
-        Transform mainPanel = Instance.transform.FindChild("MainPanel");
-        mainPanel.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        UnpauseGame();
+
+
     }
 
     public void ShowHelp()
@@ -39,6 +54,8 @@ public class PauseMenu : MonoBehaviour
         mainPanel.gameObject.SetActive(false);
         Transform helpPanel = Instance.transform.FindChild("HelpPanel");
         helpPanel.gameObject.SetActive(true);
+        MenuState = PauseMenuStates.Help;
+
     }
 
     public void QuitAppliction()
@@ -52,8 +69,12 @@ public class PauseMenu : MonoBehaviour
     public void SaveGame()
     {
         AudioManager.Instance.UISoundsScript.PlayClick();   // sound
+
         SaveAndLoadGame saver = new SaveAndLoadGame();
         saver.SaveGameData();
+
+        ResumeGame();
+        MenuState = PauseMenuStates.None;
     }
 
     public void LoadGame()
@@ -76,6 +97,10 @@ public class PauseMenu : MonoBehaviour
         SceneFader fader = sceneFaderGO.GetComponent<SceneFader>();
         fader.BlackFader = SceneFader.ToBlack.LoadFromInGame;
         fader.IsFadingToBlack = true;
+
+        ClosePanel();
+        MenuState = PauseMenuStates.None;
+
     }
 
     public void ReturnToMenu()
@@ -84,6 +109,21 @@ public class PauseMenu : MonoBehaviour
         helpPanel.gameObject.SetActive(false);
         Transform mainPanel = Instance.transform.FindChild("MainPanel");
         mainPanel.gameObject.SetActive(true);
+        MenuState = PauseMenuStates.Main;
 
+    }
+
+    private void ClosePanel()
+    {
+        if (MenuState == PauseMenuStates.Main)
+        {
+            Transform mainPanel = Instance.transform.FindChild("MainPanel");
+            mainPanel.gameObject.SetActive(false);
+        }
+        else if (MenuState == PauseMenuStates.Help)
+        {
+            Transform helpPanel = Instance.transform.FindChild("HelpPanel");
+            helpPanel.gameObject.SetActive(false);
+        }
     }
 }
