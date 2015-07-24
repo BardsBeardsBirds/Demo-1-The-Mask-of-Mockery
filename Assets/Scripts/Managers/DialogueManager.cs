@@ -12,8 +12,12 @@ public class DialogueManager
 
     public static void StartDialogueState(NPCEnum.NPCs NPC)
     {
+
         CurrentDialogueNPC = NPC;
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
+
+        GameManager.Instance.UICanvas.ShowDialogueOptionsUI();
+
         CharacterControllerLogic.Instance.GoToTalkingState();
       //  CharacterController
         TimeManager.Instance.CreateRotator(GameManager.Player.transform, GameManager.NPCs[NPC], 4, 2);
@@ -57,6 +61,8 @@ public class DialogueManager
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("DialogueState", false);
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", false);
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", false);
+
+        GameManager.Instance.UICanvas.HideDialogueOptionsUI();
 
         if (!Sentinel.PushBack)
             CharacterControllerLogic.Instance.GoToIdleState();

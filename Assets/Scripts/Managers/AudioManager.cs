@@ -88,7 +88,6 @@ public class AudioManager : MonoBehaviour
     {
         float waka = 0;
         MainMixer.GetFloat("FootstepsReverbSend", out waka);
-        Debug.Log(waka);
         MainMixer.SetFloat("FootstepsReverbSend", lvl);
     }
 

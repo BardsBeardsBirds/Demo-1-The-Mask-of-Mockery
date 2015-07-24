@@ -32,7 +32,7 @@ public class TimeManager : MonoBehaviour
     public void PlayDialogueTimer(float dialogueLength)
     {
         DialogueManager.DialogueType dialogueType = DialogueManager.ThisDialogueType;
-        Debug.Log(dialogueType + "length " + dialogueLength);
+       // Debug.Log(dialogueType + "length " + dialogueLength);
         switch (dialogueType)
         {
             case DialogueManager.DialogueType.NPCDialogue:

@@ -19,9 +19,10 @@ public class GameManager : MonoBehaviour
     public int RupeeHeld;
     public Portal DebugSpawn;
     public GameObject GameManagerObj;
-    public GameObject InventoryWindow;
-    public GameObject PauseMenuWindow;
-    public GameObject SuperCanvas;
+    public MainCanvas UICanvas;
+    //public GameObject InventoryWindow;
+    //public GameObject PauseMenuWindow;
+    //public GameObject SuperCanvas;
     public static GameObject Player;
     public Inventory IInventory;
     public InGameObjectManager InGameObjectM;
@@ -67,10 +68,13 @@ public class GameManager : MonoBehaviour
 
         InCutScene = false;
 
-        PauseMenuWindow = GameObject.Find("PauseMenuCanvas");
-        InventoryWindow = GameObject.Find("InventoryCanvas");
-        SuperCanvas = GameObject.Find("Canvas");
-        InventoryCanvas invCan = InventoryWindow.GetComponent<InventoryCanvas>();
+    //    PauseMenuWindow = GameObject.Find("PauseMenuCanvas");
+   //     InventoryWindow = GameObject.Find("InventoryCanvas");
+   //     SuperCanvas = GameObject.Find("Canvas");
+        if (UICanvas == null)
+            UICanvas = GameObject.Find("Canvas").GetComponent<MainCanvas>();
+
+        InventoryCanvas invCan = UICanvas.InventoryCanvas.GetComponent<InventoryCanvas>();
         RectTransform rect = invCan.GetComponent<RectTransform>();
         InventoryCanvas.SetLeftBottomPosition(rect, new Vector2(2000, 2000));
         IInventory = Inventory.Instance;
@@ -148,69 +152,66 @@ public class GameManager : MonoBehaviour
                 MyConsole.ShowConsole = true;
         }
 
-        //INVENTORY
-        if (Input.GetKeyDown(KeyCode.I))
+        if (GamePlayingMode == GameMode.Running)
         {
-            if(InventoryCanvas.InventoryIsOpen)
+            //INVENTORY
+            if (Input.GetKeyDown(KeyCode.I))
             {
-                InventoryCanvas i = InventoryWindow.GetComponent<InventoryCanvas>();
-                i.CloseInventory();
+                if (InventoryCanvas.InventoryIsOpen)
+                {
+                    UICanvas.InventoryCanvas.GetComponent<InventoryCanvas>().CloseInventory();
+                }
+                else
+                {
+                    UICanvas.InventoryCanvas.GetComponent<InventoryCanvas>().OpenInventory();
+                }
             }
-            else
+
+            //PAUSE MENU
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                InventoryCanvas i = InventoryWindow.GetComponent<InventoryCanvas>();
-                i.OpenInventory();
+                UICanvas.PauseMenuCanvas.GetComponent<PauseMenu>().PauseGame();
+            }
+
+            if (Input.GetKeyUp(KeyCode.N))
+            {
+                //for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
+                //{
+                //    Debug.Log(SlotScript.IInventory.Items[i].IType);
+                //}
+
+                Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonWasBlockedBySentinel);
+                Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
+                Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
+                Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
+                Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
+                Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
+                Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
+                Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
+                Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
+                Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
+
+                //    Inventory.Instance.AddItem(2);
             }
         }
 
-        //PAUSE MENU
-        if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))  //closing menu
         {
-            if (Time.timeScale == 1)
-            {
-                PauseMenu p = PauseMenuWindow.GetComponent<PauseMenu>();
-                p.PauseGame();
-            }
-            else
-            {
-                PauseMenu p = PauseMenuWindow.GetComponent<PauseMenu>();
-
-                p.UnpauseGame();
-            }
+            if(Time.timeScale != 1)
+                UICanvas.PauseMenuCanvas.GetComponent<PauseMenu>().ResumeGame();
         }
 
-        if (Input.GetKeyUp(KeyCode.N))
-        {
-            //for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
-            //{
-            //    Debug.Log(SlotScript.IInventory.Items[i].IType);
-            //}
-
-            Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonWasBlockedBySentinel);
-            Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
-            Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
-            Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
-            Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
-            Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
-            Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
-            Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
-            Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
-            Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
-
-        //    Inventory.Instance.AddItem(2);
-        }
-
-        if(GamePlayingMode == GameMode.DeadMode)
+        else if (GamePlayingMode == GameMode.DeadMode)
         {
             GameOver();
         }
 
-        if(GamePlayingMode == GameMode.MissionAccomplished)
+        else if (GamePlayingMode == GameMode.MissionAccomplished)
         {
-            if(_fadeTimer > 0 && _fade)
+            if (_fadeTimer > 0 && _fade)
             {
                 _fadeTimer -= Time.deltaTime;
-                if(_fadeTimer <= 0)
+                if (_fadeTimer <= 0)
                 {
                     ///show add
                 }
@@ -250,33 +251,11 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    //public Inventory CreateInventory()
-    //{
-    //    Inventory inventory = null;
-
-    //    foreach (Transform child in InventoryWindow.transform)
-    //    {
-    //        //Debug.LogWarning("going over child: " + child.name);
-    //        if (child.name == "InventoryPanel")
-    //        {
-    //            inventory = child.gameObject.AddComponent<Inventory>();
-
-    //            Debug.LogWarning("created inventory");
-    //            break;
-    //        }
-    //    }
-
-    //    if (inventory == null)
-    //        Debug.LogError("we couldnt find the inventory!");
-
-    //    return inventory;
-    //}
-
     public Inventory FindInventory()
     {
         Inventory inventory = null;
 
-        foreach (Transform child in InventoryWindow.transform)
+        foreach (Transform child in UICanvas.InventoryCanvas.transform)
         {
             //Debug.LogWarning("going over child: " + child.name);
             if (child.name == "InventoryPanel")
@@ -344,7 +323,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject sceneFaderGO = null;
 
-        foreach (Transform trans in SuperCanvas.transform)
+        foreach (Transform trans in UICanvas.transform)
         {
             if (trans.gameObject.name == "ScreenFaderBlackToClear")
                 sceneFaderGO = trans.gameObject;
@@ -370,7 +349,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadEventConsequences()
     {
-        Debug.Log(WorldEvents.EmmonKnowsAy);
         if (WorldEvents.EmmonKnowsAy)
         {
             ObjectCommentary.InvestigationLines[1003] = "";

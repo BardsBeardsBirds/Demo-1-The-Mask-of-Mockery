@@ -16,15 +16,16 @@ public class InventoryCanvas : MonoBehaviour
     {
         RectTransform rect = this.GetComponent<RectTransform>();
         SetLeftBottomPosition(rect, new Vector2(-Screen.width / 2, -Screen.height / 2));
-        Transform panel = Instance.transform.FindChild("InventoryPanel");
-        panel.gameObject.SetActive(true);
+
+        GameManager.Instance.UICanvas.ShowInventory();
+
         InventoryIsOpen = true;
     }
 
     public void CloseInventory()
     {
-        Transform panel = Instance.transform.FindChild("InventoryPanel");
-        panel.gameObject.SetActive(false);
+        GameManager.Instance.UICanvas.HideInventory();
+
         InventoryIsOpen = false;
 
         GameManager.Destroy("InteractionButton");

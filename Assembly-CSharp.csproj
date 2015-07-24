@@ -115,6 +115,7 @@
      <Compile Include="Assets\Scripts\UI\InteractionWithObjectButton.cs" />
      <Compile Include="Assets\Scripts\UI\InventoryCanvas.cs" />
      <Compile Include="Assets\Scripts\UI\InvestigateObjectButton.cs" />
+     <Compile Include="Assets\Scripts\UI\MainCanvas.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\UI\SceneFader.cs" />

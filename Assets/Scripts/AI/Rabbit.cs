@@ -48,7 +48,6 @@ public class Rabbit : MonoBehaviour
                 if (playerDistance < 2f)
                 {
                     _timer = 0f;
-                    Debug.Log("player is too close!");
                     ChooseNewDestination();
                 }
             }

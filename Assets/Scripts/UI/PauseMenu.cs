@@ -16,8 +16,10 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        Transform mainPanel = Instance.transform.FindChild("MainPanel");
-        mainPanel.gameObject.SetActive(true);
+        GameManager.Instance.UICanvas.ShowPauseMainMenu();
+
+        if (InventoryCanvas.InventoryIsOpen)
+            GameManager.Instance.UICanvas.HideInventory();
 
         MenuState = PauseMenuStates.Main;
 
@@ -25,7 +27,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void UnpauseGame()
+    public void ResumeGame()
     {
         AudioManager.Instance.UISoundsScript.PlayClick();   // sound
         //reset player locomotion
@@ -37,25 +39,14 @@ public class PauseMenu : MonoBehaviour
         MenuState = PauseMenuStates.None;
 
         Time.timeScale = 1;
-
-
-    }
-
-    public void ResumeGame()
-    {
-        UnpauseGame();
-
-
     }
 
     public void ShowHelp()
     {
-        Transform mainPanel = Instance.transform.FindChild("MainPanel");
-        mainPanel.gameObject.SetActive(false);
-        Transform helpPanel = Instance.transform.FindChild("HelpPanel");
-        helpPanel.gameObject.SetActive(true);
-        MenuState = PauseMenuStates.Help;
+        GameManager.Instance.UICanvas.HidePauseMainMenu();
+        GameManager.Instance.UICanvas.ShowHelpMenu();
 
+        MenuState = PauseMenuStates.Help;
     }
 
     public void QuitAppliction()
@@ -100,30 +91,28 @@ public class PauseMenu : MonoBehaviour
 
         ClosePanel();
         MenuState = PauseMenuStates.None;
-
     }
 
     public void ReturnToMenu()
     {
-        Transform helpPanel = Instance.transform.FindChild("HelpPanel");
-        helpPanel.gameObject.SetActive(false);
-        Transform mainPanel = Instance.transform.FindChild("MainPanel");
-        mainPanel.gameObject.SetActive(true);
-        MenuState = PauseMenuStates.Main;
+        GameManager.Instance.UICanvas.HideHelpMenu();
+        GameManager.Instance.UICanvas.ShowPauseMainMenu();
 
+        MenuState = PauseMenuStates.Main;
     }
 
     private void ClosePanel()
     {
         if (MenuState == PauseMenuStates.Main)
         {
-            Transform mainPanel = Instance.transform.FindChild("MainPanel");
-            mainPanel.gameObject.SetActive(false);
+            GameManager.Instance.UICanvas.HidePauseMainMenu();
+
+            if (InventoryCanvas.InventoryIsOpen)
+                GameManager.Instance.UICanvas.ShowInventory();
         }
         else if (MenuState == PauseMenuStates.Help)
         {
-            Transform helpPanel = Instance.transform.FindChild("HelpPanel");
-            helpPanel.gameObject.SetActive(false);
+            GameManager.Instance.UICanvas.HideHelpMenu();
         }
     }
 }
