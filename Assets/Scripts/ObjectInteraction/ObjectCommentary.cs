@@ -14,7 +14,7 @@ public static class ObjectCommentary
 
     public static List<int> CurrentDialogueIDs = new List<int>();
 
-
+    #region Lines
     public static Dictionary<int, string> InvestigationLines = new Dictionary<int, string>()
     {
         {1001, "I don’t expect too many jokes from him."},
@@ -95,7 +95,7 @@ public static class ObjectCommentary
         {2032, "Nah, that is silly."},
         {2033, "You never know.."},
         {2034, "No, I need the Mask of Mockery."},
-        {2035, "I already plundered it."},  ////////*****************
+        {2035, "I already plundered it."},  
 
         {2036, "That would confuse fellow travelers."},
         {2037, "That would confuse fellow travelers."},
@@ -117,6 +117,8 @@ public static class ObjectCommentary
         {2054, "Finally!"},  //mask of mockery
         {2060, " "},    
     };
+
+    #endregion Lines
 
     public static IEnumerator LetsGetCloserRoutine()
     {
@@ -147,7 +149,6 @@ public static class ObjectCommentary
         {
             var id = CurrentDialogueIDs[i];
             CurrentID = id;
-          //  Debug.Log(objectInLevel);
             if(speechType == SpeechType.Investigation)
                 DialoguePlayback.SetCurrentDialogueLine(InvestigationLines[id]);
             else if(speechType == SpeechType.Interaction)
@@ -155,7 +156,9 @@ public static class ObjectCommentary
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
-            string audioFile = "ObjectInteraction/" + id;
+
+            int audioId = CheckUniqueAudio(id);
+            string audioFile = "ObjectInteraction/" + audioId;
             AudioManager.Instance.PlayDialogueAudio(audioFile);
 
             if (i + 1 == ObjectCommentary.CurrentDialogueIDs.Count)
@@ -526,5 +529,21 @@ public static class ObjectCommentary
         }
     }
 #endregion
+
+    public static int CheckUniqueAudio(int id)
+    {
+        if (id == 2012)
+            id = 2011;
+        else if (id == 2036)
+            id = 2037;
+        else if (id == 2044)
+            id = 2042;
+        else if (id == 2050)
+            id = 2049;
+        else if (id == 2053)
+            id = 2052;
+
+        return id;
+    }
 }
 

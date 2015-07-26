@@ -12,6 +12,9 @@ public class Emmon : MonoBehaviour
     public GameObject InWaterGo;
     public bool InWater = false;
 
+    public AreaEnum CurrentArea;
+    public AreaEnum PreviousArea;
+
     public void Awake()
     {
         Instance = this;

@@ -9,7 +9,7 @@ public class Rabbit : MonoBehaviour
     public CritterState State;
 
     public List<Transform> WanderLocations = new List<Transform>();
-
+    public List<AreaEnum> ActiveAreas = new List<AreaEnum>();   // the areas from which the rabbit could be seen by the player, so in which he should be active
     private float _speed = 4f;
     private float _rotationSpeed = 4f;
     private float _timer = 0;
@@ -18,7 +18,10 @@ public class Rabbit : MonoBehaviour
 
     public Transform CurrentDestinationGoal;
     public Transform PreviousDestinationGoal;
-    
+
+    private int _inTheArea = 0;
+    private bool _withEmmonInArea = false;
+
 	void Start () 
     {
         Instance = this.gameObject;
@@ -28,47 +31,59 @@ public class Rabbit : MonoBehaviour
 	
 	void Update () 
     {
-        if(State == CritterState.Idle)
+        for (int i = 0; i < this.ActiveAreas.Count; i++)
         {
-
-            if (_timer > 0)
+            if (Emmon.Instance.CurrentArea == ActiveAreas[i])
             {
-                _timer -= Time.deltaTime;
-
-                if (_timer <= 0)
-                {
-                    int rand = Random.Range(0, 3);
-                    if (rand == 0)
-                        ChooseNewDestination();
-                    else
-                        _timer = _maxTimer;
-                }
-
-                var playerDistance = Vector3.Distance(Instance.transform.position, GameManager.Player.transform.position);
-                if (playerDistance < 2f)
-                {
-                    _timer = 0f;
-                    ChooseNewDestination();
-                }
+                _withEmmonInArea = true;
             }
-            else
-                _timer = _maxTimer;
         }
 
-        else if (CurrentDestinationGoal != null)
+        if (_withEmmonInArea)
         {
-            Vector3 moveDir = CurrentDestinationGoal.position - Instance.transform.position;
-            // Rotate towards the target
-            Instance.transform.rotation = Quaternion.Slerp(Instance.transform.rotation, Quaternion.LookRotation(moveDir), _rotationSpeed * Time.deltaTime);
-            Instance.transform.eulerAngles = new Vector3(0, Instance.transform.eulerAngles.y, 0);
-
-            // move towards the target
-            Instance.transform.position = Vector3.MoveTowards(Instance.transform.position, CurrentDestinationGoal.position, Time.deltaTime * _speed);
-            var distance = Vector3.Distance(Instance.transform.position, CurrentDestinationGoal.position);
-            if(distance < 1f)
+            if (State == CritterState.Idle)
             {
-                ReachPoint();
+                Debug.Log("timer is working");
+                if (_timer > 0)
+                {
+                    _timer -= Time.deltaTime;
+
+                    if (_timer <= 0)
+                    {
+                        int rand = Random.Range(0, 3);
+                        if (rand == 0)
+                            ChooseNewDestination();
+                        else
+                            _timer = _maxTimer;
+                    }
+
+                    var playerDistance = Vector3.Distance(Instance.transform.position, GameManager.Player.transform.position);
+                    if (playerDistance < 2f)
+                    {
+                        _timer = 0f;
+                        ChooseNewDestination();
+                    }
+                }
+                else
+                    _timer = _maxTimer;
             }
+
+            else if (CurrentDestinationGoal != null)
+            {
+                Vector3 moveDir = CurrentDestinationGoal.position - Instance.transform.position;
+                // Rotate towards the target
+                Instance.transform.rotation = Quaternion.Slerp(Instance.transform.rotation, Quaternion.LookRotation(moveDir), _rotationSpeed * Time.deltaTime);
+                Instance.transform.eulerAngles = new Vector3(0, Instance.transform.eulerAngles.y, 0);
+
+                // move towards the target
+                Instance.transform.position = Vector3.MoveTowards(Instance.transform.position, CurrentDestinationGoal.position, Time.deltaTime * _speed);
+                var distance = Vector3.Distance(Instance.transform.position, CurrentDestinationGoal.position);
+                if (distance < 1f)
+                {
+                    ReachPoint();
+                }
+            }
+            _withEmmonInArea = false;
         }
 	}
 

@@ -18,8 +18,6 @@ public class MouseClickOnObject : MonoBehaviour
     public float defaultDepthIntoScene = 5;
     public float selectScale = .3f;
 
-  //  private static GameObject _investigateButton;
-   // private static GameObject _interactionButton;
     private static GameObject _objectDescriptionTextGO;
 
     public static Text DescriptionText;
