@@ -15,10 +15,11 @@ public class SceneFader : MonoBehaviour
     public bool IsFadingToBlack = false;
     public bool IsFadingToClear = false;
 
-    private bool _loaded = false;
+    public static bool HasLoadedGame = false;
+
     public void Awake()
     {
-        _loaded = false;
+        HasLoadedGame = false;
 
         BlackImage = this.gameObject.GetComponent<Image>();
     }
@@ -33,12 +34,12 @@ public class SceneFader : MonoBehaviour
 
     public void BlackToClear()
     {
-        if (ClearFader == ToClear.StartFromLoad && !_loaded)
+  //      Debug.LogWarning("Fading black to clear! " + ClearFader +  " " + HasLoadedGame);
+        if (ClearFader == ToClear.StartFromLoad && !HasLoadedGame)
         {
-            //  GameManager.GamePlayingMode = GameManager.GameMode.Running;
             SaveAndLoadGame loadGame = new SaveAndLoadGame();
             loadGame.LoadGameData();
-            _loaded = true;
+            HasLoadedGame = true;
         }
 
         BlackImage.color = Color.Lerp(BlackImage.color, new Color(0, 0, 0, 0), _fadeToClearSpeed * Time.deltaTime);
@@ -59,15 +60,7 @@ public class SceneFader : MonoBehaviour
                 ////////////////////////////
                 introManager.StartIntro();
                 /////////////////
-
             }
-            //else if (ClearFader == ToClear.StartFromLoad)
-            //{
-            //    //  GameManager.GamePlayingMode = GameManager.GameMode.Running;
-            //    SaveAndLoadGame loadGame = new SaveAndLoadGame();
-            //    loadGame.LoadGameData();
-            //}
-
             IsFadingToClear = false;
             this.gameObject.SetActive(false);
         }
@@ -82,15 +75,14 @@ public class SceneFader : MonoBehaviour
             if (BlackFader == ToBlack.FinishGame)
                 Application.Quit();
             else if (BlackFader == ToBlack.LoadFromMainMenu)
+            {
                 MainMenuManager.LoadLevel();
+                GameManager.MyGameType = GameManager.GameType.LoadFromMenu;
+            }
             else if (BlackFader == ToBlack.LoadFromInGame)
             {
                 Debug.Log("load game from in-game");
-                SaveAndLoadGame loader = new SaveAndLoadGame();
-                SaveAndLoadGame.ComingFromMainMenu = false;
-                loader.IsNotNewGame();
-
-                GameManager.NewGame = false;
+                GameManager.MyGameType = GameManager.GameType.LoadFromInGame;
 
                 GameManager.Instance.FadeBlackToClear();
 
@@ -105,7 +97,6 @@ public class SceneFader : MonoBehaviour
             else if (BlackFader == ToBlack.NewGameFromMainMenu)
             {
                 MainMenuManager.LoadLevel();
-
             }
             IsFadingToBlack = false;
         }

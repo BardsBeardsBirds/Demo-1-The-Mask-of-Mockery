@@ -55,7 +55,7 @@ public class DialogueManager
         DialoguePlayback.ClearDialogueList();
 
         DialogueMenu.ClearDialogueOptionList();
-        GameManager.InCutScene = false;
+  //      GameManager.InCutScene = false;
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
 
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("DialogueState", false);

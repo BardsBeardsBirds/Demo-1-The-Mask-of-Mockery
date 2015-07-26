@@ -13,7 +13,7 @@ public class RotateTowards : MonoBehaviour
 
     public void Start()
     {
-        GameManager.InCutScene = true;
+     //   GameManager.InCutScene = true;
         Debug.LogWarning("to the right " + Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) + " and to the left " + Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position));
         
         _distance = Vector3.Distance(Target.transform.position, From.transform.position);
@@ -85,12 +85,12 @@ public class RotateTowards : MonoBehaviour
         CharacterControllerLogic.Instance.ForceTurningAngle(0);
         if (Sentinel.PushBack)
         {
-            GameManager.InCutScene = false;
+     //       GameManager.InCutScene = false;
             SentinelBlocker.IsBlocking = false;
             Sentinel.PushBack = false;
             CharacterControllerLogic.Instance.GoToIdleState();
         }
-        GameManager.InCutScene = false;
+      //  GameManager.InCutScene = false;
 
         Destroy(this.gameObject);
     }

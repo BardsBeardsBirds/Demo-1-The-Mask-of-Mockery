@@ -5,13 +5,8 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
-    /// <summary>
-    public static bool NewGame = true;
-    /// </summary>
-
-
     public enum GameMode { Paused, Running, IntroMode, DeadMode, MissionAccomplished };
-
+    public enum GameType { NewGame, LoadFromMenu, LoadFromInGame, None};
 
     public AudioMixerGroup Mixer;
 
@@ -20,11 +15,9 @@ public class GameManager : MonoBehaviour
     public Portal DebugSpawn;
     public GameObject GameManagerObj;
     public MainCanvas UICanvas;
-    //public GameObject InventoryWindow;
-    //public GameObject PauseMenuWindow;
-    //public GameObject SuperCanvas;
+
     public static GameObject Player;
-    public Inventory IInventory;
+    public Inventory MyInventory;
     public InGameObjectManager InGameObjectM;
 
     private GameObject _ay;
@@ -32,57 +25,45 @@ public class GameManager : MonoBehaviour
     private GameObject _sentinel;
 
     public static GameMode GamePlayingMode;
+    public static GameType MyGameType;
 
     public static AudioSource AudioSource1;
     public static AudioSource AudioSource2;
 
     private bool _showConsole = false;
 
-    public static bool InCutScene = false;
-    public static bool GameIsOver { get; set; }
-    public static bool InIntroMode { get; set; }
-    public bool WasLocked { get; set; }
-
-    private float _fadeDelay = 2f;
-    private float _fadeTimer;
-
-    private bool _fade = false;
-    private bool _isResetting;
-
     public static Dictionary<NPCEnum.NPCs, Transform> NPCs = new Dictionary<NPCEnum.NPCs, Transform>() { };
 
     public void Awake()
     {     
         Instance = this;
-        NewGame = IsThisGameNew();
-        Debug.Log("New game? " + NewGame);
-        if (NewGame)
+
+        bool newGame = IsThisGameNew();
+        if (newGame)
+            MyGameType = GameType.NewGame;
+        else
+            MyGameType = GameType.LoadFromMenu;
+
+        Debug.Log("MyGameType " + MyGameType);
+
+        if (MyGameType == GameType.NewGame)
             GameStateToIntro();
 
         FadeBlackToClear();
 
-        SetPlayerPosition();
-
+        ///Setting up the level>>
+        SetPlayerPosition(); 
         LoadManagers();
         FindCharacters();
+        ///Setting up the level<<
 
-        InCutScene = false;
-
-    //    PauseMenuWindow = GameObject.Find("PauseMenuCanvas");
-   //     InventoryWindow = GameObject.Find("InventoryCanvas");
-   //     SuperCanvas = GameObject.Find("Canvas");
         if (UICanvas == null)
             UICanvas = GameObject.Find("Canvas").GetComponent<MainCanvas>();
 
-        InventoryCanvas invCan = UICanvas.InventoryCanvas.GetComponent<InventoryCanvas>();
-        RectTransform rect = invCan.GetComponent<RectTransform>();
-        InventoryCanvas.SetLeftBottomPosition(rect, new Vector2(2000, 2000));
-        IInventory = Inventory.Instance;
-
-        if (NewGame)
+        if (MyGameType == GameType.NewGame)
             SetInitialBools();
 
-        InGameObjectManager.Instance.LoadInGameObjectsInfo();  
+        InGameObjectManager.Instance.LoadInGameObjectsInfo();  //see what objects should be turned on or off
     }
 
     public void Start()
@@ -103,34 +84,32 @@ public class GameManager : MonoBehaviour
         GameManagerObj.AddComponent<ItemManager>();
         GameManagerObj.AddComponent<DialogueMenu>();
         GameManagerObj.AddComponent<DialoguePlayback>();
-        GameManagerObj.AddComponent<UIDrawer>();
         InGameObjectM = GameManagerObj.AddComponent<InGameObjectManager>();
-
     }
 
     private void FindCharacters()
     {
-        if (SaveAndLoadGame.ComingFromMainMenu)
-        {
-            Debug.Log("find characters");
-            _ay = GameObject.Find("Ay the Tear Collector");
-            _ay.AddComponent<AyTheTearCollector>();
-            NPCs.Add(NPCEnum.NPCs.AyTheTearCollector, _ay.transform);
+        _ay = GameObject.Find("Ay the Tear Collector");
+        _ay.AddComponent<AyTheTearCollector>();
+        NPCs.Add(NPCEnum.NPCs.AyTheTearCollector, _ay.transform);
 
-            _benny = GameObject.Find("Benny Twospoons");
-            _benny.AddComponent<BennyTwospoons>();
-            NPCs.Add(NPCEnum.NPCs.BennyTwospoons, _benny.transform);
+        _benny = GameObject.Find("Benny Twospoons");
+        _benny.AddComponent<BennyTwospoons>();
+        NPCs.Add(NPCEnum.NPCs.BennyTwospoons, _benny.transform);
 
-            _sentinel = GameObject.Find("Sentinel");
-            _sentinel.AddComponent<Sentinel>();
-            NPCs.Add(NPCEnum.NPCs.Sentinel, _sentinel.transform);
-        }
+        _sentinel = GameObject.Find("Sentinel");
+        _sentinel.AddComponent<Sentinel>();
+        NPCs.Add(NPCEnum.NPCs.Sentinel, _sentinel.transform);
     }
 
     public void SetPlayerPosition()
     {
         Player = GameObject.Find("Emmon");
 
+        if (Player == null)
+            Debug.LogError("Couldn't find the player!");
+
+        Debug.Log("set player position");
         Player.transform.position = new Vector3(-31f, 5.5f, 145f);
         Player.transform.rotation = new Quaternion(0.0f, -0.1f, 0.0f, -1.0f);
     }
@@ -175,11 +154,6 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.N))
             {
-                //for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
-                //{
-                //    Debug.Log(SlotScript.IInventory.Items[i].IType);
-                //}
-
                 Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonWasBlockedBySentinel);
                 Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
                 Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
@@ -190,8 +164,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
                 Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
                 Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
-
-                //    Inventory.Instance.AddItem(2);
             }
         }
 
@@ -200,23 +172,6 @@ public class GameManager : MonoBehaviour
             if(Time.timeScale != 1)
                 UICanvas.PauseMenuCanvas.GetComponent<PauseMenu>().ResumeGame();
         }
-
-        else if (GamePlayingMode == GameMode.DeadMode)
-        {
-            GameOver();
-        }
-
-        else if (GamePlayingMode == GameMode.MissionAccomplished)
-        {
-            if (_fadeTimer > 0 && _fade)
-            {
-                _fadeTimer -= Time.deltaTime;
-                if (_fadeTimer <= 0)
-                {
-                    ///show add
-                }
-            }
-        }
     }
 
     public static void Destroy(string name)
@@ -224,21 +179,6 @@ public class GameManager : MonoBehaviour
         var go = GameObject.Find(name);
         if(go != null )
             Destroy(go);
-    }
-
-    public void GameOver()
-    {
-        GameIsOver = true;
-        _fadeTimer = _fadeDelay;
-        _fade = true;
-    }
-
-    public void GameStart()
-    {
-        InIntroMode = false;
-        GameIsOver = false;
-        _fade = false;
-        _isResetting = false;
     }
 
     public void DidLockCursor()
@@ -281,7 +221,7 @@ public class GameManager : MonoBehaviour
             var line = sr.ReadLine();
             while (line != null)
             {
-                //Debug.LogWarning(line); // prints each line of the file
+                Debug.LogWarning(line); // prints each line of the file
                 if (line == "This is not a new game")
                 {
                     return false;
@@ -292,7 +232,6 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.LogError("unexpected text in file: " + line);
-                  //  return true;
                 }
             }   
         }
@@ -335,7 +274,7 @@ public class GameManager : MonoBehaviour
         sceneFaderGO.SetActive(true);
 
         SceneFader fader = sceneFaderGO.GetComponent<SceneFader>();
-        if(NewGame)
+        if (MyGameType == GameType.NewGame)
             fader.ClearFader = SceneFader.ToClear.StartFromNew;
         else
         {

@@ -10,20 +10,23 @@ public class InventoryCanvas : MonoBehaviour
     public void Start()
     {
         Instance = this;
+        InventoryIsOpen = false;
     }
 
     public void OpenInventory()
     {
-        RectTransform rect = this.GetComponent<RectTransform>();
-        SetLeftBottomPosition(rect, new Vector2(-Screen.width / 2, -Screen.height / 2));
+        //RectTransform rect = this.GetComponent<RectTransform>();
+        //SetLeftBottomPosition(rect, new Vector2(-Screen.width / 2, -Screen.height / 2));
+        Debug.Log("open");
 
         GameManager.Instance.UICanvas.ShowInventory();
-
         InventoryIsOpen = true;
     }
 
     public void CloseInventory()
     {
+        Debug.Log("close inventory");
+
         GameManager.Instance.UICanvas.HideInventory();
 
         InventoryIsOpen = false;

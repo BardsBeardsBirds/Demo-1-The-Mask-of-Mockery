@@ -17,8 +17,6 @@ public class ItemManager : MonoBehaviour
         {
             CoinageSpawnpoints.Add(child.gameObject);
         };
-        
-        //CreateCoinage();
 
         foreach (Coinage coin in coins)
         {

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class SaveAndLoadGame
 {
-    public static bool ComingFromMainMenu = true;
-
     public void SaveGameData()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -35,14 +33,12 @@ public class SaveAndLoadGame
             loadPlayerState(data);
             loadWorldEvents(data);
             loadInGameObjects(data);
-
-            if (!ComingFromMainMenu) // we are loading a game from inside another game
+            if (GameManager.MyGameType == GameManager.GameType.LoadFromInGame) // we are loading a game from inside another game
             {
                 GameManager.Instance.SetPlayerPosition();
                 loadInventoryItemsInGame(data);
                 InGameObjectManager.Instance.LoadInGameObjectsInfo();   //see what objects should be turned off
                 GameManager.Instance.LoadEventConsequences();           //load the consequences of any world event
-                //Debug.LogWarning("we loaded a game from inside the game");
                 GameManager.Instance.GameStateToRunning();
             }
             else  // we load from main menu
@@ -134,10 +130,7 @@ public class SaveAndLoadGame
     }
 
     private void loadInventoryItemsInGame(SaveGameData data)
-    {
-        
-     //   Inventory inventory = GameManager.Instance.FindInventory();
-
+    {       
         Inventory.Instance.InitialiseInventoryItems.Clear();
         Inventory.Instance.MakeAllSlotsEmpty();
 

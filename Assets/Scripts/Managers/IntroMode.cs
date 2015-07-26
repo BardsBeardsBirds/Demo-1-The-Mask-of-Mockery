@@ -21,7 +21,7 @@ public class IntroMode
     public void StartIntroText()
     {
         CharacterControllerLogic.Instance.GoToTalkingState();
-        GameManager.InCutScene = true;
+  //      GameManager.InCutScene = true;
 
         DialoguePlayback.Instance.PlaybackIntro();
     }
@@ -57,7 +57,7 @@ public class IntroMode
 
     public static void FinishIntro()
     {
-        GameManager.InCutScene = false;
+ //       GameManager.InCutScene = false;
 
         GameManager.Instance.GameStateToRunning();/////
     }

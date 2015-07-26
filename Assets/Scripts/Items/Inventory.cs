@@ -24,10 +24,13 @@ public class Inventory : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;
+        Instance = GameManager.Instance.MyInventory; ;
+
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         InitialiseInventoryItems.Clear();
         ResetAmounts();
+
+    //////////////    ResetAmounts(); // moved to other place
         Debug.Log("cleared inventory list");
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
@@ -41,13 +44,8 @@ public class Inventory : MonoBehaviour
     public void Start()
     {
         Instance = this;
-
-        //CreateSlots();
         
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
-
-
-
 
         //////////////////////////
         /// This is here Items are added before the start of the game
@@ -60,16 +58,14 @@ public class Inventory : MonoBehaviour
     //    Debug.Log(Items[0].ItemName);
    //     Debug.Log(Items[1].ItemName);
 
-        if (!GameManager.NewGame)
+        if (GameManager.MyGameType != GameManager.GameType.NewGame && 
+            GameManager.MyGameType != GameManager.GameType.None)
         {
             SaveAndLoadGame load = new SaveAndLoadGame();
             load.LoadInventoryItemsFromMainMenu();
         }
 
     }
-
-
-   
 
     public void Update()
     {
@@ -175,22 +171,19 @@ public class Inventory : MonoBehaviour
 
     public void MakeAllSlotsEmpty()
     {
+
         Debug.Log("empty all slots");
-        for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
+        for (int i = 0; i < Items.Count; i++)
         {
             MakeSlotEmpty(i);
         }
-        //foreach (GameObject slot in SlotList)
-        //{
-        //    slot.GetComponent<SlotScript>().MakeSlotEmpty();
-        //}
     }
 
     public void MakeSlotEmpty(int slotNumber)
     {
         //Debug.Log("empty slot");
-        SlotScript.IInventory.Items[slotNumber] = new Item();
-        SlotScript.IInventory.HideTooltip();
+        Items[slotNumber] = new Item();
+        HideTooltip();
     }
 
     public void LoadItemsFromSave()
@@ -198,7 +191,7 @@ public class Inventory : MonoBehaviour
       //  Debug.Log(InitialiseInventoryItems.Count);
         for (int i = 0; i < InitialiseInventoryItems.Count; i++)
         {
-            Debug.Log("Add " + InitialiseInventoryItems[i]);
+            Debug.Log("Add to inventory" + InitialiseInventoryItems[i]);
 
             AddItem(InitialiseInventoryItems[i]);
         }
@@ -215,37 +208,7 @@ public class Inventory : MonoBehaviour
 
     private void CreateSlots()
     {
-        //int slotAmount = 0;
-        //int rowsHeight = 4;
-        //int rowsLeftRight = 4;
-
-        //int slotXLength = 60;
-        //int slotYHeight = 60;
-        //int padding = 5;
-        //float _xStartPos = -97.5f;
-        //int _yStartPos = 110;
-
-        //for (int i = 1; i < rowsHeight + 1; i++) //height
-        //{
-        //    for (int j = 1; j < rowsLeftRight + 1; j++)    ////width
-        //    {
-        //        GameObject slot = (GameObject)Instantiate(Slots);
-        //        slot.GetComponent<SlotScript>().SlotNumber = slotAmount;
-        //        SlotList.Add(slot);
-        //        Items.Add(new Item());
-        //        slot.transform.SetParent(this.gameObject.transform);
-        //        slot.name = "Slot" + i + "." + j;
-        //        slot.GetComponent<RectTransform>().localPosition = new Vector3(_xStartPos, _yStartPos, 0);
-        //        _xStartPos = _xStartPos + slotXLength + padding;
-
-        //        if (j == rowsLeftRight)
-        //        {
-        //            _xStartPos = -97.5f;
-        //            _yStartPos = _yStartPos - slotYHeight - padding;
-        //        }
-        //        slotAmount++;
-        //    }
-        //}
+       
     }
 }
 

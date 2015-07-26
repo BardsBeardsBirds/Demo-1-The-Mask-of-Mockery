@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 public class MainCanvas : MonoBehaviour
 {
     public GameObject MainPanel;
@@ -8,11 +9,15 @@ public class MainCanvas : MonoBehaviour
     public GameObject PauseMenuMainWindow;
     public GameObject PauseMenuHelpWindow;
 
+    public Image InventoryPanelImage;
+    public GameObject InventoryPanelSlots;
+    public UIDrawer MyUIDrawer;
+
     public void Awake()
     {
         MainPanel = this.gameObject;
 
-        InventoryCanvas = GameObject.Find("InventoryCanvas");
+        MyUIDrawer = MainPanel.AddComponent<UIDrawer>();
 
         PauseMenuCanvas = GameObject.Find("PauseMenuCanvas");
         PauseMenuMainWindow = PauseMenuCanvas.transform.FindChild("MainPanel").gameObject;
@@ -20,19 +25,42 @@ public class MainCanvas : MonoBehaviour
 
         if (DialogueOptions == null)
         {
-            Debug.Log("couldn't find DialogueOptionsUI");
+            Debug.LogError("couldn't find DialogueOptionsUI");
             DialogueOptions = GameObject.Find("DialogueOptionsUI");
         }
+
+        if (InventoryCanvas == null)
+        {
+            Debug.LogError("couldn't find InventoryCanvas");
+            InventoryCanvas = GameObject.Find("InventoryCanvas");
+        }
+        else
+            GameManager.Instance.MyInventory = InventoryCanvas.GetComponentInChildren<Inventory>();
+
+        if (InventoryPanelImage == null)
+        {
+            Debug.LogError("couldn't find InventoryPanelImage");
+        }
+
+        if (InventoryPanelSlots == null)
+        {
+            Debug.LogError("couldn't find InventoryPanelSlots");
+        }
+
+  //      HideInventory();
+    //    ShowSlotsImages();
     }
 
     public void ShowInventory()
     {
-        InventoryCanvas.SetActive(true);
+        InventoryPanelImage.enabled = true;
+        InventoryPanelSlots.SetActive(true);
     }
 
     public void HideInventory()
     {
-        InventoryCanvas.SetActive(false);
+        InventoryPanelImage.enabled = false;
+        InventoryPanelSlots.SetActive(false);
     }
     
     public void ShowPauseMainMenu()
@@ -66,4 +94,21 @@ public class MainCanvas : MonoBehaviour
         Transform dialogueOptions = DialogueOptions.transform.FindChild("DialogueOptions");
         dialogueOptions.gameObject.SetActive(false);
     }
+
+    //#region Helpers
+
+    //public void HideSlotsGO()
+    //{
+
+    //}
+
+    //public void ShowSlotsImages()
+    //{
+    //    foreach(Transform trans in InventoryPanelSlots.transform)
+    //    {
+    //        trans.GetComponent<Image>().enabled = true;
+    //    }
+    //}
+
+    //#endregion Helpers
 }

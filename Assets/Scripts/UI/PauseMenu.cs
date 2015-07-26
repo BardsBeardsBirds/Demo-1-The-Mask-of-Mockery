@@ -88,6 +88,7 @@ public class PauseMenu : MonoBehaviour
         SceneFader fader = sceneFaderGO.GetComponent<SceneFader>();
         fader.BlackFader = SceneFader.ToBlack.LoadFromInGame;
         fader.IsFadingToBlack = true;
+        SceneFader.HasLoadedGame = false;
 
         ClosePanel();
         MenuState = PauseMenuStates.None;
@@ -113,6 +114,9 @@ public class PauseMenu : MonoBehaviour
         else if (MenuState == PauseMenuStates.Help)
         {
             GameManager.Instance.UICanvas.HideHelpMenu();
+
+            if (InventoryCanvas.InventoryIsOpen)
+                GameManager.Instance.UICanvas.ShowInventory();
         }
     }
 }

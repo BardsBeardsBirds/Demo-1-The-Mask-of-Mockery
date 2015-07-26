@@ -141,7 +141,6 @@ public static class ObjectCommentary
     {
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
 
-
         FindLines(speechType, objectInLevel);
 
         for (int i = 0; i < CurrentDialogueIDs.Count; i++)
@@ -158,7 +157,6 @@ public static class ObjectCommentary
 
             string audioFile = "ObjectInteraction/" + id;
             AudioManager.Instance.PlayDialogueAudio(audioFile);
-
 
             if (i + 1 == ObjectCommentary.CurrentDialogueIDs.Count)
             {
@@ -528,6 +526,5 @@ public static class ObjectCommentary
         }
     }
 #endregion
-
 }
 

@@ -20,16 +20,9 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     void Start()
     {
         ItemAmountTxt = gameObject.transform.GetChild(1).GetComponent<Text>();
-      //  IInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        IInventory = Inventory.Instance;
+        IInventory = GameManager.Instance.MyInventory;
         ItemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         _actionPanel = new ActionPanel();
-      //  IInventory.SlotsLoaded++;
-     //   Debug.Log("I'm created -slot " + IInventory.SlotsLoaded);
-        //if (IInventory.SlotsLoaded == 16)
-        //{
-        //    IInventory.LoadItemsFromSave();
-        //}
     }
 
     void Update()
@@ -128,8 +121,6 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     public void MakeSlotEmpty()
     {
-       // Debug.Log("empty slot");
-
         if(ItemImage != null)
             ItemImage.enabled = false;
 

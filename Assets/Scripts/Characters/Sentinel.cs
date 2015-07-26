@@ -257,7 +257,7 @@ public class Sentinel : MonoBehaviour
     {
         CharacterControllerLogic.Instance.GoToTalkingState();
 
-        GameManager.InCutScene = true;
+    //    GameManager.InCutScene = true;
         SentinelBlocker.IsBlocking = true;
 
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
