@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
         Instance.Tooltip = Resources.Load("Prefabs/UI/InventoryWindow/Tooltip") as GameObject;
+        
         foreach (GameObject slot in SlotList)
         {
             Items.Add(new Item());
@@ -50,9 +51,9 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-        //    AddItem(0); //mask
-        //    AddItem(1); //roughneck shot
-      //  AddItem(2); //carrot
+            AddItem(3); //mask
+            AddItem(1); //roughneck shot
+            AddItem(2); //carrot
 
 
     //    Debug.Log(Items[0].ItemName);
@@ -69,11 +70,18 @@ public class Inventory : MonoBehaviour
 
     public void Update()
     {
-        if (UIDrawer.DraggingItem)
+        if (UIDrawer.IsDraggingItem)
         {
-            Vector3 mousePos = (Input.mousePosition - GameObject.Find("InventoryCanvas").GetComponent<RectTransform>().localPosition);
+            Vector3 mousePos = (Input.mousePosition - GameManager.Instance.UICanvas.InventoryCanvas.GetComponent<RectTransform>().localPosition);
             //previous problems with the mouse location were solved by distracting screen / 2.
             DraggedItemGameObject.GetComponent<RectTransform>().localPosition = new Vector3(mousePos.x + 15 - (Screen.width / 2), mousePos.y + 15 - (Screen.height / 2), mousePos.z);
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                HideDraggedItem();
+                GameManager.Instance.MyInventory.Items[UIDrawer.DraggingFromSlotNo] = GameManager.Instance.MyInventory.TheDraggedItem;
+             //   IInventory.Items[SlotNumber] = IInventory.TheDraggedItem;
+            }
         }
     }
 
@@ -97,13 +105,13 @@ public class Inventory : MonoBehaviour
         HideTooltip();
         DraggedItemGameObject.SetActive(true);
         TheDraggedItem = item;
-        UIDrawer.DraggingItem = true;
+        UIDrawer.IsDraggingItem = true;
         DraggedItemGameObject.GetComponent<Image>().sprite = item.ItemIcon;
     }
 
     public void HideDraggedItem()
     {
-        UIDrawer.DraggingItem = false;
+        UIDrawer.IsDraggingItem = false;
         DraggedItemGameObject.SetActive(false);
     }
 
@@ -204,11 +212,6 @@ public class Inventory : MonoBehaviour
             Item item = Items[i];
             item.ItemAmount = 0;
         }
-    }
-
-    private void CreateSlots()
-    {
-       
     }
 }
 

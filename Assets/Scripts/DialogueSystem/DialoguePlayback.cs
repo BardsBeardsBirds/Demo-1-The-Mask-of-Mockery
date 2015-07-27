@@ -91,7 +91,6 @@ public class DialoguePlayback : MonoBehaviour
 
     public void PlaybackDialogue(int dialogueOptionID)
     {
-
         DialoguePlayback.TriggerDialogue(dialogueOptionID); //starts loading all the lines
 
     //    Debug.Log("We chose option " + dialogueOption + " with option id " + dialogueOptionID + ". The last lineID was: " + DialoguePlayback.LastLineID);
@@ -153,7 +152,6 @@ public class DialoguePlayback : MonoBehaviour
                     {
                         TimeManager.Instance.CreateRotator(GameManager.Player.transform, GameObject.Find("Pushed Back Target").transform, 50f, 3f);
 
-                  //      TimeManager.Instance.CreateRotator(GameManager.Player.transform, GameObject.Find("Ay the Tear Collector").transform, 50f, 3f);
                         Sentinel.PushBack = true;
                     }
                 }
@@ -167,10 +165,6 @@ public class DialoguePlayback : MonoBehaviour
 
     private static void SetTalkingListening(NPCEnum.NPCs NPC, int id)
     {
-
-        //GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", false);
-        //GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", true);
-
         switch (NPC)
         {
             case NPCEnum.NPCs.AyTheTearCollector:
@@ -255,7 +249,6 @@ public class DialoguePlayback : MonoBehaviour
 
     public static void DialogueNumberToSituation(int id)
     {
-    //    Debug.Log("maar wat is npc? " + NPC + " id: " + id);
         switch (NPC)
         {
             case NPCEnum.NPCs.AyTheTearCollector:
@@ -296,6 +289,17 @@ public class DialoguePlayback : MonoBehaviour
         MyConsole.WriteToConsole("Lets get closer");
         StartCoroutine(ObjectCommentary.LetsGetCloserRoutine());
     }
+
+    public void PlaybackCombineItemsWithWorld(Item inventoryItem, ObjectsInLevel worldObject)
+    {
+        StartCoroutine(GameManager.Instance.IIventoryItemWithObject.CombineItemRoutine(inventoryItem, worldObject));
+    }
+
+    public void PlaybackCombineItemsWithWorld(Item inventoryItem, Item subjectedInventoryItem)
+    {
+        StartCoroutine(GameManager.Instance.IIventoryItemWithObject.CombineItemRoutine(inventoryItem, subjectedInventoryItem));
+    }
+
     #endregion
 
     #region Intro Outro

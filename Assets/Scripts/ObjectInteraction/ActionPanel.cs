@@ -39,9 +39,6 @@ public class ActionPanel
 
     public void PlayActionPanelForClickedObject(ObjectsInLevel naam, Transform trans)   //Objects in world.
     {
-        //if (naam == ObjectsInLevel.Null)
-        //    return;
-
         if (MouseClickOnObject.MouseIsOnInvestigateButton)
             InvestigateObject(naam);
         else if (MouseClickOnObject.MouseIsOnInteractionButton)
@@ -65,9 +62,6 @@ public class ActionPanel
 
     public void PlayActionPanelForClickedObject(Item item, int slotNumber)  //Inventory
     {
-        //Debug.LogWarning("Set item to: " + ThisItem.ItemModel);
-        //ThisItem = item;
-
         if (MouseClickOnObject.MouseIsOnInvestigateButton)
             InvestigateItem(item);
         else if (MouseClickOnObject.MouseIsOnInteractionButton)
@@ -106,14 +100,14 @@ public class ActionPanel
         MouseClickOnObject.HideObjectDescriptionText();
     }
 
-    public void InteractWithObject(ObjectsInLevel naam)
+    public void InteractWithObject(ObjectsInLevel naam) //items in the world
     {
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
         MyConsole.WriteToConsole("Start Interaction with " + MouseClickOnObject.ObjectLines[naam]);
         DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Interaction, naam); //SOUND
     }
 
-    public void InteractWithItem(Item item, int SlotNumber)
+    public void InteractWithItem(Item item, int SlotNumber) //items in the inventory
     {
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
         MyConsole.WriteToConsole("Start Interaction with " + item.ItemName);

@@ -43,7 +43,6 @@ public class Rabbit : MonoBehaviour
         {
             if (State == CritterState.Idle)
             {
-                Debug.Log("timer is working");
                 if (_timer > 0)
                 {
                     _timer -= Time.deltaTime;

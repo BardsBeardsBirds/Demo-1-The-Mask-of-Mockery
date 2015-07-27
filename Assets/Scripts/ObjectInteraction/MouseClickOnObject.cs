@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum SpeechType { Investigation, Interaction };
+public enum SpeechType { Investigation, Interaction, CombineInventoryWorld, CombineInventory };
 
 public class MouseClickOnObject : MonoBehaviour
 {
@@ -199,8 +199,6 @@ public class MouseClickOnObject : MonoBehaviour
 
         Instance = this;
 
-    //    _investigateButton = GameObject.Find("InvestigateButton");
-     //   _interactionButton = GameObject.Find("InteractionButton");
         _objectDescriptionTextGO = GameObject.Find("ObjectDescriptionText");
         DescriptionText = _objectDescriptionTextGO.GetComponent<Text>();
         _actionPanel = new ActionPanel();
@@ -208,11 +206,17 @@ public class MouseClickOnObject : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (GameManager.GamePlayingMode == GameManager.GameMode.Paused) // don't show if paused.
+        if (GameManager.GamePlayingMode == GameManager.GameMode.Paused || GameManager.GamePlayingMode == GameManager.GameMode.IntroMode) // don't show if paused.
             return;
 
         ActionPanel.LastHoveredObject = Naam;
-       _actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
+
+        if (UIDrawer.IsDraggingItem)
+        {
+            GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, Naam);
+        }
+        else
+            _actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
     }
 
     public void OnMouseExit()
@@ -237,7 +241,7 @@ public class MouseClickOnObject : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (GameManager.GamePlayingMode == GameManager.GameMode.Paused) // don't show if paused.
+        if (GameManager.GamePlayingMode == GameManager.GameMode.Paused || GameManager.GamePlayingMode == GameManager.GameMode.IntroMode) // don't show if paused.
             return;
 
         ThisObject = Naam;
@@ -249,10 +253,15 @@ public class MouseClickOnObject : MonoBehaviour
 
         if (!MouseIsOnInteractionButton || !MouseIsOnInvestigateButton)
         {
-        //    Debug.LogWarning(DescriptionText.text + " " + ObjectLines[Naam]);
-
-            DescriptionText.text = ObjectLines[Naam];
-            MyConsole.WriteToConsole(ObjectLines[Naam]);
+            if(UIDrawer.IsDraggingItem)
+            {
+                DescriptionText.text = "Use " + GameManager.Instance.MyInventory.TheDraggedItem.ItemName + " with " + ObjectLines[Naam];
+            }
+            else
+            {
+                DescriptionText.text = ObjectLines[Naam];
+                MyConsole.WriteToConsole(ObjectLines[Naam]);
+            }
         }
     }
 

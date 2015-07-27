@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\ObjectInteraction\ActionPanel.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction\ButtonPush.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction\GateWheel.cs" />
+     <Compile Include="Assets\Scripts\ObjectInteraction\InventoryItemWithWorldObject.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction\MouseClickOnObject.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction\MuseumDoor.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction\ObjectCommentary.cs" />

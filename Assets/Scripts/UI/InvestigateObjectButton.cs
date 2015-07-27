@@ -16,7 +16,6 @@ public class InvestigateObjectButton : MonoBehaviour, IPointerEnterHandler, IPoi
         MouseClickOnObject.MouseIsOnInvestigateButton = true;
         MouseClickOnObject.DescriptionText.enabled = true;
         ActionPanel.ShowHoverInvestigationLine();
-
     }
 
     public void OnPointerExit(PointerEventData eventData)

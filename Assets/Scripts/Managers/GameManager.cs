@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static GameObject Player;
     public Inventory MyInventory;
     public InGameObjectManager InGameObjectM;
+    public InventoryItemWithWorldObject IIventoryItemWithObject = null;
 
     private GameObject _ay;
     private GameObject _benny;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
             SetInitialBools();
 
         InGameObjectManager.Instance.LoadInGameObjectsInfo();  //see what objects should be turned on or off
+        IIventoryItemWithObject = new InventoryItemWithWorldObject();
     }
 
     public void Start()

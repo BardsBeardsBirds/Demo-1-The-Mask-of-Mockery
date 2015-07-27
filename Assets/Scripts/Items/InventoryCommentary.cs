@@ -40,13 +40,13 @@ public class InventoryCommentary
         {8003, "Put on the Mask of Mockery"},
     };
 
+
+
     public static IEnumerator InventoryCommentaryRoutine(SpeechType speechtype, Item inventoryItem)
     {
         FindLines(speechtype, inventoryItem);
         CharacterControllerLogic.Instance.GoToTalkingState();
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.InventoryCommentary;
-
-        Debug.LogWarning("Playback");
 
         for (int i = 0; i < InventoryCommentary.CurrentDialogueIDs.Count; i++)
         {
