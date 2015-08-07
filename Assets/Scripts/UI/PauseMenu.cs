@@ -21,9 +21,12 @@ public class PauseMenu : MonoBehaviour
         if (InventoryCanvas.InventoryIsOpen)
             GameManager.Instance.UICanvas.HideInventory();
 
+        GameManager.Instance.UICanvas.HideScreenButtonWidget();
+
         MenuState = PauseMenuStates.Main;
 
-        GameManager.Instance.GameStateToPaused();//////
+        GameManager.Instance.GameStateToPaused();
+
         Time.timeScale = 0;
     }
 
@@ -35,7 +38,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.Instance.GameStateToRunning();/////
 
         ClosePanel();
-
+        ShowInGamePanels();
         MenuState = PauseMenuStates.None;
 
         Time.timeScale = 1;
@@ -119,4 +122,10 @@ public class PauseMenu : MonoBehaviour
                 GameManager.Instance.UICanvas.ShowInventory();
         }
     }
+
+    private void ShowInGamePanels()
+    {
+        GameManager.Instance.UICanvas.ShowScreenButtonWidget();
+    }
+
 }

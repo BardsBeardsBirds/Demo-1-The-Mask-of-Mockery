@@ -23,8 +23,11 @@ public class AudioManager : MonoBehaviour
 
     private string _audioPath = "";
 
-    private static AudioSource _doorSoundSource;
+    private static AudioSource _doorOpeningSoundSource;
     private static AudioClip _doorOpeningSound;
+
+    private static AudioSource _templeDoorMusicSource;
+    private static AudioClip _templeDoorMusicSound;
 
     private static AudioSource _chestSoundSource;
     private static AudioClip _chestOpeningSound;
@@ -49,8 +52,11 @@ public class AudioManager : MonoBehaviour
 
         _dialogueAudioClip = Resources.Load("Audio/Dialogues/" + _audioPath) as AudioClip;
 
-        _doorSoundSource = GameObject.Find("TempleDoorAudio").GetComponent<AudioSource>();
+        _doorOpeningSoundSource = GameObject.Find("TempleDoorOpeningAudio").GetComponent<AudioSource>();
         _doorOpeningSound = Resources.Load("Audio/Effects/Doors/OpeningGate") as AudioClip;
+
+        _templeDoorMusicSource = GameObject.Find("IncidentalMusic").GetComponent<AudioSource>();
+        _templeDoorMusicSound = Resources.Load("Audio/Music/MuseumDoorOpens") as AudioClip;
 
         _chestOpeningSound = Resources.Load("Audio/Effects/ChestOpening") as AudioClip;
 
@@ -97,8 +103,12 @@ public class AudioManager : MonoBehaviour
 
     public static void OpenTempleDoorAudio()
     {
-        _doorSoundSource.clip = _doorOpeningSound;
-        _doorSoundSource.Play();
+        _doorOpeningSoundSource.clip = _doorOpeningSound;
+        _doorOpeningSoundSource.Play();
+
+        Debug.Log("Play the sound");
+        _templeDoorMusicSource.clip = _templeDoorMusicSound;
+        _templeDoorMusicSource.Play();
     }
 
     public static void OpenChestAudio(GameObject source)

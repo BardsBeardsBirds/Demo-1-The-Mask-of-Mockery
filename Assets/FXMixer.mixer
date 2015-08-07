@@ -22,6 +22,7 @@ AudioMixerController:
     - 8e490f62ff750774b8c6bf39b2973e81
     - 1d982361bde1dd94680df9c7e24f4075
     - 26eb71bd184bc5940a1aab933e57ae66
+    - 369ae48defe0d434f997ea81799b292c
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -37,6 +38,7 @@ AudioMixerGroupController:
   - {fileID: 24386686}
   - {fileID: 24371160}
   - {fileID: 24301038}
+  - {fileID: 24319612}
   m_Volume: 7c541d3858bc7bf4c9e418472dc3aaee
   m_Pitch: 9c0211fcb476739449148ce9cce859fa
   m_Effects:
@@ -58,6 +60,23 @@ AudioMixerGroupController:
   m_Pitch: 71640cc569055f346b3129b6ab3fdb2c
   m_Effects:
   - {fileID: 24476002}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24319612
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: IncidentalMusic
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 369ae48defe0d434f997ea81799b292c
+  m_Children: []
+  m_Volume: 2a8b3bbcb1740c44094ccd9ebf1bf5da
+  m_Pitch: 83e484c8e0103fb48928e50804fd11c5
+  m_Effects:
+  - {fileID: 24465860}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -185,6 +204,19 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &24465860
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0fc0b0af9b18f1d4eb6c02cc004de85c
+  m_EffectName: Attenuation
+  m_MixLevel: 2424c3335b47a284aa0f347a6650df20
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &24476002
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -242,6 +274,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 4947075f35e900e41af4532beb2f0683
   m_FloatValues:
     da163c7800d306948887ba197f3d5266: -6.99106598
+    2a8b3bbcb1740c44094ccd9ebf1bf5da: -6.13370705
     ecc7b08e8555f1641831a0f49c8531a2: -6.55661535
     795b03aeb35d25e40a95eb16c28237e8: -7.43692923
     8f37f4ee7bb3d9549b421a41511783f6: -9.83328629

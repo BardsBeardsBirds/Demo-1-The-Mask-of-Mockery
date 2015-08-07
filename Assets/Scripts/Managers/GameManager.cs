@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public AudioMixerGroup Mixer;
 
     public static GameManager Instance;
+
     public int RupeeHeld;
+
     public Portal DebugSpawn;
     public GameObject GameManagerObj;
     public MainCanvas UICanvas;
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
 
         InGameObjectManager.Instance.LoadInGameObjectsInfo();  //see what objects should be turned on or off
         IIventoryItemWithObject = new InventoryItemWithWorldObject();
+
+        
     }
 
     public void Start()
@@ -119,6 +123,7 @@ public class GameManager : MonoBehaviour
     public void ChangeMoney(int amount)
     {
         RupeeHeld += amount;
+        UICanvas.MoneyOnScreen.DisplayDifferentAmount(RupeeHeld);
         MyConsole.WriteToConsole("We have now " + RupeeHeld + " rupees");
     }
 
@@ -138,14 +143,7 @@ public class GameManager : MonoBehaviour
             //INVENTORY
             if (Input.GetKeyDown(KeyCode.I))
             {
-                if (InventoryCanvas.InventoryIsOpen)
-                {
-                    UICanvas.InventoryCanvas.GetComponent<InventoryCanvas>().CloseInventory();
-                }
-                else
-                {
-                    UICanvas.InventoryCanvas.GetComponent<InventoryCanvas>().OpenInventory();
-                }
+                UICanvas.OpenCloseInventory();
             }
 
             //PAUSE MENU
@@ -176,6 +174,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     public static void Destroy(string name)
     {
         var go = GameObject.Find(name);
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
     {
         Inventory inventory = null;
 
-        foreach (Transform child in UICanvas.InventoryCanvas.transform)
+        foreach (Transform child in UICanvas.InventoryCanvasGO.transform)
         {
             //Debug.LogWarning("going over child: " + child.name);
             if (child.name == "InventoryPanel")

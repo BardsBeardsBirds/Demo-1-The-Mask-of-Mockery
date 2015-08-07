@@ -4,20 +4,25 @@ public class MainCanvas : MonoBehaviour
 {
     public GameObject MainPanel;
     public GameObject DialogueOptions;
-    public GameObject InventoryCanvas;
+    public GameObject InventoryCanvasGO;
     public GameObject PauseMenuCanvas;
     public GameObject PauseMenuMainWindow;
     public GameObject PauseMenuHelpWindow;
+    public GameObject ScreenButtonWidget;
 
     public Image InventoryPanelImage;
     public GameObject InventoryPanelSlots;
     public UIDrawer MyUIDrawer;
+    public MoneyDisplay MoneyOnScreen;  //the script that arranges displaying the money on screen.
+
 
     public void Awake()
     {
         MainPanel = this.gameObject;
 
         MyUIDrawer = MainPanel.AddComponent<UIDrawer>();
+
+
 
         PauseMenuCanvas = GameObject.Find("PauseMenuCanvas");
         PauseMenuMainWindow = PauseMenuCanvas.transform.FindChild("MainPanel").gameObject;
@@ -29,13 +34,13 @@ public class MainCanvas : MonoBehaviour
             DialogueOptions = GameObject.Find("DialogueOptionsUI");
         }
 
-        if (InventoryCanvas == null)
+        if (InventoryCanvasGO == null)
         {
             Debug.LogError("couldn't find InventoryCanvas");
-            InventoryCanvas = GameObject.Find("InventoryCanvas");
+            InventoryCanvasGO = GameObject.Find("InventoryCanvas");
         }
         else
-            GameManager.Instance.MyInventory = InventoryCanvas.GetComponentInChildren<Inventory>();
+            GameManager.Instance.MyInventory = InventoryCanvasGO.GetComponentInChildren<Inventory>();
 
         if (InventoryPanelImage == null)
         {
@@ -47,8 +52,24 @@ public class MainCanvas : MonoBehaviour
             Debug.LogError("couldn't find InventoryPanelSlots");
         }
 
+        if (ScreenButtonWidget == null)
+        {
+            Debug.LogError("couldn't find ScreenButtonWidget");
+        }
   //      HideInventory();
     //    ShowSlotsImages();
+    }
+
+    public void OpenCloseInventory()
+    {
+        if (InventoryCanvas.InventoryIsOpen)
+        {
+            InventoryCanvasGO.GetComponent<InventoryCanvas>().CloseInventory();
+        }
+        else
+        {
+            InventoryCanvasGO.GetComponent<InventoryCanvas>().OpenInventory();
+        }
     }
 
     public void ShowInventory()
@@ -93,6 +114,16 @@ public class MainCanvas : MonoBehaviour
     {
         Transform dialogueOptions = DialogueOptions.transform.FindChild("DialogueOptions");
         dialogueOptions.gameObject.SetActive(false);
+    }
+
+    public void HideScreenButtonWidget()
+    {
+        ScreenButtonWidget.SetActive(false);
+    }
+
+    public void ShowScreenButtonWidget()
+    {
+        ScreenButtonWidget.SetActive(true);
     }
 
     //#region Helpers

@@ -72,7 +72,7 @@ public class Inventory : MonoBehaviour
     {
         if (UIDrawer.IsDraggingItem)
         {
-            Vector3 mousePos = (Input.mousePosition - GameManager.Instance.UICanvas.InventoryCanvas.GetComponent<RectTransform>().localPosition);
+            Vector3 mousePos = (Input.mousePosition - GameManager.Instance.UICanvas.InventoryCanvasGO.GetComponent<RectTransform>().localPosition);
             //previous problems with the mouse location were solved by distracting screen / 2.
             DraggedItemGameObject.GetComponent<RectTransform>().localPosition = new Vector3(mousePos.x + 15 - (Screen.width / 2), mousePos.y + 15 - (Screen.height / 2), mousePos.z);
 

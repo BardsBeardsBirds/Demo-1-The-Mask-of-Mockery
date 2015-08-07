@@ -118,6 +118,7 @@
      <Compile Include="Assets\Scripts\UI\InvestigateObjectButton.cs" />
      <Compile Include="Assets\Scripts\UI\MainCanvas.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\MoneyDisplay.cs" />
      <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\UI\SceneFader.cs" />
      <Compile Include="Assets\Scripts\UI\UIDrawer.cs" />

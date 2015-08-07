@@ -35,6 +35,6 @@ public class ItemManager : MonoBehaviour
 
     public static void AddItem(int item)
     {
-        SlotScript.IInventory.AddItem(item);
+        GameManager.Instance.MyInventory.AddItem(item);
     }
 }
