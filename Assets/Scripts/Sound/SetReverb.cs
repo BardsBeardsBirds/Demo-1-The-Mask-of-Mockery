@@ -31,6 +31,7 @@ public class SetReverb : MonoBehaviour
                 AudioManager.Instance.SetSendLevel(0);
                 break;
             default:
+                AudioManager.Instance.SetSendLevel(-60f);
                 break;
         }
     }

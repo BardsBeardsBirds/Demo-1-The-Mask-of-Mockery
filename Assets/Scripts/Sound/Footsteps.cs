@@ -96,6 +96,8 @@ public class Footsteps
     {
         _footstepSource = GameObject.Find("Footsteps").GetComponent<AudioSource>();
 
+        #region foostep files
+
         //Concrete
         ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 1") as AudioClip);
         ConcreteWalkClips.Add(Resources.Load("Audio/Effects/Footsteps/Concrete/Male leather sole walk 2") as AudioClip);
@@ -601,6 +603,8 @@ public class Footsteps
         WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole turn 1") as AudioClip);
         WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole turn 2") as AudioClip);
         WoodSolidTurnClips.Add(Resources.Load("Audio/Effects/Footsteps/WoodSolid/Male leather sole turn 3") as AudioClip);
+
+        #endregion foostep files
     }
 
     public void Update()
@@ -609,7 +613,6 @@ public class Footsteps
             CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Sliding)
             return;
 
-     //   float speed = GameManager.Player.GetComponent<Animator>().GetFloat("Speed");
         if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.WalkBackwards ||
             CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Walking)
         {
@@ -729,8 +732,8 @@ public class Footsteps
                 _footstepSource.Play();
                 break;
             default:
-                randomClip = Random.Range(0, WoodWalkClips.Count);
-                _footstepSource.clip = WoodWalkClips[randomClip];
+                randomClip = Random.Range(0, DirtWalkClips.Count);
+                _footstepSource.clip = DirtWalkClips[randomClip];
                 _footstepSource.Play();
                 break;
         }
@@ -834,8 +837,8 @@ public class Footsteps
                 _footstepSource.Play();
                 break;
             default:
-                randomClip = Random.Range(0, WoodSprintClips.Count);
-                _footstepSource.clip = WoodSprintClips[randomClip];
+                randomClip = Random.Range(0, DirtSprintClips.Count);
+                _footstepSource.clip = DirtSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
         }
@@ -937,8 +940,8 @@ public class Footsteps
                 _footstepSource.Play();
                 break;
             default:
-                randomClip = Random.Range(0, WoodSprintClips.Count);
-                _footstepSource.clip = WoodSprintClips[randomClip];
+                randomClip = Random.Range(0, DirtSprintClips.Count);
+                _footstepSource.clip = DirtSprintClips[randomClip];
                 _footstepSource.Play();
                 break;
         }
@@ -1040,8 +1043,8 @@ public class Footsteps
                 _footstepSource.Play();
                 break;
             default:
-                randomClip = Random.Range(0, WoodTurnClips.Count);
-                _footstepSource.clip = WoodTurnClips[randomClip];
+                randomClip = Random.Range(0, DirtTurnClips.Count);
+                _footstepSource.clip = DirtTurnClips[randomClip];
                 _footstepSource.Play();
                 break;
         }

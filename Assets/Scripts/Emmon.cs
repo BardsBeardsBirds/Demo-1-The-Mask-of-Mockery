@@ -19,6 +19,8 @@ public class Emmon : MonoBehaviour
     {
         Instance = this;
 
+        Ground = CharacterControllerLogic.WalkGround.Dirt;
+
         SetWaterRings();
     }
 

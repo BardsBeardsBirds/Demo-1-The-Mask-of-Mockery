@@ -43,6 +43,8 @@ public class AudioManager : MonoBehaviour
         Instance = this;
 
         MainMixer = GameObject.Find("MainMixerGO").GetComponent<AudioSource>().outputAudioMixerGroup.audioMixer;
+        SetSendLevel(-90f);
+
 
         FootstepsScript = new Footsteps();
         FootstepsScript.Awake();
@@ -91,8 +93,6 @@ public class AudioManager : MonoBehaviour
 
     public void SetSendLevel(float lvl)
     {
-        float waka = 0;
-        MainMixer.GetFloat("FootstepsReverbSend", out waka);
         MainMixer.SetFloat("FootstepsReverbSend", lvl);
     }
 

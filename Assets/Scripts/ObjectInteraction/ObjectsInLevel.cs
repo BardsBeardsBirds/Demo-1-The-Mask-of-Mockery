@@ -52,4 +52,5 @@
         Wheel5,
         Wheel6,
 
+        Rabbit,
     };

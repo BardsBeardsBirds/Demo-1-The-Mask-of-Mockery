@@ -34,7 +34,7 @@ public class Sentinel : MonoBehaviour
     {
         {3001, "Hold it there! No one can pass. King’s order."},
         {3004, "Maybe I can tell such a beautiful bard's tale that you will let me pass?"},
-        {3006, "I just received a King’s order to make way for all royal bards of Baton. Please let us through!"},
+        {3006, "I just received a special King’s order!"},
         {3009, "Please let me pass?"},
         {3014, "What can I do to make you change your mind?"},
         {3016, "What can I do to make you change your mind?"},
@@ -53,8 +53,8 @@ public class Sentinel : MonoBehaviour
         {3003, "Shoo!"},
         {3004, "We bards have practised the art of storytelling for years. How about I tell you the most beautiful story you have every heard; a story so touching that it will make tears well in your eyes? … and then you let me pass?"},
         {3005, "You will tell me a story that will make me cry? And then you will surely take my tears to the tear collector, don’t you? Noho, I am not falling for that one."},
-        {3006, "I just received a King’s order to make way for all royal bards of Baton..!"},
-        {3007, "Please let us through! Here we come… Ehm... I would like to..."},
+        {3006, "I just received a King’s order to make way for all bards in Baton! Please let me through..!"},
+        {3007, "Ehm... Would you step aside..?"},
         {3008, "You didn’t think that was going to work, didn’t you?"},
         {3009, "Please let me pass?"},
         {3010, "Listen, wandering around in the wilderness ahead is very dangerous, and I have specific orders to look out for you, music boy. "},
@@ -71,6 +71,7 @@ public class Sentinel : MonoBehaviour
         {3021, "It seems you learnt something in the meantime! With this attitude, I can’t do anything but granting you passage sir. King Archimedes must be proud of you."},
         {3022, "When a brave man takes a stand, the spines of others are often stiffened."},
         {3023, "I think we finished talking."},
+        {3025, "Okay, here I go.."}
     };
 
     #endregion
@@ -272,6 +273,8 @@ public class Sentinel : MonoBehaviour
 
     public void PassSentinelDialogue()
     {
+        AddToDialogue(3025);    //here I go..
+
         AddToDialogue(3019);
         AddToDialogue(3020);
         AddToDialogue(3021);

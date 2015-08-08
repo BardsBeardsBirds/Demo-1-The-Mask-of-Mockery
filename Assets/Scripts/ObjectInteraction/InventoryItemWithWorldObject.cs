@@ -12,22 +12,39 @@ public class InventoryItemWithWorldObject
 
     public static List<int> CurrentDialogueIDs = new List<int>();
 
-    int[] randomNos = new int[] { 9001, 9002, 9003 };
+    int[] randomNos = new int[] { 9001, 9002, 9003, 9004, 9005 };
 
     public static Dictionary<int, string> CombineItemLines = new Dictionary<int, string>()
     {
         {9001, "No."},
         {9002, "No."},
-        {9003, "That is impossible."},
+        {9003, "No."},
+        {9004, "That is impossible."},
+
+        {9005, "I can't do that."},
+
+        
+        {9008, "This rabbit doesn't eat carrots."},
+        {9009, "Would you like a carrot?"},
+        {9010, "Are you trying to bribe me?"},
+        {9011, "Never mind."},
+
+        {9013, "I don't think he would like that."},
+        {9014, "I rather keep this for myself."},
+        {9015, "He doesn't deserve that!"},
+       // {9016, "Okay, here I go.."},
+
+
+
     };
 
-    public void CombineItems(Item inventoryItem, ObjectsInLevel worldObject)
+    public void CombineItems(Item inventoryItem, ObjectsInLevel worldObject)    //inventory items with world
     {
         Debug.Log("try to use " + inventoryItem.ItemName + " with " + worldObject);
         DialoguePlayback.Instance.PlaybackCombineItemsWithWorld(inventoryItem, worldObject);
     }
 
-    public bool CombineItems(Item inventoryItem, Item subjectedItem)
+    public bool CombineItems(Item inventoryItem, Item subjectedItem)            //inventory items with other inventory items
     {
         _canMakeCombination = false;
         Debug.Log("try to use " + inventoryItem.ItemName + " with " + subjectedItem.ItemName);
@@ -107,17 +124,36 @@ public class InventoryItemWithWorldObject
         {
             case Item.ItemType.RoughneckShot:
                 {
-                    CurrentDialogueIDs.Add(randomNo);
+                    if (worldObject == ObjectsInLevel.Sentinel)
+                        Sentinel.Instance.PassSentinelDialogue();
+                    else
+                        CurrentDialogueIDs.Add(9014);
                 }
                 break;
             case Item.ItemType.Carrot:
                 {
-                    CurrentDialogueIDs.Add(randomNo);
+                    if (worldObject == ObjectsInLevel.Rabbit)
+                        CurrentDialogueIDs.Add(9008);
+                    else if(worldObject == ObjectsInLevel.Sentinel)
+                    {
+                        CurrentDialogueIDs.Add(9009);
+                        CurrentDialogueIDs.Add(9010);
+                        CurrentDialogueIDs.Add(9011);
+                    }
+                    else if(worldObject == ObjectsInLevel.BennyTwospoons || worldObject == ObjectsInLevel.AyTheTearCollector)
+                        CurrentDialogueIDs.Add(9013);
+                    else
+                        CurrentDialogueIDs.Add(randomNo);
                 }
                 break;
             case Item.ItemType.MaskOfMockery:
                 {
-                    CurrentDialogueIDs.Add(randomNo);
+                    if (worldObject == ObjectsInLevel.Sentinel)
+                        CurrentDialogueIDs.Add(9015);
+                    else if (worldObject == ObjectsInLevel.AyTheTearCollector)
+                        AyTheTearCollector.Instance.StartDialogue();
+                    else
+                        CurrentDialogueIDs.Add(randomNo);
                 }
                 break;
             default:
@@ -175,7 +211,7 @@ public class InventoryItemWithWorldObject
             id = 2043;
         else if (id == 9002)  // no
             id = 2049;
-        else if (id == 9003)  // that is impossible
+        else if (id == 9004)  // that is impossible
             id = 2042;
         return id;
     }

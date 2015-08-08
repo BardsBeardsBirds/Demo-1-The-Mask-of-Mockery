@@ -64,6 +64,7 @@ public static class ObjectCommentary
         {1054, "Hm.. the wall here seems damaged."},
         {1055, "This must be the famous mask of Mockery!"},
         {1060, "Hm.. All sides of the wheel have different colours."},
+        
     };
 
     public static Dictionary<int, string> InteractionLines = new Dictionary<int, string>()
@@ -359,6 +360,9 @@ public static class ObjectCommentary
             case ObjectsInLevel.Wheel6:
                 CurrentDialogueIDs.Add(1060);
                 break;
+            case ObjectsInLevel.Rabbit:
+                CurrentDialogueIDs.Add(2049);   //TODO: Needs its own description!
+                break;
             default:
                 break;
         }
@@ -523,6 +527,9 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.Wheel6:
                 GateWheel.ChooseWheelNumber(6);
+                break;
+            case ObjectsInLevel.Rabbit:
+                CurrentDialogueIDs.Add(2049);
                 break;
             default:
                 break;
