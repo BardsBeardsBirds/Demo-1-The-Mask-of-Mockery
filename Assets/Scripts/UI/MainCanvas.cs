@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 public class MainCanvas : MonoBehaviour
 {
+    public enum Hoverings { MouseInWorld, MouseInInventory };
+
     public GameObject MainPanel;
     public GameObject DialogueOptions;
     public GameObject InventoryCanvasGO;
@@ -10,19 +12,25 @@ public class MainCanvas : MonoBehaviour
     public GameObject PauseMenuHelpWindow;
     public GameObject ScreenButtonWidget;
 
+    public GameObject ObjectDescriptionTextGO;
+    public Text ObjectDescriptionText;
+    public Hoverings Hovering;
+
     public Image InventoryPanelImage;
     public GameObject InventoryPanelSlots;
     public UIDrawer MyUIDrawer;
     public MoneyDisplay MoneyOnScreen;  //the script that arranges displaying the money on screen.
 
-
     public void Awake()
     {
         MainPanel = this.gameObject;
 
+        Hovering = Hoverings.MouseInWorld;
+
         MyUIDrawer = MainPanel.AddComponent<UIDrawer>();
 
-
+        ObjectDescriptionTextGO = GameObject.Find("ObjectDescriptionText");
+        ObjectDescriptionText = ObjectDescriptionTextGO.GetComponent<Text>();
 
         PauseMenuCanvas = GameObject.Find("PauseMenuCanvas");
         PauseMenuMainWindow = PauseMenuCanvas.transform.FindChild("MainPanel").gameObject;
@@ -126,20 +134,8 @@ public class MainCanvas : MonoBehaviour
         ScreenButtonWidget.SetActive(true);
     }
 
-    //#region Helpers
-
-    //public void HideSlotsGO()
-    //{
-
-    //}
-
-    //public void ShowSlotsImages()
-    //{
-    //    foreach(Transform trans in InventoryPanelSlots.transform)
-    //    {
-    //        trans.GetComponent<Image>().enabled = true;
-    //    }
-    //}
-
-    //#endregion Helpers
+    public void HideObjectDescriptionText()
+    {
+        ObjectDescriptionText.enabled = false;
+    }
 }

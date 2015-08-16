@@ -210,7 +210,7 @@ public class AyTheTearCollector : MonoBehaviour
         {2086, "Oops, I am not that rich."},
         {2087, "That is not enough. Ay, I am sorry."},
         {2088, "Hey, I paid you! I was going to get the mask for you! Without a Roughneck shot, there will be no mask."},
-        {2089, "Well, there was an 80 percent chance you would die during your journey to the mask, anyway. I cannot risk giving you the Roughneck shot for free and afterwards never see you again."},
+        {2089, "Well, there was an 80 percent chance you would die during your journey to the mask anyway. I cannot risk giving you the Roughneck Shot for free and afterwards never see you again."},
         {2090, "If you give me the Roughneck Shot, I will reward you with a free massage."},
         {2091, "That actually sounds like a pretty good deal. I… But wait a minute. Are you a qualified masseur?"},
         {2092, "Yes."},

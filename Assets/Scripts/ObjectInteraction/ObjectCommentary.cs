@@ -64,6 +64,7 @@ public static class ObjectCommentary
         {1054, "Hm.. the wall here seems damaged."},
         {1055, "This must be the famous mask of Mockery!"},
         {1060, "Hm.. All sides of the wheel have different colours."},
+        {1061, "I better leave it alone."},
         
     };
 
@@ -361,7 +362,7 @@ public static class ObjectCommentary
                 CurrentDialogueIDs.Add(1060);
                 break;
             case ObjectsInLevel.Rabbit:
-                CurrentDialogueIDs.Add(2049);   //TODO: Needs its own description!
+                CurrentDialogueIDs.Add(1061);   //TODO: Needs its own description!
                 break;
             default:
                 break;
@@ -437,6 +438,9 @@ public static class ObjectCommentary
                 CurrentDialogueIDs.Add(2020);
                 break;
             case ObjectsInLevel.ExplodingCandles:
+                CurrentDialogueIDs.Add(2022);
+                break;
+            case ObjectsInLevel.RockingHorse:
                 CurrentDialogueIDs.Add(2022);
                 break;
             case ObjectsInLevel.TheTwoSpoonsSign:
@@ -547,6 +551,8 @@ public static class ObjectCommentary
             id = 2042;
         else if (id == 2050)
             id = 2049;
+        else if (id == 1061)
+            id = 2041;
         else if (id == 2053)
             id = 2052;
 

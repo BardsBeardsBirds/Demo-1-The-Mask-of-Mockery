@@ -11,16 +11,14 @@ public class MouseClickOnObject : MonoBehaviour
     public static bool MouseIsOnInvestigateButton = false;
     public static bool MouseIsOnInteractionButton = false;
 
-    public ObjectsInLevel Naam;
-    public static ObjectsInLevel ThisObject;
-    public float depthIntoScene = 10;
+    public ObjectsInLevel MyObject;
+    public static ObjectsInLevel CurrentObject;
+    public float depthIntoScene = 10;   
 
     public float defaultDepthIntoScene = 5;
     public float selectScale = .3f;
 
-    private static GameObject _objectDescriptionTextGO;
-
-    public static Text DescriptionText;
+    private Text _descriptionText;
 
     private ActionPanel _actionPanel;
 
@@ -29,7 +27,7 @@ public class MouseClickOnObject : MonoBehaviour
     //This is the line that appears when the player hovers over an object
     public static Dictionary<ObjectsInLevel, string> ObjectLines = new Dictionary<ObjectsInLevel, string>() 
     {
-      //  {ObjectsInLevel.Null, "Object is null"},
+        {ObjectsInLevel.Null, "Object is null"},
         {ObjectsInLevel.BennyTwospoons, "Grumpy clown"},
         {ObjectsInLevel.AyTheTearCollector, "Masked guy"},
         {ObjectsInLevel.Sentinel, "Sentinel"},
@@ -79,11 +77,12 @@ public class MouseClickOnObject : MonoBehaviour
         {ObjectsInLevel.Wheel4, "Wheel"},
         {ObjectsInLevel.Wheel5, "Wheel"},
         {ObjectsInLevel.Wheel6, "Wheel"},
+        {ObjectsInLevel.Rabbit, "Rabbit"},
     };
 
     public static Dictionary<ObjectsInLevel, string> ObjectInteractionLines = new Dictionary<ObjectsInLevel, string>() 
     {
-    //    {ObjectsInLevel.Null, "Object is null"},
+        {ObjectsInLevel.Null, "Object is null"},
         {ObjectsInLevel.BennyTwospoons, "Talk to grumpy clown"},
         {ObjectsInLevel.AyTheTearCollector, "Talk to masked guy"},
         {ObjectsInLevel.Sentinel, "Talk to sentinel"},
@@ -133,11 +132,12 @@ public class MouseClickOnObject : MonoBehaviour
         {ObjectsInLevel.Wheel4, "Turn wheel"},
         {ObjectsInLevel.Wheel5, "Turn wheel"},
         {ObjectsInLevel.Wheel6, "Turn wheel"},
+        {ObjectsInLevel.Rabbit, "Pick up rabbit"},
     };
 
     public static Dictionary<ObjectsInLevel, string> ObjectInvestigationLines = new Dictionary<ObjectsInLevel, string>() 
     {
-    //    {ObjectsInLevel.Null, "Object is null"},
+        {ObjectsInLevel.Null, "Object is null"},
         {ObjectsInLevel.BennyTwospoons, "Investigate grumpy clown"},
         {ObjectsInLevel.AyTheTearCollector, "Investigate masked guy"},
         {ObjectsInLevel.Sentinel, "Investigate sentinel"},
@@ -187,6 +187,7 @@ public class MouseClickOnObject : MonoBehaviour
         {ObjectsInLevel.Wheel4, "Investigate wheel"},
         {ObjectsInLevel.Wheel5, "Investigate wheel"},
         {ObjectsInLevel.Wheel6, "Investigate wheel"},
+        {ObjectsInLevel.Rabbit, "Investigate rabbit"},
     };
 
     #endregion
@@ -194,13 +195,12 @@ public class MouseClickOnObject : MonoBehaviour
 
     public void Start()
     {
-        if (Naam == null)
+        if (MyObject == null)
             Debug.LogWarning("This object has no name: " + this.name);
 
         Instance = this;
 
-        _objectDescriptionTextGO = GameObject.Find("ObjectDescriptionText");
-        DescriptionText = _objectDescriptionTextGO.GetComponent<Text>();
+        _descriptionText = GameManager.Instance.UICanvas.ObjectDescriptionText;
         _actionPanel = new ActionPanel();
     }
 
@@ -209,11 +209,11 @@ public class MouseClickOnObject : MonoBehaviour
         if (GameManager.GamePlayingMode == GameManager.GameMode.Paused || GameManager.GamePlayingMode == GameManager.GameMode.IntroMode) // don't show if paused.
             return;
 
-        ActionPanel.LastHoveredObject = Naam;
+        ActionPanel.LastHoveredObject = MyObject;
 
         if (UIDrawer.IsDraggingItem)
         {
-            GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, Naam);
+            GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
         }
         else
             _actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
@@ -221,8 +221,13 @@ public class MouseClickOnObject : MonoBehaviour
 
     public void OnMouseExit()
     {
-        if (!MouseIsOnInvestigateButton && !MouseIsOnInteractionButton)
-            HideObjectDescriptionText();
+        if(UIDrawer.IsDraggingItem)
+        {
+            _descriptionText.text = UIDrawer.DraggingItem.ItemName;
+            _descriptionText.enabled = true;
+        }
+        else if (!MouseIsOnInvestigateButton && !MouseIsOnInteractionButton)
+            GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 
     public void OnMouseUp()
@@ -232,8 +237,8 @@ public class MouseClickOnObject : MonoBehaviour
         if (MouseIsOnInvestigateButton || MouseIsOnInteractionButton)
         {
             AudioManager.Instance.UISoundsScript.PlayClick();   // sound
-            _actionPanel.PlayActionPanelForClickedObject(Naam, this.transform);
-            HideObjectDescriptionText();
+            _actionPanel.PlayActionPanelForClickedObject(MyObject, this.transform);
+            GameManager.Instance.UICanvas.HideObjectDescriptionText();
         }
         else
             ActionPanel.HideActionPanel();
@@ -244,29 +249,28 @@ public class MouseClickOnObject : MonoBehaviour
         if (GameManager.GamePlayingMode == GameManager.GameMode.Paused || GameManager.GamePlayingMode == GameManager.GameMode.IntroMode) // don't show if paused.
             return;
 
-        ThisObject = Naam;
+        if (GameManager.Instance.UICanvas.Hovering != MainCanvas.Hoverings.MouseInWorld)
+            return;
+        
+        CurrentObject = MyObject;
 
-        DescriptionText.enabled = true;
+        _descriptionText.enabled = true;
 
-        if (ActionPanel.LastHoveredObject == ThisObject)
+        if (ActionPanel.LastHoveredObject == CurrentObject)
             return;
 
         if (!MouseIsOnInteractionButton || !MouseIsOnInvestigateButton)
         {
             if(UIDrawer.IsDraggingItem)
             {
-                DescriptionText.text = "Use " + GameManager.Instance.MyInventory.TheDraggedItem.ItemName + " with " + ObjectLines[Naam];
+                _descriptionText.text = "Use "
+                    + GameManager.Instance.MyInventory.TheDraggedItem.ItemName + " with " + ObjectLines[MyObject];
             }
             else
             {
-                DescriptionText.text = ObjectLines[Naam];
-                MyConsole.WriteToConsole(ObjectLines[Naam]);
+                _descriptionText.text = ObjectLines[MyObject];
+                MyConsole.WriteToConsole(ObjectLines[MyObject]);
             }
         }
-    }
-
-    public static void HideObjectDescriptionText()
-    {
-        DescriptionText.enabled = false;
     }
 }

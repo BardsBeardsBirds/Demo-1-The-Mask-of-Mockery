@@ -12,6 +12,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     public Text ItemAmountTxt;
 
     private MouseClickOnObject mouseClickOnObject;
+    private Text _descriptionText;
 
     private GameObject _investigateButton;
     private GameObject _interactionButton;
@@ -23,6 +24,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         IInventory = GameManager.Instance.MyInventory;
         ItemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         _actionPanel = new ActionPanel();
+        _descriptionText = GameManager.Instance.UICanvas.ObjectDescriptionText;
     }
 
     void Update()
@@ -93,14 +95,27 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         }
     }
 
-    public void OnPointerEnter(PointerEventData data)   //tooltip
+    public void OnPointerEnter(PointerEventData data)   //hovering
     {
         if (GameManager.GamePlayingMode == GameManager.GameMode.Paused) // don't show if paused.
             return;
 
-        if (IInventory.Items[SlotNumber].ItemName != null && !UIDrawer.IsDraggingItem)  // there is an item in the slot
+        GameManager.Instance.UICanvas.Hovering = MainCanvas.Hoverings.MouseInInventory;
+
+        if (IInventory.Items[SlotNumber].ItemName != null && !UIDrawer.IsDraggingItem)  // there is an item in the slot we are hov
         {
             IInventory.ShowTooltip(IInventory.SlotList[SlotNumber].GetComponent<RectTransform>().localPosition, IInventory.Items[SlotNumber]);
+
+            _descriptionText.enabled = true;
+
+            _descriptionText.text = IInventory.Items[SlotNumber].ItemName;
+        }
+        else if (IInventory.Items[SlotNumber].ItemName != null && UIDrawer.IsDraggingItem)
+        {
+            _descriptionText.enabled = true;
+
+            _descriptionText.text = "Combine " + IInventory.TheDraggedItem.ItemName + " with " + IInventory.Items[SlotNumber].ItemName;
+
         }
     }
 
@@ -112,7 +127,18 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     public void OnPointerExit(PointerEventData data)
     {
         if (IInventory.Items[SlotNumber].ItemName != null)
-        IInventory.HideTooltip();
+           IInventory.HideTooltip();
+
+        if (UIDrawer.IsDraggingItem)
+        {
+            _descriptionText.text = UIDrawer.DraggingItem.ItemName;
+            GameManager.Instance.UICanvas.Hovering = MainCanvas.Hoverings.MouseInWorld;
+        }
+        else
+        {
+            GameManager.Instance.UICanvas.HideObjectDescriptionText();
+            GameManager.Instance.UICanvas.Hovering = MainCanvas.Hoverings.MouseInWorld;
+        }
     }
 
     public void OnDrag(PointerEventData data)
@@ -127,10 +153,11 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
                 Debug.Log("dragging: " + IInventory.TheDraggedItem.ItemName);
 
-
                 IInventory.Items[SlotNumber] = new Item();
 
                 ItemAmountTxt.enabled = false;
+
+                _descriptionText.enabled = true;
             }
         }
     }

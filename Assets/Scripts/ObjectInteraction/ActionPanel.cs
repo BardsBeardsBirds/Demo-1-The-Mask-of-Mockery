@@ -97,7 +97,7 @@ public class ActionPanel
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
         MyConsole.WriteToConsole("Start Investigation of " + item.ItemName);
         DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Investigation, item);
-        MouseClickOnObject.HideObjectDescriptionText();
+        GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 
     public void InteractWithObject(ObjectsInLevel naam) //items in the world
@@ -118,7 +118,7 @@ public class ActionPanel
         }
 
         DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Interaction, item); //SOUND
-        MouseClickOnObject.HideObjectDescriptionText();
+        GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 
     public bool CalculateDistanceWitNPC(ObjectsInLevel naam, Transform trans)
@@ -136,22 +136,22 @@ public class ActionPanel
     public static void ShowHoverInteractionLine()
     {
         if (InteractionType == ItemInteractionType.ObjectInWorld)
-            MouseClickOnObject.DescriptionText.text = MouseClickOnObject.ObjectInteractionLines[MouseClickOnObject.ThisObject];
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = MouseClickOnObject.ObjectInteractionLines[MouseClickOnObject.CurrentObject];
         else
         {
             int id = InventoryCommentary.FindInteractionHoverLines(ThisItem);
-            MouseClickOnObject.DescriptionText.text = InventoryCommentary.InteractionHoverLines[id];
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = InventoryCommentary.InteractionHoverLines[id];
         }
     }
 
     public static void ShowHoverInvestigationLine()
     {
         if (InteractionType == ItemInteractionType.ObjectInWorld)
-            MouseClickOnObject.DescriptionText.text = MouseClickOnObject.ObjectInvestigationLines[MouseClickOnObject.ThisObject];
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = MouseClickOnObject.ObjectInvestigationLines[MouseClickOnObject.CurrentObject];
         else
         {
             int id = InventoryCommentary.FindInvestigationHoverLines(ThisItem);
-            MouseClickOnObject.DescriptionText.text = InventoryCommentary.InvestigationHoverLines[id];
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = InventoryCommentary.InvestigationHoverLines[id];
         }
     }
 

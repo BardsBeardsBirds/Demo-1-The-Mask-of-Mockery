@@ -14,13 +14,13 @@ public class InvestigateObjectButton : MonoBehaviour, IPointerEnterHandler, IPoi
     public void OnPointerEnter(PointerEventData eventData)
     {
         MouseClickOnObject.MouseIsOnInvestigateButton = true;
-        MouseClickOnObject.DescriptionText.enabled = true;
+        GameManager.Instance.UICanvas.ObjectDescriptionText.enabled = true;
         ActionPanel.ShowHoverInvestigationLine();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
             MouseClickOnObject.MouseIsOnInvestigateButton = false;
-            MouseClickOnObject.HideObjectDescriptionText();
+            GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 }

@@ -14,13 +14,13 @@ public class InteractionWithObjectButton : MonoBehaviour, IPointerEnterHandler, 
     public void OnPointerEnter(PointerEventData eventData)
     {       
         MouseClickOnObject.MouseIsOnInteractionButton = true;
-        MouseClickOnObject.DescriptionText.enabled = true;
+        GameManager.Instance.UICanvas.ObjectDescriptionText.enabled = true;
         ActionPanel.ShowHoverInteractionLine();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         MouseClickOnObject.MouseIsOnInteractionButton = false;
-        MouseClickOnObject.HideObjectDescriptionText();
+        GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 }

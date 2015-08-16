@@ -34,8 +34,6 @@ public class InventoryItemWithWorldObject
         {9015, "He doesn't deserve that!"},
        // {9016, "Okay, here I go.."},
 
-
-
     };
 
     public void CombineItems(Item inventoryItem, ObjectsInLevel worldObject)    //inventory items with world
@@ -174,24 +172,11 @@ public class InventoryItemWithWorldObject
                 break;
             case Item.ItemType.Carrot:
                 {
-                    //if(subjectedItem.IType == Item.ItemType.MaskOfMockery)
-                    //{
-                    //    _canMakeCombination = true;
-                    //    CurrentDialogueIDs.Add(9003);
-                    //    break;
-                    //}
                     CurrentDialogueIDs.Add(randomNo);
-
                 }
                 break;
             case Item.ItemType.MaskOfMockery:
                 {
-                    //if (subjectedItem.IType == Item.ItemType.Carrot)
-                    //{
-                    //    _canMakeCombination = true;
-                    //    CurrentDialogueIDs.Add(9002);
-                    //    break;
-                    //}
                     CurrentDialogueIDs.Add(randomNo);
                 }
                 break;

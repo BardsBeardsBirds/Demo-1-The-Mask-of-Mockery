@@ -33,7 +33,7 @@ public class RotateTowards : MonoBehaviour
     public void Update()
     {
        // Debug.Log("bestemming: " + Target.position);
-        Debug.LogWarning("this is the rotate timer " + Timer + " angle: " + Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position));
+        Debug.Log("this is the rotate timer " + Timer + " angle: " + Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position));
         if (Timer > 0)
         {
             Timer -= Time.deltaTime;

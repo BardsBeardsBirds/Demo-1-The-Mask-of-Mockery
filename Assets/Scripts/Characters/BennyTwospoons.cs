@@ -395,7 +395,7 @@ public class BennyTwospoons : MonoBehaviour
                 AddToDialogue(1019);
                 AddToDialogue(1020);
                 AddToDialogue(1021);
-                AddToDialogue(1022);
+                AddToDialogue(1005);    //could be exactly what I need!
                 AddToDialogue(1023);
                 AddToDialogue(1923);
                 AddToDialogue(1024);
