@@ -11,6 +11,7 @@ public class MainCanvas : MonoBehaviour
     public GameObject PauseMenuMainWindow;
     public GameObject PauseMenuHelpWindow;
     public GameObject ScreenButtonWidget;
+    public GameObject IntroScreen;
 
     public GameObject ObjectDescriptionTextGO;
     public Text ObjectDescriptionText;
@@ -64,8 +65,13 @@ public class MainCanvas : MonoBehaviour
         {
             Debug.LogError("couldn't find ScreenButtonWidget");
         }
-  //      HideInventory();
-    //    ShowSlotsImages();
+
+        if(GameManager.MyGameType != GameManager.GameType.NewGame)
+            GameManager.Instance.UICanvas.WidgetActive();
+    }
+
+    public void Start()
+    {
     }
 
     public void OpenCloseInventory()
@@ -90,26 +96,32 @@ public class MainCanvas : MonoBehaviour
     {
         InventoryPanelImage.enabled = false;
         InventoryPanelSlots.SetActive(false);
+
+        if(GameManager.Instance.UICanvas.Hovering == Hoverings.MouseInInventory)
+        {
+            HideObjectDescriptionText();
+            GameManager.Instance.UICanvas.Hovering = Hoverings.MouseInWorld;
+        }
     }
     
     public void ShowPauseMainMenu()
     {
-        PauseMenuMainWindow.SetActive(true);
+        PauseMenuMainWindow.GetComponent<PauseMainPanel>().MainPanelOpen = true;
     }
 
     public void HidePauseMainMenu()
     {
-        PauseMenuMainWindow.SetActive(false);
+        PauseMenuMainWindow.GetComponent<PauseMainPanel>().MainPanelOpen = false;
     }
 
     public void ShowHelpMenu()
     {
-        PauseMenuHelpWindow.SetActive(true);
+        PauseMenuHelpWindow.GetComponent<PauseHelpPanel>().HelpPanelOpen = true;
     }
 
     public void HideHelpMenu()
     {
-        PauseMenuHelpWindow.SetActive(false);
+        PauseMenuHelpWindow.GetComponent<PauseHelpPanel>().HelpPanelOpen = false;
     }
 
     public void ShowDialogueOptionsUI()
@@ -136,6 +148,27 @@ public class MainCanvas : MonoBehaviour
 
     public void HideObjectDescriptionText()
     {
+        ObjectDescriptionText.text = "";
+        ObjectDescriptionTextGO.GetComponentInChildren<DescriptionUnderlining>().ShowNewDescription = false;
         ObjectDescriptionText.enabled = false;
+    }
+
+    public void NewObjectDescription()
+    {
+        ObjectDescriptionTextGO.GetComponentInChildren<DescriptionUnderlining>().ShowNewDescription = true;
+    }
+
+    public void WidgetActive()
+    {
+        Debug.Log("WidgetActiveWidgetActiveWidgetActiveWidgetActive");
+
+        ScreenButtonWidget.GetComponent<Widget>().WidgetActive = true;
+    }
+
+    public void WidgetNotActive()
+    {
+        Debug.Log("Widget NOT Active");
+
+        ScreenButtonWidget.GetComponent<Widget>().WidgetActive = false;
     }
 }

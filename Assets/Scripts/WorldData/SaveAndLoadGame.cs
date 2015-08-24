@@ -157,7 +157,7 @@ public class SaveAndLoadGame
     private void saveWorldEvents(SaveGameData data)
     {
         Debug.Log("saving world events");
-        data.EmmonWasBlockedBySentinel = WorldEvents.EmmonWasBlockedBySentinel;
+        data.EmmonWasBlockedBySentinel = WorldEvents.EmmonKnowsWhatSentinelWants;
         data.EmmonHasRoughneckShot = WorldEvents.EmmonHasRoughneckShot;
         //data.EmmonHasMaskOfMockery = WorldEvents.EmmonHasMaskOfMockery;
         data.EmmonKnowsAy = WorldEvents.EmmonKnowsAy;
@@ -171,7 +171,7 @@ public class SaveAndLoadGame
     private void loadWorldEvents(SaveGameData data)
     {
         Debug.Log("loading world events");
-        WorldEvents.EmmonWasBlockedBySentinel = data.EmmonWasBlockedBySentinel;
+        WorldEvents.EmmonKnowsWhatSentinelWants = data.EmmonWasBlockedBySentinel;
         WorldEvents.EmmonHasRoughneckShot = data.EmmonHasRoughneckShot;
         //WorldEvents.EmmonHasMaskOfMockery = data.EmmonHasMaskOfMockery;
         WorldEvents.EmmonKnowsAy = data.EmmonKnowsAy;

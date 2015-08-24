@@ -32,14 +32,48 @@ public class InventoryItemWithWorldObject
         {9013, "I don't think he would like that."},
         {9014, "I rather keep this for myself."},
         {9015, "He doesn't deserve that!"},
+
        // {9016, "Okay, here I go.."},
 
     };
 
-    public void CombineItems(Item inventoryItem, ObjectsInLevel worldObject)    //inventory items with world
+    public bool CombineItems(Item inventoryItem, ObjectsInLevel worldObject)    //inventory items with world
     {
+        _canMakeCombination = false;
+
         Debug.Log("try to use " + inventoryItem.ItemName + " with " + worldObject);
         DialoguePlayback.Instance.PlaybackCombineItemsWithWorld(inventoryItem, worldObject);
+        _canMakeCombination = TryMakeComination(inventoryItem, worldObject);
+
+
+        return _canMakeCombination;
+    }
+
+    private bool TryMakeComination(Item inventoryItem, ObjectsInLevel worldObject)  //inventory items with world
+    {
+        if (inventoryItem.IType == Item.ItemType.RoughneckShot)
+        {
+            if (worldObject == ObjectsInLevel.Sentinel)
+            {
+                _canMakeCombination = true;
+                //GameManager.Instance.MyInventory.EndDragging(UIDrawer.DraggingFromSlotNo);
+        //        IInventory.EndDragging(SlotNumber);
+            }
+        }
+        else if (inventoryItem.IType == Item.ItemType.MaskOfMockery)
+        {
+            if (worldObject == ObjectsInLevel.AyTheTearCollector || worldObject == ObjectsInLevel.BennyTwospoons)
+                _canMakeCombination = true;
+        }
+        else if(inventoryItem.IType == Item.ItemType.Carrot)
+        {
+            if(worldObject == ObjectsInLevel.Rabbit)
+            {
+                _canMakeCombination = true;
+            }
+        }
+
+        return _canMakeCombination;
     }
 
     public bool CombineItems(Item inventoryItem, Item subjectedItem)            //inventory items with other inventory items
@@ -47,15 +81,21 @@ public class InventoryItemWithWorldObject
         _canMakeCombination = false;
         Debug.Log("try to use " + inventoryItem.ItemName + " with " + subjectedItem.ItemName);
         DialoguePlayback.Instance.PlaybackCombineItemsWithWorld(inventoryItem, subjectedItem);
+        TryMakeComination(inventoryItem, subjectedItem);
 
+        return _canMakeCombination;
+    }
+
+    private bool TryMakeComination(Item inventoryItem, Item subjectedItem)
+    {
         return _canMakeCombination;
     }
 
     public IEnumerator CombineItemRoutine(Item inventoryItem, ObjectsInLevel worldObject)    //inventory items with world
     {
+        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.InventoryCommentary;    //the tiype of dialogue will be overwritten later if the combination triggers the start of an npc dialogue
         FindLines(inventoryItem, worldObject);
         CharacterControllerLogic.Instance.GoToTalkingState();
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.InventoryCommentary;
 
         for (int i = 0; i < CurrentDialogueIDs.Count; i++)
         {
@@ -123,7 +163,12 @@ public class InventoryItemWithWorldObject
             case Item.ItemType.RoughneckShot:
                 {
                     if (worldObject == ObjectsInLevel.Sentinel)
-                        Sentinel.Instance.PassSentinelDialogue();
+                    {
+                        GameManager.Instance.MyInventory.EndDragging(UIDrawer.DraggingFromSlotNo);
+
+                        WorldEvents.EmmonHasRoughneckShot = true;
+                        Sentinel.Instance.StartDialogue();
+                    }
                     else
                         CurrentDialogueIDs.Add(9014);
                 }
@@ -149,7 +194,14 @@ public class InventoryItemWithWorldObject
                     if (worldObject == ObjectsInLevel.Sentinel)
                         CurrentDialogueIDs.Add(9015);
                     else if (worldObject == ObjectsInLevel.AyTheTearCollector)
+                    {
                         AyTheTearCollector.Instance.StartDialogue();
+                    }
+                    else if (worldObject == ObjectsInLevel.BennyTwospoons)
+                    {
+                        BennyTwospoons.Instance.StartDialogue();
+
+                    }
                     else
                         CurrentDialogueIDs.Add(randomNo);
                 }
@@ -204,7 +256,6 @@ public class InventoryItemWithWorldObject
     public int RandomNo()
     {
         int random = UnityEngine.Random.Range(0, randomNos.Length);
-        Debug.Log("returning randon " + random);
         return randomNos[random];
     }
 }

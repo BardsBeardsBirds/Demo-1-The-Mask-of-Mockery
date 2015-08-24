@@ -282,8 +282,7 @@ public class BennyTwospoons : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(1061);
         }
 
-        if (characterSituation == 4 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062)
-            && DialogueOptions[1063] == "") ////about this mask
+        if (characterSituation == 4 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062)) ////about this mask
         {
             DialogueMenu.AddToDialogueOptions(1063);
         }
@@ -374,9 +373,9 @@ public class BennyTwospoons : MonoBehaviour
                     WorldEvents.EmmonKnowsBenny = true;
                     MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";
                     MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.BennyTwospoons] = "Investigate Benny Twospoons";
-                    MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.BennyTwospoons] = "Talk to Benny Twospoons";    
-                    
-                    DialoguePlayback.Instance.PlaybackDialogue(1000);
+                    MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.BennyTwospoons] = "Talk to Benny Twospoons";
+
+                    DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1000);
                 }
                 else // hi , hi , hi
                 {
@@ -384,7 +383,7 @@ public class BennyTwospoons : MonoBehaviour
                     AddToDialogue(1052);
                     AddToDialogue(1053);
                     AddToDialogue(1054);
-                    DialoguePlayback.Instance.PlaybackDialogue(1054);
+                    DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1054);
                 }
                 break;
             case 2: //SITUATION 2 EmmonSeesTheLute
@@ -404,7 +403,7 @@ public class BennyTwospoons : MonoBehaviour
                 MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";        
 
                 ObjectCommentary.AskingLute = false;
-                DialoguePlayback.Instance.PlaybackDialogue(1018);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1018);
 
                 CharacterControllerLogic.Instance.ForceTurningAngle(0);
                 TimeManager.Instance.CreateRotator(GameManager.Player.transform, this.transform, 2f, 3f);
@@ -415,14 +414,14 @@ public class BennyTwospoons : MonoBehaviour
                 AddToDialogue(1052);
                 AddToDialogue(1053);
                 AddToDialogue(1054);
-                DialoguePlayback.Instance.PlaybackDialogue(1054);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1054);
                 break;
             case 4: //I'm back but EmmonWasBlockedBySentinel
                 AddToDialogue(1051);
                 AddToDialogue(1052);
                 AddToDialogue(1053);
                 AddToDialogue(1054);
-                DialoguePlayback.Instance.PlaybackDialogue(1054);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1054);
                 break;
             case 5: // That sentinel was no match for me. He’s sleeping with the fishes.
                 AddToDialogue(1083);
@@ -430,7 +429,7 @@ public class BennyTwospoons : MonoBehaviour
                 AddToDialogue(1085);
                 AddToDialogue(1086);
                 DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogue(1083);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1083);
                 break;
             case 6: // This will make your day: I found you The Mask Of Mockery.
                 AddToDialogue(1087);
@@ -443,7 +442,7 @@ public class BennyTwospoons : MonoBehaviour
 
                 WorldEvents.MissionAccomplished = true;
                 DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogue(1087);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1087);
                 break;
             case 999:
                 DialogueMenu.FindDialogueOptionText();

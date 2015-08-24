@@ -13,6 +13,7 @@ public class DialoguePlayback : MonoBehaviour
 
     public static int DeleteLineID = 0;
     public static int LastLineID = 0;
+    public static int CurrentLineID = 0;
 
     public static List<int> CurrentDialogueIDs = new List<int>();
 
@@ -30,6 +31,7 @@ public class DialoguePlayback : MonoBehaviour
         dialogueLineImage.GetComponent<Image>().enabled = true;
         Text Optiontext = dialogueLineImage.GetComponentInChildren<Text>();
         Optiontext.text = _currentDialogueLine;
+        Optiontext.enabled = true;
     }
 
     public void HideDialogueLines()
@@ -38,6 +40,7 @@ public class DialoguePlayback : MonoBehaviour
         dialogueLineImage.GetComponent<Image>().enabled = false;
         Text Optiontext = dialogueLineImage.GetComponentInChildren<Text>();
         Optiontext.text = "";
+        Optiontext.enabled = false;
     }
 
     public static void SetCurrentDialogueLine(string currentDialogueLine)
@@ -101,13 +104,23 @@ public class DialoguePlayback : MonoBehaviour
         ShowDialogueLines();
     }
 
+    public void PlaybackDialogueWithoutOptions(int dialogueOptionID)
+    {
+        DialoguePlayback.TriggerDialogue(dialogueOptionID); //starts loading all the lines
+
+        StartCoroutine(DialogueRoutine());
+
+        ShowDialogueLines();
+    }
+
     public static IEnumerator DialogueRoutine()
     {
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
-
+        Debug.Log(NPC);
         for (int i = 0; i < DialoguePlayback.CurrentDialogueIDs.Count; i++)
         {
             var id = DialoguePlayback.CurrentDialogueIDs[i];
+
             LastLineOfTheBlock = false;
 
             switch (NPC)
@@ -125,6 +138,9 @@ public class DialoguePlayback : MonoBehaviour
                     Debug.LogError("which npc is this?");
                     break;
             }
+
+            CurrentLineID = id;
+
             Debug.Log("currently going over : " + GameManager.NPCs[NPC].gameObject.name + "/" + id);
 
             string audioFile = GameManager.NPCs[NPC].gameObject.name + "/" + id;

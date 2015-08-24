@@ -36,12 +36,14 @@ public class IntroTimer
                     DialoguePlayback.Instance.HideDialogueLines();
                     TimeManager.Instance.DialogueIsPlaying = false;
 
+                    Debug.Log("END TALKING STATE from intro");
+                    CharacterControllerLogic.Instance.EndTalkingState();
                     DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
-                    CharacterControllerLogic.Instance.GoToIdleState();
+
+                    GameManager.Instance.UICanvas.IntroScreen.SetActive(true);
 
                     IntroMode.FinishIntro();
                     Debug.Log("This is the end of the timer " + CharacterControllerLogic.Instance.State + " " + GameManager.GamePlayingMode);
-                     
                 }
             }
 

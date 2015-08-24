@@ -246,7 +246,10 @@ public class AyTheTearCollector : MonoBehaviour
         {2122, "I suddenly feel a great urge to go stand over there. Bye."},
         {2123, "I am back! Rejoice!"},
         {2124, "Can you give me the roughneck shot?"},
-        {2125, "You can buy it."},
+        {2125, "You can buy it."},  ///This one is now "No". Do we not have something better?? // Maybe: "No, that is not an option"
+                                    ///
+
+                                    //We want to disable the line object when options are shown.
     };
     #endregion
 
@@ -259,8 +262,6 @@ public class AyTheTearCollector : MonoBehaviour
 
     public void StartDialogue()
     {
-    //    Animator.SetBool("DialogueState", true);
-
         DialogueManager.StartDialogueState(NPCEnum.NPCs.AyTheTearCollector);
     }
 
@@ -294,7 +295,7 @@ public class AyTheTearCollector : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(2038);
         }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
+        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
             (characterSituation < 5) &&
             DialogueOptions[2038] == "")
         {
@@ -302,14 +303,14 @@ public class AyTheTearCollector : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(2040);
         }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2041 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
+        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2041 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
             (characterSituation < 5) &&
             DialogueOptions[2040] == "")
         {
             DialogueMenu.AddToDialogueOptions(2042);
         }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
+        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
             (characterSituation < 5) &&
             DialogueOptions[2042] == "")
         {
@@ -324,7 +325,7 @@ public class AyTheTearCollector : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(2046);
         }
 
-        if ((lastLineID == 2013 || lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2123) &&
+        if ((lastLineID == 2013 || lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
             (characterSituation < 5) &&
             DialogueOptions[2046] == "")
         {
@@ -400,7 +401,7 @@ public class AyTheTearCollector : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(2111);    // let's talk about something else
         }
 
-        if ((lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2111 || lastLineID == 2123) &&
+        if ((lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
             (characterSituation == 3))
         {
             DialogueMenu.AddToDialogueOptions(2124); // can you give me the roughshot?
@@ -457,7 +458,7 @@ public class AyTheTearCollector : MonoBehaviour
                 break;
             case 2: //SITUATION 2   // I'm back, rejoice!  
                 AddToDialogue(2123);
-                DialoguePlayback.Instance.PlaybackDialogue(2123);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2123);
                 break;
             case 3: // I Don't have the mask
                 AddToDialogue(2068);
@@ -471,13 +472,13 @@ public class AyTheTearCollector : MonoBehaviour
                 AddToDialogue(2076);
                 AddToDialogue(2077); 
                 AddToDialogue(2078);
-                DialoguePlayback.Instance.PlaybackDialogue(2068);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2068);
                 break;
             case 4: //Thanks for the potion, chief
                 AddToDialogue(2112);
                 AddToDialogue(2113);
                 DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogue(2112);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2112);
                 break;
             case 5: //So, I got the mask
                 AddToDialogue(2114);
@@ -487,17 +488,18 @@ public class AyTheTearCollector : MonoBehaviour
                 AddToDialogue(2118);
                 AddToDialogue(2119);
 
-                DialoguePlayback.DeleteLineID = 2114;
+                DialogueOptions[2114] = "";
+
 
                 DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogue(2114);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2114);
                 break;
             case 6: // I'm having a great time with the mask
                 AddToDialogue(2120);
                 AddToDialogue(2121);
 
                 DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogue(2120);
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2120);
                 break;
             case 999:
                 DialogueMenu.FindDialogueOptionText();
@@ -627,6 +629,12 @@ public class AyTheTearCollector : MonoBehaviour
             AddToDialogue(2064);
 
             WorldEvents.EmmonKnowsMaskLocation = true;
+
+            BennyTwospoons.DialogueOptions[1094] = "";
+
+            if(WorldEvents.EmmonKnowsWhatSentinelWants)
+                BennyTwospoons.DialogueOptions[1055] = "";
+
         }
 
         if (dialogueOptionID == 2065)
@@ -715,7 +723,7 @@ public class AyTheTearCollector : MonoBehaviour
             AddToDialogue(2108);
             AddToDialogue(2109);
             AddToDialogue(2110);
-            SlotScript.IInventory.AddItem(1); // add roughneck shot
+            GameManager.Instance.MyInventory.AddItem(1); // add roughneck shot
         }
 
         if (dialogueOptionID == 2111)

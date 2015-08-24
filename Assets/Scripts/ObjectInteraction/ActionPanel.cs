@@ -114,7 +114,7 @@ public class ActionPanel
         if(item.IClass == Item.ItemClass.Consumable)
         {
             //Consume the item
-            SlotScript.IInventory.Items[SlotNumber].ItemAmount--;
+            GameManager.Instance.MyInventory.Items[SlotNumber].ItemAmount--;
         }
 
         DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Interaction, item); //SOUND
@@ -136,22 +136,30 @@ public class ActionPanel
     public static void ShowHoverInteractionLine()
     {
         if (InteractionType == ItemInteractionType.ObjectInWorld)
+        {
             GameManager.Instance.UICanvas.ObjectDescriptionText.text = MouseClickOnObject.ObjectInteractionLines[MouseClickOnObject.CurrentObject];
+            GameManager.Instance.UICanvas.NewObjectDescription();
+        }
         else
         {
             int id = InventoryCommentary.FindInteractionHoverLines(ThisItem);
             GameManager.Instance.UICanvas.ObjectDescriptionText.text = InventoryCommentary.InteractionHoverLines[id];
+            GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
 
     public static void ShowHoverInvestigationLine()
     {
         if (InteractionType == ItemInteractionType.ObjectInWorld)
+        {
             GameManager.Instance.UICanvas.ObjectDescriptionText.text = MouseClickOnObject.ObjectInvestigationLines[MouseClickOnObject.CurrentObject];
+            GameManager.Instance.UICanvas.NewObjectDescription();
+        }
         else
         {
             int id = InventoryCommentary.FindInvestigationHoverLines(ThisItem);
             GameManager.Instance.UICanvas.ObjectDescriptionText.text = InventoryCommentary.InvestigationHoverLines[id];
+            GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
 

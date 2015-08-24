@@ -8,7 +8,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     public Item IItem;
     public int SlotNumber;
     public Image ItemImage;
-    public static Inventory IInventory;
+  //  public static Inventory IInventory;
     public Text ItemAmountTxt;
 
     private MouseClickOnObject mouseClickOnObject;
@@ -21,7 +21,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     void Start()
     {
         ItemAmountTxt = gameObject.transform.GetChild(1).GetComponent<Text>();
-        IInventory = GameManager.Instance.MyInventory;
+    //    IInventory = GameManager.Instance.MyInventory;
         ItemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         _actionPanel = new ActionPanel();
         _descriptionText = GameManager.Instance.UICanvas.ObjectDescriptionText;
@@ -29,25 +29,25 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     void Update()
     {
-        if (IInventory.Items[SlotNumber].ItemName != null)
+        if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null)
         {
             ItemAmountTxt.enabled = false;
             ItemImage.enabled = true;
-            ItemImage.sprite = IInventory.Items[SlotNumber].ItemIcon;
+            ItemImage.sprite = GameManager.Instance.MyInventory.Items[SlotNumber].ItemIcon;
 
-            if(IInventory.Items[SlotNumber].IClass == Item.ItemClass.Consumable)
+            if (GameManager.Instance.MyInventory.Items[SlotNumber].IClass == Item.ItemClass.Consumable)
             {
-                if (IInventory.Items[SlotNumber].ItemAmount > 0)
+                if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemAmount > 0)
                 {
                     ItemAmountTxt.enabled = true;
-                    ItemAmountTxt.text = "" + IInventory.Items[SlotNumber].ItemAmount;
+                    ItemAmountTxt.text = "" + GameManager.Instance.MyInventory.Items[SlotNumber].ItemAmount;
                 }
                 else
                 {
                     // amount of consumable = 0
                     ItemImage.enabled = false;
-                    IInventory.Items[SlotNumber] = new Item();
-                    IInventory.HideTooltip();
+                    GameManager.Instance.MyInventory.Items[SlotNumber] = new Item();
+                    GameManager.Instance.MyInventory.HideTooltip();
                 }
             }
         }
@@ -62,35 +62,46 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         if (GameManager.GamePlayingMode == GameManager.GameMode.Paused) // don't show if paused.
             return;
 
-        if (data.button == PointerEventData.InputButton.Left && IInventory.Items[SlotNumber].ItemName != null)
+        if (data.button == PointerEventData.InputButton.Left && GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null)
         {
             if (UIDrawer.IsDraggingItem)
             {
                 bool tryCombine = false;
-                tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(UIDrawer.DraggingItem, IInventory.Items[SlotNumber]);
+                tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(UIDrawer.DraggingItem, GameManager.Instance.MyInventory.Items[SlotNumber]);
                 if (tryCombine)
+                {
                     Debug.LogWarning("We can combine these two!!");
+                    GameManager.Instance.MyInventory.EndDragging(SlotNumber);
+                }
             }
             else
             {
                 ItemImage.enabled = false;
-                ActionPanel.ThisItem = IInventory.Items[SlotNumber];
+                ActionPanel.ThisItem = GameManager.Instance.MyInventory.Items[SlotNumber];
 
                 _actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.InventoryItemInteraction);
             }
         }
-        if (data.button == PointerEventData.InputButton.Right)
+        else if (data.button == PointerEventData.InputButton.Left && GameManager.Instance.MyInventory.Items[SlotNumber].ItemName == null &&
+            UIDrawer.IsDraggingItem)
         {
-            if (IInventory.Items[SlotNumber].ItemName == null && UIDrawer.IsDraggingItem)
+            GameManager.Instance.MyInventory.EndDragging(SlotNumber);
+        }
+
+        else if (data.button == PointerEventData.InputButton.Right)
+        {
+            if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName == null && UIDrawer.IsDraggingItem)
             {
-                IInventory.Items[SlotNumber] = IInventory.TheDraggedItem;
-                IInventory.HideDraggedItem();
+                GameManager.Instance.MyInventory.EndDragging(SlotNumber);
             }
-            else if (UIDrawer.IsDraggingItem && IInventory.Items[SlotNumber].ItemName != null)
+            else if (UIDrawer.IsDraggingItem && GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null)
             {
-                IInventory.Items[IInventory.IndexOfDraggedItem] = IInventory.Items[SlotNumber];   //go to the slot where the mouse is on 
-                IInventory.Items[SlotNumber] = IInventory.TheDraggedItem;
-                IInventory.HideDraggedItem();
+
+                GameManager.Instance.MyInventory.Items[GameManager.Instance.MyInventory.IndexOfDraggedItem] = GameManager.Instance.MyInventory.Items[SlotNumber];   //switch the dragged item with the item on the slot the mouse is on
+
+                GameManager.Instance.MyInventory.EndDragging(SlotNumber);
+                _descriptionText.text = GameManager.Instance.MyInventory.Items[SlotNumber].ItemName;
+                GameManager.Instance.UICanvas.NewObjectDescription();
             }
         }
     }
@@ -102,37 +113,37 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
         GameManager.Instance.UICanvas.Hovering = MainCanvas.Hoverings.MouseInInventory;
 
-        if (IInventory.Items[SlotNumber].ItemName != null && !UIDrawer.IsDraggingItem)  // there is an item in the slot we are hov
+        if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null && !UIDrawer.IsDraggingItem)  // there is an item in the slot we are hov
         {
-            IInventory.ShowTooltip(IInventory.SlotList[SlotNumber].GetComponent<RectTransform>().localPosition, IInventory.Items[SlotNumber]);
+            GameManager.Instance.MyInventory.ShowTooltip(GameManager.Instance.MyInventory.SlotList[SlotNumber].GetComponent<RectTransform>().localPosition, GameManager.Instance.MyInventory.Items[SlotNumber]);
 
             _descriptionText.enabled = true;
-
-            _descriptionText.text = IInventory.Items[SlotNumber].ItemName;
+            _descriptionText.text = GameManager.Instance.MyInventory.Items[SlotNumber].ItemName;
+            GameManager.Instance.UICanvas.NewObjectDescription();
         }
-        else if (IInventory.Items[SlotNumber].ItemName != null && UIDrawer.IsDraggingItem)
+        else if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null && UIDrawer.IsDraggingItem)
         {
             _descriptionText.enabled = true;
-
-            _descriptionText.text = "Combine " + IInventory.TheDraggedItem.ItemName + " with " + IInventory.Items[SlotNumber].ItemName;
-
+            _descriptionText.text = "Combine " + GameManager.Instance.MyInventory.TheDraggedItem.ItemName + " with " + GameManager.Instance.MyInventory.Items[SlotNumber].ItemName;
+            GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
 
     public void OnPointerUp(PointerEventData data)
     {
-        _actionPanel.PlayActionPanelForClickedObject(IInventory.Items[SlotNumber], SlotNumber);
+        _actionPanel.PlayActionPanelForClickedObject(GameManager.Instance.MyInventory.Items[SlotNumber], SlotNumber);
     }
 
     public void OnPointerExit(PointerEventData data)
     {
-        if (IInventory.Items[SlotNumber].ItemName != null)
-           IInventory.HideTooltip();
+        if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null)
+            GameManager.Instance.MyInventory.HideTooltip();
 
         if (UIDrawer.IsDraggingItem)
         {
             _descriptionText.text = UIDrawer.DraggingItem.ItemName;
             GameManager.Instance.UICanvas.Hovering = MainCanvas.Hoverings.MouseInWorld;
+            GameManager.Instance.UICanvas.NewObjectDescription();
         }
         else
         {
@@ -145,15 +156,15 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     {
         if (data.button == PointerEventData.InputButton.Right)
         {
-            if(IInventory.Items[SlotNumber].ItemName != null)
+            if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null)
             {
                 UIDrawer.DraggingFromSlotNo = SlotNumber;
-                UIDrawer.DraggingItem = IInventory.Items[SlotNumber];
-                IInventory.ShowDraggedItem(IInventory.Items[SlotNumber], SlotNumber);
+                UIDrawer.DraggingItem = GameManager.Instance.MyInventory.Items[SlotNumber];
+                GameManager.Instance.MyInventory.ShowDraggedItem(GameManager.Instance.MyInventory.Items[SlotNumber], SlotNumber);
 
-                Debug.Log("dragging: " + IInventory.TheDraggedItem.ItemName);
+                Debug.Log("dragging: " + GameManager.Instance.MyInventory.TheDraggedItem.ItemName);
 
-                IInventory.Items[SlotNumber] = new Item();
+                GameManager.Instance.MyInventory.Items[SlotNumber] = new Item();
 
                 ItemAmountTxt.enabled = false;
 
@@ -167,8 +178,8 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         if(ItemImage != null)
             ItemImage.enabled = false;
 
-        IInventory.Items[SlotNumber] = new Item();
-        IInventory.HideTooltip();
+        GameManager.Instance.MyInventory.Items[SlotNumber] = new Item();
+        GameManager.Instance.MyInventory.HideTooltip();
     }
 }
 

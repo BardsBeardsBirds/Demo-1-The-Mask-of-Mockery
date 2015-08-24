@@ -10,7 +10,7 @@ public static class MyConsole
 
     public static void WriteToConsole(string text)
     {
-        Debug.Log(text);
+      //  Debug.Log(text);
 
         _text = text;
         ConsoleLines.Add(_text);

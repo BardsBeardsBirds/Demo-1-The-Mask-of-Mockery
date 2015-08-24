@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -69,7 +70,6 @@ public class GameManager : MonoBehaviour
         InGameObjectManager.Instance.LoadInGameObjectsInfo();  //see what objects should be turned on or off
         IIventoryItemWithObject = new InventoryItemWithWorldObject();
 
-        
     }
 
     public void Start()
@@ -122,9 +122,56 @@ public class GameManager : MonoBehaviour
 
     public void ChangeMoney(int amount)
     {
-        RupeeHeld += amount;
-        UICanvas.MoneyOnScreen.DisplayDifferentAmount(RupeeHeld);
+        int amountToChange = amount;
+        if (amount > 0)
+        {
+            UICanvas.MoneyOnScreen.Plus = true;
+            StartCoroutine(AddOneToCoins(amountToChange));
+        }
+        else
+        {
+            UICanvas.MoneyOnScreen.Minus = true;
+            StartCoroutine(SubtractOneToCoins(amountToChange));
+        }
+
         MyConsole.WriteToConsole("We have now " + RupeeHeld + " rupees");
+    }
+
+
+    public IEnumerator AddOneToCoins(int amountToChange)
+    {
+        for (int i = 0; i < amountToChange; i++)    //only for positive numbers
+        {
+
+            RupeeHeld = RupeeHeld + 1;
+
+            UICanvas.MoneyOnScreen.DisplayDifferentAmount(RupeeHeld);
+            //if (i - amountToChange == -1)
+            Debug.Log("Wait a bit " + amountToChange);
+
+            yield return StartCoroutine(WaitFor.Frames(2));
+
+        }
+        Debug.Log("Finished");
+        UICanvas.MoneyOnScreen.Plus = false;
+    }
+
+    public IEnumerator SubtractOneToCoins(int amountToChange)
+    {
+        for (int i = 0; i > amountToChange; i--)    //only for positive numbers
+        {
+
+            RupeeHeld = RupeeHeld - 1;
+
+            UICanvas.MoneyOnScreen.DisplayDifferentAmount(RupeeHeld);
+            //if (i - amountToChange == -1)
+            Debug.Log("Wait a bit " + amountToChange);
+
+            yield return StartCoroutine(WaitFor.Frames(2));
+
+        }
+        Debug.Log("Finished");
+        UICanvas.MoneyOnScreen.Minus = false;
     }
 
     public void Update()
@@ -154,7 +201,33 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.N))
             {
-                Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonWasBlockedBySentinel);
+                Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);
+                Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
+                Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
+                Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
+                Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
+                Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
+                Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
+                Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
+                Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
+                Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
+            }
+
+            if(Input.GetKeyDown(KeyCode.M))
+            {
+                WorldEvents.EmmonKnowsWhatSentinelWants = true;
+                WorldEvents.EmmonHasRoughneckShot = true;
+                WorldEvents.EmmonKnowsAy = true;
+                WorldEvents.EmmonKnowsBenny = true;
+                WorldEvents.BennyHasOfferedLute = true;
+                WorldEvents.EmmonSawTheLute = true;
+                WorldEvents.EmmonKnowsMaskLocation = true;
+                WorldEvents.EmmonHasPassedTheSentinel = true;
+                WorldEvents.MissionAccomplished = false;
+                InGameObjectManager.PickedUpMaskOfMockery = true;
+
+                Debug.Log("Changed event settings!");
+                Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);
                 Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
                 Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
                 Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
@@ -245,7 +318,7 @@ public class GameManager : MonoBehaviour
     private void SetInitialBools()
     {
         Debug.Log("reset all events");
-        WorldEvents.EmmonWasBlockedBySentinel = false;
+        WorldEvents.EmmonKnowsWhatSentinelWants = false;
         WorldEvents.EmmonHasRoughneckShot = false;
         //WorldEvents.EmmonHasMaskOfMockery = false;
         WorldEvents.EmmonKnowsAy = false;

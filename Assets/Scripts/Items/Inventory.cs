@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
 
     public void Awake()
     {
-        Instance = GameManager.Instance.MyInventory; ;
+        Instance = GameManager.Instance.MyInventory;
 
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         InitialiseInventoryItems.Clear();
@@ -51,9 +51,9 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-            //AddItem(3); //mask
-            //AddItem(1); //roughneck shot
-            //AddItem(2); //carrot
+        //AddItem(3); //mask
+        //AddItem(1); //roughneck shot
+        //AddItem(2); //carrot
 
 
     //    Debug.Log(Items[0].ItemName);
@@ -107,6 +107,12 @@ public class Inventory : MonoBehaviour
         TheDraggedItem = item;
         UIDrawer.IsDraggingItem = true;
         DraggedItemGameObject.GetComponent<Image>().sprite = item.ItemIcon;
+    }
+
+    public void EndDragging(int slotNumber)
+    {
+        Items[slotNumber] = TheDraggedItem;
+        HideDraggedItem();
     }
 
     public void HideDraggedItem()
@@ -170,7 +176,7 @@ public class Inventory : MonoBehaviour
                 if(item.ItemAmount == 0)    // added this later
                     item.ItemAmount = item.ItemAmount + 1;  // added this later
                 
-                Debug.Log("Items[i].ItemName " + i + " is null. Item amount is: " + item.ItemAmount);
+                Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
                 Items[i] = item;
                 break;
             }

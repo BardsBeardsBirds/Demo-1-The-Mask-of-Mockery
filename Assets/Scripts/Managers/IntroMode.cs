@@ -21,7 +21,6 @@ public class IntroMode
     public void StartIntroText()
     {
         CharacterControllerLogic.Instance.GoToTalkingState();
-  //      GameManager.InCutScene = true;
 
         DialoguePlayback.Instance.PlaybackIntro();
     }

@@ -5,6 +5,11 @@ using System.Collections.Generic;
 
 public class DialogueMenu : MonoBehaviour
 {
+    /// <summary>
+    /// To do: changing DialogueOptions into their own object class. This is faster than working with strings.
+    /// 
+    /// To do: putting all the text in spread sheet instead of in the c# scripts
+    /// </summary>
     public static int NumberOfOptions = 4;
 
     public static string[] CurrentDialogueOptions = new string[]

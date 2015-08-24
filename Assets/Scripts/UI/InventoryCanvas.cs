@@ -15,10 +15,6 @@ public class InventoryCanvas : MonoBehaviour
 
     public void OpenInventory()
     {
-        //RectTransform rect = this.GetComponent<RectTransform>();
-        //SetLeftBottomPosition(rect, new Vector2(-Screen.width / 2, -Screen.height / 2));
-        Debug.Log("open");
-
         GameManager.Instance.UICanvas.ShowInventory();
         InventoryIsOpen = true;
     }
@@ -33,7 +29,7 @@ public class InventoryCanvas : MonoBehaviour
 
         GameManager.Destroy("InteractionButton");
         GameManager.Destroy("InvestigateButton");
-        SlotScript.IInventory.HideTooltip();
+        GameManager.Instance.MyInventory.HideTooltip();
     }
 
     public static void SetLeftBottomPosition(RectTransform trans, Vector2 newPos)

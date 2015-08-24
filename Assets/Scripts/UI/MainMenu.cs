@@ -31,7 +31,6 @@ public class MainMenu : MonoBehaviour
         else
         {
             // if not in "open" state, make the menu not interactable
-
             _canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
         }
     }

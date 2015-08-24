@@ -33,7 +33,7 @@ public class RotateTowards : MonoBehaviour
     public void Update()
     {
        // Debug.Log("bestemming: " + Target.position);
-        Debug.Log("this is the rotate timer " + Timer + " angle: " + Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position));
+    //    Debug.Log("this is the rotate timer " + Timer + " angle: " + Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position));
         if (Timer > 0)
         {
             Timer -= Time.deltaTime;
@@ -88,7 +88,7 @@ public class RotateTowards : MonoBehaviour
      //       GameManager.InCutScene = false;
             SentinelBlocker.IsBlocking = false;
             Sentinel.PushBack = false;
-            CharacterControllerLogic.Instance.GoToIdleState();
+            CharacterControllerLogic.Instance.EndTalkingState();
         }
       //  GameManager.InCutScene = false;
 

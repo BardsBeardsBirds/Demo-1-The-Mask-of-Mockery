@@ -63,7 +63,7 @@ public static class ObjectCommentary
         {1053, "To what other treasures this door might lead?"},
         {1054, "Hm.. the wall here seems damaged."},
         {1055, "This must be the famous mask of Mockery!"},
-        {1060, "Hm.. All sides of the wheel have different colours."},
+        {1060, "Hm.. All sides of the wheel have a different colour."},
         {1061, "I better leave it alone."},
         
     };
@@ -118,6 +118,8 @@ public static class ObjectCommentary
         {2053, "Nah, I’ll save that for another adventure."},
         {2054, "Finally!"},  //mask of mockery
         {2060, " "},    
+        {2061, "I think we finished talking."},
+
     };
 
     #endregion Lines
@@ -383,7 +385,10 @@ public static class ObjectCommentary
                 AyTheTearCollector.Instance.StartDialogue();
                 break;
             case ObjectsInLevel.Sentinel:
-                Sentinel.Instance.StartDialogue();
+                if(!WorldEvents.EmmonHasPassedTheSentinel)
+                    Sentinel.Instance.StartDialogue();
+                else
+                    CurrentDialogueIDs.Add(2061);
                 break;
             case ObjectsInLevel.Gorilla:
                 CurrentDialogueIDs.Add(2005);

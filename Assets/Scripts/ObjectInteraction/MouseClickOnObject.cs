@@ -213,7 +213,16 @@ public class MouseClickOnObject : MonoBehaviour
 
         if (UIDrawer.IsDraggingItem)
         {
-            GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
+         //   GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
+
+            bool tryCombine = false;
+            tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
+            if (tryCombine)
+            {
+                Debug.LogWarning("We can combine these two!!");
+                GameManager.Instance.MyInventory.EndDragging(UIDrawer.DraggingFromSlotNo);
+            }
+
         }
         else
             _actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
@@ -255,6 +264,7 @@ public class MouseClickOnObject : MonoBehaviour
         CurrentObject = MyObject;
 
         _descriptionText.enabled = true;
+        GameManager.Instance.UICanvas.NewObjectDescription();
 
         if (ActionPanel.LastHoveredObject == CurrentObject)
             return;

@@ -35,7 +35,6 @@ public class PickUpItemListener : MonoBehaviour
         else if (Instance.thisItemType == ItemType.TenCoins)
         {
             GameManager.Instance.ChangeMoney(10);
-            GameManager.Instance.ChangeMoney(1);
             particleEffect = GameObject.Instantiate(Resources.Load("Prefabs/Particles/PickupRed")) as GameObject;
             particleEffect.transform.position = Instance.transform.position;
             PickUpSoundGo.GetComponent<AudioSource>().Play();

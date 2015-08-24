@@ -147,8 +147,11 @@ public class CharacterControllerLogic : MonoBehaviour
             return;
         }
 
-        if (GameManager.GamePlayingMode == GameManager.GameMode.Paused || GameManager.GamePlayingMode == GameManager.GameMode.IntroMode)
+        if (GameManager.GamePlayingMode == GameManager.GameMode.Paused || GameManager.GamePlayingMode == GameManager.GameMode.IntroMode)        // these things prevent input when the player is doing something
+        {
+            StopMovingAndTurning();
             return;
+        }
 
         //check for falling
         _isGrounded = IsGroundedTest();
@@ -156,13 +159,16 @@ public class CharacterControllerLogic : MonoBehaviour
         if(_isGrounded)
             CheckForSliding();
 
-        if(Input.GetKey(KeyCode.P))
-        {
-            Die();
-        }
+        //if(Input.GetKey(KeyCode.P))
+        //{
+        //    Die();
+        //}
 
         if (_state == CharacterState.Talking || _state == CharacterState.TalkingLastLine)
+        {
+            StopMovingAndTurning();
             return;
+        }
 
 		if(_animator && _gameCam.CamState != ThirdPersonCamera.CamStates.FirstPerson)
 		{
@@ -391,15 +397,27 @@ public class CharacterControllerLogic : MonoBehaviour
         _vertical = 0f;
         _horizontal = 0f;
         Animator.SetBool("Backwards", false);
+
+        GameManager.Instance.UICanvas.WidgetNotActive();
     }
+
     public void GoToTalkingLastLineState()
     {
         _state = CharacterState.TalkingLastLine;
     }
+
+    public void EndTalkingState()
+    {
+        GameManager.Instance.UICanvas.WidgetActive();
+
+        GoToIdleState();
+    }
+
     public void GoToIdleState()
     {
         _state = CharacterState.Idle;
     }
+
     public void ForceSpeed(float speed)
     {
         _animator.SetFloat("Speed", speed);
@@ -556,4 +574,10 @@ public class CharacterControllerLogic : MonoBehaviour
         }
     }
 
+    public void StopMovingAndTurning()
+    {
+        Animator.SetFloat("Speed", 0f);
+        Animator.SetFloat("Direction", 0f);
+        Animator.SetFloat("TurningAngle", 0f);
+    }
 }

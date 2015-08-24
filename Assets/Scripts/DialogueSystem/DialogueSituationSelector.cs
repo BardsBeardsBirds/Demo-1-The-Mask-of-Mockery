@@ -11,12 +11,13 @@ public class DialogueSituationSelector
         CharacterSituation = 1;
         if (WorldEvents.EmmonKnowsAy)
             CharacterSituation = 2;
-        if (WorldEvents.EmmonWasBlockedBySentinel)
+        if (WorldEvents.EmmonKnowsWhatSentinelWants && WorldEvents.EmmonKnowsMaskLocation)
             CharacterSituation = 3;
         if (WorldEvents.EmmonHasRoughneckShot)
             CharacterSituation = 4;
         if (InGameObjectManager.PickedUpMaskOfMockery)
         {
+            Debug.LogWarning(AyTheTearCollector.DialogueOptions[2114]);
             if (AyTheTearCollector.DialogueOptions[2114] == "")
                 CharacterSituation = 6;
             else
@@ -35,7 +36,7 @@ public class DialogueSituationSelector
             CharacterSituation = 2;
         if (WorldEvents.EmmonKnowsMaskLocation)
             CharacterSituation = 3;
-        if (WorldEvents.EmmonWasBlockedBySentinel)
+        if (WorldEvents.EmmonKnowsWhatSentinelWants && WorldEvents.EmmonKnowsMaskLocation)
             CharacterSituation = 4;
         if (WorldEvents.EmmonHasPassedTheSentinel)
             CharacterSituation = 5;
@@ -50,7 +51,7 @@ public class DialogueSituationSelector
     public static void LoadSentinelSituations()
     {
         CharacterSituation = 1;
-        if (WorldEvents.EmmonKnowsMaskLocation)
+        if (WorldEvents.EmmonKnowsMaskLocation || WorldEvents.EmmonWasBlockedBySentinel)
             CharacterSituation = 2;
         if (WorldEvents.EmmonHasRoughneckShot)
             CharacterSituation = 3;

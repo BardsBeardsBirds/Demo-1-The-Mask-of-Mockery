@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
      public void Start()
     {
         ShowMenu(CurrentMenu);
-
+ //       Debug.Log(Application.persistentDataPath);    //the location of the save file
         if (!File.Exists(Application.persistentDataPath + "/demo1Progress.dat"))
             GreyOutLoadGameButton();
         else
@@ -73,16 +73,12 @@ public class MainMenuManager : MonoBehaviour
     private void GreyOutLoadGameButton()
     {
         GameObject button = GameObject.Find("LoadGameButton");
-        button.SetActive(false);
-        GameObject greyButton = GameObject.Find("LoadGameButtonGrey");
-        greyButton.SetActive(true);
+        button.GetComponent<Button>().interactable = false;
     }
 
     private void ActivateLoadGameButton()
     {
         GameObject button = GameObject.Find("LoadGameButton");
         button.SetActive(true);
-        GameObject greyButton = GameObject.Find("LoadGameButtonGrey");
-        greyButton.SetActive(false);
     }
 }

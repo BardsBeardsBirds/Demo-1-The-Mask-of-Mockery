@@ -52,7 +52,7 @@ public class Sentinel : MonoBehaviour
         {3002, "King’s order? But.."},
         {3003, "Shoo!"},
         {3004, "We bards have practised the art of storytelling for years. How about I tell you the most beautiful story you have every heard; a story so touching that it will make tears well in your eyes? … and then you let me pass?"},
-        {3005, "You will tell me a story that will make me cry? And then you will surely take my tears to the tear collector, don’t you? Noho, I am not falling for that one."},
+        {3005, "You will tell me a story that will make me cry? And then you will surely take my tears to the tear collector, don’t you? No-o, I am not falling for that one."},
         {3006, "I just received a King’s order to make way for all bards in Baton! Please let me through..!"},
         {3007, "Ehm... Would you step aside..?"},
         {3008, "You didn’t think that was going to work, didn’t you?"},
@@ -86,7 +86,6 @@ public class Sentinel : MonoBehaviour
 
     public void StartDialogue()
     {
-     //   Animator.SetBool("DialogueState", true);
         DialogueManager.StartDialogueState(NPCEnum.NPCs.Sentinel);
     }
 
@@ -154,8 +153,7 @@ public class Sentinel : MonoBehaviour
         CharacterControllerLogic.Instance.GoToTalkingState();
 
         Animator emmonAnimator = GameManager.Player.GetComponent<Animator>();
-    //    emmonAnimator.SetBool("ForwardLocomotion", false);
-        emmonAnimator.SetBool("Idle", true);
+      //  emmonAnimator.SetBool("Idle", true);
 
         switch (dialogueSituation)
         {
@@ -172,9 +170,9 @@ public class Sentinel : MonoBehaviour
                 PassSentinelDialogue();
                 break;
             case 4: //SITUATION 4   //we finished talking
-                AddToDialogue(3023);
-                DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogue(3023);
+                //AddToDialogue(3023);
+                //DialoguePlayback.EndingDialogue = true;
+                //DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3023);
                 break;
             case 999:
                 DialogueMenu.FindDialogueOptionText();
@@ -188,9 +186,9 @@ public class Sentinel : MonoBehaviour
 
     public static void TriggerDialogue(int dialogueOptionID)
     {
-        if (dialogueOptionID == 3001)
+        if (dialogueOptionID == 3001)   // hold it there
         {
-            AddToDialogue(dialogueOptionID);
+            AddToDialogue(3001);
             AddToDialogue(3002);
             AddToDialogue(3003);
 
@@ -223,6 +221,8 @@ public class Sentinel : MonoBehaviour
             AddToDialogue(3011);
             AddToDialogue(3012);
             AddToDialogue(3013);
+
+            WorldEvents.EmmonKnowsWhatSentinelWants = true;//not sure about puting in this one
         }
 
         if (dialogueOptionID == 3014)
@@ -231,6 +231,8 @@ public class Sentinel : MonoBehaviour
 
             AddToDialogue(dialogueOptionID);
             AddToDialogue(3015);
+
+            WorldEvents.EmmonKnowsWhatSentinelWants = true;
         }
 
         if (dialogueOptionID == 3016)
@@ -245,7 +247,9 @@ public class Sentinel : MonoBehaviour
 
             DialoguePlayback.EndingDialogue = true;
 
-            WorldEvents.EmmonWasBlockedBySentinel = true;
+
+            if (WorldEvents.EmmonKnowsMaskLocation)
+                BennyTwospoons.DialogueOptions[1055] = "";
         }
     }
 
@@ -258,7 +262,6 @@ public class Sentinel : MonoBehaviour
     {
         CharacterControllerLogic.Instance.GoToTalkingState();
 
-    //    GameManager.InCutScene = true;
         SentinelBlocker.IsBlocking = true;
 
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
@@ -267,7 +270,9 @@ public class Sentinel : MonoBehaviour
         DialoguePlayback.NPC = NPCEnum.NPCs.Sentinel;
         Sentinel.CharacterSituation = 1;
 
-        DialoguePlayback.Instance.PlaybackDialogue(3001);
+        DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3001); 
+
+        WorldEvents.EmmonWasBlockedBySentinel = true;
 
     }
 
@@ -284,17 +289,27 @@ public class Sentinel : MonoBehaviour
         GameObject blockerGO = GameObject.Find("SentinelBlockade");
         GameManager.Destroy(blockerGO);
 
-        DialoguePlayback.Instance.PlaybackDialogue(3019);
+        DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3019);
 
         //find the RoughneckShot and remove it.
-        for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
-        {
-            if (SlotScript.IInventory.Items[i].IType == Item.ItemType.RoughneckShot)
-            {
-                SlotScript.IInventory.MakeSlotEmpty(i);
 
-                break;
-            }
+        if (UIDrawer.IsDraggingItem && UIDrawer.DraggingItem.IType == Item.ItemType.RoughneckShot)    // we are holding the item
+        {
+            Debug.Log(UIDrawer.DraggingItem.IType);
+
+        }
+        else
+        {
+            //for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
+            //{
+            //    Debug.Log(SlotScript.IInventory.Items[i].IType);
+            //    if (SlotScript.IInventory.Items[i].IType == Item.ItemType.RoughneckShot)
+            //    {
+            //        SlotScript.IInventory.MakeSlotEmpty(i);
+
+            //        break;
+            //    }
+            //}
         }
     }
 }

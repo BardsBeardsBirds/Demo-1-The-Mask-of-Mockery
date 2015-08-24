@@ -22,7 +22,7 @@ public class ObjectInteractionTimer
     {
         if (_timer > 0)
         {
-   //         Debug.Log(_timer);
+            //Debug.Log(_timer);
             _timer -= Time.deltaTime;
             if (_timer <= 0)
             {
@@ -43,8 +43,9 @@ public class ObjectInteractionTimer
         }
     }
 
-    public static void DoSomethingAtEnd(int id)
+    private static void DoSomethingAtEnd(int id)
     {
+        Debug.Log("My ID  =  " + id);
         if(id == 2054) //pick up the mask of Mockery
         {
             InGameObjectManager.Instance.TurnOffObject(GameObject.Find("MaskOfMockery"));

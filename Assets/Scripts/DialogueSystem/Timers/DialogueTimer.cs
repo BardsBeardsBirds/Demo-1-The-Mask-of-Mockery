@@ -43,6 +43,8 @@ public class DialogueTimer
                     TimeManager.Instance.DialogueIsPlaying = false;
 
                     DialogueManager.EndDialogueState(DialogueManager.CurrentDialogueNPC);
+
+
                     if (WorldEvents.MissionAccomplished)
                     {
                         EndGameManager endGameManager = new EndGameManager();
@@ -64,7 +66,26 @@ public class DialogueTimer
                         DialogueMenu.ShowDialogueOptions();
                     }
                 }
+         //       Debug.Log("Do we do something at the end?" + DialoguePlayback.CurrentLineID);
+
+                DoSomethingAtEnd(DialoguePlayback.CurrentLineID);
             }
         }       
+    }
+
+    private static void DoSomethingAtEnd(int id)
+    {
+        if (id == 3025) //drink the roughneck shot after this one
+        {
+            for (int i = 0; i < GameManager.Instance.MyInventory.Items.Count; i++)
+            {
+                Debug.Log(GameManager.Instance.MyInventory.Items[i].IType);
+                if (GameManager.Instance.MyInventory.Items[i].IType == Item.ItemType.RoughneckShot)
+                {
+                    GameManager.Instance.MyInventory.MakeSlotEmpty(i);
+                    break;
+                }
+            }
+        }
     }
 }
