@@ -14,28 +14,25 @@ public class InventoryItemWithWorldObject
 
     int[] randomNos = new int[] { 9001, 9002, 9003, 9004, 9005 };
 
-    public static Dictionary<int, string> CombineItemLines = new Dictionary<int, string>()
-    {
-        {9001, "No."},
-        {9002, "No."},
-        {9003, "No."},
-        {9004, "That is impossible."},
+    //public static Dictionary<int, string> CombineItemLines = new Dictionary<int, string>()
+    //{
+    //    {9001, "No."},
+    //    {9002, "No."},
+    //    {9003, "No."},
+    //    {9004, "That is impossible."},
 
-        {9005, "I can't do that."},
+    //    {9005, "I can't do that."},
 
         
-        {9008, "This rabbit doesn't eat carrots."},
-        {9009, "Would you like a carrot?"},
-        {9010, "Are you trying to bribe me?"},
-        {9011, "Never mind."},
+    //    {9008, "This rabbit doesn't eat carrots."},
+    //    {9009, "Would you like a carrot?"},
+    //    {9010, "Are you trying to bribe me?"},
+    //    {9011, "Never mind."},
 
-        {9013, "I don't think he would like that."},
-        {9014, "I rather keep this for myself."},
-        {9015, "He doesn't deserve that!"},
-
-       // {9016, "Okay, here I go.."},
-
-    };
+    //    {9013, "I don't think he would like that."},
+    //    {9014, "I rather keep this for myself."},
+    //    {9015, "He doesn't deserve that!"},
+    //};
 
     public bool CombineItems(Item inventoryItem, ObjectsInLevel worldObject)    //inventory items with world
     {
@@ -96,13 +93,12 @@ public class InventoryItemWithWorldObject
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.InventoryCommentary;    //the tiype of dialogue will be overwritten later if the combination triggers the start of an npc dialogue
         FindLines(inventoryItem, worldObject);
         CharacterControllerLogic.Instance.GoToTalkingState();
-
         for (int i = 0; i < CurrentDialogueIDs.Count; i++)
         {
             var id = CurrentDialogueIDs[i];
             CurrentID = id;
 
-            DialoguePlayback.SetCurrentDialogueLine(CombineItemLines[id]);
+            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -134,7 +130,9 @@ public class InventoryItemWithWorldObject
             var id = CurrentDialogueIDs[i];
             CurrentID = id;
 
-            DialoguePlayback.SetCurrentDialogueLine(CombineItemLines[id]);
+            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(CurrentDialogueIDs[id]));
+
+           // DialoguePlayback.SetCurrentDialogueLine(CombineItemLines[id]);
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -245,11 +243,11 @@ public class InventoryItemWithWorldObject
     public int CheckUniqueAudio(int id)
     {
         if (id == 9001)  // no
-            id = 2043;
+            id = 7043;
         else if (id == 9002)  // no
-            id = 2049;
+            id = 7049;
         else if (id == 9004)  // that is impossible
-            id = 2042;
+            id = 7042;
         return id;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialoguePlayback : MonoBehaviour
 {
-    public static NPCEnum.NPCs NPC;
+    public static Character NPC;
     public static DialoguePlayback Instance;
 
     public static bool EndingDialogue = false;
@@ -54,29 +54,9 @@ public class DialoguePlayback : MonoBehaviour
 
     public static void ComposeDialogueList()
     {
-
-        switch (NPC)
+        for (int i = 0; i < CurrentDialogueIDs.Count; i++)
         {
-            case NPCEnum.NPCs.AyTheTearCollector:
-
-                for (int i = 0; i < CurrentDialogueIDs.Count; i++)
-                {
-                    _currentDialogueLine = AyTheTearCollector.DialogueOptions[CurrentDialogueIDs[i]];
-                    Debug.LogWarning("Adding " + AyTheTearCollector.DialogueOptions[CurrentDialogueIDs[i]]);
-                }
-                break;
-            case NPCEnum.NPCs.BennyTwospoons:
-
-                for (int i = 0; i < CurrentDialogueIDs.Count; i++)
-                {
-                    _currentDialogueLine = BennyTwospoons.DialogueOptions[CurrentDialogueIDs[i]];
-                    Debug.LogWarning("Adding " + BennyTwospoons.DialogueOptions[CurrentDialogueIDs[i]]);
-                }
-                break;
-
-            default: //in all other dialogue options
-                Debug.LogError("I don't know this dialogue situation: Situation " + NPC);
-                break;
+            _currentDialogueLine = SpokenLineLoader.Instance.GetLine(CurrentDialogueIDs[i]);
         }
     }
 
@@ -84,18 +64,17 @@ public class DialoguePlayback : MonoBehaviour
     {
         Debug.LogWarning("Laten we deze dialoog spelen: " + dialogueOptionID);
 
-        if (NPC == NPCEnum.NPCs.AyTheTearCollector)
+        if (NPC == Character.Ay)
             AyTheTearCollector.TriggerDialogue(dialogueOptionID);
-        else if (NPC == NPCEnum.NPCs.BennyTwospoons)
+        else if (NPC == Character.Benny)
             BennyTwospoons.TriggerDialogue(dialogueOptionID);
-        else if (NPC == NPCEnum.NPCs.Sentinel)
+        else if (NPC == Character.Sentinel)
             Sentinel.TriggerDialogue(dialogueOptionID);
     }
 
     public void PlaybackDialogue(int dialogueOptionID)
     {
         DialoguePlayback.TriggerDialogue(dialogueOptionID); //starts loading all the lines
-
     //    Debug.Log("We chose option " + dialogueOption + " with option id " + dialogueOptionID + ". The last lineID was: " + DialoguePlayback.LastLineID);
 
         StartCoroutine(DialogueRoutine());
@@ -123,21 +102,7 @@ public class DialoguePlayback : MonoBehaviour
 
             LastLineOfTheBlock = false;
 
-            switch (NPC)
-            {
-                case NPCEnum.NPCs.AyTheTearCollector:
-                    DialoguePlayback.SetCurrentDialogueLine(AyTheTearCollector.SpeakingLines[id]);
-                    break;
-                case NPCEnum.NPCs.BennyTwospoons:
-                    DialoguePlayback.SetCurrentDialogueLine(BennyTwospoons.SpeakingLines[id]);
-                    break;
-                case NPCEnum.NPCs.Sentinel:
-                    DialoguePlayback.SetCurrentDialogueLine(Sentinel.SpeakingLines[id]);
-                    break;
-                default:
-                    Debug.LogError("which npc is this?");
-                    break;
-            }
+            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
 
             CurrentLineID = id;
 
@@ -179,11 +144,11 @@ public class DialoguePlayback : MonoBehaviour
         }
     }
 
-    private static void SetTalkingListening(NPCEnum.NPCs NPC, int id)
+    private static void SetTalkingListening(Character NPC, int id)
     {
         switch (NPC)
         {
-            case NPCEnum.NPCs.AyTheTearCollector:
+            case Character.Ay:
                 if (AyTheTearCollector.NPCTalkingIDs.Contains(id))
                 {
                     AyTheTearCollector.Instance.Animator.SetBool("Listening", false);
@@ -195,7 +160,7 @@ public class DialoguePlayback : MonoBehaviour
                     AyTheTearCollector.Instance.Animator.SetBool("Talking", false);
                 }
                 break;
-            case NPCEnum.NPCs.BennyTwospoons:
+            case Character.Benny:
                 if (BennyTwospoons.NPCTalkingIDs.Contains(id))
                 {
                     BennyTwospoons.Instance.Animator.SetBool("Listening", false);
@@ -207,7 +172,7 @@ public class DialoguePlayback : MonoBehaviour
                     BennyTwospoons.Instance.Animator.SetBool("Talking", false);
                 }
                 break;
-            case NPCEnum.NPCs.Sentinel:
+            case Character.Sentinel:
                 if (Sentinel.NPCTalkingIDs.Contains(id))
                 {
                     Sentinel.Instance.Animator.SetBool("Listening", false);
@@ -233,47 +198,20 @@ public class DialoguePlayback : MonoBehaviour
 
     public static void DeleteLine(int deleteLineID)
     {
-        switch (NPC)
-        {
-            case NPCEnum.NPCs.AyTheTearCollector:
-
-                for (int i = 0; i < CurrentDialogueIDs.Count; i++)
-                {
-                    AyTheTearCollector.DialogueOptions[deleteLineID] = "";
-                }
-                break;
-            case NPCEnum.NPCs.BennyTwospoons:
-
-                for (int i = 0; i < CurrentDialogueIDs.Count; i++)
-                {
-                    BennyTwospoons.DialogueOptions[deleteLineID] = "";
-                }
-                break;
-            case NPCEnum.NPCs.Sentinel:
-
-                for (int i = 0; i < CurrentDialogueIDs.Count; i++)
-                {
-                    Sentinel.DialogueOptions[deleteLineID] = "";
-                }
-                break;
-
-            default: //in all other dialogue options
-                Debug.LogError("I don't know this dialogue situation: Situation " + NPC);
-                break;
-        }
+        DialogueManager.AddToPassedDialogueLines(deleteLineID);
     }
 
     public static void DialogueNumberToSituation(int id)
     {
         switch (NPC)
         {
-            case NPCEnum.NPCs.AyTheTearCollector:
+            case Character.Ay:
                     AyTheTearCollector.Instance.DialogueLineNumberToSituation(id);
                 break;
-            case NPCEnum.NPCs.BennyTwospoons:
+            case Character.Benny:
                     BennyTwospoons.Instance.DialogueLineNumberToSituation(id);
                 break;
-            case NPCEnum.NPCs.Sentinel:
+            case Character.Sentinel:
                     Sentinel.Instance.DialogueLineNumberToSituation(id);
                 break;
 

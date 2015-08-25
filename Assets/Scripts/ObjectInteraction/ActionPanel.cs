@@ -143,7 +143,7 @@ public class ActionPanel
         else
         {
             int id = InventoryCommentary.FindInteractionHoverLines(ThisItem);
-            GameManager.Instance.UICanvas.ObjectDescriptionText.text = InventoryCommentary.InteractionHoverLines[id];
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = SpokenLineLoader.Instance.GetLine(id);
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
@@ -158,7 +158,7 @@ public class ActionPanel
         else
         {
             int id = InventoryCommentary.FindInvestigationHoverLines(ThisItem);
-            GameManager.Instance.UICanvas.ObjectDescriptionText.text = InventoryCommentary.InvestigationHoverLines[id];
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = SpokenLineLoader.Instance.GetLine(id);
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }

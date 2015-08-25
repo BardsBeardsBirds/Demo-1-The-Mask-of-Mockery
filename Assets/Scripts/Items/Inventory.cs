@@ -144,12 +144,12 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(int id)
     {
-        Debug.Log("we now add item " + id);
+     //   Debug.Log("we now add item " + id);
         for (int i = 0; i < Database.Items.Count; i++)
         {
             if(Database.Items[i].ItemID == id)
             {
-                Debug.Log("found the right item");
+         //       Debug.Log("found the right item");
                 Item item = Database.Items[i];
 
                 if(Database.Items[i].IClass == Item.ItemClass.Consumable)
@@ -176,7 +176,7 @@ public class Inventory : MonoBehaviour
                 if(item.ItemAmount == 0)    // added this later
                     item.ItemAmount = item.ItemAmount + 1;  // added this later
                 
-                Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
+    //            Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
                 Items[i] = item;
                 break;
             }

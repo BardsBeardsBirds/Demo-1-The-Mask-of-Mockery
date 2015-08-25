@@ -160,15 +160,11 @@ public class MainCanvas : MonoBehaviour
 
     public void WidgetActive()
     {
-        Debug.Log("WidgetActiveWidgetActiveWidgetActiveWidgetActive");
-
         ScreenButtonWidget.GetComponent<Widget>().WidgetActive = true;
     }
 
     public void WidgetNotActive()
     {
-        Debug.Log("Widget NOT Active");
-
         ScreenButtonWidget.GetComponent<Widget>().WidgetActive = false;
     }
 }

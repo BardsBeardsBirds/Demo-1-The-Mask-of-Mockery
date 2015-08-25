@@ -28,23 +28,6 @@ public class Sentinel : MonoBehaviour
 
     #endregion NPCTalkingIDs
 
-    #region DialogueOptions
-
-    public static Dictionary<int, string> DialogueOptions = new Dictionary<int, string>() 
-    {
-        {3001, "Hold it there! No one can pass. King’s order."},
-        {3004, "Maybe I can tell such a beautiful bard's tale that you will let me pass?"},
-        {3006, "I just received a special King’s order!"},
-        {3009, "Please let me pass?"},
-        {3014, "What can I do to make you change your mind?"},
-        {3016, "What can I do to make you change your mind?"},
-        {3018, "I guess I will have to leave you for now. But this is not the end, rather a beginning!"},
-        {3019, "Hello, my faithful but lonely servant, I’m back and I am going to be really clear with you this time:"},
-        {3023, "I think we finished talking."},
-
-    };
-    #endregion
-
     #region SpeakingLines
     public static Dictionary<int, string> SpeakingLines = new Dictionary<int, string>() 
     { 
@@ -86,11 +69,7 @@ public class Sentinel : MonoBehaviour
 
     public void StartDialogue()
     {
-        DialogueManager.StartDialogueState(NPCEnum.NPCs.Sentinel);
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
+        DialogueManager.StartDialogueState(Character.Sentinel);
     }
 
     public void DialogueLineNumberToSituation(int lastLineID)   //the last line of dialogue determines which situation will follow
@@ -105,19 +84,19 @@ public class Sentinel : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(3006);
         }
 
-        if ((DialogueOptions[3004] == "" || DialogueOptions[3006] == "") &&
+        if ((DialogueManager.IsDialoguePassed(3004) || DialogueManager.IsDialoguePassed(3006)) &&
             (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3015 || lastLineID == 3017))
         {
             DialogueMenu.AddToDialogueOptions(3009);
         }
 
-        if ((DialogueOptions[3004] == "" || DialogueOptions[3006] == "" || DialogueOptions[3009] == "") &&
+        if ((DialogueManager.IsDialoguePassed(3004) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)) &&
             (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3017))
         {
             DialogueMenu.AddToDialogueOptions(3014);
         }
 
-        if (DialogueOptions[3014] == "" && (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017))
+        if (DialogueManager.IsDialoguePassed(3014) && (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017))
         {
             DialogueMenu.AddToDialogueOptions(3016);
         }
@@ -153,7 +132,6 @@ public class Sentinel : MonoBehaviour
         CharacterControllerLogic.Instance.GoToTalkingState();
 
         Animator emmonAnimator = GameManager.Player.GetComponent<Animator>();
-      //  emmonAnimator.SetBool("Idle", true);
 
         switch (dialogueSituation)
         {
@@ -170,9 +148,6 @@ public class Sentinel : MonoBehaviour
                 PassSentinelDialogue();
                 break;
             case 4: //SITUATION 4   //we finished talking
-                //AddToDialogue(3023);
-                //DialoguePlayback.EndingDialogue = true;
-                //DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3023);
                 break;
             case 999:
                 DialogueMenu.FindDialogueOptionText();
@@ -247,9 +222,8 @@ public class Sentinel : MonoBehaviour
 
             DialoguePlayback.EndingDialogue = true;
 
-
             if (WorldEvents.EmmonKnowsMaskLocation)
-                BennyTwospoons.DialogueOptions[1055] = "";
+                DialogueManager.IsDialoguePassed(1055);
         }
     }
 
@@ -265,15 +239,14 @@ public class Sentinel : MonoBehaviour
         SentinelBlocker.IsBlocking = true;
 
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
-        GameManager.NPCs[NPCEnum.NPCs.Sentinel].GetComponent<Animator>().SetBool("DialogueState", true);
+        GameManager.NPCs[Character.Sentinel].GetComponent<Animator>().SetBool("DialogueState", true);
 
-        DialoguePlayback.NPC = NPCEnum.NPCs.Sentinel;
+        DialoguePlayback.NPC = Character.Sentinel;
         Sentinel.CharacterSituation = 1;
 
         DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3001); 
 
         WorldEvents.EmmonWasBlockedBySentinel = true;
-
     }
 
     public void PassSentinelDialogue()
@@ -291,25 +264,9 @@ public class Sentinel : MonoBehaviour
 
         DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3019);
 
-        //find the RoughneckShot and remove it.
-
         if (UIDrawer.IsDraggingItem && UIDrawer.DraggingItem.IType == Item.ItemType.RoughneckShot)    // we are holding the item
         {
             Debug.Log(UIDrawer.DraggingItem.IType);
-
-        }
-        else
-        {
-            //for (int i = 0; i < SlotScript.IInventory.Items.Count; i++)
-            //{
-            //    Debug.Log(SlotScript.IInventory.Items[i].IType);
-            //    if (SlotScript.IInventory.Items[i].IType == Item.ItemType.RoughneckShot)
-            //    {
-            //        SlotScript.IInventory.MakeSlotEmpty(i);
-
-            //        break;
-            //    }
-            //}
         }
     }
 }

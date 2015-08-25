@@ -34,10 +34,10 @@ public class ObjectInteractionTimer
                     DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
                     CharacterControllerLogic.Instance.GoToIdleState();
 
-                    if(ObjectCommentary.ChangeIndex != 0)
-                    {
-                        ChangeLineInDictionary();
-                    }
+                    //if(ObjectCommentary.ChangeIndex != 0)
+                    //{
+                    //    ChangeLineInDictionary();
+                    //}
                 }
             }
         }
@@ -52,16 +52,16 @@ public class ObjectInteractionTimer
         }
     }
 
-    private void ChangeLineInDictionary()
-    {
-        var firstDigit = ObjectCommentary.ChangeIndex.ToString().Substring(0, 1);
-        if (firstDigit == "1")
-            ObjectCommentary.InvestigationLines[ObjectCommentary.ChangeIndex] = ObjectCommentary.ChangeLine;
-        else if (firstDigit == "2")
-            ObjectCommentary.InteractionLines[ObjectCommentary.ChangeIndex] = ObjectCommentary.ChangeLine;
+    //private void ChangeLineInDictionary()
+    //{
+    //    var firstDigit = ObjectCommentary.ChangeIndex.ToString().Substring(0, 1);
+    //    if (firstDigit == "1")
+    //        ObjectCommentary.InvestigationLines[ObjectCommentary.ChangeIndex] = ObjectCommentary.ChangeLine;
+    //    else if (firstDigit == "2")
+    //        ObjectCommentary.InteractionLines[ObjectCommentary.ChangeIndex] = ObjectCommentary.ChangeLine;
 
-        ObjectCommentary.ChangeIndex = 0;
-        ObjectCommentary.ChangeLine = "";
-    }
+    //    ObjectCommentary.ChangeIndex = 0;
+    //    ObjectCommentary.ChangeLine = "";
+    //}
 }
 

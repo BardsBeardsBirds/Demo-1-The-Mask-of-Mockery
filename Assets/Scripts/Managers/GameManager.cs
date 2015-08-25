@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private bool _showConsole = false;
 
-    public static Dictionary<NPCEnum.NPCs, Transform> NPCs = new Dictionary<NPCEnum.NPCs, Transform>() { };
+    public static Dictionary<Character, Transform> NPCs = new Dictionary<Character, Transform>();
 
     public void Awake()
     {     
@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
 
         InGameObjectManager.Instance.LoadInGameObjectsInfo();  //see what objects should be turned on or off
         IIventoryItemWithObject = new InventoryItemWithWorldObject();
-
     }
 
     public void Start()
@@ -93,19 +92,19 @@ public class GameManager : MonoBehaviour
         InGameObjectM = GameManagerObj.AddComponent<InGameObjectManager>();
     }
 
-    private void FindCharacters()
+    public void FindCharacters()
     {
-        _ay = GameObject.Find("Ay the Tear Collector");
-        _ay.AddComponent<AyTheTearCollector>();
-        NPCs.Add(NPCEnum.NPCs.AyTheTearCollector, _ay.transform);
-
         _benny = GameObject.Find("Benny Twospoons");
         _benny.AddComponent<BennyTwospoons>();
-        NPCs.Add(NPCEnum.NPCs.BennyTwospoons, _benny.transform);
+        NPCs.Add(Character.Benny, _benny.transform);
 
         _sentinel = GameObject.Find("Sentinel");
         _sentinel.AddComponent<Sentinel>();
-        NPCs.Add(NPCEnum.NPCs.Sentinel, _sentinel.transform);
+        NPCs.Add(Character.Sentinel, _sentinel.transform);
+
+        _ay = GameObject.Find("Ay the Tear Collector");
+        _ay.AddComponent<AyTheTearCollector>();
+        NPCs.Add(Character.Ay, _ay.transform);
     }
 
     public void SetPlayerPosition()
@@ -133,7 +132,6 @@ public class GameManager : MonoBehaviour
             UICanvas.MoneyOnScreen.Minus = true;
             StartCoroutine(SubtractOneToCoins(amountToChange));
         }
-
         MyConsole.WriteToConsole("We have now " + RupeeHeld + " rupees");
     }
 
@@ -142,17 +140,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < amountToChange; i++)    //only for positive numbers
         {
-
             RupeeHeld = RupeeHeld + 1;
 
             UICanvas.MoneyOnScreen.DisplayDifferentAmount(RupeeHeld);
-            //if (i - amountToChange == -1)
-            Debug.Log("Wait a bit " + amountToChange);
 
             yield return StartCoroutine(WaitFor.Frames(2));
 
         }
-        Debug.Log("Finished");
         UICanvas.MoneyOnScreen.Plus = false;
     }
 
@@ -160,17 +154,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i > amountToChange; i--)    //only for positive numbers
         {
-
             RupeeHeld = RupeeHeld - 1;
 
             UICanvas.MoneyOnScreen.DisplayDifferentAmount(RupeeHeld);
-            //if (i - amountToChange == -1)
-            Debug.Log("Wait a bit " + amountToChange);
 
             yield return StartCoroutine(WaitFor.Frames(2));
 
         }
-        Debug.Log("Finished");
         UICanvas.MoneyOnScreen.Minus = false;
     }
 
@@ -191,6 +181,14 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.I))
             {
                 UICanvas.OpenCloseInventory();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                SpokenLineLoader loader = GameObject.Find("SpokenLineLoader").GetComponent<SpokenLineLoader>();
+
+                string text = loader.GetLine(1);
+                Debug.Log(text);
             }
 
             //PAUSE MENU
@@ -365,7 +363,8 @@ public class GameManager : MonoBehaviour
     {
         if (WorldEvents.EmmonKnowsAy)
         {
-            ObjectCommentary.InvestigationLines[1003] = "";
+          //  ObjectCommentary.InvestigationLines[1003] = "";
+            DialogueManager.AddToPassedDialogueLines(1003);
             MouseClickOnObject.ObjectLines[ObjectsInLevel.AyTheTearCollector] = "Ay the Tear Collector";
             MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.AyTheTearCollector] = "Investigate Ay";
             MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.AyTheTearCollector] = "Talk to Ay";
@@ -373,7 +372,8 @@ public class GameManager : MonoBehaviour
 
         if (WorldEvents.EmmonKnowsBenny)
         {
-            ObjectCommentary.InvestigationLines[1020] = "";
+       //     ObjectCommentary.InvestigationLines[1020] = "";
+            DialogueManager.AddToPassedDialogueLines(1020);
             MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";
             MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.BennyTwospoons] = "Investigate Benny Twospoons";
             MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.BennyTwospoons] = "Talk to Benny Twospoons";

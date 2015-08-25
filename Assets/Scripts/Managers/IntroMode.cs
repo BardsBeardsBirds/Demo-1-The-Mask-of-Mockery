@@ -35,7 +35,7 @@ public class IntroMode
             var id = CurrentTextIDs[i];
             CurrentID = id;
 
-            DialoguePlayback.SetCurrentDialogueLine(IntroText.IntroTextLines[id]);
+            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
 
             DialoguePlayback.Instance.ShowDialogueLines();
 

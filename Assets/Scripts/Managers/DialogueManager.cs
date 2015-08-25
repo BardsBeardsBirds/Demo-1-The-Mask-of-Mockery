@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueManager
@@ -6,9 +7,11 @@ public class DialogueManager
     public enum DialogueType { NPCDialogue, ObjectInteraction, InventoryCommentary, Intro, None };
 
     public static DialogueType ThisDialogueType = DialogueType.None;
-    public static NPCEnum.NPCs CurrentDialogueNPC;
+    public static Character CurrentDialogueNPC;
 
-    public static void StartDialogueState(NPCEnum.NPCs NPC)
+    public static List<int> PassedDialogueLines = new List<int>();
+
+    public static void StartDialogueState(Character NPC)
     {
         CurrentDialogueNPC = NPC;
         DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
@@ -22,17 +25,17 @@ public class DialogueManager
 
         switch (NPC)
         {
-            case NPCEnum.NPCs.AyTheTearCollector:
+            case Character.Ay:
                 DialoguePlayback.NPC = NPC;
 
                 DialogueSituationSelector.LoadAySituations();
                 break;
-            case NPCEnum.NPCs.BennyTwospoons:
+            case Character.Benny:
                 DialoguePlayback.NPC = NPC;
 
                 DialogueSituationSelector.LoadBennyTwospoonsSituations();
                 break;
-            case NPCEnum.NPCs.Sentinel:
+            case Character.Sentinel:
                 DialoguePlayback.NPC = NPC;
 
                 DialogueSituationSelector.LoadSentinelSituations();
@@ -43,7 +46,7 @@ public class DialogueManager
         }
     }
 
-    public static void EndDialogueState(NPCEnum.NPCs NPC)
+    public static void EndDialogueState(Character NPC)
     {
         DialoguePlayback.Instance.HideDialogueLines();
 
@@ -64,9 +67,24 @@ public class DialogueManager
     }
     
 
-    public static void NPCToListeningState(NPCEnum.NPCs NPC)
+    public static void NPCToListeningState(Character NPC)
     {
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", false);
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", true);
+    }
+
+    public static void AddToPassedDialogueLines(int id)
+    {
+        PassedDialogueLines.Add(id);
+    }
+
+    public static bool IsDialoguePassed(int id)
+    {
+        for (int i = 0; i < PassedDialogueLines.Count; i++)
+        {
+            if (id == PassedDialogueLines[i])
+                return true;
+        }
+        return false;
     }
 }

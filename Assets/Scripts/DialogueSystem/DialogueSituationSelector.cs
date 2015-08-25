@@ -17,8 +17,7 @@ public class DialogueSituationSelector
             CharacterSituation = 4;
         if (InGameObjectManager.PickedUpMaskOfMockery)
         {
-            Debug.LogWarning(AyTheTearCollector.DialogueOptions[2114]);
-            if (AyTheTearCollector.DialogueOptions[2114] == "")
+            if (DialogueManager.IsDialoguePassed(2114))
                 CharacterSituation = 6;
             else
                 CharacterSituation = 5;
