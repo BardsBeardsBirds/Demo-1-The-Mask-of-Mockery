@@ -11,24 +11,6 @@ public class StandardNPC : MonoBehaviour
 
     public Animator Animator;
 
-    #region NPCTalkingIDs
-    public static List<int> NPCTalkingIDs = new List<int>()
-    {
-    };
-    #endregion NPCTalkingIDs
-
-    #region DialogueOptions
-    public static Dictionary<int, string> DialogueOptions = new Dictionary<int, string>() 
-    {
-    };
-    #endregion
-
-    #region SpeakingLines
-    public static Dictionary<int, string> SpeakingLines = new Dictionary<int, string>() 
-    { 
-    };
-    #endregion
-
     void Start()
     {
         Instance = this;
@@ -43,7 +25,7 @@ public class StandardNPC : MonoBehaviour
 
     public void StartDialogue()
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
+   //     DialogueManager.ThisDialogueType = DialogueType.;
     }
 
     public void OnTriggerExit(Collider other)

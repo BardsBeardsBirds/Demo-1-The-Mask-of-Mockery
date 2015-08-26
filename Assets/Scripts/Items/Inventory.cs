@@ -35,7 +35,11 @@ public class Inventory : MonoBehaviour
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
         Instance.Tooltip = Resources.Load("Prefabs/UI/InventoryWindow/Tooltip") as GameObject;
-        
+
+        //for (int i = 0; i < SlotList.Count; i++)          <....... Maybe rather that one?
+        //{
+        //    Items.Add(new Item());
+        //}
         foreach (GameObject slot in SlotList)
         {
             Items.Add(new Item());
@@ -51,9 +55,9 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-        //AddItem(3); //mask
-        //AddItem(1); //roughneck shot
-        //AddItem(2); //carrot
+        AddItem(3); //mask
+        AddItem(1); //roughneck shot
+        AddItem(2); //carrot
 
 
     //    Debug.Log(Items[0].ItemName);

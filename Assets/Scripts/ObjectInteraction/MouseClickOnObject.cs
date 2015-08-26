@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum SpeechType { Investigation, Interaction, CombineInventoryWorld, CombineInventory };
-
 public class MouseClickOnObject : MonoBehaviour
 {
     public MouseClickOnObject Instance;
@@ -213,7 +211,7 @@ public class MouseClickOnObject : MonoBehaviour
 
         if (UIDrawer.IsDraggingItem)
         {
-         //   GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
+            //   GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
 
             bool tryCombine = false;
             tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
@@ -225,7 +223,11 @@ public class MouseClickOnObject : MonoBehaviour
 
         }
         else
-            _actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
+        {
+            ActionPanel.IsInInventory = false;
+            _actionPanel.MoveActionPanelToClickedObject(false);   //show the action panel
+        }
+            //_actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
     }
 
     public void OnMouseExit()

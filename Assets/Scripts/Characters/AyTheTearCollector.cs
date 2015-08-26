@@ -10,78 +10,6 @@ public class AyTheTearCollector : MonoBehaviour
 
     private SpokenLineLoader _lineLoader;
 
-    //#region NPCTalkingIDs
-    //public static List<int> NPCTalkingIDs = new List<int>()
-    //{
-    //    2005,
-    //    2007,
-    //    2009,
-    //    2011,
-    //    2013,
-    //    2015,
-    //    2017,
-    //    2019,
-    //    2021,
-    //    2023,
-    //    2025,
-    //    2027,
-    //    2028,
-    //    2030,
-    //    2031,
-    //    2033,
-    //    2034,
-    //    2035,
-    //    2036,
-    //    2039,
-    //    2041,
-    //    2043,
-    //    2045,
-    //    2047,
-    //    2049,
-    //    2050,
-    //    2051,
-    //    2053,
-    //    2054,
-    //    2055,
-    //    2057,
-    //    2059,
-    //    2060,
-    //    2061,
-    //    2062,
-    //    2063,
-    //    2066,
-    //    2069,
-    //    2071,
-    //    2073,
-    //    2075,
-    //    2077,
-    //    2078,
-    //    2080,
-    //    2082,
-    //    2084,
-    //    2087,
-    //    2089,
-    //    2091,
-    //    2093,
-    //    2095,
-    //    2097,
-    //    2098,
-    //    2100,
-    //    2101,
-    //    2103,
-    //    2104,
-    //    2106,
-    //    2108,
-    //    2110,
-    //    2113,
-    //    2115,
-    //    2117,
-    //    2119,
-    //    2121,
-    //    2125,
-    //};
-    //#endregion NPCTalkingIDs
-
     public void Start() 
     {
         Instance = this;
@@ -280,7 +208,7 @@ public class AyTheTearCollector : MonoBehaviour
                 DialogueMenu.AddToDialogueOptions(2002);
                 DialogueMenu.AddToDialogueOptions(2003);
                 DialogueMenu.AddToDialogueOptions(2004);
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Ay);
                 MouseClickOnObject.ObjectLines[ObjectsInLevel.AyTheTearCollector] = "Ay the Tear Collector";
                 MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.AyTheTearCollector] = "Investigate Ay";
                 MouseClickOnObject.ObjectInteractionLines[ObjectsInLevel.AyTheTearCollector] = "Talk to Ay";    
@@ -328,11 +256,11 @@ public class AyTheTearCollector : MonoBehaviour
                 DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2120);
                 break;
             case 999:
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Ay);
                 break;
 
             default: //in all other dialogue options
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Ay);
                 Debug.LogError("I don't know this dialogue situation: Situation " + dialogueSituation);
                 break;
         }

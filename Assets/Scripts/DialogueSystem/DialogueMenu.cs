@@ -48,8 +48,6 @@ public class DialogueMenu : MonoBehaviour
 
     public static void AddToDialogueOptions(int dialogueOptionID)
     {
-        Debug.Log("Requested option: " + dialogueOptionID + ". In the list are " + DialogueMenu.CurrentDialogueOptionsID.Count);
-
         if (!DialogueManager.IsDialoguePassed(dialogueOptionID))
         {
             DialogueMenu.CurrentDialogueOptionsID.Add(dialogueOptionID);
@@ -57,11 +55,18 @@ public class DialogueMenu : MonoBehaviour
         }
     }
 
-    public static void FindDialogueOptionText()
+    public static void FindDialogueOptionText(Character character)
     {
         for (int i = 0; i < CurrentDialogueOptionsID.Count; i++)
         {
-            CurrentDialogueOptions[i] = SpokenLineLoader.Instance.GetLine(CurrentDialogueOptionsID[i]);
+            foreach (SpokenLine spokenLine in GameManager.CharacterDialogueLists[character])
+            {
+                if (spokenLine.ID == CurrentDialogueOptionsID[i])
+                {
+                    CurrentDialogueOptions[i] = spokenLine.Text;
+                    break;
+                }
+            }
         }
     }
 

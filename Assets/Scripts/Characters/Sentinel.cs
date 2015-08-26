@@ -9,56 +9,6 @@ public class Sentinel : MonoBehaviour
     public Animator Animator;
     private SphereCollider _thisCollider;
 
-
-    #region NPCTalkingIDs
-    public static List<int> NPCTalkingIDs = new List<int>()
-    {
-        3001,
-        3003,
-        3005,
-        3005,
-        3008,
-        3010,
-        3011,
-        3013,
-        3015,
-        3017,
-        3021,
-    };
-
-    #endregion NPCTalkingIDs
-
-    #region SpeakingLines
-    public static Dictionary<int, string> SpeakingLines = new Dictionary<int, string>() 
-    { 
-        {3001, "Hold it there! No one can pass. King’s order."},
-        {3002, "King’s order? But.."},
-        {3003, "Shoo!"},
-        {3004, "We bards have practised the art of storytelling for years. How about I tell you the most beautiful story you have every heard; a story so touching that it will make tears well in your eyes? … and then you let me pass?"},
-        {3005, "You will tell me a story that will make me cry? And then you will surely take my tears to the tear collector, don’t you? No-o, I am not falling for that one."},
-        {3006, "I just received a King’s order to make way for all bards in Baton! Please let me through..!"},
-        {3007, "Ehm... Would you step aside..?"},
-        {3008, "You didn’t think that was going to work, didn’t you?"},
-        {3009, "Please let me pass?"},
-        {3010, "Listen, wandering around in the wilderness ahead is very dangerous, and I have specific orders to look out for you, music boy. "},
-        {3011, "The king is very worried you will get yourself in trouble again after you… hum.. well, we all know what happened at the castle… Look at yourself, you are so green.."},
-        {3012, "No I’m not.."},
-        {3013, "I am afraid I have to stop you right here."},
-        {3014, "What can I do to make you change your mind?"},
-        {3015, "As I told you, you just don’t seem to fit for going into the wild. I have been a royal guard since.., throughout this whole game, and I can tell by experience a scrag like you won’t last long out there. Make an impression on me and I might change me mind."},
-        {3016, "What can I do to make you change your mind?"},
-        {3017, "Make an impression on me and I might change me mind."},
-        {3018, "I guess I will have to leave you for now. But this is not the end, rather a beginning!"},
-        {3019, "Hello, my faithful but lonely servant, I’m back and I am going to be really clear with you this time:"},
-        {3020, "I will not tolerate any more delay. You are obstructing this road, and consequently my journey has stagnated. This unfortunate situation has to end now. Stand aside!"},
-        {3021, "It seems you learnt something in the meantime! With this attitude, I can’t do anything but granting you passage sir. King Archimedes must be proud of you."},
-        {3022, "When a brave man takes a stand, the spines of others are often stiffened."},
-        {3023, "I think we finished talking."},
-        {3025, "Okay, here I go.."}
-    };
-
-    #endregion
-
     public void Start()
     {
         Instance = this;
@@ -142,7 +92,7 @@ public class Sentinel : MonoBehaviour
                 DialogueMenu.AddToDialogueOptions(3004);
                 DialogueMenu.AddToDialogueOptions(3006);
                 DialogueMenu.AddToDialogueOptions(3018);
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Sentinel);
                 break;
             case 3: //SITUATION 3  //player has a roughneck shot
                 PassSentinelDialogue();
@@ -150,10 +100,10 @@ public class Sentinel : MonoBehaviour
             case 4: //SITUATION 4   //we finished talking
                 break;
             case 999:
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Sentinel);
                 break;
             default: //in all other dialogue options
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Sentinel);
                 Debug.LogError("I don't know this dialogue situation: Situation " + dialogueSituation);
                 break;
         }
@@ -238,7 +188,7 @@ public class Sentinel : MonoBehaviour
 
         SentinelBlocker.IsBlocking = true;
 
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
+        DialogueManager.ThisDialogueType = DialogueType.SentinelDialogue;
         GameManager.NPCs[Character.Sentinel].GetComponent<Animator>().SetBool("DialogueState", true);
 
         DialoguePlayback.NPC = Character.Sentinel;

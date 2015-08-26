@@ -9,22 +9,6 @@ public class InventoryCommentary
 
     public static List<int> CurrentDialogueIDs = new List<int>();
 
-    //public static Dictionary<int, string> InvestigationLines = new Dictionary<int, string>()
-    //{
-    //    {5001, "It is a roughneck shot. Ay prepared it."},
-    //    {5002, "It is orange."},
-    //    {5003, "What a beautiful mask!"},
-
-    //};
-
-    //public static Dictionary<int, string> InteractionLines = new Dictionary<int, string>()
-    //{
-    //    {5101, "Let's drink it when we are going to pass the sentinel."},
-    //    {5102, "Delicious!"},
-    //    {5103, "I don't want to put on the mask."},
-
-    //};
-
     //public static Dictionary<int, string> InvestigationHoverLines = new Dictionary<int, string>()
     //{
     //    {5201, "Investigate Roughneck Shot"},
@@ -40,30 +24,48 @@ public class InventoryCommentary
     //    {5303, "Put on the Mask of Mockery"},
     //};
 
-
-
-    public static IEnumerator InventoryCommentaryRoutine(SpeechType speechtype, Item inventoryItem)
+    public static IEnumerator InventoryCommentaryRoutine(DialogueType dialogueType, Item inventoryItem)
     {
-        FindLines(speechtype, inventoryItem);
+        FindLines(dialogueType, inventoryItem);
         CharacterControllerLogic.Instance.GoToTalkingState();
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.InventoryCommentary;
+        DialogueManager.ThisDialogueType = dialogueType;
 
         for (int i = 0; i < InventoryCommentary.CurrentDialogueIDs.Count; i++)
         {
             var id = CurrentDialogueIDs[i];
             CurrentID = id;
-            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
-            //if (speechtype == SpeechType.Investigation)
-            //    DialoguePlayback.SetCurrentDialogueLine(InvestigationLines[id]);
-            //else if (speechtype == SpeechType.Interaction)
-            //    DialoguePlayback.SetCurrentDialogueLine(InteractionLines[id]);
+
+            if (dialogueType == DialogueType.InventoryInvestigation)
+            {
+                foreach (SpokenLine spokenLine in GameManager.InventoryInvestigationDialogue)
+                {
+                    if (spokenLine.ID == id)
+                    {
+                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+
+                        break;
+                    }
+                }
+            }
+            else if (dialogueType == DialogueType.InventoryInteraction)
+            {
+                foreach (SpokenLine spokenLine in GameManager.InventoryInteractionDialogue)
+                {
+                    if (spokenLine.ID == id)
+                    {
+                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+
+                        break;
+                    }
+                }
+            }
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
             string audioFile = "ObjectInteraction/" + id;
             AudioManager.Instance.PlayDialogueAudio(audioFile);
 
-            Debug.Log(CharacterControllerLogic.Instance.State);
+
             if (i + 1 == InventoryCommentary.CurrentDialogueIDs.Count)
             {
                 CharacterControllerLogic.Instance.GoToTalkingLastLineState();
@@ -76,11 +78,11 @@ public class InventoryCommentary
         }
     }
 
-    private static void FindLines(SpeechType speechType, Item inventoryItem)
+    private static void FindLines(DialogueType dialogueType, Item inventoryItem)
     {
-        if (speechType == SpeechType.Investigation)
+        if (dialogueType == DialogueType.InventoryInvestigation)
             FindInvestigationLines(inventoryItem);
-        else if (speechType == SpeechType.Interaction)
+        else if (dialogueType == DialogueType.InventoryInteraction)
             FindInteractionLines(inventoryItem);
     }
 
@@ -145,7 +147,6 @@ public class InventoryCommentary
                 break;
         }
         return id;
-
     }
 
     public static int FindInteractionHoverLines(Item inventoryItem)

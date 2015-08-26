@@ -27,38 +27,38 @@ public class DialoguePlayback : MonoBehaviour
 
     public void ShowDialogueLines()
     {
-        GameObject dialogueLineImage = GameObject.Find("DialogueLineImage");
+        GameObject dialogueLineImage = GameManager.Instance.UICanvas.DialogueLineImage;
         dialogueLineImage.GetComponent<Image>().enabled = true;
-        Text Optiontext = dialogueLineImage.GetComponentInChildren<Text>();
-        Optiontext.text = _currentDialogueLine;
-        Optiontext.enabled = true;
+        Text lineText = dialogueLineImage.GetComponentInChildren<Text>();
+        lineText.text = _currentDialogueLine;
+        lineText.enabled = true;
     }
 
     public void HideDialogueLines()
     {
-        GameObject dialogueLineImage = GameObject.Find("DialogueLineImage");
+        GameObject dialogueLineImage = GameManager.Instance.UICanvas.DialogueLineImage;
         dialogueLineImage.GetComponent<Image>().enabled = false;
-        Text Optiontext = dialogueLineImage.GetComponentInChildren<Text>();
-        Optiontext.text = "";
-        Optiontext.enabled = false;
+        Text lineText = dialogueLineImage.GetComponentInChildren<Text>();
+        lineText.text = "";
+        lineText.enabled = false;
     }
 
     public static void SetCurrentDialogueLine(string currentDialogueLine)
     {
         _currentDialogueLine = currentDialogueLine;
 
-        GameObject dialogueLineImage = GameObject.Find("DialogueLineImage");
-        Text Optiontext = dialogueLineImage.GetComponentInChildren<Text>();
-        Optiontext.text = _currentDialogueLine;
+        GameObject dialogueLineImage = GameManager.Instance.UICanvas.DialogueLineImage;
+        Text lineText = dialogueLineImage.GetComponentInChildren<Text>();
+        lineText.text = _currentDialogueLine;
     }
 
-    public static void ComposeDialogueList()
-    {
-        for (int i = 0; i < CurrentDialogueIDs.Count; i++)
-        {
-            _currentDialogueLine = SpokenLineLoader.Instance.GetLine(CurrentDialogueIDs[i]);
-        }
-    }
+    //public static void ComposeDialogueList()
+    //{
+    //    for (int i = 0; i < CurrentDialogueIDs.Count; i++)
+    //    {
+    //        _currentDialogueLine = SpokenLineLoader.Instance.GetLine(CurrentDialogueIDs[i]).Text;
+    //    }
+    //}
 
     public static void TriggerDialogue(int dialogueOptionID)
     {
@@ -94,7 +94,8 @@ public class DialoguePlayback : MonoBehaviour
 
     public static IEnumerator DialogueRoutine()
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
+     //   DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
+
         Debug.Log(NPC);
         for (int i = 0; i < DialoguePlayback.CurrentDialogueIDs.Count; i++)
         {
@@ -102,7 +103,19 @@ public class DialoguePlayback : MonoBehaviour
 
             LastLineOfTheBlock = false;
 
-            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
+            SpokenLine spokenLine = null;
+
+            foreach (SpokenLine s in GameManager.CharacterDialogueLists[NPC])
+            {
+                if (s.ID == id)
+                {
+                    spokenLine = s;
+                    break;
+                }
+            }
+
+            DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+//            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
 
             CurrentLineID = id;
 
@@ -112,7 +125,7 @@ public class DialoguePlayback : MonoBehaviour
             AudioManager.Instance.PlayDialogueAudio(audioFile);
 
             //animation
-            SetTalkingListening(NPC, id);
+            SetTalkingListening(id);
 
             if (i + 1 == DialoguePlayback.CurrentDialogueIDs.Count)
             {
@@ -144,50 +157,144 @@ public class DialoguePlayback : MonoBehaviour
         }
     }
 
-    private static void SetTalkingListening(Character NPC, int id)
+    private static void SetTalkingListening(int id)
     {
-        switch (NPC)
+        SpokenLine spokenLine = null;
+
+        foreach (SpokenLine s in GameManager.CharacterDialogueLists[NPC])
         {
-            case Character.Ay:
-                if (AyTheTearCollector.NPCTalkingIDs.Contains(id))
-                {
-                    AyTheTearCollector.Instance.Animator.SetBool("Listening", false);
-                    AyTheTearCollector.Instance.Animator.SetBool("Talking", true);
-                }
-                else
-                {
-                    AyTheTearCollector.Instance.Animator.SetBool("Listening", true);
-                    AyTheTearCollector.Instance.Animator.SetBool("Talking", false);
-                }
+            if (s.ID == id)
+            {
+                spokenLine = s;
                 break;
-            case Character.Benny:
-                if (BennyTwospoons.NPCTalkingIDs.Contains(id))
-                {
-                    BennyTwospoons.Instance.Animator.SetBool("Listening", false);
-                    BennyTwospoons.Instance.Animator.SetBool("Talking", true);
-                }
-                else
-                {
-                    BennyTwospoons.Instance.Animator.SetBool("Listening", true);
-                    BennyTwospoons.Instance.Animator.SetBool("Talking", false);
-                }
-                break;
-            case Character.Sentinel:
-                if (Sentinel.NPCTalkingIDs.Contains(id))
-                {
-                    Sentinel.Instance.Animator.SetBool("Listening", false);
-                    Sentinel.Instance.Animator.SetBool("Talking", true);
-                }
-                else
-                {
-                    Sentinel.Instance.Animator.SetBool("Listening", true);
-                    Sentinel.Instance.Animator.SetBool("Talking", false);
-                }
-                break;
-            default:
-                Debug.LogError("which npc is this?");
-                break;
+            }
         }
+
+        if (spokenLine.Speaker == NPC)
+        {
+            GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", false);
+            GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", true);
+        }
+        else
+        {
+            GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", true);
+            GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", false);
+        }
+
+        //SpokenLine spokenLine = null;
+        //switch (NPC)
+        //{       
+        //    case Character.Ay:
+        //           //TODO: Make a GetSpokenLine(DialogueType type); in DialogueManager
+        //        foreach (SpokenLine s in GameManager.AyDialogue)
+        //        {
+        //            if (s.ID == id)
+        //            {
+        //                spokenLine = s;
+        //                break;
+        //            }
+        //        }
+
+        //        if (spokenLine.Speaker == NPC)
+        //        {
+        //            AyTheTearCollector.Instance.Animator.SetBool("Listening", false);
+        //            AyTheTearCollector.Instance.Animator.SetBool("Talking", true);
+        //        }
+        //        else
+        //        {
+        //            AyTheTearCollector.Instance.Animator.SetBool("Listening", true);
+        //            AyTheTearCollector.Instance.Animator.SetBool("Talking", false);
+        //        }
+        //        break;
+        //    case Character.Benny:
+        //        foreach (SpokenLine s in GameManager.BennyDialogue)
+        //        {
+        //            if (s.ID == id)
+        //            {
+        //                spokenLine = s;
+        //                break;
+        //            }
+        //        }
+
+        //        if (spokenLine.Speaker == NPC)
+        //        {
+        //            BennyTwospoons.Instance.Animator.SetBool("Listening", false);
+        //            BennyTwospoons.Instance.Animator.SetBool("Talking", true);
+        //        }
+        //        else
+        //        {
+        //            BennyTwospoons.Instance.Animator.SetBool("Listening", true);
+        //            BennyTwospoons.Instance.Animator.SetBool("Talking", false);
+        //        }
+        //        break;
+        //    case Character.Sentinel:
+        //        foreach (SpokenLine s in GameManager.SentinelDialogue)
+        //        {
+        //            if (s.ID == id)
+        //            {
+        //                spokenLine = s;
+        //                break;
+        //            }
+        //        }
+
+        //        if (spokenLine.Speaker == NPC)
+        //        {
+        //            Sentinel.Instance.Animator.SetBool("Listening", false);
+        //            Sentinel.Instance.Animator.SetBool("Talking", true);
+        //        }
+        //        else
+        //        {
+        //            Sentinel.Instance.Animator.SetBool("Listening", true);
+        //            Sentinel.Instance.Animator.SetBool("Talking", false);
+        //        }
+        //        break;
+        //    default:
+        //        Debug.LogError("which npc is this?");
+        //        break;
+        //}
+        //}
+        //switch (NPC)
+        //{
+        //    case Character.Ay:
+        //        if (AyTheTearCollector.NPCTalkingIDs.Contains(id))
+        //        {
+        //            AyTheTearCollector.Instance.Animator.SetBool("Listening", false);
+        //            AyTheTearCollector.Instance.Animator.SetBool("Talking", true);
+        //        }
+        //        else
+        //        {
+        //            AyTheTearCollector.Instance.Animator.SetBool("Listening", true);
+        //            AyTheTearCollector.Instance.Animator.SetBool("Talking", false);
+        //        }
+        //        break;
+        //    case Character.Benny:
+        //        if (BennyTwospoons.NPCTalkingIDs.Contains(id))
+        //        {
+        //            BennyTwospoons.Instance.Animator.SetBool("Listening", false);
+        //            BennyTwospoons.Instance.Animator.SetBool("Talking", true);
+        //        }
+        //        else
+        //        {
+        //            BennyTwospoons.Instance.Animator.SetBool("Listening", true);
+        //            BennyTwospoons.Instance.Animator.SetBool("Talking", false);
+        //        }
+        //        break;
+        //    case Character.Sentinel:
+        //        if (Sentinel.NPCTalkingIDs.Contains(id))
+        //        {
+        //            Sentinel.Instance.Animator.SetBool("Listening", false);
+        //            Sentinel.Instance.Animator.SetBool("Talking", true);
+        //        }
+        //        else
+        //        {
+        //            Sentinel.Instance.Animator.SetBool("Listening", true);
+        //            Sentinel.Instance.Animator.SetBool("Talking", false);
+        //        }
+        //        break;
+        //    default:
+        //        Debug.LogError("which npc is this?");
+        //        break;
+        //}
     }
 
     public static void AddToDialogue(int dialogueID)
@@ -227,15 +334,15 @@ public class DialoguePlayback : MonoBehaviour
     }
 
     #region ObjectCommentary
-    public void PlaybackCommentary(SpeechType speechType, ObjectsInLevel objectInLevel)
+    public void PlaybackCommentary(DialogueType dialogueType, ObjectsInLevel objectInLevel)
     {
-        Debug.LogWarning(speechType + " " + objectInLevel);
-        StartCoroutine(ObjectCommentary.CommentaryRoutine(speechType, objectInLevel));
+        Debug.LogWarning(dialogueType + " " + objectInLevel);
+        StartCoroutine(ObjectCommentary.CommentaryRoutine(dialogueType, objectInLevel));
     }
 
-    public void PlaybackCommentary(SpeechType speechType, Item inventoryItem)
+    public void PlaybackCommentary(DialogueType dialogueType, Item inventoryItem)
     {
-        StartCoroutine(InventoryCommentary.InventoryCommentaryRoutine(speechType, inventoryItem));
+        StartCoroutine(InventoryCommentary.InventoryCommentaryRoutine(dialogueType, inventoryItem));
     }
 
     public void PlaybackCommentary()
@@ -249,7 +356,7 @@ public class DialoguePlayback : MonoBehaviour
         StartCoroutine(GameManager.Instance.IIventoryItemWithObject.CombineItemRoutine(inventoryItem, worldObject));
     }
 
-    public void PlaybackCombineItemsWithWorld(Item inventoryItem, Item subjectedInventoryItem)
+    public void PlaybackCombineItemsInventory(Item inventoryItem, Item subjectedInventoryItem)
     {
         StartCoroutine(GameManager.Instance.IIventoryItemWithObject.CombineItemRoutine(inventoryItem, subjectedInventoryItem));
     }

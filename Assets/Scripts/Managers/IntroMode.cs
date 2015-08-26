@@ -28,14 +28,24 @@ public class IntroMode
     public IEnumerator IntroTextRoutine()
     {
         AddLines();
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.Intro;
+        DialogueManager.ThisDialogueType = DialogueType.Intro;
 
         for (int i = 0; i < CurrentTextIDs.Count; i++)
         {
             var id = CurrentTextIDs[i];
             CurrentID = id;
 
-            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
+            foreach (SpokenLine spokenLine in GameManager.IntroDialogue)
+            {
+                if (spokenLine.ID == id)
+                {
+                    DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+
+                    break;
+                }
+            }
+
+        //    DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
 
             DialoguePlayback.Instance.ShowDialogueLines();
 

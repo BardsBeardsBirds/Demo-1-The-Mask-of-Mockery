@@ -13,6 +13,7 @@ public class MainCanvas : MonoBehaviour
     public GameObject ScreenButtonWidget;
     public GameObject IntroScreen;
 
+    public GameObject DialogueLineImage;
     public GameObject ObjectDescriptionTextGO;
     public Text ObjectDescriptionText;
     public Hoverings Hovering;
@@ -68,10 +69,6 @@ public class MainCanvas : MonoBehaviour
 
         if(GameManager.MyGameType != GameManager.GameType.NewGame)
             GameManager.Instance.UICanvas.WidgetActive();
-    }
-
-    public void Start()
-    {
     }
 
     public void OpenCloseInventory()

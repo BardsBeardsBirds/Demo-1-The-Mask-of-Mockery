@@ -7,57 +7,6 @@ public class BennyTwospoons : MonoBehaviour
     public static BennyTwospoons Instance;
     public Animator Animator;
 
-    #region NPCTalkingIDs
-    public static List<int> NPCTalkingIDs = new List<int>()
-        {
-            1001,
-            1002,
-            1004,
-            1007,
-            1009,
-            1011,
-            1012,
-            1014,
-            1016,
-            1019,
-            1021,
-            1023,
-            1024,
-            1029,
-            1030,
-            1031,
-            1036,
-            1038,
-            1040,
-            1042,
-            1044,
-            1045,
-            1047,
-            1048,
-            1050,
-            1051,
-            1053,
-            1056,
-            1058,
-            1062,
-            1064,
-            1066,
-            1071,
-            1073,
-            1077,
-            1079,
-            1081,
-            1084,
-            1086,
-            1088,
-            1089,
-            1091,
-            1092,
-            1093,
-            1095,
-        };
-    #endregion NPCTalkingIDs
-
     public void Start()
     {
         Instance = this;
@@ -295,11 +244,11 @@ public class BennyTwospoons : MonoBehaviour
                 DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1087);
                 break;
             case 999:
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Benny);
                 break;
 
             default: //in all other dialogue options
-                DialogueMenu.FindDialogueOptionText();
+                DialogueMenu.FindDialogueOptionText(Character.Benny);
                 Debug.LogError("I don't know this dialogue situation: Situation " + dialogueSituation);
                 break;
         }

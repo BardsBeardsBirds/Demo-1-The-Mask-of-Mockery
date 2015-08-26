@@ -38,7 +38,7 @@ public class IntroTimer
 
                     Debug.Log("END TALKING STATE from intro");
                     CharacterControllerLogic.Instance.EndTalkingState();
-                    DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
+                    DialogueManager.ThisDialogueType = DialogueType.None;
 
                     GameManager.Instance.UICanvas.IntroScreen.SetActive(true);
 

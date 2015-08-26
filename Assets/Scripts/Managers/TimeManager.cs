@@ -19,37 +19,66 @@ public class TimeManager : MonoBehaviour
 
     public void Update()
     {
-        if (DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.NPCDialogue || DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.NPCDialogue)
+        if (DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.AyDialogue ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.BennyDialogue ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.SentinelDialogue)
             _dialogueTimer.Update();
-        else if (DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.ObjectInteraction || DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueManager.DialogueType.InventoryCommentary)
+        else if (DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.ObjectInvestigation ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.ObjectInteraction ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.InventoryInvestigation ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.InventoryInteraction ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.InventoryCombination ||
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.ItemWorldCombination || 
+            DialogueIsPlaying && DialogueManager.ThisDialogueType == DialogueType.RandomNo)
         {
             _objectInteractionTimer.Update();
         }
-        else if (DialogueManager.ThisDialogueType == DialogueManager.DialogueType.Intro)
+        else if (DialogueManager.ThisDialogueType == DialogueType.Intro)
             _introTimer.Update();
     }
 
-    public void PlayDialogueTimer(float dialogueLength)
+    public void PlayDialogueTimer(float dialogueLength)     //TODO: We can probably improve the speed here
     {
-        DialogueManager.DialogueType dialogueType = DialogueManager.ThisDialogueType;
+        DialogueType dialogueType = DialogueManager.ThisDialogueType;
+
+        if (dialogueType == DialogueType.AyDialogue ||
+            dialogueType == DialogueType.BennyDialogue ||
+            dialogueType == DialogueType.SentinelDialogue)
+            _dialogueTimer.SetDialogueTimesLength(dialogueLength);
+
+        else if (dialogueType == DialogueType.ObjectInvestigation ||
+                    dialogueType == DialogueType.ObjectInteraction ||
+                    dialogueType == DialogueType.InventoryInvestigation ||
+                    dialogueType == DialogueType.InventoryInteraction ||
+                    dialogueType == DialogueType.InventoryCombination ||
+                    dialogueType == DialogueType.ItemWorldCombination ||
+                    dialogueType == DialogueType.RandomNo)
+            _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
+
+        else if (DialogueManager.ThisDialogueType == DialogueType.Intro)
+            _introTimer.SetDialogueTimerLength(dialogueLength);
+
+
   //      Debug.Log(dialogueType + "length " + dialogueLength);
-        switch (dialogueType)
-        {
-            case DialogueManager.DialogueType.NPCDialogue:
-                _dialogueTimer.SetDialogueTimesLength(dialogueLength);//Made the dialogues shorter faster quicker sneller hier!!!!
-                break;
-            case DialogueManager.DialogueType.ObjectInteraction:
-                _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
-                break;
-            case DialogueManager.DialogueType.InventoryCommentary:
-                _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
-                break;
-            case DialogueManager.DialogueType.Intro:
-                _introTimer.SetDialogueTimerLength(dialogueLength);
-                break;
-            default:
-                break;
-        }
+
+
+        //switch (dialogueType)
+        //{
+        //    case DialogueType.NPCDialogue:
+        //        _dialogueTimer.SetDialogueTimesLength(dialogueLength);//Made the dialogues shorter faster quicker sneller hier!!!!
+        //        break;
+        //    case DialogueType.ObjectInteraction:
+        //        _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
+        //        break;
+        //    case DialogueType.InventoryCommentary:
+        //        _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
+        //        break;
+        //    case DialogueType.Intro:
+        //        _introTimer.SetDialogueTimerLength(dialogueLength);
+        //        break;
+        //    default:
+        //        break;
+        //}
 
         DialogueIsPlaying = true;
     }

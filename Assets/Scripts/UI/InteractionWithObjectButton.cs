@@ -15,7 +15,10 @@ public class InteractionWithObjectButton : MonoBehaviour, IPointerEnterHandler, 
     {       
         MouseClickOnObject.MouseIsOnInteractionButton = true;
         GameManager.Instance.UICanvas.ObjectDescriptionText.enabled = true;
-        ActionPanel.ShowHoverInteractionLine();
+        if (ActionPanel.IsInInventory)
+            ActionPanel.ShowHoverInteractionLine(DialogueType.InventoryInteraction);
+        else
+            ActionPanel.ShowHoverInteractionLine(DialogueType.ObjectInteraction);
     }
 
     public void OnPointerExit(PointerEventData eventData)

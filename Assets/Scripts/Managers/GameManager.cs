@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public static GameObject Player;
     public Inventory MyInventory;
     public InGameObjectManager InGameObjectM;
-    public InventoryItemWithWorldObject IIventoryItemWithObject = null;
+    public InventoryCombinations IIventoryItemWithObject = null;
 
     private GameObject _ay;
     private GameObject _benny;
@@ -36,7 +36,25 @@ public class GameManager : MonoBehaviour
 
     private bool _showConsole = false;
 
+    public static List<SpokenLine> AyDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> BennyDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> SentinelDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> ObjectInvestigationDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> ObjectInteractionDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> InventoryInvestigationDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> InventoryInteractionDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> InventoryCombinationDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> ItemWorldCombinationDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> RandomNoDialogue = new List<SpokenLine>();
+    public static List<SpokenLine> IntroDialogue = new List<SpokenLine>();
+
     public static Dictionary<Character, Transform> NPCs = new Dictionary<Character, Transform>();
+    public static Dictionary<Character, List<SpokenLine>> CharacterDialogueLists = new Dictionary<Character, List<SpokenLine>>()
+    { 
+        {Character.Ay, AyDialogue},
+        {Character.Benny, BennyDialogue},
+        {Character.Sentinel, SentinelDialogue},
+    };
 
     public void Awake()
     {     
@@ -59,6 +77,7 @@ public class GameManager : MonoBehaviour
         SetPlayerPosition(); 
         LoadManagers();
         FindCharacters();
+     //   LoadDialogues();
         ///Setting up the level<<
 
         if (UICanvas == null)
@@ -68,7 +87,7 @@ public class GameManager : MonoBehaviour
             SetInitialBools();
 
         InGameObjectManager.Instance.LoadInGameObjectsInfo();  //see what objects should be turned on or off
-        IIventoryItemWithObject = new InventoryItemWithWorldObject();
+        IIventoryItemWithObject = new InventoryCombinations();
     }
 
     public void Start()
@@ -92,6 +111,21 @@ public class GameManager : MonoBehaviour
         InGameObjectM = GameManagerObj.AddComponent<InGameObjectManager>();
     }
 
+    //public void LoadDialogues()
+    //{
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.AyDialogue);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.BennyDialogue);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.SentinelDialogue);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ObjectInvestigation);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ObjectInteraction);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ObjectInvestigation);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.InventoryInteraction);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.InventoryCombination);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ItemWorldCombination);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.RandomNo);
+    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.Intro);
+    //}
+
     public void FindCharacters()
     {
         _benny = GameObject.Find("Benny Twospoons");
@@ -105,6 +139,8 @@ public class GameManager : MonoBehaviour
         _ay = GameObject.Find("Ay the Tear Collector");
         _ay.AddComponent<AyTheTearCollector>();
         NPCs.Add(Character.Ay, _ay.transform);
+
+        NPCs.Add(Character.Emmon, Player.transform);
     }
 
     public void SetPlayerPosition()
@@ -185,10 +221,7 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                SpokenLineLoader loader = GameObject.Find("SpokenLineLoader").GetComponent<SpokenLineLoader>();
 
-                string text = loader.GetLine(1);
-                Debug.Log(text);
             }
 
             //PAUSE MENU

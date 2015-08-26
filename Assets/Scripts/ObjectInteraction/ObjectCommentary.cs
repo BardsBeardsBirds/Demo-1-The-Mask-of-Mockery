@@ -14,10 +14,20 @@ public static class ObjectCommentary
 
     public static IEnumerator LetsGetCloserRoutine()
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
+        DialogueManager.ThisDialogueType = DialogueType.ObjectInteraction;
 
         int id = 7078;
-        DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
+
+        foreach (SpokenLine spokenLine in GameManager.ObjectInteractionDialogue)
+        {
+            if (spokenLine.ID == id)
+            {
+                DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+                break;
+            }
+        }
+
+    //    DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
 
         DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -31,22 +41,45 @@ public static class ObjectCommentary
         yield return new WaitForSeconds(timerLength);   
     }
 
-    public static IEnumerator CommentaryRoutine(SpeechType speechType, ObjectsInLevel objectInLevel)
+    public static IEnumerator CommentaryRoutine(DialogueType dialogueType, ObjectsInLevel objectInLevel)  //object in the world
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
+        DialogueManager.ThisDialogueType = dialogueType;
 
-        FindLines(speechType, objectInLevel);
+        FindLines(dialogueType, objectInLevel);
 
         for (int i = 0; i < CurrentDialogueIDs.Count; i++)
         {
             var id = CurrentDialogueIDs[i];
             CurrentID = id;
+            Debug.Log(dialogueType + " " + id);
+       //     DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
+            if (dialogueType == DialogueType.ObjectInvestigation)
+            {
+                foreach (SpokenLine spokenLine in GameManager.ObjectInvestigationDialogue)
+                {
+                    if (spokenLine.ID == id)
+                    {
+              //          GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
+                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
 
-            DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id));
-            //if(speechType == SpeechType.Investigation)
-            //    DialoguePlayback.SetCurrentDialogueLine(InvestigationLines[id]);
-            //else if(speechType == SpeechType.Interaction)
-            //    DialoguePlayback.SetCurrentDialogueLine(InteractionLines[id]);
+                        break;
+                    }
+                }
+            }
+            else if (dialogueType == DialogueType.ObjectInteraction)
+            {
+                foreach (SpokenLine spokenLine in GameManager.ObjectInteractionDialogue)
+                {
+                    if (spokenLine.ID == id)
+                    {
+                  //      GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
+                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+
+                        break;
+                    }
+                }
+            }
+             //   DialoguePlayback.SetCurrentDialogueLine(InteractionLines[id]);
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -66,11 +99,11 @@ public static class ObjectCommentary
         }
     }
 
-    public static void FindLines(SpeechType speechType, ObjectsInLevel objectInLevel)
+    public static void FindLines(DialogueType dialogueType, ObjectsInLevel objectInLevel)
     {
-        if (speechType == SpeechType.Investigation)
+        if (dialogueType == DialogueType.ObjectInvestigation)
             FindInvestigationLines(objectInLevel);
-        else if (speechType == SpeechType.Interaction)
+        else if (dialogueType == DialogueType.ObjectInteraction)
             FindInteractionLines(objectInLevel);     
     }
 

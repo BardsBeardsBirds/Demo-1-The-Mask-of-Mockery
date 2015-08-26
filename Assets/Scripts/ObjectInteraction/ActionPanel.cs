@@ -4,32 +4,28 @@ using System.Collections.Generic;
 
 public class ActionPanel
 {
-    public enum ItemInteractionType { ObjectInWorld, InventoryItemInteraction};
     public ItemDatabase Database;
 
     private GameObject _investigateButton;
     private GameObject _interactionButton;
     private GameObject _actionPanelGO;
 
-    public static ItemInteractionType InteractionType;
     public static Item ThisItem;
+    public static bool IsInInventory = false;
 
     public static ObjectsInLevel LastHoveredObject;
 
-    public void MoveActionPanelToClickedObject(ItemInteractionType itemInteractionType) // move action panel
+    public void MoveActionPanelToClickedObject(bool isInInventory) // move action panel
     {
-        InteractionType = itemInteractionType;
-
         if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Talking || CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.TalkingLastLine)
             return;
 
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
+        DialogueManager.ThisDialogueType = DialogueType.None;
 
         if (GameObject.Find("InteractionButton") != null)
             return;
 
-
-        if(itemInteractionType == ItemInteractionType.ObjectInWorld)
+        if (!isInInventory)
             _actionPanelGO = GameObject.Find("ActionPanelObjects");
         else
             _actionPanelGO = GameObject.Find("ActionPanelInventory");
@@ -48,7 +44,7 @@ public class ActionPanel
                 InteractWithObject(naam);
             else
             {
-                DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
+                DialogueManager.ThisDialogueType = DialogueType.ObjectInteraction;  ///??? not in range?
                 DialoguePlayback.Instance.PlaybackCommentary();
             }
         }
@@ -85,31 +81,31 @@ public class ActionPanel
         MouseClickOnObject.MouseIsOnInteractionButton = false;
     }
 
-    public void InvestigateObject(ObjectsInLevel naam)
+    public void InvestigateObject(ObjectsInLevel naam)//items in the world
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
+        DialogueManager.ThisDialogueType = DialogueType.ObjectInvestigation;
         MyConsole.WriteToConsole("Start Investigation of " + MouseClickOnObject.ObjectLines[naam]);
-        DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Investigation, naam);
-    }
-
-    public void InvestigateItem(Item item)
-    {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
-        MyConsole.WriteToConsole("Start Investigation of " + item.ItemName);
-        DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Investigation, item);
-        GameManager.Instance.UICanvas.HideObjectDescriptionText();
+        DialoguePlayback.Instance.PlaybackCommentary(DialogueType.ObjectInvestigation, naam);
     }
 
     public void InteractWithObject(ObjectsInLevel naam) //items in the world
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
+        DialogueManager.ThisDialogueType = DialogueType.ObjectInteraction;
         MyConsole.WriteToConsole("Start Interaction with " + MouseClickOnObject.ObjectLines[naam]);
-        DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Interaction, naam); //SOUND
+        DialoguePlayback.Instance.PlaybackCommentary(DialogueType.ObjectInteraction, naam); //SOUND
+    }
+
+    public void InvestigateItem(Item item)//items in the inventory
+    {
+        DialogueManager.ThisDialogueType = DialogueType.InventoryInvestigation;
+        MyConsole.WriteToConsole("Start Investigation of " + item.ItemName);
+        DialoguePlayback.Instance.PlaybackCommentary(DialogueType.InventoryInvestigation, item);
+        GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 
     public void InteractWithItem(Item item, int SlotNumber) //items in the inventory
     {
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.ObjectInteraction;
+        DialogueManager.ThisDialogueType = DialogueType.InventoryInteraction;
         MyConsole.WriteToConsole("Start Interaction with " + item.ItemName);
         if(item.IClass == Item.ItemClass.Consumable)
         {
@@ -117,7 +113,7 @@ public class ActionPanel
             GameManager.Instance.MyInventory.Items[SlotNumber].ItemAmount--;
         }
 
-        DialoguePlayback.Instance.PlaybackCommentary(SpeechType.Interaction, item); //SOUND
+        DialoguePlayback.Instance.PlaybackCommentary(DialogueType.InventoryInteraction, item); //SOUND
         GameManager.Instance.UICanvas.HideObjectDescriptionText();
     }
 
@@ -133,9 +129,9 @@ public class ActionPanel
         return true;
     }
 
-    public static void ShowHoverInteractionLine()
+    public static void ShowHoverInteractionLine(DialogueType dialogueType)
     {
-        if (InteractionType == ItemInteractionType.ObjectInWorld)
+        if (dialogueType == DialogueType.ObjectInteraction)
         {
             GameManager.Instance.UICanvas.ObjectDescriptionText.text = MouseClickOnObject.ObjectInteractionLines[MouseClickOnObject.CurrentObject];
             GameManager.Instance.UICanvas.NewObjectDescription();
@@ -143,22 +139,41 @@ public class ActionPanel
         else
         {
             int id = InventoryCommentary.FindInteractionHoverLines(ThisItem);
-            GameManager.Instance.UICanvas.ObjectDescriptionText.text = SpokenLineLoader.Instance.GetLine(id);
+            Debug.Log("Hover INTERACTION: " + id + " " + dialogueType);
+
+            foreach (SpokenLine spokenLine in GameManager.InventoryInteractionDialogue)
+            {
+                if (spokenLine.ID == id)
+                {
+                   // Debug.Log(spokenLine.ID + " " + spokenLine.Text);
+                    Debug.Log(spokenLine.Text);
+                    GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
+                    break;
+                }
+            }
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
 
-    public static void ShowHoverInvestigationLine()
+    public static void ShowHoverInvestigationLine(DialogueType dialogueType)
     {
-        if (InteractionType == ItemInteractionType.ObjectInWorld)
+        if (dialogueType == DialogueType.ObjectInvestigation)
         {
             GameManager.Instance.UICanvas.ObjectDescriptionText.text = MouseClickOnObject.ObjectInvestigationLines[MouseClickOnObject.CurrentObject];
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
-        else
+        else        //in inventory
         {
             int id = InventoryCommentary.FindInvestigationHoverLines(ThisItem);
-            GameManager.Instance.UICanvas.ObjectDescriptionText.text = SpokenLineLoader.Instance.GetLine(id);
+            Debug.Log("Hover INVESTIGATION: " + id + " " + dialogueType);
+            foreach (SpokenLine spokenLine in GameManager.InventoryInvestigationDialogue)
+            {
+                if (spokenLine.ID == id)
+                {
+                    GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
+                    break;
+                }
+            }
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
@@ -175,6 +190,5 @@ public class ActionPanel
         _investigateButton.transform.SetParent(_actionPanelGO.transform);
         _investigateButton.transform.position = new Vector3(Input.mousePosition.x - 22, Input.mousePosition.y - 22, 0);
     }
-
 }
 

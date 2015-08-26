@@ -31,7 +31,7 @@ public class ObjectInteractionTimer
                     TimeManager.Instance.DialogueIsPlaying = false;
                     DialoguePlayback.Instance.HideDialogueLines();
                     DoSomethingAtEnd(ObjectCommentary.CurrentID);
-                    DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
+                    DialogueManager.ThisDialogueType = DialogueType.None;
                     CharacterControllerLogic.Instance.GoToIdleState();
 
                     //if(ObjectCommentary.ChangeIndex != 0)
@@ -45,7 +45,6 @@ public class ObjectInteractionTimer
 
     private static void DoSomethingAtEnd(int id)
     {
-        Debug.Log("My ID  =  " + id);
         if(id == 2054) //pick up the mask of Mockery
         {
             InGameObjectManager.Instance.TurnOffObject(GameObject.Find("MaskOfMockery"));

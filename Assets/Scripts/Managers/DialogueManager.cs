@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DialogueManager
 {
-    public enum DialogueType { NPCDialogue, ObjectInteraction, InventoryCommentary, Intro, None };
-
     public static DialogueType ThisDialogueType = DialogueType.None;
     public static Character CurrentDialogueNPC;
 
@@ -14,7 +12,7 @@ public class DialogueManager
     public static void StartDialogueState(Character NPC)
     {
         CurrentDialogueNPC = NPC;
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;
+     //   DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;//////////
 
         GameManager.Instance.UICanvas.ShowDialogueOptionsUI();
 
@@ -28,16 +26,19 @@ public class DialogueManager
             case Character.Ay:
                 DialoguePlayback.NPC = NPC;
 
+                ThisDialogueType = DialogueType.AyDialogue;
                 DialogueSituationSelector.LoadAySituations();
                 break;
             case Character.Benny:
                 DialoguePlayback.NPC = NPC;
 
+                ThisDialogueType = DialogueType.BennyDialogue;
                 DialogueSituationSelector.LoadBennyTwospoonsSituations();
                 break;
             case Character.Sentinel:
                 DialoguePlayback.NPC = NPC;
 
+                ThisDialogueType = DialogueType.SentinelDialogue;
                 DialogueSituationSelector.LoadSentinelSituations();
                 break;
             default:
@@ -54,7 +55,7 @@ public class DialogueManager
 
         DialogueMenu.ClearDialogueOptionList();
 
-        DialogueManager.ThisDialogueType = DialogueManager.DialogueType.None;
+        ThisDialogueType = DialogueType.None;
 
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("DialogueState", false);
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", false);
