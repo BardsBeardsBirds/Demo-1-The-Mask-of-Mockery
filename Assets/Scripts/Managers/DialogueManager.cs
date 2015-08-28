@@ -12,7 +12,6 @@ public class DialogueManager
     public static void StartDialogueState(Character NPC)
     {
         CurrentDialogueNPC = NPC;
-     //   DialogueManager.ThisDialogueType = DialogueManager.DialogueType.NPCDialogue;//////////
 
         GameManager.Instance.UICanvas.ShowDialogueOptionsUI();
 
@@ -25,7 +24,6 @@ public class DialogueManager
         {
             case Character.Ay:
                 DialoguePlayback.NPC = NPC;
-
                 ThisDialogueType = DialogueType.AyDialogue;
                 DialogueSituationSelector.LoadAySituations();
                 break;
@@ -45,6 +43,8 @@ public class DialogueManager
                 Debug.LogError("Who is this conversation partner?");
                 break;
         }
+        ThirdPersonCamera.Instance.CameraToDialoguePosition(NPC);
+        Emmon.Instance.TriggerPlayerMove(NPC);
     }
 
     public static void EndDialogueState(Character NPC)
@@ -62,6 +62,7 @@ public class DialogueManager
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", false);
 
         GameManager.Instance.UICanvas.HideDialogueOptionsUI();
+        ThirdPersonCamera.Instance.ReturnCameraToOldPosition();
 
         if (!Sentinel.PushBack)
             CharacterControllerLogic.Instance.EndTalkingState();

@@ -1450,9 +1450,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400192}
   - 95: {fileID: 9500000}
-  - 64: {fileID: 6487764}
-  - 114: {fileID: 11487764}
-  - 135: {fileID: 13587764}
   m_Layer: 0
   m_Name: Ay the Tear Collector
   m_TagString: Untagged
@@ -3601,7 +3598,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100190}
-  m_LocalRotation: {x: -.318337232, y: .544296443, z: .678698421, w: -.376525432}
+  m_LocalRotation: {x: -.318337232, y: .544296443, z: .678698421, w: -.376525372}
   m_LocalPosition: {x: -.0175372791, y: .00182474824, z: .00808536261}
   m_LocalScale: {x: 1.00000024, y: 1.00000024, z: 1.00000036}
   m_Children: []
@@ -3613,8 +3610,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100192}
-  m_LocalRotation: {x: 0, y: -.886160016, z: 0, w: .463379443}
-  m_LocalPosition: {x: 4.13293552, y: .0298838615, z: -4.82058382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400244}
@@ -3718,7 +3715,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100208}
-  m_LocalRotation: {x: .51683104, y: .407929361, z: -.503310323, w: .559605181}
+  m_LocalRotation: {x: .5168311, y: .407929391, z: -.503310382, w: .559605241}
   m_LocalPosition: {x: -.292456031, y: .67479068, z: .346319169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4429,18 +4426,6 @@ Transform:
   - {fileID: 400276}
   m_Father: {fileID: 400264}
   m_RootOrder: 0
---- !u!64 &6487764
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100192}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -4458,34 +4443,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11487764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c65eba822d4b0498dd4fc351a64ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
-  Naam: 1
-  depthIntoScene: 10
-  defaultDepthIntoScene: 5
-  selectScale: .300000012
---- !u!135 &13587764
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100192}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

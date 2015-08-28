@@ -36,20 +36,20 @@ public class GameManager : MonoBehaviour
 
     private bool _showConsole = false;
 
-    public static List<SpokenLine> AyDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> BennyDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> SentinelDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> ObjectInvestigationDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> ObjectInteractionDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> InventoryInvestigationDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> InventoryInteractionDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> InventoryCombinationDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> ItemWorldCombinationDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> RandomNoDialogue = new List<SpokenLine>();
-    public static List<SpokenLine> IntroDialogue = new List<SpokenLine>();
+    public static Dictionary<int, SpokenLine> AyDialogue = new Dictionary<int, SpokenLine>();     //TODO: Change into Dictionaries <ID>, <Spokenline>, so we can get rid of loops 
+    public static Dictionary<int, SpokenLine> BennyDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> SentinelDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> ObjectInvestigationDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> ObjectInteractionDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> InventoryInvestigationDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> InventoryInteractionDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> InventoryCombinationDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> ItemWorldCombinationDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> RandomNoDialogue = new Dictionary<int, SpokenLine>();
+    public static Dictionary<int, SpokenLine> IntroDialogue = new Dictionary<int, SpokenLine>();
 
     public static Dictionary<Character, Transform> NPCs = new Dictionary<Character, Transform>();
-    public static Dictionary<Character, List<SpokenLine>> CharacterDialogueLists = new Dictionary<Character, List<SpokenLine>>()
+    public static Dictionary<Character, Dictionary<int, SpokenLine>> CharacterDialogueLists = new Dictionary<Character, Dictionary<int, SpokenLine>>()
     { 
         {Character.Ay, AyDialogue},
         {Character.Benny, BennyDialogue},
@@ -110,21 +110,6 @@ public class GameManager : MonoBehaviour
         GameManagerObj.AddComponent<DialoguePlayback>();
         InGameObjectM = GameManagerObj.AddComponent<InGameObjectManager>();
     }
-
-    //public void LoadDialogues()
-    //{
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.AyDialogue);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.BennyDialogue);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.SentinelDialogue);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ObjectInvestigation);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ObjectInteraction);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ObjectInvestigation);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.InventoryInteraction);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.InventoryCombination);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.ItemWorldCombination);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.RandomNo);
-    //    //SpokenLineLoader.Instance.GetAllLines(DialogueType.Intro);
-    //}
 
     public void FindCharacters()
     {
@@ -396,7 +381,6 @@ public class GameManager : MonoBehaviour
     {
         if (WorldEvents.EmmonKnowsAy)
         {
-          //  ObjectCommentary.InvestigationLines[1003] = "";
             DialogueManager.AddToPassedDialogueLines(1003);
             MouseClickOnObject.ObjectLines[ObjectsInLevel.AyTheTearCollector] = "Ay the Tear Collector";
             MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.AyTheTearCollector] = "Investigate Ay";
@@ -405,7 +389,6 @@ public class GameManager : MonoBehaviour
 
         if (WorldEvents.EmmonKnowsBenny)
         {
-       //     ObjectCommentary.InvestigationLines[1020] = "";
             DialogueManager.AddToPassedDialogueLines(1020);
             MouseClickOnObject.ObjectLines[ObjectsInLevel.BennyTwospoons] = "Ex-clown Benny Twospoons";
             MouseClickOnObject.ObjectInvestigationLines[ObjectsInLevel.BennyTwospoons] = "Investigate Benny Twospoons";

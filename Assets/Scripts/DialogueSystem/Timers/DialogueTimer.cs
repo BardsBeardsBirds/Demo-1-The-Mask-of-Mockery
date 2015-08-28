@@ -80,7 +80,7 @@ public class DialogueTimer
             for (int i = 0; i < GameManager.Instance.MyInventory.Items.Count; i++)
             {
                 Debug.Log(GameManager.Instance.MyInventory.Items[i].IType);
-                if (GameManager.Instance.MyInventory.Items[i].IType == Item.ItemType.RoughneckShot)
+                if (GameManager.Instance.MyInventory.Items[i].IType == ItemType.RoughneckShot)
                 {
                     GameManager.Instance.MyInventory.MakeSlotEmpty(i);
                     break;

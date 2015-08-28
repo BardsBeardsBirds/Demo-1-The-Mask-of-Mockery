@@ -59,14 +59,7 @@ public class DialogueMenu : MonoBehaviour
     {
         for (int i = 0; i < CurrentDialogueOptionsID.Count; i++)
         {
-            foreach (SpokenLine spokenLine in GameManager.CharacterDialogueLists[character])
-            {
-                if (spokenLine.ID == CurrentDialogueOptionsID[i])
-                {
-                    CurrentDialogueOptions[i] = spokenLine.Text;
-                    break;
-                }
-            }
+            CurrentDialogueOptions[i] = GameManager.CharacterDialogueLists[character][CurrentDialogueOptionsID[i]].Text;
         }
     }
 

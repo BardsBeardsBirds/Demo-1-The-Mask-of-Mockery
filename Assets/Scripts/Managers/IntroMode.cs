@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class IntroMode
 {
- //   public static int LastLineID = 0;
     public static int CurrentID = 0;
 
     public static List<int> CurrentTextIDs = new List<int>();
@@ -35,17 +34,7 @@ public class IntroMode
             var id = CurrentTextIDs[i];
             CurrentID = id;
 
-            foreach (SpokenLine spokenLine in GameManager.IntroDialogue)
-            {
-                if (spokenLine.ID == id)
-                {
-                    DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
-
-                    break;
-                }
-            }
-
-        //    DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
+            DialoguePlayback.SetCurrentDialogueLine(GameManager.IntroDialogue[id].Text);
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -66,9 +55,7 @@ public class IntroMode
 
     public static void FinishIntro()
     {
- //       GameManager.InCutScene = false;
-
-        GameManager.Instance.GameStateToRunning();/////
+        GameManager.Instance.GameStateToRunning();
     }
 
     private void AddLines()

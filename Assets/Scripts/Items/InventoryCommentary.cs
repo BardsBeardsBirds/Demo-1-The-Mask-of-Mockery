@@ -9,21 +9,6 @@ public class InventoryCommentary
 
     public static List<int> CurrentDialogueIDs = new List<int>();
 
-    //public static Dictionary<int, string> InvestigationHoverLines = new Dictionary<int, string>()
-    //{
-    //    {5201, "Investigate Roughneck Shot"},
-    //    {5202, "Investigate carrot"},
-    //    {5203, "Investigate the Mask of Mockery"},
-
-    //};
-
-    //public static Dictionary<int, string> InteractionHoverLines = new Dictionary<int, string>()
-    //{
-    //    {5301, "Drink Roughneck Shot"},
-    //    {5302, "Eat carrot"},
-    //    {5303, "Put on the Mask of Mockery"},
-    //};
-
     public static IEnumerator InventoryCommentaryRoutine(DialogueType dialogueType, Item inventoryItem)
     {
         FindLines(dialogueType, inventoryItem);
@@ -37,27 +22,11 @@ public class InventoryCommentary
 
             if (dialogueType == DialogueType.InventoryInvestigation)
             {
-                foreach (SpokenLine spokenLine in GameManager.InventoryInvestigationDialogue)
-                {
-                    if (spokenLine.ID == id)
-                    {
-                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
-
-                        break;
-                    }
-                }
+                DialoguePlayback.SetCurrentDialogueLine(GameManager.InventoryInvestigationDialogue[id].Text);
             }
             else if (dialogueType == DialogueType.InventoryInteraction)
             {
-                foreach (SpokenLine spokenLine in GameManager.InventoryInteractionDialogue)
-                {
-                    if (spokenLine.ID == id)
-                    {
-                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
-
-                        break;
-                    }
-                }
+                DialoguePlayback.SetCurrentDialogueLine(GameManager.InventoryInteractionDialogue[id].Text);
             }
 
             DialoguePlayback.Instance.ShowDialogueLines();
@@ -96,13 +65,13 @@ public class InventoryCommentary
     {
         switch (inventoryItem.IType)
         {
-            case Item.ItemType.RoughneckShot:
+            case ItemType.RoughneckShot:
                 CurrentDialogueIDs.Add(5001);
                 break;
-            case Item.ItemType.Carrot:
+            case ItemType.Carrot:
                 CurrentDialogueIDs.Add(5002);
                 break;
-            case Item.ItemType.MaskOfMockery:
+            case ItemType.MaskOfMockery:
                 CurrentDialogueIDs.Add(5003);
                 break;
             default:
@@ -114,13 +83,13 @@ public class InventoryCommentary
     {
         switch (inventoryItem.IType)
         {
-            case Item.ItemType.RoughneckShot:
+            case ItemType.RoughneckShot:
                 CurrentDialogueIDs.Add(5101);
                 break;
-            case Item.ItemType.Carrot:
+            case ItemType.Carrot:
                 CurrentDialogueIDs.Add(5102);
                 break;
-            case Item.ItemType.MaskOfMockery:
+            case ItemType.MaskOfMockery:
                 CurrentDialogueIDs.Add(5103);
                 break;
             default:
@@ -134,13 +103,13 @@ public class InventoryCommentary
 
         switch (inventoryItem.IType)
         {
-            case Item.ItemType.RoughneckShot:
+            case ItemType.RoughneckShot:
                 id = 5201;
                 break;
-            case Item.ItemType.Carrot:
+            case ItemType.Carrot:
                 id = 5202;
                 break;
-            case Item.ItemType.MaskOfMockery:
+            case ItemType.MaskOfMockery:
                 id = 5203;
                 break;
             default:
@@ -155,13 +124,13 @@ public class InventoryCommentary
 
         switch (inventoryItem.IType)
         {
-            case Item.ItemType.RoughneckShot:
+            case ItemType.RoughneckShot:
                 id = 5301;
                 break;
-            case Item.ItemType.Carrot:
+            case ItemType.Carrot:
                 id = 5302;
                 break;
-            case Item.ItemType.MaskOfMockery:
+            case ItemType.MaskOfMockery:
                 id = 5303;
                 break;
             default:

@@ -18,16 +18,7 @@ public static class ObjectCommentary
 
         int id = 7078;
 
-        foreach (SpokenLine spokenLine in GameManager.ObjectInteractionDialogue)
-        {
-            if (spokenLine.ID == id)
-            {
-                DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
-                break;
-            }
-        }
-
-    //    DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
+        DialoguePlayback.SetCurrentDialogueLine(GameManager.ObjectInteractionDialogue[id].Text);
 
         DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -52,34 +43,14 @@ public static class ObjectCommentary
             var id = CurrentDialogueIDs[i];
             CurrentID = id;
             Debug.Log(dialogueType + " " + id);
-       //     DialoguePlayback.SetCurrentDialogueLine(SpokenLineLoader.Instance.GetLine(id).Text);
             if (dialogueType == DialogueType.ObjectInvestigation)
             {
-                foreach (SpokenLine spokenLine in GameManager.ObjectInvestigationDialogue)
-                {
-                    if (spokenLine.ID == id)
-                    {
-              //          GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
-                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
-
-                        break;
-                    }
-                }
+                DialoguePlayback.SetCurrentDialogueLine(GameManager.ObjectInvestigationDialogue[id].Text);
             }
             else if (dialogueType == DialogueType.ObjectInteraction)
             {
-                foreach (SpokenLine spokenLine in GameManager.ObjectInteractionDialogue)
-                {
-                    if (spokenLine.ID == id)
-                    {
-                  //      GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
-                        DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
-
-                        break;
-                    }
-                }
+                DialoguePlayback.SetCurrentDialogueLine(GameManager.ObjectInteractionDialogue[id].Text);
             }
-             //   DialoguePlayback.SetCurrentDialogueLine(InteractionLines[id]);
 
             DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -379,7 +350,7 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.Carrot: // pickup carrot
                 CurrentDialogueIDs.Add(7033);
-                ItemManager.AddItem(2);
+                ItemManager.AddItem(1002);
                 InGameObjectManager.PickedUpCarrot = true;
                 InGameObjectManager.Instance.TurnOffObject(GameObject.Find("Carrot"));
                 AudioManager.PickUpAudio();
@@ -438,7 +409,7 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.MaskOfMockery:
                 CurrentDialogueIDs.Add(7054);
-                ItemManager.AddItem(3); //Add mask of mockery to inventory
+                ItemManager.AddItem(1003); //Add mask of mockery to inventory
                 InGameObjectManager.PickedUpMaskOfMockery = true;
                 AudioManager.PickUpAudio();
                 break;

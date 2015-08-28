@@ -36,6 +36,7 @@ public class SaveAndLoadGame
             if (GameManager.MyGameType == GameManager.GameType.LoadFromInGame) // we are loading a game from inside another game
             {
                 GameManager.Instance.SetPlayerPosition();
+                ThirdPersonCamera.Instance.LoadGameCameraPosition();
                 loadInventoryItemsInGame(data);
                 InGameObjectManager.Instance.LoadInGameObjectsInfo();   //see what objects should be turned off
                 GameManager.Instance.LoadEventConsequences();           //load the consequences of any world event
@@ -75,7 +76,7 @@ public class SaveAndLoadGame
         foreach (Item item in Inventory.Instance.Items)
         {
 
-            if (item.IType == Item.ItemType.RoughneckShot)
+            if (item.IType == ItemType.RoughneckShot)
             {
                 for (int i = 0; i < item.ItemAmount; i++)
                 {
@@ -83,7 +84,7 @@ public class SaveAndLoadGame
                 }
                 Debug.LogWarning("I saved " + data.RoughneckShot + " " + item.IType);
             }
-            else if (item.IType == Item.ItemType.Carrot)
+            else if (item.IType == ItemType.Carrot)
             {
                 for (int i = 0; i < item.ItemAmount; i++)
                 {
@@ -91,7 +92,7 @@ public class SaveAndLoadGame
                 }
                 Debug.LogWarning("I saved " + data.Carrot + " " + item.IType);
             }
-            else if (item.IType == Item.ItemType.MaskOfMockery)
+            else if (item.IType == ItemType.MaskOfMockery)
             {
                 for (int i = 0; i < item.ItemAmount; i++)
                 {
@@ -118,7 +119,7 @@ public class SaveAndLoadGame
             for (int i = 0; i < data.Carrot; i++)
             {
                 Inventory.Instance.InitialiseInventoryItems.Add(2);
-                Debug.Log("added " + data.Carrot + " " + Item.ItemType.Carrot);
+                Debug.Log("added " + data.Carrot + " " + ItemType.Carrot);
             }
             for (int i = 0; i < data.MaskOfMockery; i++)
             {
@@ -143,7 +144,7 @@ public class SaveAndLoadGame
         for (int i = 0; i < data.Carrot; i++)
         {
             Inventory.Instance.InitialiseInventoryItems.Add(2);
-            Debug.Log("added " + data.Carrot + " " + Item.ItemType.Carrot);
+            Debug.Log("added " + data.Carrot + " " + ItemType.Carrot);
         }
         for (int i = 0; i < data.MaskOfMockery; i++)
         {

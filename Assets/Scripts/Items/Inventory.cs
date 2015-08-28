@@ -55,9 +55,9 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-        AddItem(3); //mask
-        AddItem(1); //roughneck shot
-        AddItem(2); //carrot
+        AddItem(1003); //mask
+        AddItem(1001); //roughneck shot
+        AddItem(1002); //carrot
 
 
     //    Debug.Log(Items[0].ItemName);
@@ -94,8 +94,8 @@ public class Inventory : MonoBehaviour
         Tooltip.SetActive(true);
         Tooltip.GetComponent<RectTransform>().localPosition = new Vector3(toolPosition.x + 360, toolPosition.y, toolPosition.z);
 
-        Tooltip.transform.GetChild(0).GetComponent<Text>().text = item.ItemName;
-        Tooltip.transform.GetChild(2).GetComponent<Text>().text = item.ItemDescription;
+   //     Tooltip.transform.GetChild(0).GetComponent<Text>().text = item.ItemName;
+    //    Tooltip.transform.GetChild(2).GetComponent<Text>().text = item.ItemDescription;
     }
 
     public void HideTooltip()
@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour
         DraggedItemGameObject.SetActive(true);
         TheDraggedItem = item;
         UIDrawer.IsDraggingItem = true;
-        DraggedItemGameObject.GetComponent<Image>().sprite = item.ItemIcon;
+   //     DraggedItemGameObject.GetComponent<Image>().sprite = item.FindIcon(item.IType); //TODO BRING BACK ICON
     }
 
     public void EndDragging(int slotNumber)
@@ -127,11 +127,11 @@ public class Inventory : MonoBehaviour
 
     public void CheckIfItemExists(int itemID, Item item)
     {
-        Debug.LogWarning("check if exists: " + item.ItemName);
+        Debug.LogWarning("check if exists: " + item.IType);
 
         for (int i = 0; i < Items.Count; i++)
         {
-            if(Items[i].ItemID == itemID)
+            if(Items[i].ID == itemID)
             {
       //          Debug.LogWarning(Items[i].ItemID + " and " + itemID);
                 Items[i].ItemAmount = Items[i].ItemAmount + 1;
@@ -139,7 +139,7 @@ public class Inventory : MonoBehaviour
             }
             else if(i == Items.Count - 1)
             {
-                Debug.LogWarning("add item at empty slot: " + item.ItemName);
+                Debug.LogWarning("add item at empty slot: " + item.IType);
 
                 AddItemAtEmptySlot(item);
             }
@@ -148,22 +148,22 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(int id)
     {
-     //   Debug.Log("we now add item " + id);
+        Debug.Log("we now add item " + id);
         for (int i = 0; i < Database.Items.Count; i++)
         {
-            if(Database.Items[i].ItemID == id)
+            if(Database.Items[i].ID == id)
             {
          //       Debug.Log("found the right item");
                 Item item = Database.Items[i];
 
-                if(Database.Items[i].IClass == Item.ItemClass.Consumable)
+                if(Database.Items[i].Class == ItemClass.Consumable)
                 {
                     CheckIfItemExists(id, item);
                     break;
                 }
                 else
                 {
-                    Debug.Log("add at empty slot: " + item);
+                    Debug.Log("add at empty slot: " + item.IType);
                     AddItemAtEmptySlot(item);
                 }
                 break;
@@ -175,12 +175,15 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            if(Items[i].ItemName == null)
+            if(Items[i].IType == ItemType.Empty)
             {
-                if(item.ItemAmount == 0)    // added this later
+                if (item.ItemAmount == 0)    // added this later
+                {
+                    item.ItemIcon = item.FindIcon(item);
+                    Debug.LogWarning("add item " + item.ItemName + ". icon is: " + "Icons/Items/" + item.ItemName);
                     item.ItemAmount = item.ItemAmount + 1;  // added this later
-                
-    //            Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
+                }               
+                Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
                 Items[i] = item;
                 break;
             }

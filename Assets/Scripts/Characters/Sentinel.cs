@@ -26,7 +26,7 @@ public class Sentinel : MonoBehaviour
     {
         if (lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017)
         {
-            DialogueMenu.AddToDialogueOptions(3004);
+            DialogueMenu.AddToDialogueOptions(3024);
         }
 
         if (lastLineID == 3005 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017)
@@ -34,13 +34,13 @@ public class Sentinel : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(3006);
         }
 
-        if ((DialogueManager.IsDialoguePassed(3004) || DialogueManager.IsDialoguePassed(3006)) &&
+        if ((DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006)) &&
             (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3015 || lastLineID == 3017))
         {
             DialogueMenu.AddToDialogueOptions(3009);
         }
 
-        if ((DialogueManager.IsDialoguePassed(3004) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)) &&
+        if ((DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)) &&
             (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3017))
         {
             DialogueMenu.AddToDialogueOptions(3014);
@@ -89,7 +89,7 @@ public class Sentinel : MonoBehaviour
                 Sentinel.Instance.HoldItThere();
                 break;
             case 2: //SITUATION 2
-                DialogueMenu.AddToDialogueOptions(3004);
+                DialogueMenu.AddToDialogueOptions(3024);
                 DialogueMenu.AddToDialogueOptions(3006);
                 DialogueMenu.AddToDialogueOptions(3018);
                 DialogueMenu.FindDialogueOptionText(Character.Sentinel);
@@ -120,11 +120,11 @@ public class Sentinel : MonoBehaviour
             DialoguePlayback.EndingDialogue = true;
         }
 
-        if (dialogueOptionID == 3004)
+        if (dialogueOptionID == 3024)
         {
-            DialoguePlayback.DeleteLineID = 3004;
+            DialoguePlayback.DeleteLineID = 3024;
 
-            AddToDialogue(dialogueOptionID);
+            AddToDialogue(3004);
             AddToDialogue(3005);
         }
 
@@ -132,7 +132,7 @@ public class Sentinel : MonoBehaviour
         {
             DialoguePlayback.DeleteLineID = 3006;
 
-            AddToDialogue(dialogueOptionID);
+            AddToDialogue(3006);
             AddToDialogue(3007);
             AddToDialogue(3008);
         }
@@ -141,7 +141,7 @@ public class Sentinel : MonoBehaviour
         {
             DialoguePlayback.DeleteLineID = 3009;
 
-            AddToDialogue(dialogueOptionID);
+            AddToDialogue(3009);
             AddToDialogue(3010);
             AddToDialogue(3011);
             AddToDialogue(3012);
@@ -214,7 +214,7 @@ public class Sentinel : MonoBehaviour
 
         DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3019);
 
-        if (UIDrawer.IsDraggingItem && UIDrawer.DraggingItem.IType == Item.ItemType.RoughneckShot)    // we are holding the item
+        if (UIDrawer.IsDraggingItem && UIDrawer.DraggingItem.IType == ItemType.RoughneckShot)    // we are holding the item
         {
             Debug.Log(UIDrawer.DraggingItem.IType);
         }

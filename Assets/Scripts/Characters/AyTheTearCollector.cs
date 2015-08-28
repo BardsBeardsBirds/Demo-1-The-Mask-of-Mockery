@@ -8,13 +8,10 @@ public class AyTheTearCollector : MonoBehaviour
     public static AyTheTearCollector Instance;
     public Animator Animator;
 
-    private SpokenLineLoader _lineLoader;
-
     public void Start() 
     {
         Instance = this;
         CharacterSituation = 1;
-        _lineLoader = GameObject.Find("SpokenLineLoader").GetComponent<SpokenLineLoader>();
         Animator = this.gameObject.GetComponent<Animator>();
 	}
 

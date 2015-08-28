@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using UnityEditor;
+using System.Collections.Generic;
 
 struct CameraPosition
 {
@@ -26,6 +26,8 @@ struct CameraPosition
 
 public class ThirdPersonCamera : MonoBehaviour 
 {
+    public static ThirdPersonCamera Instance;
+
     [SerializeField]
     private Transform _cameraXForm;
     [SerializeField]
@@ -91,6 +93,11 @@ public class ThirdPersonCamera : MonoBehaviour
     private Vector3[] _viewFrustum;
     private Vector3 _characterOffset;
 
+    private bool _freezeCamera;
+    private GameObject _сameraLoadGamePosition;
+    public Dictionary<Character, GameObject> DialogueCameraPositions = new Dictionary<Character, GameObject>();
+    public Dictionary<Character, GameObject> PlayerDialoguePositions = new Dictionary<Character, GameObject>();
+
     public Transform CameraXform
     {
         get
@@ -136,6 +143,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
 	void Start () 
 	{
+        Instance = this;
+
         _cameraXForm = this.transform;//.parent;
         _camera = this.GetComponent<Camera>();
 
@@ -167,18 +176,23 @@ public class ThirdPersonCamera : MonoBehaviour
         _distanceUpFree = _distanceUp;
         _distanceAwayFree = _distanceAway;
         _savedRigToGoal = RigToGoalDirection;
-	}
 
-    //void OnDrawGizmos()
-    //{
-    //    if (EditorApplication.isPlaying && !EditorApplication.isPaused)
-    //    {
-    //        DebugDraw.DrawDebugFrustum(_viewFrustum);
-    //    }
-    //}
+        _сameraLoadGamePosition = GameObject.Find("CameraLoadGamePosition");
+
+        DialogueCameraPositions.Add(Character.Ay, GameObject.Find("AyDialogueCamera"));
+        DialogueCameraPositions.Add(Character.Benny, GameObject.Find("BennyDialogueCamera"));
+        DialogueCameraPositions.Add(Character.Sentinel, GameObject.Find("SentinelDialogueCamera"));
+
+        PlayerDialoguePositions.Add(Character.Ay, GameObject.Find("AyPlayerDialoguePosition"));
+        PlayerDialoguePositions.Add(Character.Benny, GameObject.Find("BennyPlayerDialoguePosition"));
+        PlayerDialoguePositions.Add(Character.Sentinel, GameObject.Find("SentinelPlayerDialoguePosition"));
+    }
 
 	void LateUpdate () 
 	{
+        if (_freezeCamera)
+            return;
+
         _viewFrustum = DebugDraw.CalculateViewFrustum(_camera, ref _nearClipDimensions);
 
         //pull values rom controller/keybord
@@ -435,5 +449,24 @@ public class ThirdPersonCamera : MonoBehaviour
     public void FindRestartCameraTarget()
     {
         _followXForm = GameObject.FindWithTag("CameraTarget").transform;
+    }
+
+    public void CameraToDialoguePosition(Character character)
+    {
+        _freezeCamera = true;
+
+        _camera.transform.position = DialogueCameraPositions[character].transform.position;
+        _camera.transform.rotation = DialogueCameraPositions[character].transform.rotation;
+    }
+
+    public void ReturnCameraToOldPosition()
+    {
+        _freezeCamera = false;
+    }
+
+    public void LoadGameCameraPosition()
+    {
+        _camera.transform.position = _сameraLoadGamePosition.transform.position;
+        _camera.transform.rotation = _сameraLoadGamePosition.transform.rotation;
     }
 }

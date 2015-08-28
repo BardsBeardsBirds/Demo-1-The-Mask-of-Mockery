@@ -66,10 +66,12 @@
      <Compile Include="Assets\Scripts\Emmon.cs" />
      <Compile Include="Assets\Scripts\Helper\WaitFor.cs" />
      <Compile Include="Assets\Scripts\Items\Coinage.cs" />
+     <Compile Include="Assets\Scripts\Items\External\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\External\ItemContainer.cs" />
+     <Compile Include="Assets\Scripts\Items\External\ItemLoader.cs" />
      <Compile Include="Assets\Scripts\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Items\InventoryCommentary.cs" />
      <Compile Include="Assets\Scripts\Items\InventorySlot.cs" />
-     <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Items\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Items\MoneyThrower.cs" />
      <Compile Include="Assets\Scripts\Items\PickUpItemListener.cs" />
@@ -170,6 +172,7 @@
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\GlobalFog.shader" />
+     <None Include="Assets\Resources\Xml\items.xml" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />

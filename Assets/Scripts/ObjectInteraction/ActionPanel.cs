@@ -107,7 +107,7 @@ public class ActionPanel
     {
         DialogueManager.ThisDialogueType = DialogueType.InventoryInteraction;
         MyConsole.WriteToConsole("Start Interaction with " + item.ItemName);
-        if(item.IClass == Item.ItemClass.Consumable)
+        if(item.Class == ItemClass.Consumable)
         {
             //Consume the item
             GameManager.Instance.MyInventory.Items[SlotNumber].ItemAmount--;
@@ -141,16 +141,8 @@ public class ActionPanel
             int id = InventoryCommentary.FindInteractionHoverLines(ThisItem);
             Debug.Log("Hover INTERACTION: " + id + " " + dialogueType);
 
-            foreach (SpokenLine spokenLine in GameManager.InventoryInteractionDialogue)
-            {
-                if (spokenLine.ID == id)
-                {
-                   // Debug.Log(spokenLine.ID + " " + spokenLine.Text);
-                    Debug.Log(spokenLine.Text);
-                    GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
-                    break;
-                }
-            }
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = GameManager.InventoryInteractionDialogue[id].Text;
+
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }
@@ -166,14 +158,9 @@ public class ActionPanel
         {
             int id = InventoryCommentary.FindInvestigationHoverLines(ThisItem);
             Debug.Log("Hover INVESTIGATION: " + id + " " + dialogueType);
-            foreach (SpokenLine spokenLine in GameManager.InventoryInvestigationDialogue)
-            {
-                if (spokenLine.ID == id)
-                {
-                    GameManager.Instance.UICanvas.ObjectDescriptionText.text = spokenLine.Text;
-                    break;
-                }
-            }
+
+            GameManager.Instance.UICanvas.ObjectDescriptionText.text = GameManager.InventoryInvestigationDialogue[id].Text;
+
             GameManager.Instance.UICanvas.NewObjectDescription();
         }
     }

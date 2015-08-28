@@ -580,4 +580,10 @@ public class CharacterControllerLogic : MonoBehaviour
         Animator.SetFloat("Direction", 0f);
         Animator.SetFloat("TurningAngle", 0f);
     }
+
+    public CharacterState GetState()
+    {
+        CharacterState state = _state;
+        return state;
+    }
 }

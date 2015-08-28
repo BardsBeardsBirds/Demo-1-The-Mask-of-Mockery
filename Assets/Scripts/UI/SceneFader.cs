@@ -88,6 +88,8 @@ public class SceneFader : MonoBehaviour
 
                 PauseMenu p = GameManager.Instance.UICanvas.PauseMenuCanvas.GetComponent<PauseMenu>();
                 p.ResumeGame();
+                
+                GameManager.Instance.UICanvas.WidgetActive();   //Show UI components here
 
                 CharacterControllerLogic.Instance.GoToIdleState();
 

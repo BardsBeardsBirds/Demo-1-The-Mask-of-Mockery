@@ -1041,6 +1041,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &125388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 481642}
+  m_Layer: 0
+  m_Name: SentinelDialogueCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -1098,7 +1113,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: .00739726983, y: -.0436811559, z: .798715949, w: .600074947}
+  m_LocalRotation: {x: .0073972703, y: -.0436811596, z: .798716009, w: .600075006}
   m_LocalPosition: {x: .0514901429, y: .0997352749, z: 0}
   m_LocalScale: {x: .999999881, y: .99999994, z: .99999994}
   m_Children:
@@ -1328,13 +1343,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100044}
-  m_LocalRotation: {x: 0, y: -.735851884, z: 0, w: -.67714256}
-  m_LocalPosition: {x: -105.210281, y: -.0785951614, z: 10.9235229}
+  m_LocalRotation: {x: 0, y: -.776325166, z: 0, w: -.630332708}
+  m_LocalPosition: {x: -103.919998, y: -.0799999982, z: 10.6700001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400108}
   - {fileID: 400020}
   - {fileID: 400088}
+  - {fileID: 481642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400046
@@ -1937,6 +1953,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400020}
   m_RootOrder: 0
+--- !u!4 &481642
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125388}
+  m_LocalRotation: {x: .0577671938, y: .79595679, z: -.0768770203, w: .597666919}
+  m_LocalPosition: {x: -3.33183217, y: 1.4296056, z: 2.45621037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400044}
+  m_RootOrder: 3
 --- !u!64 &6447890
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1978,7 +2006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Instance: {fileID: 0}
-  Naam: 2
+  MyObject: 3
   depthIntoScene: 10
   defaultDepthIntoScene: 5
   selectScale: .300000012
