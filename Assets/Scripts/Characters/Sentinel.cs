@@ -9,6 +9,24 @@ public class Sentinel : MonoBehaviour
     public Animator Animator;
     private SphereCollider _thisCollider;
 
+    private static List<int> LastBefore3024 = new List<int>() { 3008, 3013, 3015, 3017 };
+    private static List<int> LastBefore3006 = new List<int>() { 3005, 3013, 3015, 3017 };
+    private static List<int> LastBefore3009 = new List<int>() { 3005, 3008, 3015, 3017 };
+    private static List<int> LastBefore3014 = new List<int>() { 3005, 3008, 3013, 3017 };
+    private static List<int> LastBefore3016 = new List<int>() { 3005, 3008, 3013, 3015, 3017 };
+    private static List<int> LastBefore3018 = new List<int>() { 3005, 3008, 3013, 3015, 3017 };
+
+
+    private static Dictionary<int, List<int>> LastLinesBeforeOption = new Dictionary<int, List<int>>()
+    { 
+        {3024, LastBefore3024},
+        {3006, LastBefore3006},
+        {3009, LastBefore3009},
+        {3014, LastBefore3014},
+        {3016, LastBefore3016},
+        {3018, LastBefore3018},
+    };
+
     public void Start()
     {
         Instance = this;
@@ -24,37 +42,24 @@ public class Sentinel : MonoBehaviour
 
     public void DialogueLineNumberToSituation(int lastLineID)   //the last line of dialogue determines which situation will follow
     {
-        if (lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017)
-        {
-            DialogueMenu.AddToDialogueOptions(3024);
-        }
 
-        if (lastLineID == 3005 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017)
-        {
+        if (IsLastBefore(lastLineID, 3006))
             DialogueMenu.AddToDialogueOptions(3006);
-        }
 
-        if ((DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006)) &&
-            (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3015 || lastLineID == 3017))
-        {
+        if (IsLastBefore(lastLineID, 3009) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006)))
             DialogueMenu.AddToDialogueOptions(3009);
-        }
 
-        if ((DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)) &&
-            (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3017))
-        {
+        if (IsLastBefore(lastLineID, 3014) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)))
             DialogueMenu.AddToDialogueOptions(3014);
-        }
 
-        if (DialogueManager.IsDialoguePassed(3014) && (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017))
-        {
+        if (IsLastBefore(lastLineID, 3016) && DialogueManager.IsDialoguePassed(3014))
             DialogueMenu.AddToDialogueOptions(3016);
-        }
 
-        if (lastLineID == 3005 || lastLineID == 3008 || lastLineID == 3013 || lastLineID == 3015 || lastLineID == 3017)
-        {
-            DialogueMenu.AddToDialogueOptions(3018);
-        }
+        if (IsLastBefore(lastLineID, 3024))
+            DialogueMenu.AddToDialogueOptions(3024);
+
+        if (IsLastBefore(lastLineID, 3018))
+            DialogueMenu.AddToDialogueOptions(3018);    // exit
 
         switch (lastLineID)
         {
@@ -180,6 +185,14 @@ public class Sentinel : MonoBehaviour
     private static void AddToDialogue(int dialogueID)
     {
         DialoguePlayback.AddToDialogue(dialogueID);
+    }
+
+    private bool IsLastBefore(int lastLine, int dialogueOptionID)
+    {
+        if (LastLinesBeforeOption[dialogueOptionID].Contains(lastLine))
+            return true;
+
+        return false;
     }
 
     public void HoldItThere()

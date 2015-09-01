@@ -18,7 +18,7 @@ public static class ObjectCommentary
 
         int id = 7078;
 
-        DialoguePlayback.SetCurrentDialogueLine(GameManager.ObjectInteractionDialogue[id].Text);
+        DialoguePlayback.Instance.SetCurrentDialogueLine(GameManager.ObjectInteractionDialogue[id].Text);
 
         DialoguePlayback.Instance.ShowDialogueLines();
 
@@ -45,11 +45,11 @@ public static class ObjectCommentary
             Debug.Log(dialogueType + " " + id);
             if (dialogueType == DialogueType.ObjectInvestigation)
             {
-                DialoguePlayback.SetCurrentDialogueLine(GameManager.ObjectInvestigationDialogue[id].Text);
+                DialoguePlayback.Instance.SetCurrentDialogueLine(GameManager.ObjectInvestigationDialogue[id].Text);
             }
             else if (dialogueType == DialogueType.ObjectInteraction)
             {
-                DialoguePlayback.SetCurrentDialogueLine(GameManager.ObjectInteractionDialogue[id].Text);
+                DialoguePlayback.Instance.SetCurrentDialogueLine(GameManager.ObjectInteractionDialogue[id].Text);
             }
 
             DialoguePlayback.Instance.ShowDialogueLines();

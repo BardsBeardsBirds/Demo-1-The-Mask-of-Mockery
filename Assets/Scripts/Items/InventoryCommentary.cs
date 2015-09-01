@@ -22,11 +22,11 @@ public class InventoryCommentary
 
             if (dialogueType == DialogueType.InventoryInvestigation)
             {
-                DialoguePlayback.SetCurrentDialogueLine(GameManager.InventoryInvestigationDialogue[id].Text);
+                DialoguePlayback.Instance.SetCurrentDialogueLine(GameManager.InventoryInvestigationDialogue[id].Text);
             }
             else if (dialogueType == DialogueType.InventoryInteraction)
             {
-                DialoguePlayback.SetCurrentDialogueLine(GameManager.InventoryInteractionDialogue[id].Text);
+                DialoguePlayback.Instance.SetCurrentDialogueLine(GameManager.InventoryInteractionDialogue[id].Text);
             }
 
             DialoguePlayback.Instance.ShowDialogueLines();

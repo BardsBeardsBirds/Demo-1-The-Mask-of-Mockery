@@ -26,7 +26,7 @@ public class DialogueMenu : MonoBehaviour
         {
             string goName = "DialogueOption" + (i + 1);
             GameObject dialogueOption = GameObject.Find(goName);
-            dialogueOption.GetComponent<Image>().enabled = true;
+        //    dialogueOption.GetComponent<Image>().enabled = true;
             dialogueOption.GetComponent<Button>().enabled = true;
             Text Optiontext = dialogueOption.GetComponentInChildren<Text>();
             Optiontext.text = CurrentDialogueOptions[i];
@@ -39,7 +39,7 @@ public class DialogueMenu : MonoBehaviour
         {
             string goName = "DialogueOption" + (i + 1);
             GameObject dialogueOption = GameObject.Find(goName);
-            dialogueOption.GetComponent<Image>().enabled = false;
+     //       dialogueOption.GetComponent<Image>().enabled = false;
             dialogueOption.GetComponent<Button>().enabled = false;
             Text Optiontext = dialogueOption.GetComponentInChildren<Text>();
             Optiontext.text = "";

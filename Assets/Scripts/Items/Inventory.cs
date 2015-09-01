@@ -55,9 +55,9 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-        AddItem(1003); //mask
-        AddItem(1001); //roughneck shot
-        AddItem(1002); //carrot
+   //     AddItem(1003); //mask
+    //    AddItem(1001); //roughneck shot
+    //    AddItem(1002); //carrot
 
 
     //    Debug.Log(Items[0].ItemName);

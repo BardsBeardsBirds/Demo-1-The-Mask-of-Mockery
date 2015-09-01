@@ -8,6 +8,51 @@ public class AyTheTearCollector : MonoBehaviour
     public static AyTheTearCollector Instance;
     public Animator Animator;
 
+    private static List<int> LastBefore2014 = new List<int>() { 2013, 2023, 2123, 2064, 2067 };
+    private static List<int> LastBefore2026 = new List<int>() { 2025, 2039, 2041, 2043, 2045, 2064, 2067, 2111, 2123 };
+    private static List<int> LastBefore2032 = new List<int>() { 2031, 2039, 2041, 2043, 2045, 2064, 2067, 2111, 2123 };
+    private static List<int> LastBefore2038 = new List<int>() { 2025, 2031, 2037, 2064, 2067, 2110, 2111, 2123 };
+    private static List<int> LastBefore2040 = new List<int>() { 2025, 2031, 2037, 2039, 2064, 2067, 2110, 2111, 2123 };
+    private static List<int> LastBefore2042 = new List<int>() { 2025, 2031, 2037, 2039, 2041, 2064, 2067, 2110, 2111, 2123 };
+    private static List<int> LastBefore2044 = new List<int>() { 2025, 2031, 2037, 2043, 2045, 2064, 2067, 2110, 2111, 2123 };
+    private static List<int> LastBefore2046 = new List<int>() { 2013, 2031, 2037, 2039, 2041, 2043, 2045, 2123 };
+    private static List<int> LastBefore2065 = new List<int>() { 2013, 2025, 2031, 2037, 2039, 2041, 2043, 2045, 2064, 2067, 2111, 2123 };
+    private static List<int> LastBefore2079 = new List<int>() { 2078, 2084, 2086, 2089, 2095, 2098, 2101, 2125 };
+    private static List<int> LastBefore2081 = new List<int>() { 2078, 2080, 2095, 2098, 2101, 2125 };
+    private static List<int> LastBefore2083 = new List<int>() { 2082 };
+    private static List<int> LastBefore2085 = new List<int>() { 2082, 2124 };
+    private static List<int> LastBefore2090 = new List<int>() { 2078, 2080, 2084, 2086, 2089, 2095, 2098, 2101, 2125 };
+    private static List<int> LastBefore2096 = new List<int>() { 2080, 2084, 2086, 2089, 2095, 2101, 2125 };
+    private static List<int> LastBefore2099 = new List<int>() { 2084, 2086, 2089, 2095, 2098, 2125 };
+    private static List<int> LastBefore2102 = new List<int>() { 2080, 2084, 2089, 2095, 2098, 2101, 2125 };
+    private static List<int> LastBefore2111 = new List<int>() { 2078, 2080, 2082, 2084, 2086, 2089, 2095, 2098, 2101, 2125 };
+    private static List<int> LastBefore2122 = new List<int>() { 2001, 2002, 2003, 2004, 2013, 2025, 2031, 2037, 2039, 2041, 2043, 2045, 2064, 2067, 2110, 2111, 2123 };
+    private static List<int> LastBefore2124 = new List<int>() { 2031, 2037, 2039, 2041, 2043, 2045, 2067, 2111, 2123 };
+
+    private static Dictionary<int, List<int>> LastLinesBeforeOption = new Dictionary<int, List<int>>()
+    { 
+        {2014, LastBefore2014},
+        {2026, LastBefore2026},
+        {2032, LastBefore2032},
+        {2038, LastBefore2038},
+        {2040, LastBefore2040},
+        {2042, LastBefore2042},
+        {2044, LastBefore2044},
+        {2046, LastBefore2046},
+        {2065, LastBefore2065},
+        {2079, LastBefore2079},
+        {2081, LastBefore2081},
+        {2083, LastBefore2083},
+        {2085, LastBefore2085},
+        {2090, LastBefore2090},
+        {2096, LastBefore2096},
+        {2099, LastBefore2099},
+        {2102, LastBefore2102},
+        {2111, LastBefore2111},
+        {2122, LastBefore2122},
+        {2124, LastBefore2124},
+    };
+
     public void Start() 
     {
         Instance = this;
@@ -24,113 +69,60 @@ public class AyTheTearCollector : MonoBehaviour
     {
         int characterSituation = CharacterSituation;
 
-        if ((lastLineID == 2013 || lastLineID == 2023 || lastLineID == 2123 || lastLineID == 2064 || lastLineID == 2067) &&
-            (characterSituation < 5))
-        {
+        if (IsLastBefore(lastLineID, 2014) && characterSituation < 5)
             DialogueMenu.AddToDialogueOptions(2014);
-        }
 
-        if ((lastLineID == 2025 || lastLineID == 2123 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2014)))
-        {
+        if (IsLastBefore(lastLineID, 2026) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2014))
             DialogueMenu.AddToDialogueOptions(2026);
-        }
 
-        if ((lastLineID == 2031 || lastLineID == 2123 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2026)))
-        {
+        if(IsLastBefore(lastLineID, 2032) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2026))
             DialogueMenu.AddToDialogueOptions(2032);    //tear collector shop?
-        }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2014)))
-        {
+        if (IsLastBefore(lastLineID, 2038) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2014))
             DialogueMenu.AddToDialogueOptions(2038);
-        }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2038)))
-        {
+        if (IsLastBefore(lastLineID, 2040) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2038))
             DialogueMenu.AddToDialogueOptions(2040);
-        }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2041 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2040)))
-        {
+        if (IsLastBefore(lastLineID, 2042) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2040))
             DialogueMenu.AddToDialogueOptions(2042);
-        }
 
-        if ((lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2042)))
-        {
+        if (IsLastBefore(lastLineID, 2044) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2042))
             DialogueMenu.AddToDialogueOptions(2044);
-        }
 
-        if ((lastLineID == 2013 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2014)) && 
-            WorldEvents.BennyHasOfferedLute == true)
-        {
+        if (IsLastBefore(lastLineID, 2046) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2014) && WorldEvents.BennyHasOfferedLute == true)
             DialogueMenu.AddToDialogueOptions(2046);
-        }
 
-        if ((lastLineID == 2013 || lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation < 5) &&
-            (DialogueManager.IsDialoguePassed(2046)))
-        {
+        if (IsLastBefore(lastLineID, 2065) && characterSituation < 5 && DialogueManager.IsDialoguePassed(2046))
             DialogueMenu.AddToDialogueOptions(2065);
-        }
 
-        if (lastLineID == 2078 || lastLineID == 2084 || lastLineID == 2086 || lastLineID == 2089 || lastLineID == 2095 || lastLineID == 2098 || lastLineID == 2101 || lastLineID == 2125)
-        {
+        if (IsLastBefore(lastLineID, 2079))
             DialogueMenu.AddToDialogueOptions(2079);
-        }
 
-        if (lastLineID == 2078 || lastLineID == 2080 || lastLineID == 2095 || lastLineID == 2098 || lastLineID == 2101 || lastLineID == 2125)
-        {
+        if (IsLastBefore(lastLineID, 2081))
             DialogueMenu.AddToDialogueOptions(2081); //How much is it?
-        }
 
         if (lastLineID == 2089)
-        {
             DialogueManager.AddToPassedDialogueLines(2081);
-        }
 
-        if (lastLineID == 2082)
-        {
+        if (IsLastBefore(lastLineID, 2083))
             DialogueMenu.AddToDialogueOptions(2083);    //40 rupee is too much
-        }
 
-        if (lastLineID == 2082 || 
-            lastLineID == 2124)
-        {
+        if (IsLastBefore(lastLineID, 2085))
             DialogueMenu.AddToDialogueOptions(2085);    //alright I want to buy your potion
-        }
-        if ((DialogueManager.IsDialoguePassed(2079)) &&
-        lastLineID == 2078 || lastLineID == 2080 || lastLineID == 2084 || lastLineID == 2086 || lastLineID == 2089 || lastLineID == 2095 || lastLineID == 2098 || lastLineID == 2101 || lastLineID == 2125)
-        {
+
+        if (IsLastBefore(lastLineID, 2090) && DialogueManager.IsDialoguePassed(2079))
             DialogueMenu.AddToDialogueOptions(2090);    // free massage
-        }
 
-        if ((DialogueManager.IsDialoguePassed(2079) || DialogueManager.IsDialoguePassed(2090) || DialogueManager.IsDialoguePassed(2099))
-            && (lastLineID == 2080 || lastLineID == 2084 || lastLineID == 2089 || lastLineID == 2095 || lastLineID == 2101 || lastLineID == 2125))
-        {
+        if (IsLastBefore(lastLineID, 2096) &&
+            (DialogueManager.IsDialoguePassed(2079) || DialogueManager.IsDialoguePassed(2090) || DialogueManager.IsDialoguePassed(2099)))
             DialogueMenu.AddToDialogueOptions(2096);  //If you give me the Roughneck shot, you don’t have to reward me with the lute later on.
-        }
 
-        if ((DialogueManager.IsDialoguePassed(2079) || DialogueManager.IsDialoguePassed(2090)) &&
-            (lastLineID == 2084 || lastLineID == 2086 || lastLineID == 2089 || lastLineID == 2095 || lastLineID == 2098 || lastLineID == 2125))
-        {
+        if (IsLastBefore(lastLineID, 2099) && (DialogueManager.IsDialoguePassed(2079) || DialogueManager.IsDialoguePassed(2090)))
             DialogueMenu.AddToDialogueOptions(2099);    // don't you see how disappointed I am?
-        }
 
-        if (    // it is more efficient to put this one in its own method, with some foreach loop
+        if (IsLastBefore(lastLineID, 2102) && 
+            // it is more efficient to put this one in its own method, with some foreach loop
             ((DialogueManager.IsDialoguePassed(2079) && DialogueManager.IsDialoguePassed(2087)) ||
             DialogueManager.IsDialoguePassed(2079) || 
             (DialogueManager.IsDialoguePassed(2079) && DialogueManager.IsDialoguePassed(2085)) ||
@@ -144,28 +136,19 @@ public class AyTheTearCollector : MonoBehaviour
             (DialogueManager.IsDialoguePassed(2085) && DialogueManager.IsDialoguePassed(2087)) ||
             (DialogueManager.IsDialoguePassed(2085) && DialogueManager.IsDialoguePassed(2090)) ||
             (DialogueManager.IsDialoguePassed(2085) && DialogueManager.IsDialoguePassed(2096)) ||
-            (DialogueManager.IsDialoguePassed(2090) && DialogueManager.IsDialoguePassed(2096))) &&
-            (lastLineID == 2080 || lastLineID == 2084 || lastLineID == 2089 || lastLineID == 2095 || lastLineID == 2098 || lastLineID == 2101 || lastLineID == 2125))
-        {
-            DialogueMenu.AddToDialogueOptions(2102);
-        }
+            (DialogueManager.IsDialoguePassed(2090) && DialogueManager.IsDialoguePassed(2096))))
+                DialogueMenu.AddToDialogueOptions(2102);
 
-        if (lastLineID == 2078 || lastLineID == 2080 || lastLineID == 2082 || lastLineID == 2084 || lastLineID == 2086 || lastLineID == 2089 || lastLineID == 2095 || lastLineID == 2098 || lastLineID == 2101 || lastLineID == 2125)
-        {
+        if (IsLastBefore(lastLineID, 2111))
             DialogueMenu.AddToDialogueOptions(2111);    // let's talk about something else
-        }
 
-        if ((lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2067 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation == 3))
-        {
-            DialogueMenu.AddToDialogueOptions(2124); // can you give me the roughshot?
-        }
-
-        if ((lastLineID == 2001 || lastLineID == 2002 || lastLineID == 2003 || lastLineID == 2004 || lastLineID == 2013 || lastLineID == 2025 || lastLineID == 2031 || lastLineID == 2037 || lastLineID == 2039 || lastLineID == 2041 || lastLineID == 2043 || lastLineID == 2045 || lastLineID == 2064 || lastLineID == 2067 || lastLineID == 2110 || lastLineID == 2111 || lastLineID == 2123) &&
-            (characterSituation == 1 || characterSituation == 2 || characterSituation == 3 || characterSituation == 4))
-        {
+        if (IsLastBefore(lastLineID, 2122) && (characterSituation == 1 || characterSituation == 2 || characterSituation == 3 || characterSituation == 4))
             DialogueMenu.AddToDialogueOptions(2122);   //ending sequence
-        }
+
+        if (IsLastBefore(lastLineID, 2124) && characterSituation == 3)
+            DialogueMenu.AddToDialogueOptions(2124); // can you give me the roughshot?
+
+
 
         switch (lastLineID)
         {
@@ -497,5 +480,13 @@ public class AyTheTearCollector : MonoBehaviour
     private static void AddToDialogue(int dialogueID)
     {
         DialoguePlayback.AddToDialogue(dialogueID);
+    }
+
+    private bool IsLastBefore(int lastLine, int dialogueOptionID)
+    {
+        if (LastLinesBeforeOption[dialogueOptionID].Contains(lastLine))
+            return true;
+
+        return false;
     }
 }

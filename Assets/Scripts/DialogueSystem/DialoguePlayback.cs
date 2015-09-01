@@ -27,29 +27,25 @@ public class DialoguePlayback : MonoBehaviour
 
     public void ShowDialogueLines()
     {
-        GameObject dialogueLineImage = GameManager.Instance.UICanvas.DialogueLineImage;
-        dialogueLineImage.GetComponent<Image>().enabled = true;
-        Text lineText = dialogueLineImage.GetComponentInChildren<Text>();
-        lineText.text = _currentDialogueLine;
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
         lineText.enabled = true;
     }
 
     public void HideDialogueLines()
     {
-        GameObject dialogueLineImage = GameManager.Instance.UICanvas.DialogueLineImage;
-        dialogueLineImage.GetComponent<Image>().enabled = false;
-        Text lineText = dialogueLineImage.GetComponentInChildren<Text>();
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
         lineText.text = "";
         lineText.enabled = false;
     }
 
-    public static void SetCurrentDialogueLine(string currentDialogueLine)
+    public void SetCurrentDialogueLine(string currentDialogueLine)
     {
         _currentDialogueLine = currentDialogueLine;
 
-        GameObject dialogueLineImage = GameManager.Instance.UICanvas.DialogueLineImage;
-        Text lineText = dialogueLineImage.GetComponentInChildren<Text>();
-        lineText.text = _currentDialogueLine;
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
+        lineText.text = "";
+        lineText.enabled = true;
+        StartCoroutine(AutoType(lineText));
     }
 
     public static void TriggerDialogue(int dialogueOptionID)
@@ -94,7 +90,9 @@ public class DialoguePlayback : MonoBehaviour
 
             SpokenLine spokenLine = GameManager.CharacterDialogueLists[NPC][id];
 
-            DialoguePlayback.SetCurrentDialogueLine(spokenLine.Text);
+            SetTextColour(id);
+
+            Instance.SetCurrentDialogueLine(spokenLine.Text);
 
             CurrentLineID = id;
 
@@ -134,6 +132,33 @@ public class DialoguePlayback : MonoBehaviour
 
             yield return new WaitForSeconds((float)timerLength);
         }
+    }
+
+    private static void SetTextColour(int id)
+    {
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
+        SpokenLine spokenLine = GameManager.CharacterDialogueLists[NPC][id];
+        Debug.Log(spokenLine.Speaker);
+        if (spokenLine.Speaker == NPC)
+        {
+            switch (NPC)
+            {
+                case Character.Ay:
+                    Debug.Log("Change colour");
+                    lineText.color = new Color(1f, .75f, .62f);
+                    break;
+                case Character.Benny:
+                    lineText.color = new Color(.24f, .64f, .60f);
+                    break;
+                case Character.Sentinel:
+                    lineText.color = new Color(.67f, .829f, .96f);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+            lineText.color = new Color(.95f, .95f, .95f);
     }
 
     private static void SetTalkingListening(int id)
@@ -214,6 +239,15 @@ public class DialoguePlayback : MonoBehaviour
     public void PlaybackCombineItemsInventory(Item inventoryItem, Item subjectedInventoryItem)
     {
         StartCoroutine(GameManager.Instance.IIventoryItemWithObject.CombineItemRoutine(inventoryItem, subjectedInventoryItem));
+    }
+
+    IEnumerator AutoType(Text lineText)
+    {
+        foreach (char letter in _currentDialogueLine.ToCharArray())
+        {
+            lineText.text += letter;
+            yield return new WaitForSeconds(0.015f);
+        }
     }
 
     #endregion

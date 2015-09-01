@@ -7,6 +7,43 @@ public class BennyTwospoons : MonoBehaviour
     public static BennyTwospoons Instance;
     public Animator Animator;
 
+    private static List<int> LastBefore1003 = new List<int>() { 1002, 1009, 1012, 1016, 1054 };
+    private static List<int> LastBefore1006 = new List<int>() { 1002, 1005, 1042, 1050, 1054, 1059, 1062, 1082, 1095 };
+    private static List<int> LastBefore1010 = new List<int>() { 1009, 1042, 1050, 1054, 1059, 1062, 1082, 1095 };
+    private static List<int> LastBefore1013 = new List<int>() { 1012, 1042, 1050, 1054, 1059, 1062, 1082, 1095 };
+    private static List<int> LastBefore1017 = new List<int>() { 1002, 1005, 1009, 1012, 1016, 1042, 1050, 1054, 1062, 1073, 1082, 1095 };
+    private static List<int> LastBefore1018 = new List<int>() { 1009, 1012, 1016 };
+    private static List<int> LastBefore1043 = new List<int>() { 1009, 1012, 1016, 1042, 1054, 1062 };
+    private static List<int> LastBefore1055 = new List<int>() { 1009, 1012, 1016, 1054, 1062, 1073, 2067, 1082 };
+    private static List<int> LastBefore1061 = new List<int>() { 1009, 1012, 1016, 1042, 1054, 1059, 1073, 1082, 1095 };
+    private static List<int> LastBefore1063 = new List<int>() { 1009, 1012, 1016, 1054, 1062 };
+    private static List<int> LastBefore1074 = new List<int>() { 1009, 1012, 1016, 1054, 1062, 1073, 1082 };
+    private static List<int> LastBefore1075 = new List<int>() { 1074, 1077, 1079, 1081 };
+    private static List<int> LastBefore1078 = new List<int>() { 1074, 1077, 1079, 1081 };
+    private static List<int> LastBefore1080 = new List<int>() { 1074, 1077, 1081  };
+    private static List<int> LastBefore1082 = new List<int>() { 1074, 1077, 1079, 1081 };
+    private static List<int> LastBefore1094 = new List<int>() { 1005, 1009, 1012, 1016, 1050, 1054, 1062, 1073, 1082, 1095 };
+
+    private static Dictionary<int, List<int>> LastLinesBeforeOption = new Dictionary<int, List<int>>()
+    { 
+        {1003, LastBefore1003},
+        {1006, LastBefore1006},
+        {1010, LastBefore1010},
+        {1013, LastBefore1013},
+        {1017, LastBefore1017},
+        {1018, LastBefore1018},
+        {1043, LastBefore1043},
+        {1055, LastBefore1055},
+        {1061, LastBefore1061},
+        {1063, LastBefore1063},
+        {1074, LastBefore1074},
+        {1075, LastBefore1075},
+        {1078, LastBefore1078},
+        {1080, LastBefore1080},
+        {1082, LastBefore1082},
+        {1094, LastBefore1094},
+    };
+
     public void Start()
     {
         Instance = this;
@@ -22,32 +59,22 @@ public class BennyTwospoons : MonoBehaviour
     public void DialogueLineNumberToSituation(int lastLineID)   //the last line of dialogue determines which situation will follow
     {
         var characterSituation = CharacterSituation;
-        if (!WorldEvents.EmmonSawTheLute && (lastLineID == 1002 || lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054))
-        {
+        if (IsLastBefore(lastLineID, 1003) && !WorldEvents.EmmonSawTheLute)
             DialogueMenu.AddToDialogueOptions(1003);
-        }
 
-        if (lastLineID == 1002 || lastLineID == 1005 || lastLineID == 1042 || lastLineID == 1050 || lastLineID == 1054 || lastLineID == 1059 || lastLineID == 1062 || lastLineID == 1082 || lastLineID == 1095)
-        {
+        if (IsLastBefore(lastLineID, 1006))
             DialogueMenu.AddToDialogueOptions(1006);
-        }
 
         if(DialogueManager.IsDialoguePassed(1006) &&
-            (lastLineID == 1009 || lastLineID == 1009 || lastLineID == 1042 || lastLineID == 1050 || lastLineID == 1054 || lastLineID == 1059 || lastLineID == 1062 || lastLineID == 1082 || lastLineID == 1095))
-        {
+            IsLastBefore(lastLineID, 1010))
             DialogueMenu.AddToDialogueOptions(1010);
-        }
 
         if (DialogueManager.IsDialoguePassed(1010) &&
-            (lastLineID == 1012 || lastLineID == 1042 || lastLineID == 1050 || lastLineID == 1059 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1082 || lastLineID == 1095))
-        {
+            IsLastBefore(lastLineID, 1013))
             DialogueMenu.AddToDialogueOptions(1013);
-        }
 
-        if (DialogueManager.IsDialoguePassed(1018) && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016))
-        {
+        if (IsLastBefore(lastLineID, 1018) && DialogueManager.IsDialoguePassed(1018))
             DialogueMenu.AddToDialogueOptions(1018);
-        }
 
         if (lastLineID == 1024)
         {
@@ -65,27 +92,17 @@ public class BennyTwospoons : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(1035);
         }
 
-        if ((DialogueManager.IsDialoguePassed(1032) || DialogueManager.IsDialoguePassed(1033) || DialogueManager.IsDialoguePassed(1034) || DialogueManager.IsDialoguePassed(1035)) &&
-            (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1042 || lastLineID == 1054 || lastLineID == 1062))
-        {
+        if (IsLastBefore(lastLineID, 1043) && (DialogueManager.IsDialoguePassed(1032) || DialogueManager.IsDialoguePassed(1033) || DialogueManager.IsDialoguePassed(1034) || DialogueManager.IsDialoguePassed(1035)))
             DialogueMenu.AddToDialogueOptions(1043);
-        }
 
-        if (characterSituation > 2 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1073 || lastLineID == 1082)) //I feel I'm getting closer to the Mask of Mockery!
-        {
+        if (IsLastBefore(lastLineID, 1055) && characterSituation > 2) //I feel I'm getting closer to the Mask of Mockery!
             DialogueMenu.AddToDialogueOptions(1055);
-        }
 
-        if (WorldEvents.EmmonKnowsAy == true && characterSituation > 2 && 
-            (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1042 || lastLineID == 1054 || lastLineID == 1059 || lastLineID == 1073 || lastLineID == 1082 || lastLineID == 1095))     //tear collector person
-        {
+        if (IsLastBefore(lastLineID, 1061) && WorldEvents.EmmonKnowsAy == true && characterSituation > 2)     //tear collector person
             DialogueMenu.AddToDialogueOptions(1061);
-        }
 
-        if (characterSituation == 4 && (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062)) ////about this mask
-        {
+        if (IsLastBefore(lastLineID, 1063) && characterSituation == 4) ////about this mask
             DialogueMenu.AddToDialogueOptions(1063);
-        }
 
         if (lastLineID == 1066)
         {
@@ -95,41 +112,26 @@ public class BennyTwospoons : MonoBehaviour
             DialogueMenu.AddToDialogueOptions(1070);
         }
 
-        if ((DialogueManager.IsDialoguePassed(1067) || DialogueManager.IsDialoguePassed(1068) || DialogueManager.IsDialoguePassed(1069) || DialogueManager.IsDialoguePassed(1070)) &&
-            (lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1073 || lastLineID == 1082))
-        {
+        if (IsLastBefore(lastLineID, 1074) && (DialogueManager.IsDialoguePassed(1067) || DialogueManager.IsDialoguePassed(1068) || DialogueManager.IsDialoguePassed(1069) || DialogueManager.IsDialoguePassed(1070)))
             DialogueMenu.AddToDialogueOptions(1074);
-        }
 
-        if (lastLineID == 1074 || lastLineID == 1077 || lastLineID == 1079 || lastLineID == 1081)
-        {
+        if (IsLastBefore(lastLineID, 1075))
             DialogueMenu.AddToDialogueOptions(1075);
-        }
 
-        if (lastLineID == 1074 || lastLineID == 1077 || lastLineID == 1079 || lastLineID == 1081)
-        {
+        if (IsLastBefore(lastLineID, 1078))
             DialogueMenu.AddToDialogueOptions(1078);
-        }
 
-        if (lastLineID == 1074 || lastLineID == 1077 || lastLineID == 1079 || lastLineID == 1081)
-        {
+        if (IsLastBefore(lastLineID, 1080))
             DialogueMenu.AddToDialogueOptions(1080);
-        }
 
-        if (lastLineID == 1074 || lastLineID == 1077 || lastLineID == 1079 || lastLineID == 1081)
-        {
+        if (IsLastBefore(lastLineID, 1082))
             DialogueMenu.AddToDialogueOptions(1082);
-        }
 
-        if (DialogueManager.IsDialoguePassed(1043) && characterSituation < 4 && (lastLineID == 1005 || lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1050 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1073 || lastLineID == 1082 || lastLineID == 1095))
-        {
+        if (IsLastBefore(lastLineID, 1094) && DialogueManager.IsDialoguePassed(1043) && characterSituation < 4)
             DialogueMenu.AddToDialogueOptions(1094);
-        }
 
-        if (lastLineID == 1002 || lastLineID == 1005 || lastLineID == 1009 || lastLineID == 1012 || lastLineID == 1016 || lastLineID == 1042 || lastLineID == 1050 || lastLineID == 1054 || lastLineID == 1062 || lastLineID == 1073 || lastLineID == 1082 || lastLineID == 1095)
-        {
+        if (IsLastBefore(lastLineID, 1017))
             DialogueMenu.AddToDialogueOptions(1017);    //exit option
-        }
 
         switch (lastLineID)
         {
@@ -543,5 +545,13 @@ public class BennyTwospoons : MonoBehaviour
     {
         Debug.Log("Adding to dialogue: " + dialogueID);
         DialoguePlayback.AddToDialogue(dialogueID);
+    }
+
+    private bool IsLastBefore(int lastLine, int dialogueOptionID)
+    {
+        if (LastLinesBeforeOption[dialogueOptionID].Contains(lastLine))
+            return true;
+
+        return false;
     }
 }
