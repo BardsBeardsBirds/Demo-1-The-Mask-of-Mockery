@@ -25,7 +25,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441560}
-  - 135: {fileID: 13541586}
   m_Layer: 0
   m_Name: TenCoins
   m_TagString: Untagged
@@ -75,7 +74,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441566}
-  - 135: {fileID: 13541588}
   m_Layer: 0
   m_Name: Coin1
   m_TagString: Untagged
@@ -91,7 +89,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441568}
-  - 135: {fileID: 13541590}
   m_Layer: 0
   m_Name: Coin2
   m_TagString: Untagged
@@ -141,7 +138,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441574}
-  - 135: {fileID: 13541592}
   m_Layer: 0
   m_Name: Coin3
   m_TagString: Untagged
@@ -157,7 +153,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441576}
-  - 135: {fileID: 13541594}
   m_Layer: 0
   m_Name: Coin4
   m_TagString: Untagged
@@ -207,7 +202,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441582}
-  - 135: {fileID: 13541596}
   m_Layer: 0
   m_Name: Coin5
   m_TagString: Untagged
@@ -223,7 +217,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441584}
-  - 135: {fileID: 13541598}
   m_Layer: 0
   m_Name: Coin6
   m_TagString: Untagged
@@ -273,7 +266,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441590}
-  - 135: {fileID: 13541600}
   m_Layer: 0
   m_Name: Coin7
   m_TagString: Untagged
@@ -289,7 +281,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441592}
-  - 135: {fileID: 13541602}
   m_Layer: 0
   m_Name: Coin8
   m_TagString: Untagged
@@ -339,7 +330,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441598}
-  - 135: {fileID: 13541604}
   m_Layer: 0
   m_Name: Coin9
   m_TagString: Untagged
@@ -355,7 +345,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441600}
-  - 135: {fileID: 13541606}
   m_Layer: 0
   m_Name: Coin10
   m_TagString: Untagged
@@ -405,7 +394,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441606}
-  - 135: {fileID: 13541608}
   m_Layer: 0
   m_Name: TenCoins2
   m_TagString: Untagged
@@ -421,7 +409,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441608}
-  - 135: {fileID: 13541610}
   m_Layer: 0
   m_Name: TenCoins3
   m_TagString: Untagged
@@ -1227,162 +1214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c94510493b20834ea93258f0a4cb6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13541586
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141560}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541588
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141566}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541590
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141568}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541592
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541594
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141576}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541596
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541598
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141584}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541600
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141590}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541602
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141592}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541604
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141598}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541606
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141600}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541608
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13541610
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -255,18 +255,6 @@ public class CharacterControllerLogic : MonoBehaviour
      //   Debug.Log(_state);
 	}
 
-    public void UnpauseGame()
-    {
-        //Debug.Log("unfreeze character " + _state);
-
-        //if (_state == CharacterState.Running ||
-        //_state == CharacterState.Walking ||
-        //_state == CharacterState.WalkBackwards ||
-        //_state == CharacterState.Running)
-        //    _state = CharacterState.Idle;
-
-    }
-
     private bool CanWalkForward()
     {
         RaycastHit hitInfo;

@@ -23,6 +23,8 @@ public class MainCanvas : MonoBehaviour
     public UIDrawer MyUIDrawer;
     public MoneyDisplay MoneyOnScreen;  //the script that arranges displaying the money on screen.
 
+    private bool _widgetIsActive = false;
+
     public void Awake()
     {
         MainPanel = this.gameObject;
@@ -135,12 +137,17 @@ public class MainCanvas : MonoBehaviour
 
     public void HideScreenButtonWidget()
     {
+        _widgetIsActive = ScreenButtonWidget.GetComponent<Widget>().WidgetActive;
         ScreenButtonWidget.SetActive(false);
     }
 
     public void ShowScreenButtonWidget()
     {
         ScreenButtonWidget.SetActive(true);
+        if (_widgetIsActive)
+            WidgetActive();
+        else
+            WidgetNotActive();
     }
 
     public void HideObjectDescriptionText()
