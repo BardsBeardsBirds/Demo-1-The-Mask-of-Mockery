@@ -50,7 +50,7 @@ public class DialogueSituationSelector
     public static void LoadSentinelSituations()
     {
         CharacterSituation = 1;
-        if (WorldEvents.EmmonKnowsMaskLocation || WorldEvents.EmmonWasBlockedBySentinel)
+        if ((WorldEvents.EmmonKnowsMaskLocation || WorldEvents.EmmonWasBlockedBySentinel) && !SentinelBlocker.TryingToSneakPast)
             CharacterSituation = 2;
         if (WorldEvents.EmmonHasRoughneckShot)
             CharacterSituation = 3;

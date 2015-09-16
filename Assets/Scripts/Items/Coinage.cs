@@ -10,7 +10,6 @@ public class Coinage
     private int _value;
     private GameObject _spawnpoint;
     private string[] randomCoins1 = { "Coin", "Coin", "Coin", "TenCoins", "HundredCoins" };
-    private string[] randomCoins2 = { "Coin", "Coin", "TenCoins", "TenCoins", "HundredCoins" };
 
     public Coinage(string name, GameObject spawnpoint)
     {

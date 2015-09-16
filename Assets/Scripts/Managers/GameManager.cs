@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
     public static AudioSource AudioSource1;
     public static AudioSource AudioSource2;
 
-    private bool _showConsole = false;
-
     public static Dictionary<int, SpokenLine> AyDialogue = new Dictionary<int, SpokenLine>();     //TODO: Change into Dictionaries <ID>, <Spokenline>, so we can get rid of loops 
     public static Dictionary<int, SpokenLine> BennyDialogue = new Dictionary<int, SpokenLine>();
     public static Dictionary<int, SpokenLine> SentinelDialogue = new Dictionary<int, SpokenLine>();

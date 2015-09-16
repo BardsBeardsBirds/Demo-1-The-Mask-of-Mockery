@@ -30,16 +30,11 @@ public class Inventory : MonoBehaviour
         InitialiseInventoryItems.Clear();
         ResetAmounts();
 
-    //////////////    ResetAmounts(); // moved to other place
         Debug.Log("cleared inventory list");
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
         Instance.Tooltip = Resources.Load("Prefabs/UI/InventoryWindow/Tooltip") as GameObject;
 
-        //for (int i = 0; i < SlotList.Count; i++)          <....... Maybe rather that one?
-        //{
-        //    Items.Add(new Item());
-        //}
         foreach (GameObject slot in SlotList)
         {
             Items.Add(new Item());
@@ -55,9 +50,7 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-   //     AddItem(1003); //mask
-    //    AddItem(1001); //roughneck shot
-    //    AddItem(1002); //carrot
+        ItemManager.AddItem(ItemType.RoughneckShot);
 
 
     //    Debug.Log(Items[0].ItemName);
@@ -77,14 +70,12 @@ public class Inventory : MonoBehaviour
         if (UIDrawer.IsDraggingItem)
         {
             Vector3 mousePos = (Input.mousePosition - GameManager.Instance.UICanvas.InventoryCanvasGO.GetComponent<RectTransform>().localPosition);
-            //previous problems with the mouse location were solved by distracting screen / 2.
             DraggedItemGameObject.GetComponent<RectTransform>().localPosition = new Vector3(mousePos.x + 15 - (Screen.width / 2), mousePos.y + 15 - (Screen.height / 2), mousePos.z);
 
             if (Input.GetMouseButtonDown(1))
             {
                 HideDraggedItem();
                 GameManager.Instance.MyInventory.Items[UIDrawer.DraggingFromSlotNo] = GameManager.Instance.MyInventory.TheDraggedItem;
-             //   IInventory.Items[SlotNumber] = IInventory.TheDraggedItem;
             }
         }
     }
@@ -110,7 +101,8 @@ public class Inventory : MonoBehaviour
         DraggedItemGameObject.SetActive(true);
         TheDraggedItem = item;
         UIDrawer.IsDraggingItem = true;
-   //     DraggedItemGameObject.GetComponent<Image>().sprite = item.FindIcon(item.IType); //TODO BRING BACK ICON
+        item.ItemIcon = item.FindIcon(item);
+        DraggedItemGameObject.GetComponent<Image>().sprite = item.ItemIcon;
     }
 
     public void EndDragging(int slotNumber)

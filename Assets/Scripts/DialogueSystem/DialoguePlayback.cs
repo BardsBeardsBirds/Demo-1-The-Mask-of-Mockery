@@ -25,45 +25,10 @@ public class DialoguePlayback : MonoBehaviour
         Instance = this;
     }
 
-    public void ShowDialogueLines()
-    {
-        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
-        lineText.enabled = true;
-    }
-
-    public void HideDialogueLines()
-    {
-        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
-        lineText.text = "";
-        lineText.enabled = false;
-    }
-
-    public void SetCurrentDialogueLine(string currentDialogueLine)
-    {
-        _currentDialogueLine = currentDialogueLine;
-
-        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
-        lineText.text = "";
-        lineText.enabled = true;
-        StartCoroutine(AutoType(lineText));
-    }
-
-    public static void TriggerDialogue(int dialogueOptionID)
-    {
-        Debug.LogWarning("Laten we deze dialoog spelen: " + dialogueOptionID);
-
-        if (NPC == Character.Ay)
-            AyTheTearCollector.TriggerDialogue(dialogueOptionID);
-        else if (NPC == Character.Benny)
-            BennyTwospoons.TriggerDialogue(dialogueOptionID);
-        else if (NPC == Character.Sentinel)
-            Sentinel.TriggerDialogue(dialogueOptionID);
-    }
-
     public void PlaybackDialogue(int dialogueOptionID)
     {
         DialoguePlayback.TriggerDialogue(dialogueOptionID); //starts loading all the lines
-    //    Debug.Log("We chose option " + dialogueOption + " with option id " + dialogueOptionID + ". The last lineID was: " + DialoguePlayback.LastLineID);
+        //    Debug.Log("We chose option " + dialogueOption + " with option id " + dialogueOptionID + ". The last lineID was: " + DialoguePlayback.LastLineID);
 
         StartCoroutine(DialogueRoutine());
 
@@ -79,6 +44,32 @@ public class DialoguePlayback : MonoBehaviour
 
         ShowDialogueLines();
     }
+
+    public void SetCurrentDialogueLine(string currentDialogueLine)
+    {
+        _currentDialogueLine = currentDialogueLine;
+
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
+        lineText.text = "";
+        lineText.enabled = true;
+        StartCoroutine(AutoType(lineText));
+
+        Debug.Log("finished sentence");
+
+    }
+
+    public static void TriggerDialogue(int dialogueOptionID)
+    {
+        Debug.LogWarning("Laten we deze dialoog spelen: " + dialogueOptionID);
+
+        if (NPC == Character.Ay)
+            AyTheTearCollector.TriggerDialogue(dialogueOptionID);
+        else if (NPC == Character.Benny)
+            BennyTwospoons.TriggerDialogue(dialogueOptionID);
+        else if (NPC == Character.Sentinel)
+            Sentinel.TriggerDialogue(dialogueOptionID);
+    }
+
 
     public static IEnumerator DialogueRoutine()
     {
@@ -132,6 +123,19 @@ public class DialoguePlayback : MonoBehaviour
 
             yield return new WaitForSeconds((float)timerLength);
         }
+    }
+
+    public void ShowDialogueLines()
+    {
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
+        lineText.enabled = true;
+    }
+
+    public void HideDialogueLines()
+    {
+        Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
+        lineText.text = "";
+        lineText.enabled = false;
     }
 
     private static void SetTextColour(int id)

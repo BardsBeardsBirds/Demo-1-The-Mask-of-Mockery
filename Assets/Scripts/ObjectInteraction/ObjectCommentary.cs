@@ -350,7 +350,7 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.Carrot: // pickup carrot
                 CurrentDialogueIDs.Add(7033);
-                ItemManager.AddItem(1002);
+                ItemManager.AddItem(ItemType.Carrot);
                 InGameObjectManager.PickedUpCarrot = true;
                 InGameObjectManager.Instance.TurnOffObject(GameObject.Find("Carrot"));
                 AudioManager.PickUpAudio();
@@ -409,7 +409,7 @@ public static class ObjectCommentary
                 break;
             case ObjectsInLevel.MaskOfMockery:
                 CurrentDialogueIDs.Add(7054);
-                ItemManager.AddItem(1003); //Add mask of mockery to inventory
+                ItemManager.AddItem(ItemType.MaskOfMockery); //Add mask of mockery to inventory
                 InGameObjectManager.PickedUpMaskOfMockery = true;
                 AudioManager.PickUpAudio();
                 break;

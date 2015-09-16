@@ -28,8 +28,8 @@ public class CharacterControllerLogic : MonoBehaviour
     private CapsuleCollider _capCollider;
     [SerializeField]
     private bool _isGrounded;
-	[SerializeField]
-	private float _directionDampTime = 0.25f;
+//	[SerializeField]
+//	private float _directionDampTime = 0.25f;
 	[SerializeField]
 	private float _directionSpeed = 4.0f;
 	[SerializeField]
@@ -137,7 +137,6 @@ public class CharacterControllerLogic : MonoBehaviour
 
 	}
 	
-	// Update is called once per frame
 	void Update () 
 	{
         if (_state == CharacterState.Dead)

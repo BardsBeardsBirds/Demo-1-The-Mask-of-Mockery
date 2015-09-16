@@ -4,6 +4,7 @@ using System.Collections;
 public class SentinelBlocker : MonoBehaviour 
 {
     public static bool IsBlocking;
+    public static bool TryingToSneakPast = false;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -11,12 +12,14 @@ public class SentinelBlocker : MonoBehaviour
         {
             CharacterControllerLogic.Instance.GoToTalkingState();
             Sentinel.Instance.StartDialogue();
-    //        CharacterControllerLogic.Instance.ForceSpeed(0f);
         }
         else if (!IsBlocking)
         {
-            TimeManager.Instance.CreateRotator(GameManager.Player.transform, Sentinel.Instance.transform, 200, 2f);
-            Sentinel.Instance.HoldItThere();
+            IsBlocking = true;
+
+            TryingToSneakPast = true;
+            CharacterControllerLogic.Instance.GoToTalkingState();
+            Sentinel.Instance.StartDialogue();
         }
         else
             Debug.LogWarning("We are already blocking!!");

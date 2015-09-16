@@ -86,12 +86,24 @@ public class Sentinel : MonoBehaviour
     {
         CharacterControllerLogic.Instance.GoToTalkingState();
 
-        Animator emmonAnimator = GameManager.Player.GetComponent<Animator>();
-
         switch (dialogueSituation)
         {
             case 1: //SITUATION 1
-                Sentinel.Instance.HoldItThere();
+                //Sentinel.Instance.HoldItThere();
+                Debug.Log("HOLD IT THERE");
+
+                AddToDialogue(3001);
+                AddToDialogue(3002);
+                AddToDialogue(3003);
+
+                DialoguePlayback.EndingDialogue = true;
+
+                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3001); 
+
+                WorldEvents.EmmonWasBlockedBySentinel = true;
+
+                SentinelBlocker.TryingToSneakPast = false;
+
                 break;
             case 2: //SITUATION 2
                 DialogueMenu.AddToDialogueOptions(3024);
@@ -116,14 +128,14 @@ public class Sentinel : MonoBehaviour
 
     public static void TriggerDialogue(int dialogueOptionID)
     {
-        if (dialogueOptionID == 3001)   // hold it there
-        {
-            AddToDialogue(3001);
-            AddToDialogue(3002);
-            AddToDialogue(3003);
+        //if (dialogueOptionID == 3001)   // hold it there
+        //{
+        //    AddToDialogue(3001);
+        //    AddToDialogue(3002);
+        //    AddToDialogue(3003);
 
-            DialoguePlayback.EndingDialogue = true;
-        }
+        //    DialoguePlayback.EndingDialogue = true;
+        //}
 
         if (dialogueOptionID == 3024)
         {
@@ -193,23 +205,6 @@ public class Sentinel : MonoBehaviour
             return true;
 
         return false;
-    }
-
-    public void HoldItThere()
-    {
-        CharacterControllerLogic.Instance.GoToTalkingState();
-
-        SentinelBlocker.IsBlocking = true;
-
-        DialogueManager.ThisDialogueType = DialogueType.SentinelDialogue;
-        GameManager.NPCs[Character.Sentinel].GetComponent<Animator>().SetBool("DialogueState", true);
-
-        DialoguePlayback.NPC = Character.Sentinel;
-        Sentinel.CharacterSituation = 1;
-
-        DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(3001); 
-
-        WorldEvents.EmmonWasBlockedBySentinel = true;
     }
 
     public void PassSentinelDialogue()

@@ -456,7 +456,8 @@ public class AyTheTearCollector : MonoBehaviour
             AddToDialogue(2108);
             AddToDialogue(2109);
             AddToDialogue(2110);
-            GameManager.Instance.MyInventory.AddItem(1); // add roughneck shot
+            ItemManager.AddItem(ItemType.RoughneckShot);
+//            GameManager.Instance.MyInventory.AddItem(1); // add roughneck shot
         }
 
         if (dialogueOptionID == 2111)

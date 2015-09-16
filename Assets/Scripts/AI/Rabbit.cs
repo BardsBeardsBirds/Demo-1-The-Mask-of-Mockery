@@ -19,7 +19,6 @@ public class Rabbit : MonoBehaviour
     public Transform CurrentDestinationGoal;
     public Transform PreviousDestinationGoal;
 
-    private int _inTheArea = 0;
     private bool _withEmmonInArea = false;
 
 	void Start () 

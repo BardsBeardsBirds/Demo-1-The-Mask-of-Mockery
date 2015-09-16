@@ -8,6 +8,7 @@ public class ItemManager : MonoBehaviour
     public static List<GameObject> CoinageSpawnpoints = new List<GameObject>();
 
     private List<Coinage> coins = new List<Coinage>();
+    private static ItemDatabase _itemDatabase;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class ItemManager : MonoBehaviour
         {
             coin.Instantiate();
         }
+
+        _itemDatabase = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
     }
 
     private void CreateCoinage()
@@ -33,8 +36,20 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public static void AddItem(int item)
+    public static void AddItem(ItemType itemType)
     {
-        GameManager.Instance.MyInventory.AddItem(item);
+        Item item = null;
+
+        for (int i = 0; i < _itemDatabase.Items.Count; i++)
+        {
+            if (_itemDatabase.Items[i].IType == itemType)
+            {
+                item = _itemDatabase.Items[i];
+            }
+        }
+        if (item != null)
+            GameManager.Instance.MyInventory.AddItem(item.ID);
+        else
+            Debug.LogError("we don't know this item type so we cannot add it: " + itemType);
     }
 }

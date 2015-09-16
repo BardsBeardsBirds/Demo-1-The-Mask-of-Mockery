@@ -75,7 +75,6 @@
      <Compile Include="Assets\Scripts\Items\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Items\MoneyThrower.cs" />
      <Compile Include="Assets\Scripts\Items\PickUpItemListener.cs" />
-     <Compile Include="Assets\Scripts\Items\StandardNPC.cs" />
      <Compile Include="Assets\Scripts\Locations\Area.cs" />
      <Compile Include="Assets\Scripts\Locations\AreaEnum.cs" />
      <Compile Include="Assets\Scripts\Locations\GroundTerrain.cs" />

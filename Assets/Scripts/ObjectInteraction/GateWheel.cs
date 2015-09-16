@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GateWheel : ButtonPush
 {
-    public static GateWheel Instance;
+    //public static GateWheel Instance;
 
     public enum Wheels { Wheel1, Wheel2, Wheel3, Wheel4, Wheel5, Wheel6 };
     public enum WheelColours { Correct, Other };
@@ -16,7 +15,7 @@ public class GateWheel : ButtonPush
     public static bool WheelTurns = false;
     public static int AmountOfCorrectButtons = 1;
 
-    private float _wheelTimer = 0;
+   // private float _wheelTimer = 0;
     private int _rotatorTimer = 0;
     private int _wheelColourIndex = 0;
     private int _turnsToCorrectOne = 0;
@@ -179,7 +178,7 @@ public class GateWheel : ButtonPush
         var degreesToTurn = 51.42f / 15f; //amount of degrees to turn = 51.42
 
         wheel.gameObject.transform.Rotate(new Vector3(0, degreesToTurn, 0));
-        var wheelRotationAngle = wheel.gameObject.transform.rotation.y;
+       // var wheelRotationAngle = wheel.gameObject.transform.rotation.y;
         //  Debug.LogWarning("Turn it around" + wheelRotationAngle + " index " + index);
 
         AudioManager.TurnWheelAudio();

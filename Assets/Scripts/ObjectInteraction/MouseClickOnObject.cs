@@ -193,10 +193,10 @@ public class MouseClickOnObject : MonoBehaviour
 
     public void Start()
     {
-        if (MyObject == null)
-            Debug.LogWarning("This object has no name: " + this.name);
-
         Instance = this;
+
+        if (MyObject == ObjectsInLevel.Null)
+            Debug.LogWarning("This object has no name: " + Instance.name);
 
         _descriptionText = GameManager.Instance.UICanvas.ObjectDescriptionText;
         _actionPanel = new ActionPanel();
@@ -211,8 +211,6 @@ public class MouseClickOnObject : MonoBehaviour
 
         if (UIDrawer.IsDraggingItem)
         {
-            //   GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
-
             bool tryCombine = false;
             tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
             if (tryCombine)
@@ -227,7 +225,6 @@ public class MouseClickOnObject : MonoBehaviour
             ActionPanel.IsInInventory = false;
             _actionPanel.MoveActionPanelToClickedObject(false);   //show the action panel
         }
-            //_actionPanel.MoveActionPanelToClickedObject(ActionPanel.ItemInteractionType.ObjectInWorld);   //show the action panel
     }
 
     public void OnMouseExit()
