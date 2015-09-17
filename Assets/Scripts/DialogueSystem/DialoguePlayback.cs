@@ -10,7 +10,6 @@ public class DialoguePlayback : MonoBehaviour
 
     public static bool EndingDialogue = false;
     public static bool LastLineOfTheBlock = false;
-
     public static int DeleteLineID = 0;
     public static int LastLineID = 0;
     public static int CurrentLineID = 0;
@@ -19,6 +18,8 @@ public class DialoguePlayback : MonoBehaviour
 
     private static string _currentDialogueLine;
 
+    private List<char> _autoWriteChars = new List<char>();
+    
     public void Awake()
     {
         _currentDialogueLine = "";
@@ -28,7 +29,7 @@ public class DialoguePlayback : MonoBehaviour
     public void PlaybackDialogue(int dialogueOptionID)
     {
         DialoguePlayback.TriggerDialogue(dialogueOptionID); //starts loading all the lines
-        //    Debug.Log("We chose option " + dialogueOption + " with option id " + dialogueOptionID + ". The last lineID was: " + DialoguePlayback.LastLineID);
+            Debug.Log("We chose option id " + dialogueOptionID + ". The last lineID was: " + DialoguePlayback.LastLineID);
 
         StartCoroutine(DialogueRoutine());
 
@@ -43,6 +44,7 @@ public class DialoguePlayback : MonoBehaviour
         StartCoroutine(DialogueRoutine());
 
         ShowDialogueLines();
+
     }
 
     public void SetCurrentDialogueLine(string currentDialogueLine)
@@ -52,10 +54,9 @@ public class DialoguePlayback : MonoBehaviour
         Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
         lineText.text = "";
         lineText.enabled = true;
+        _autoWriteChars.Clear();
+
         StartCoroutine(AutoType(lineText));
-
-        Debug.Log("finished sentence");
-
     }
 
     public static void TriggerDialogue(int dialogueOptionID)
@@ -69,7 +70,6 @@ public class DialoguePlayback : MonoBehaviour
         else if (NPC == Character.Sentinel)
             Sentinel.TriggerDialogue(dialogueOptionID);
     }
-
 
     public static IEnumerator DialogueRoutine()
     {
@@ -102,7 +102,7 @@ public class DialoguePlayback : MonoBehaviour
                 DialoguePlayback.ClearDialogueList();
                 DialogueMenu.ClearDialogueOptionList();
                 Debug.LogWarning("last line! " + id);
-                DialogueTimer.IDlast = id;
+                DialogueTimer.ChosenOptionID = id;
 
                 if (EndingDialogue)
                 {
@@ -118,10 +118,9 @@ public class DialoguePlayback : MonoBehaviour
                     }
                 }
             }
-
             float timerLength = (float)DialogueTimer.AudioClipLength;
 
-            yield return new WaitForSeconds((float)timerLength);
+            yield return new WaitForSeconds((float)timerLength);  
         }
     }
 
@@ -142,13 +141,12 @@ public class DialoguePlayback : MonoBehaviour
     {
         Text lineText = GameManager.Instance.UICanvas.DialogueLineImage.GetComponentInChildren<Text>();
         SpokenLine spokenLine = GameManager.CharacterDialogueLists[NPC][id];
-        Debug.Log(spokenLine.Speaker);
+
         if (spokenLine.Speaker == NPC)
         {
             switch (NPC)
             {
                 case Character.Ay:
-                    Debug.Log("Change colour");
                     lineText.color = new Color(1f, .75f, .62f);
                     break;
                 case Character.Benny:
@@ -247,10 +245,20 @@ public class DialoguePlayback : MonoBehaviour
 
     IEnumerator AutoType(Text lineText)
     {
+        DialogueTimer.LineFinished = false;
+
         foreach (char letter in _currentDialogueLine.ToCharArray())
         {
-            lineText.text += letter;
-            yield return new WaitForSeconds(0.015f);
+            _autoWriteChars.Add(letter);
+        }
+
+        for (int i = 0; i < _autoWriteChars.Count; i++)
+        {
+            if (DialogueTimer.LineFinished)
+                break;
+
+            lineText.text += _autoWriteChars[i];
+            yield return new WaitForSeconds(.015f);       
         }
     }
 

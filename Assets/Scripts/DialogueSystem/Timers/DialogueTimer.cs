@@ -6,7 +6,9 @@ public class DialogueTimer
 {
     public static DialogueTimer Instance;
     public static float AudioClipLength = 0f;
-    public static int IDlast;
+    public static int ChosenOptionID;
+
+    public static bool LineFinished = false;
 
     private float _timer = 0;
     
@@ -25,6 +27,7 @@ public class DialogueTimer
     {
         AudioClipLength = timerLength;
         _timer = timerLength;
+        LineFinished = false;
     }
 
     public void Update()
@@ -56,7 +59,7 @@ public class DialogueTimer
                 {
                     if (DialoguePlayback.LastLineOfTheBlock)
                     {
-                        DialoguePlayback.DialogueNumberToSituation(IDlast);
+                        DialoguePlayback.DialogueNumberToSituation(ChosenOptionID);
 
                         Debug.Log("to another situation");
 
@@ -69,6 +72,8 @@ public class DialogueTimer
          //       Debug.Log("Do we do something at the end?" + DialoguePlayback.CurrentLineID);
 
                 DoSomethingAtEnd(DialoguePlayback.CurrentLineID);
+
+                LineFinished = true;
             }
         }       
     }
