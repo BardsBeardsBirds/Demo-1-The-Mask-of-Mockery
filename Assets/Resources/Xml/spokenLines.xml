@@ -58,7 +58,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1011">
 			<Speaker>Benny</Speaker>
-			<Text>I used to work at the Jolly Fair. Even though those days are not over, I am still a clown by heart.</Text>
+			<Text>I used to work down at the Jolly Fair. Even though those days are not over, I am still a clown by heart.</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1012">
@@ -93,7 +93,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1018">
 			<Speaker>Emmon</Speaker>
-			<Text>Hey, is that a real lute that you got there?"</Text>
+			<Text>Hey, is that a real lute that you got there?</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1019">
@@ -268,7 +268,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1052">
 			<Speaker>Emmon</Speaker>
-			<Text>Hi!"</Text>
+			<Text>Hi!</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1053">
@@ -313,12 +313,12 @@
 		</SpokenLine>
 		<SpokenLine ID="1061">
 			<Speaker>Emmon</Speaker>
-			<Text>Do you know anything about this Tear Collector person?"</Text>
+			<Text>Do you know anything about this Tear Collector person?</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1062">
 			<Speaker>Benny</Speaker>
-			<Text>The Tear Collector? Oh don’t get me started. His lust for tears has spoiled many of my best jokes. Bad company at birthdays.</Text>
+			<Text>The Tear Collector? Oh mate, don’t get me started. His lust for tears has spoiled many of my best jokes. Bad, bad company at birthdays.</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1063">
@@ -638,7 +638,7 @@
 		</SpokenLine>
 		<SpokenLine ID="2031">
 			<Speaker>Ay</Speaker>
-			<Text>You’re a bard for pity’s sake. Get lost boy. Let me concentrate on my misfortune.</Text>
+			<Text>You’re a bard for pity’s sake. Get lost boy. Let me concentrate on my own misfortune.</Text>
 			<DialogueType>AyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="2032">
@@ -663,7 +663,7 @@
 		</SpokenLine>
 		<SpokenLine ID="2036">
 			<Speaker>Ay</Speaker>
-			<Text>I collect the tears you drop, That is why I own this shop.</Text>
+			<Text>I collected the tears you drop, That is why I own this shop.</Text>
 			<DialogueType>AyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="2037">
@@ -843,7 +843,7 @@
 		</SpokenLine>
 		<SpokenLine ID="2072">
 			<Speaker>Emmon</Speaker>
-			<Text>No. He seemed not to be impressed by my appearance in any way."</Text>
+			<Text>No. He seemed not to be impressed by my appearance in any way.</Text>
 			<DialogueType>AyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="2073">
@@ -1023,7 +1023,7 @@
 		</SpokenLine>
 		<SpokenLine ID="2108">
 			<Speaker>Ay</Speaker>
-			<Text>Well, a real tiny one then. Because frankly I’m starting to like you… in a peculiar way. You are lucky I have a small bottle here with me. Most of my concoctions are locked inside my house. There you go.</Text>
+			<Text>Well, a really tiny one then. Because frankly I’m starting to like you… in a peculiar way. You are lucky I have a small bottle here with me. Most of my concoctions are locked inside my house. There you go.</Text>
 			<DialogueType>AyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="2109">
@@ -1298,12 +1298,12 @@
 		</SpokenLine>
 		<SpokenLine ID="4000">
 			<Speaker>Narrator</Speaker>
-			<Text>This is Emmon. He is a Bard.</Text>
+			<Text>This is Emmon. Emmon is a Bard.</Text>
 			<DialogueType>Intro</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="4001">
 			<Speaker>Narrator</Speaker>
-			<Text>But he has a problem: he has no lute to play. And what does a minstrel accomplish without his musical instrument?</Text>
+			<Text>But he has got a problem: he doesn't have a lute to play. And what does a minstrel accomplish without his musical instrument?</Text>
 			<DialogueType>Intro</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="4002">
@@ -1617,7 +1617,7 @@
 			<DialogueType>ObjectInvestigation</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7005">
-			<Text>Interact with Benny.</Text>
+			<Text>No thanks, I prefer my human form.</Text>
 			<DialogueType>ObjectInteraction</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7006">
