@@ -216,7 +216,7 @@ public static class ObjectCommentary
                 CurrentDialogueIDs.Add(6046);
                 break;
             case ObjectsInLevel.MuseumRightPanel:
-                CurrentDialogueIDs.Add(6047);
+                CurrentDialogueIDs.Add(6048);
                 break;
             case ObjectsInLevel.MuseumRightPanelTower:
                 CurrentDialogueIDs.Add(6049);
@@ -356,7 +356,10 @@ public static class ObjectCommentary
                 AudioManager.PickUpAudio();
                 break;
             case ObjectsInLevel.TearCollectorSkull:
-                CurrentDialogueIDs.Add(7034);
+                if(WorldEvents.EmmonKnowsMaskLocation)
+                    CurrentDialogueIDs.Add(7034);
+                else
+                    CurrentDialogueIDs.Add(7032);
                 break;
             case ObjectsInLevel.TreasureChest:
                 GameObject chest = GameManager.Instance.InGameObjectM.TreasureChests[0];

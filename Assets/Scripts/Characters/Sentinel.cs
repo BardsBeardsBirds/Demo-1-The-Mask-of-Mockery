@@ -46,8 +46,9 @@ public class Sentinel : MonoBehaviour
         if (IsLastBefore(lastLineID, 3006))
             DialogueMenu.AddToDialogueOptions(3006);
 
-        if (IsLastBefore(lastLineID, 3009) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006)))
-            DialogueMenu.AddToDialogueOptions(3009);
+      //  if (IsLastBefore(lastLineID, 3009) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006)))
+            if (IsLastBefore(lastLineID, 3009))
+                DialogueMenu.AddToDialogueOptions(3009);
 
         if (IsLastBefore(lastLineID, 3014) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)))
             DialogueMenu.AddToDialogueOptions(3014);

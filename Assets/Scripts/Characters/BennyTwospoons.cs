@@ -20,7 +20,7 @@ public class BennyTwospoons : MonoBehaviour
     private static List<int> LastBefore1074 = new List<int>() { 1009, 1012, 1016, 1054, 1062, 1073, 1082 };
     private static List<int> LastBefore1075 = new List<int>() { 1074, 1077, 1079, 1081 };
     private static List<int> LastBefore1078 = new List<int>() { 1074, 1077, 1079, 1081 };
-    private static List<int> LastBefore1080 = new List<int>() { 1074, 1077, 1081  };
+    private static List<int> LastBefore1080 = new List<int>() { 1074, 1077, 1079, 1081 };
     private static List<int> LastBefore1082 = new List<int>() { 1074, 1077, 1079, 1081 };
     private static List<int> LastBefore1094 = new List<int>() { 1005, 1009, 1012, 1016, 1050, 1054, 1062, 1073, 1082, 1095 };
 
@@ -422,12 +422,12 @@ public class BennyTwospoons : MonoBehaviour
             DialoguePlayback.EndingDialogue = true;
         }
 
-        if (dialogueOptionID == 1060)
-        {
-            DialoguePlayback.DeleteLineID = 1060;
+        //if (dialogueOptionID == 1060)
+        //{
+        //    DialoguePlayback.DeleteLineID = 1060;
 
-            AddToDialogue(1060);
-        }
+        //    AddToDialogue(1060);
+        //}
 
         if (dialogueOptionID == 1061)
         {
@@ -438,12 +438,13 @@ public class BennyTwospoons : MonoBehaviour
 
         if (dialogueOptionID == 1063)
         {
+            DialoguePlayback.DeleteLineID = 1063;
+            
             AddToDialogue(1063);
             AddToDialogue(1064);
             AddToDialogue(1065);
             AddToDialogue(1066);
 
-            DialoguePlayback.DeleteLineID = 1063;
         }
 
         if (dialogueOptionID == 1067)

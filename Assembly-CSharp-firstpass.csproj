@@ -114,7 +114,6 @@
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\FisheyeShader.shader" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
-     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\Standard Assets\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />

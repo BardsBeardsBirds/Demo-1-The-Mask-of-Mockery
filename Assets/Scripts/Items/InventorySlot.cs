@@ -46,7 +46,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
                     // amount of consumable = 0
                     ItemImage.enabled = false;
                     GameManager.Instance.MyInventory.Items[SlotNumber] = new Item();
-                    GameManager.Instance.MyInventory.HideTooltip();
                 }
             }
         }
@@ -115,7 +114,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
         if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null && !UIDrawer.IsDraggingItem)  // there is an item in the slot we are hov
         {
-            GameManager.Instance.MyInventory.ShowTooltip(GameManager.Instance.MyInventory.SlotList[SlotNumber].GetComponent<RectTransform>().localPosition, GameManager.Instance.MyInventory.Items[SlotNumber]);
 
             _descriptionText.enabled = true;
             _descriptionText.text = GameManager.Instance.MyInventory.Items[SlotNumber].ItemName;
@@ -137,9 +135,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public void OnPointerExit(PointerEventData data)
     {
-        if (GameManager.Instance.MyInventory.Items[SlotNumber].ItemName != null)
-            GameManager.Instance.MyInventory.HideTooltip();
-
         if (UIDrawer.IsDraggingItem)
         {
             _descriptionText.text = UIDrawer.DraggingItem.ItemName;
@@ -180,7 +175,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
             ItemImage.enabled = false;
 
         GameManager.Instance.MyInventory.Items[SlotNumber] = new Item();
-        GameManager.Instance.MyInventory.HideTooltip();
     }
 }
 

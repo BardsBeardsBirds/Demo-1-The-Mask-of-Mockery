@@ -29,7 +29,6 @@ public class InventoryCanvas : MonoBehaviour
 
         GameManager.Destroy("InteractionButton");
         GameManager.Destroy("InvestigateButton");
-        GameManager.Instance.MyInventory.HideTooltip();
     }
 
     public static void SetLeftBottomPosition(RectTransform trans, Vector2 newPos)

@@ -10,7 +10,7 @@ public class AyTheTearCollector : MonoBehaviour
 
     private static List<int> LastBefore2014 = new List<int>() { 2013, 2023, 2123, 2064, 2067 };
     private static List<int> LastBefore2026 = new List<int>() { 2025, 2039, 2041, 2043, 2045, 2064, 2067, 2111, 2123 };
-    private static List<int> LastBefore2032 = new List<int>() { 2031, 2039, 2041, 2043, 2045, 2064, 2067, 2111, 2123 };
+    private static List<int> LastBefore2032 = new List<int>() { 2031, 2039, 2041, 2043, 2045, 2064, 2067, 2110, 2111, 2123 };
     private static List<int> LastBefore2038 = new List<int>() { 2025, 2031, 2037, 2064, 2067, 2110, 2111, 2123 };
     private static List<int> LastBefore2040 = new List<int>() { 2025, 2031, 2037, 2039, 2064, 2067, 2110, 2111, 2123 };
     private static List<int> LastBefore2042 = new List<int>() { 2025, 2031, 2037, 2039, 2041, 2064, 2067, 2110, 2111, 2123 };
@@ -224,6 +224,7 @@ public class AyTheTearCollector : MonoBehaviour
                 AddToDialogue(2117);
                 AddToDialogue(2118);
                 AddToDialogue(2119);
+                DialoguePlayback.DeleteLineID = 2114;
 
                 DialoguePlayback.EndingDialogue = true;
                 DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2114);

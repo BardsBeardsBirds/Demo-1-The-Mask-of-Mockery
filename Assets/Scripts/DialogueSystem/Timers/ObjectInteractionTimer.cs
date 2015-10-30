@@ -40,7 +40,7 @@ public class ObjectInteractionTimer
 
     private static void DoSomethingAtEnd(int id)
     {
-        if(id == 2054) //pick up the mask of Mockery
+        if(id == 7054) //pick up the mask of Mockery
         {
             InGameObjectManager.Instance.TurnOffObject(GameObject.Find("MaskOfMockery"));
         }

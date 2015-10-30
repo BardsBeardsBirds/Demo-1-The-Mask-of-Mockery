@@ -10,11 +10,11 @@ using System.IO;
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
+    public Animator MyAnimator;
     public List<GameObject> SlotList = new List<GameObject>();
     public List<Item> Items = new List<Item>();
     public List<int> InitialiseInventoryItems = new List<int>();
     public GameObject Slots;
-    public GameObject Tooltip;
     public GameObject DraggedItemGameObject;
     public ItemDatabase Database;
     public Item TheDraggedItem;
@@ -25,7 +25,8 @@ public class Inventory : MonoBehaviour
     public void Awake()
     {
         Instance = GameManager.Instance.MyInventory;
-
+        MyAnimator = this.GetComponent<Animator>();
+        MyAnimator.SetBool("Open", false);
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         InitialiseInventoryItems.Clear();
         ResetAmounts();
@@ -33,7 +34,6 @@ public class Inventory : MonoBehaviour
         Debug.Log("cleared inventory list");
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
-        Instance.Tooltip = Resources.Load("Prefabs/UI/InventoryWindow/Tooltip") as GameObject;
 
         foreach (GameObject slot in SlotList)
         {
@@ -44,17 +44,15 @@ public class Inventory : MonoBehaviour
     public void Start()
     {
         Instance = this;
-        
+
+        MyAnimator.SetBool("Open", false);
+
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
 
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-        ItemManager.AddItem(ItemType.RoughneckShot);
-
-
-    //    Debug.Log(Items[0].ItemName);
-   //     Debug.Log(Items[1].ItemName);
+        //ItemManager.AddItem(ItemType.RoughneckShot);
 
         if (GameManager.MyGameType != GameManager.GameType.NewGame && 
             GameManager.MyGameType != GameManager.GameType.None)
@@ -80,24 +78,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ShowTooltip(Vector3 toolPosition, Item item)
-    {
-        Tooltip.SetActive(true);
-        Tooltip.GetComponent<RectTransform>().localPosition = new Vector3(toolPosition.x + 360, toolPosition.y, toolPosition.z);
-
-   //     Tooltip.transform.GetChild(0).GetComponent<Text>().text = item.ItemName;
-    //    Tooltip.transform.GetChild(2).GetComponent<Text>().text = item.ItemDescription;
-    }
-
-    public void HideTooltip()
-    {
-        Tooltip.SetActive(false);
-    }
-
     public void ShowDraggedItem(Item item, int slotNumber)
     {
         IndexOfDraggedItem = slotNumber;
-        HideTooltip();
         DraggedItemGameObject.SetActive(true);
         TheDraggedItem = item;
         UIDrawer.IsDraggingItem = true;
@@ -196,7 +179,6 @@ public class Inventory : MonoBehaviour
     {
         //Debug.Log("empty slot");
         Items[slotNumber] = new Item();
-        HideTooltip();
     }
 
     public void LoadItemsFromSave()

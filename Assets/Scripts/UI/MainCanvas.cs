@@ -87,14 +87,17 @@ public class MainCanvas : MonoBehaviour
 
     public void ShowInventory()
     {
-        InventoryPanelImage.enabled = true;
-        InventoryPanelSlots.SetActive(true);
+        Inventory.Instance.MyAnimator.SetBool("Open", true);
+
+    //    InventoryPanelImage.enabled = true;
+    //    InventoryPanelSlots.SetActive(true);
     }
 
     public void HideInventory()
     {
-        InventoryPanelImage.enabled = false;
-        InventoryPanelSlots.SetActive(false);
+        //InventoryPanelImage.enabled = false;
+        //InventoryPanelSlots.SetActive(false);
+        Inventory.Instance.MyAnimator.SetBool("Open", false);
 
         if(GameManager.Instance.UICanvas.Hovering == Hoverings.MouseInInventory)
         {
