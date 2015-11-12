@@ -18,7 +18,7 @@ public class AyTheTearCollector : MonoBehaviour
     private static List<int> LastBefore2046 = new List<int>() { 2013, 2031, 2037, 2039, 2041, 2043, 2045, 2123 };
     private static List<int> LastBefore2065 = new List<int>() { 2013, 2025, 2031, 2037, 2039, 2041, 2043, 2045, 2064, 2067, 2111, 2123 };
     private static List<int> LastBefore2079 = new List<int>() { 2078, 2084, 2086, 2089, 2095, 2098, 2101, 2125 };
-    private static List<int> LastBefore2081 = new List<int>() { 2078, 2080, 2095, 2098, 2101, 2125 };
+    private static List<int> LastBefore2081 = new List<int>() { 2078, 2080, 2084, 2095, 2098, 2101, 2125 };
     private static List<int> LastBefore2083 = new List<int>() { 2082 };
     private static List<int> LastBefore2085 = new List<int>() { 2082, 2124 };
     private static List<int> LastBefore2090 = new List<int>() { 2078, 2080, 2084, 2086, 2089, 2095, 2098, 2101, 2125 };
@@ -148,8 +148,6 @@ public class AyTheTearCollector : MonoBehaviour
         if (IsLastBefore(lastLineID, 2124) && characterSituation == 3)
             DialogueMenu.AddToDialogueOptions(2124); // can you give me the roughshot?
 
-
-
         switch (lastLineID)
         {
             //opening options
@@ -167,9 +165,6 @@ public class AyTheTearCollector : MonoBehaviour
                 break;
             case 5:
                 FindDialogueSituation(5);
-                break;
-            case 6:
-                FindDialogueSituation(6);
                 break;
             default:
                 FindDialogueSituation(999);
@@ -218,23 +213,25 @@ public class AyTheTearCollector : MonoBehaviour
                 DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2112);
                 break;
             case 5: //So, I got the mask
-                AddToDialogue(2114);
-                AddToDialogue(2115);
-                AddToDialogue(2116);
-                AddToDialogue(2117);
-                AddToDialogue(2118);
-                AddToDialogue(2119);
-                DialoguePlayback.DeleteLineID = 2114;
+                if (DialogueManager.IsDialoguePassed(2114))
+                {
+                    AddToDialogue(2120);
+                    AddToDialogue(2121);
+                }
+                else
+                {
+                    DialoguePlayback.DeleteLineID = 2114;
+                    
+                    AddToDialogue(2114);
+                    AddToDialogue(2115);
+                    AddToDialogue(2116);
+                    AddToDialogue(2117);
+                    AddToDialogue(2118);
+                    AddToDialogue(2119);
+                }
 
                 DialoguePlayback.EndingDialogue = true;
                 DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2114);
-                break;
-            case 6: // I'm having a great time with the mask
-                AddToDialogue(2120);
-                AddToDialogue(2121);
-
-                DialoguePlayback.EndingDialogue = true;
-                DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(2120);
                 break;
             case 999:
                 DialogueMenu.FindDialogueOptionText(Character.Ay);

@@ -40,10 +40,10 @@ public class IntroTimer
                     CharacterControllerLogic.Instance.EndTalkingState();
                     DialogueManager.ThisDialogueType = DialogueType.None;
 
-                    GameManager.Instance.UICanvas.IntroScreen.SetActive(true);
+                    GameManager.Instance.UICanvas.IntroScreen.GetComponent<IntroScreen>().PanelOpen = true; // open panel
 
                     IntroMode.FinishIntro();
-                    Debug.Log("This is the end of the timer " + CharacterControllerLogic.Instance.State + " " + GameManager.GamePlayingMode);
+                    Debug.Log("This is the end of the intro timer " + CharacterControllerLogic.Instance.State + " " + GameManager.GamePlayingMode);
                 }
             }
 

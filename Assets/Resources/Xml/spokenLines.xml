@@ -93,7 +93,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1018">
 			<Speaker>Emmon</Speaker>
-			<Text>Hey, is that a real lute that you got there?"</Text>
+			<Text>Hey, is that a real lute that you got there?</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1019">
@@ -223,7 +223,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1043">
 			<Speaker>Emmon</Speaker>
-			<Text>What do you want for this lute? Maybe we can make a deal.</Text>
+			<Text>So what do you want for this lute? Maybe we can make a deal.</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1044">
@@ -268,7 +268,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1052">
 			<Speaker>Emmon</Speaker>
-			<Text>Hi!"</Text>
+			<Text>Hi!</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1053">
@@ -313,7 +313,7 @@
 		</SpokenLine>
 		<SpokenLine ID="1061">
 			<Speaker>Emmon</Speaker>
-			<Text>Do you know anything about this Tear Collector person?"</Text>
+			<Text>Do you know anything about this Tear Collector person?</Text>
 			<DialogueType>BennyDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="1062">
@@ -1183,7 +1183,7 @@
 		</SpokenLine>
 		<SpokenLine ID="3015">
 			<Speaker>Sentinel</Speaker>
-			<Text>As I told you, you just don’t seem to fit for going into the wild. I have been a royal guard since.., throughout this whole game, and I can tell by experience a scrag like you won’t last long out there. Make an impression on me and I might change me mind.</Text>
+			<Text>As I told you, you just don’t seem to fit for going into the wild. I have been a royal guard since.., throughout this whole game, and I can tell by experience a scrag like you won’t last long out there. Make an impression on me and I might change my mind.</Text>
 			<DialogueType>SentinelDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="3016">
@@ -1193,7 +1193,7 @@
 		</SpokenLine>
 		<SpokenLine ID="3017">
 			<Speaker>Sentinel</Speaker>
-			<Text>Make an impression on me and I might change me mind.</Text>
+			<Text>Make an impression on me and I might change my mind.</Text>
 			<DialogueType>SentinelDialogue</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="3018">
@@ -1303,7 +1303,7 @@
 		</SpokenLine>
 		<SpokenLine ID="4001">
 			<Speaker>Narrator</Speaker>
-			<Text>But he has a problem: he has no lute to play. And what does a minstrel accomplish without his musical instrument?</Text>
+			<Text>But he has a problem: he doesn't have a lute to play. And what does a minstrel accomplish without his musical instrument?</Text>
 			<DialogueType>Intro</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="4002">
@@ -1617,7 +1617,7 @@
 			<DialogueType>ObjectInvestigation</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7005">
-			<Text>Interact with Benny.</Text>
+			<Text>No thanks. I prefer my human form.</Text>
 			<DialogueType>ObjectInteraction</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7006">
@@ -1641,11 +1641,11 @@
 			<DialogueType>ObjectInteraction</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7011">
-			<Text>I don’t want to carry a portrait of a clown around.</Text>
+			<Text>I don’t want to carry around a portrait of a clown.</Text>
 			<DialogueType>ObjectInteraction</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7012">
-			<Text>I don’t want to carry a portrait of a clown around.</Text>
+			<Text>I don’t want to carry around a portrait of a clown.</Text>
 			<DialogueType>ObjectInteraction</DialogueType>
 		</SpokenLine>
 		<SpokenLine ID="7013">

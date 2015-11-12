@@ -16,12 +16,7 @@ public class DialogueSituationSelector
         if (WorldEvents.EmmonHasRoughneckShot)
             CharacterSituation = 4;
         if (InGameObjectManager.PickedUpMaskOfMockery)
-        {
-            if (DialogueManager.IsDialoguePassed(2114))
-                CharacterSituation = 6;
-            else
-                CharacterSituation = 5;
-        }
+            CharacterSituation = 5;
 
         AyTheTearCollector.CharacterSituation = CharacterSituation;
         AyTheTearCollector.Instance.DialogueLineNumberToSituation(CharacterSituation);   //dialogue situation at start.
@@ -50,7 +45,8 @@ public class DialogueSituationSelector
     public static void LoadSentinelSituations()
     {
         CharacterSituation = 1;
-        if (WorldEvents.EmmonKnowsMaskLocation || (WorldEvents.EmmonWasBlockedBySentinel && !SentinelBlocker.TryingToSneakPast))
+        //  if (WorldEvents.EmmonKnowsMaskLocation || (WorldEvents.EmmonWasBlockedBySentinel && !SentinelBlocker.TryingToSneakPast))
+          if (WorldEvents.EmmonWasBlockedBySentinel && !SentinelBlocker.TryingToSneakPast)
             CharacterSituation = 2;
         if (WorldEvents.EmmonHasRoughneckShot)
             CharacterSituation = 3;

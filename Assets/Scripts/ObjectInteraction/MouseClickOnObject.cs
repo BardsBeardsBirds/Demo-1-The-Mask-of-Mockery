@@ -209,16 +209,18 @@ public class MouseClickOnObject : MonoBehaviour
 
         ActionPanel.LastHoveredObject = MyObject;
 
-        if (UIDrawer.IsDraggingItem)
+        if (UIDrawer.IsDraggingItem )
         {
-            bool tryCombine = false;
-            tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
-            if (tryCombine)
+            if (CharacterControllerLogic.Instance.GetState() != CharacterControllerLogic.CharacterState.Talking && CharacterControllerLogic.Instance.GetState() != CharacterControllerLogic.CharacterState.TalkingLastLine)
             {
-                Debug.LogWarning("We can combine these two!!");
-                GameManager.Instance.MyInventory.EndDragging(UIDrawer.DraggingFromSlotNo);
+                bool tryCombine = false;
+                tryCombine = GameManager.Instance.IIventoryItemWithObject.CombineItems(GameManager.Instance.MyInventory.TheDraggedItem, MyObject);
+                if (tryCombine)
+                {
+                    Debug.LogWarning("We can combine these two!!");
+                    GameManager.Instance.MyInventory.EndDragging(UIDrawer.DraggingFromSlotNo);
+                }
             }
-
         }
         else
         {

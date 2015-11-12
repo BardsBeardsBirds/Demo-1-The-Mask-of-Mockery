@@ -29,10 +29,9 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-<<<<<<< HEAD
-																																																																																																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
 =======
-																																																																																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																												GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> parent of 27b63ec... Added inventory animation, and updated inventory, coin and screen graphics. Fixed a problem with the Sentinel's dialogue situation 1.
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0

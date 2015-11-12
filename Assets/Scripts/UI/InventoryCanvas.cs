@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryCanvas : MonoBehaviour
 {
-    public InventoryCanvas Instance;
+    public static InventoryCanvas Instance;
     public static bool InventoryIsOpen;
 
     public void Start()

@@ -213,45 +213,45 @@ public class GameManager : MonoBehaviour
                 UICanvas.PauseMenuCanvas.GetComponent<PauseMenu>().PauseGame();
             }
 
-            if (Input.GetKeyUp(KeyCode.N))
-            {
-                Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);
-                Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
-                Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
-                Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
-                Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
-                Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
-                Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
-                Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
-                Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
-                Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
-            }
+            //if (Input.GetKeyUp(KeyCode.N))
+            //{
+            //    Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);
+            //    Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
+            //    Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
+            //    Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
+            //    Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
+            //    Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
+            //    Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
+            //    Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
+            //    Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
+            //    Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
+            //}
 
-            if(Input.GetKeyDown(KeyCode.M))
-            {
-                WorldEvents.EmmonKnowsWhatSentinelWants = true;
-                WorldEvents.EmmonHasRoughneckShot = true;
-                WorldEvents.EmmonKnowsAy = true;
-                WorldEvents.EmmonKnowsBenny = true;
-                WorldEvents.BennyHasOfferedLute = true;
-                WorldEvents.EmmonSawTheLute = true;
-                WorldEvents.EmmonKnowsMaskLocation = true;
-                WorldEvents.EmmonHasPassedTheSentinel = true;
-                WorldEvents.MissionAccomplished = false;
-                InGameObjectManager.PickedUpMaskOfMockery = true;
+            //if(Input.GetKeyDown(KeyCode.M))
+            //{
+            //    WorldEvents.EmmonKnowsWhatSentinelWants = true;
+            //    WorldEvents.EmmonHasRoughneckShot = true;
+            //    WorldEvents.EmmonKnowsAy = true;
+            //    WorldEvents.EmmonKnowsBenny = true;
+            //    WorldEvents.BennyHasOfferedLute = true;
+            //    WorldEvents.EmmonSawTheLute = true;
+            //    WorldEvents.EmmonKnowsMaskLocation = true;
+            //    WorldEvents.EmmonHasPassedTheSentinel = true;
+            //    WorldEvents.MissionAccomplished = false;
+            //    InGameObjectManager.PickedUpMaskOfMockery = true;
 
-                Debug.Log("Changed event settings!");
-                Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);
-                Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
-                Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
-                Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
-                Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
-                Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
-                Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
-                Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
-                Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
-                Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
-            }
+            //    Debug.Log("Changed event settings!");
+            //    Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);
+            //    Debug.Log("EmmonHasRoughneckShot" + WorldEvents.EmmonHasRoughneckShot);
+            //    Debug.Log("PickedUpMaskOfMockery" + InGameObjectManager.PickedUpMaskOfMockery);
+            //    Debug.Log("EmmonKnowsAy" + WorldEvents.EmmonKnowsAy);
+            //    Debug.Log("EmmonKnowsBenny" + WorldEvents.EmmonKnowsBenny);
+            //    Debug.Log("BennyHasOfferedLute" + WorldEvents.BennyHasOfferedLute);
+            //    Debug.Log("EmmonSawTheLute" + WorldEvents.EmmonSawTheLute);
+            //    Debug.Log("EmmonKnowsMaskLocation" + WorldEvents.EmmonKnowsMaskLocation);
+            //    Debug.Log("EmmonHasPassedTheSentinel" + WorldEvents.EmmonHasPassedTheSentinel);
+            //    Debug.Log("MissionAccomplished" + WorldEvents.MissionAccomplished);
+            //}
         }
 
         else if (Input.GetKeyDown(KeyCode.Escape))  //closing menu

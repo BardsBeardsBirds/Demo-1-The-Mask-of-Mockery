@@ -26,7 +26,10 @@ public class Inventory : MonoBehaviour
     {
         Instance = GameManager.Instance.MyInventory;
         MyAnimator = this.GetComponent<Animator>();
+        if (MyAnimator == null)
+            Debug.LogError("Could not find the inventory animator");
         MyAnimator.SetBool("Open", false);
+
         Database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         InitialiseInventoryItems.Clear();
         ResetAmounts();
@@ -34,6 +37,7 @@ public class Inventory : MonoBehaviour
         Debug.Log("cleared inventory list");
        
         Instance.Slots = Resources.Load("Prefabs/UI/InventoryWindow/Slot") as GameObject;
+     //   Instance.Tooltip = Resources.Load("Prefabs/UI/InventoryWindow/Tooltip") as GameObject;
 
         foreach (GameObject slot in SlotList)
         {
@@ -52,13 +56,28 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
+        ItemManager.AddItem(ItemType.RoughneckShot);
+        //ItemManager.AddItem(ItemType.AysSecretIngredients);
+        //ItemManager.AddItem(ItemType.BookOfMusicalWildlife);
+        //ItemManager.AddItem(ItemType.Carrot);
+        //ItemManager.AddItem(ItemType.Carrot);
+        //ItemManager.AddItem(ItemType.Carrot);
+        //ItemManager.AddItem(ItemType.ClownMask);
+        //ItemManager.AddItem(ItemType.ClownNose);
+        //ItemManager.AddItem(ItemType.AysMagicDynamiteShake);
+        //ItemManager.AddItem(ItemType.PartyHat);
         //ItemManager.AddItem(ItemType.RoughneckShot);
+        //ItemManager.AddItem(ItemType.BucketWithPaint);
+        //ItemManager.AddItem(ItemType.Scissors);
+        //ItemManager.AddItem(ItemType.TeaLeaves);
+        //ItemManager.AddItem(ItemType.Brush);
 
         if (GameManager.MyGameType != GameManager.GameType.NewGame && 
             GameManager.MyGameType != GameManager.GameType.None)
         {
             SaveAndLoadGame load = new SaveAndLoadGame();
-            load.LoadInventoryItemsFromMainMenu();
+            Debug.Log("TODO: load inventory function");
+      //      load.LoadInventoryItemsFromMainMenu();
         }
 
     }
@@ -96,10 +115,21 @@ public class Inventory : MonoBehaviour
 
     public void HideDraggedItem()
     {
+        Debug.Log("hide dragged item in inventory");
+
         UIDrawer.IsDraggingItem = false;
         DraggedItemGameObject.SetActive(false);
     }
+    public void DeleteDraggedItem()
+    {
+        Debug.Log("delete dragged item in inventory");
 
+        UIDrawer.IsDraggingItem = false;
+        DraggedItemGameObject.SetActive(false);
+        GameManager.Instance.MyInventory.Items[UIDrawer.DraggingFromSlotNo] = new Item();
+        TheDraggedItem = new Item();
+
+    }
     public void CheckIfItemExists(int itemID, Item item)
     {
         Debug.LogWarning("check if exists: " + item.IType);
@@ -123,7 +153,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(int id)
     {
-        Debug.Log("we now add item " + id);
+        //Debug.Log("we now add item " + id);
         for (int i = 0; i < Database.Items.Count; i++)
         {
             if(Database.Items[i].ID == id)
@@ -146,8 +176,25 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void RemoveItem(ItemType itemType)
+    {
+        for (int i = 0; i < GameManager.Instance.MyInventory.Items.Count; i++)
+        {
+            if (GameManager.Instance.MyInventory.Items[i].IType == itemType)
+            {
+                Debug.Log("remove " + i + " " + GameManager.Instance.MyInventory.Items[i].IType);
+             //   SlotList[i].GetComponent<InventorySlot>().MakeSlotEmpty();
+                GameManager.Instance.MyInventory.MakeSlotEmpty(i);
+                return;
+            }
+        }
+
+        Debug.LogWarning("Could not find " + itemType + " in the inventory!");
+    }
+
     public void AddItemAtEmptySlot(Item item)
     {
+        Debug.Log("add at empty slot: " + item);
         for (int i = 0; i < Items.Count; i++)
         {
             if(Items[i].IType == ItemType.Empty)
@@ -158,7 +205,7 @@ public class Inventory : MonoBehaviour
                     Debug.LogWarning("add item " + item.ItemName + ". icon is: " + "Icons/Items/" + item.ItemName);
                     item.ItemAmount = item.ItemAmount + 1;  // added this later
                 }               
-                Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
+                //Debug.Log(Items[i].IType + " is null. Item amount is: " + item.ItemAmount);
                 Items[i] = item;
                 break;
             }
@@ -167,7 +214,6 @@ public class Inventory : MonoBehaviour
 
     public void MakeAllSlotsEmpty()
     {
-
         Debug.Log("empty all slots");
         for (int i = 0; i < Items.Count; i++)
         {
@@ -177,7 +223,6 @@ public class Inventory : MonoBehaviour
 
     public void MakeSlotEmpty(int slotNumber)
     {
-        //Debug.Log("empty slot");
         Items[slotNumber] = new Item();
     }
 
@@ -199,6 +244,22 @@ public class Inventory : MonoBehaviour
             Item item = Items[i];
             item.ItemAmount = 0;
         }
+    }
+
+    public bool LookForItem(ItemType itemType)
+    {
+        bool isInInventory = false;
+
+        for (int i = 0; i < Items.Count; i++)
+        {
+            Item item = Items[i];
+            if(item.IType == itemType)
+            {
+                isInInventory = true;
+                return isInInventory;
+            }
+        }
+        return isInInventory;
     }
 }
 
