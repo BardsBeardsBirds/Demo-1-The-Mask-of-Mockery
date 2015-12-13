@@ -9,7 +9,6 @@ public class RotateTowards : MonoBehaviour
     public Transform Target;
     public float Speed;
     public float Timer;
-    //private float _distance;
 
     public void Start()
     {
@@ -31,7 +30,7 @@ public class RotateTowards : MonoBehaviour
 
     public void Update()
     {
-       // Debug.Log("bestemming: " + Target.position);
+        //Debug.Log("bestemming: " + Target.position);
     //    Debug.Log("this is the rotate timer " + Timer + " angle: " + Vector3.Angle(From.transform.forward, Target.transform.position - From.transform.position));
         if (Timer > 0)
         {
@@ -46,14 +45,14 @@ public class RotateTowards : MonoBehaviour
                 {
                     if (_leftRight == LeftRight.Right && Vector3.Angle(-From.transform.right, Target.transform.position - From.transform.position) > 90)//we want to go right, but only if the angle towards the left is more than 90. Otherwise we turned too far.
                     {
-                        CharacterControllerLogic.Instance.ForceTurningAngle(90);
+                        CharacterControllerLogic.Instance.ForceTurningAngle(1);
                     }
                     else if (_leftRight == LeftRight.Left && Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position) > 90) //we want to go left, but only if the angle towards the right is more than 90. Otherwise we turned too far.
                     {
                         //Debug.LogWarning("to the right " + Vector3.Angle(From.transform.right, Target.transform.position - From.transform.position));
-                        CharacterControllerLogic.Instance.ForceTurningAngle(-90);
+                        CharacterControllerLogic.Instance.ForceTurningAngle(-1);
                     }
-                    else
+                    else if(!Sentinel.PushBack)  //Might be risky to have this turned off
                     {
                         EndTimer();
                         Timer = 0;
@@ -80,8 +79,7 @@ public class RotateTowards : MonoBehaviour
 
     private void EndTimer()
     {
-        CharacterControllerLogic.Instance.ForceSpeed(0);
-        CharacterControllerLogic.Instance.ForceTurningAngle(0);
+        CharacterControllerLogic.Instance.StopMovingAndTurning();
         if (Sentinel.PushBack)
         {
             SentinelBlocker.IsBlocking = false;

@@ -195,7 +195,7 @@ public class BennyTwospoons : MonoBehaviour
                 AddToDialogue(1019);
                 AddToDialogue(1020);
                 AddToDialogue(1021);
-                AddToDialogue(1005);    //could be exactly what I need!
+                AddToDialogue(1022);    //could be exactly what I need!
                 AddToDialogue(1023);
                 AddToDialogue(1923);
                 AddToDialogue(1024);
@@ -206,7 +206,7 @@ public class BennyTwospoons : MonoBehaviour
                 ObjectCommentary.AskingLute = false;
                 DialoguePlayback.Instance.PlaybackDialogueWithoutOptions(1018);
 
-                CharacterControllerLogic.Instance.ForceTurningAngle(0);
+            //    CharacterControllerLogic.Instance.ForceTurningAngle(0);
                 TimeManager.Instance.CreateRotator(GameManager.Player.transform, this.transform, 2f, 3f);
 
                 break;

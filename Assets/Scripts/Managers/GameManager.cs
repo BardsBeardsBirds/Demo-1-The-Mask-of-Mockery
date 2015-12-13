@@ -229,16 +229,16 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.M))
             {
-                WorldEvents.EmmonKnowsWhatSentinelWants = true;
-                WorldEvents.EmmonHasRoughneckShot = true;
-                WorldEvents.EmmonKnowsAy = true;
-                WorldEvents.EmmonKnowsBenny = true;
-                WorldEvents.BennyHasOfferedLute = true;
-                WorldEvents.EmmonSawTheLute = true;
-                WorldEvents.EmmonKnowsMaskLocation = true;
-                WorldEvents.EmmonHasPassedTheSentinel = true;
-                WorldEvents.MissionAccomplished = false;
-                InGameObjectManager.PickedUpMaskOfMockery = true;
+                //WorldEvents.EmmonKnowsWhatSentinelWants = true;
+                //WorldEvents.EmmonHasRoughneckShot = true;
+                //WorldEvents.EmmonKnowsAy = true;
+                //WorldEvents.EmmonKnowsBenny = true;
+                //WorldEvents.BennyHasOfferedLute = true;
+                //WorldEvents.EmmonSawTheLute = true;
+                //WorldEvents.EmmonKnowsMaskLocation = true;
+                //WorldEvents.EmmonHasPassedTheSentinel = false;
+                //WorldEvents.MissionAccomplished = false;
+                //InGameObjectManager.PickedUpMaskOfMockery = true;
 
                 //    Debug.Log("Changed event settings!");
                 //    Debug.Log("EmmonWasBlockedBySentinel" + WorldEvents.EmmonKnowsWhatSentinelWants);

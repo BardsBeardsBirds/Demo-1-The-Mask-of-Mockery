@@ -11,8 +11,7 @@ public class DialogueTimer
     public static bool IsTyping;
     public static bool AudioFinished = false;
 
-    private float _timer = 0;
-    
+    private float _timer = 0;   
 
     public void Start()
     {
@@ -44,21 +43,19 @@ public class DialogueTimer
                     Debug.Log("exit the dialogue");
 
                     TimeManager.Instance.DialogueIsPlaying = false;
-
                     DialogueManager.EndDialogueState(DialogueManager.CurrentDialogueNPC);
-
                 }
                 else
                 {
                     if (DialoguePlayback.LastLineOfTheBlock)
                     {
                         DialoguePlayback.DialogueNumberToSituation(ChosenOptionID);
-
+                        Debug.LogWarning(CharacterControllerLogic.Instance.State);
                         Debug.Log("to another situation");
 
                         TimeManager.Instance.DialogueIsPlaying = false;
                         DialoguePlayback.Instance.HideDialogueLines();
-                        DialogueManager.NPCToListeningState(DialogueManager.CurrentDialogueNPC);
+                        DialogueManager.EverybodyWaitForDialogueChoice(DialogueManager.CurrentDialogueNPC);
                         DialogueMenu.ShowDialogueOptions();
                     }
                 }
@@ -66,7 +63,6 @@ public class DialogueTimer
                 CameraAngles.StopMovingCamera();
 
                 DoSomethingAtEnd(DialoguePlayback.CurrentSpokenLine);
-
             }
         }       
     }
@@ -77,7 +73,10 @@ public class DialogueTimer
         {
             AddRoughneckShot();
         }
-
+        else if (spokenLine.ID == 3022) 
+        {
+            EndRoughneckShotEffect();
+        }
         else if (spokenLine.ID == 3025) //drink the roughneck shot after this one
         {
             DrinkRoughNeckShot();
@@ -100,6 +99,12 @@ public class DialogueTimer
                 break;
             }
         }
+        ArrangeParticleSystems.LoadRoughneckShotEffect();
+    }
+
+    public void EndRoughneckShotEffect()
+    {
+        ArrangeParticleSystems.DeleteRoughneckShotEffect();
     }
 
     public void AddRoughneckShot()

@@ -624,11 +624,6 @@ public class Footsteps
             if (!_footstepSource.isPlaying)
                 PlayRunningFootstep(Emmon.Instance.Ground);
         }
-        if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Sprinting)
-        {
-            if (!_footstepSource.isPlaying)
-                PlaySprintingFootstep(Emmon.Instance.Ground);
-        } 
         if (CharacterControllerLogic.Instance.State == CharacterControllerLogic.CharacterState.Turning)
         {
             if (!_footstepSource.isPlaying)

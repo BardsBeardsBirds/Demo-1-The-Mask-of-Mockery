@@ -68,7 +68,8 @@ public class Emmon : MonoBehaviour
         GameObject goal = ThirdPersonCamera.Instance.PlayerDialoguePositions[_dialoguePartner];
         Vector3 moveDir = goal.transform.position - Instance.transform.position;
 
-        CharacterControllerLogic.Instance.ForceSpeed(.8f);
+        CharacterControllerLogic.Instance.ForwardSpeed = .2f;
+        CharacterControllerLogic.Instance.ForceSpeed(1);
 
         // Rotate towards the target
         Instance.transform.rotation = Quaternion.Slerp(Instance.transform.rotation, Quaternion.LookRotation(moveDir), 6 * Time.deltaTime);
@@ -87,6 +88,8 @@ public class Emmon : MonoBehaviour
     public void ReachDialoguePosition()
     {
         MovePlayer = false;
+        CharacterControllerLogic.Instance.StopMoving();
+        CharacterControllerLogic.Instance.ForwardSpeed = 2f;
         TimeManager.Instance.CreateRotator(Instance.transform, GameManager.NPCs[_dialoguePartner].transform, 6, 4);
     }
 }

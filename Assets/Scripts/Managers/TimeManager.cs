@@ -61,25 +61,6 @@ public class TimeManager : MonoBehaviour
 
   //      Debug.Log(dialogueType + "length " + dialogueLength);
 
-
-        //switch (dialogueType)
-        //{
-        //    case DialogueType.NPCDialogue:
-        //        _dialogueTimer.SetDialogueTimesLength(dialogueLength);//Made the dialogues shorter faster quicker sneller hier!!!!
-        //        break;
-        //    case DialogueType.ObjectInteraction:
-        //        _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
-        //        break;
-        //    case DialogueType.InventoryCommentary:
-        //        _objectInteractionTimer.SetDialogueTimerLength(dialogueLength);
-        //        break;
-        //    case DialogueType.Intro:
-        //        _introTimer.SetDialogueTimerLength(dialogueLength);
-        //        break;
-        //    default:
-        //        break;
-        //}
-
         DialogueIsPlaying = true;
     }
 

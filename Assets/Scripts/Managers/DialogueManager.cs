@@ -68,13 +68,19 @@ public class DialogueManager
 
         if (!Sentinel.PushBack)
             CharacterControllerLogic.Instance.EndDialogueState();
-    }
-    
+    }   
 
     public static void NPCToListeningState(Character NPC)
     {
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", false);
         GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", true);
+    }
+
+    public static void EverybodyWaitForDialogueChoice(Character NPC)
+    {
+        GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Talking", false);
+        GameManager.NPCs[NPC].GetComponent<Animator>().SetBool("Listening", true);
+        CharacterControllerLogic.Instance.SetTalkingBool(false);
     }
 
     public static void AddToPassedDialogueLines(int id)

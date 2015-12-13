@@ -46,9 +46,8 @@ public class Sentinel : MonoBehaviour
         if (IsLastBefore(lastLineID, 3006))
             DialogueMenu.AddToDialogueOptions(3006);
 
-      //  if (IsLastBefore(lastLineID, 3009) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006)))
-            if (IsLastBefore(lastLineID, 3009))
-                DialogueMenu.AddToDialogueOptions(3009);
+        if (IsLastBefore(lastLineID, 3009))
+            DialogueMenu.AddToDialogueOptions(3009);
 
         if (IsLastBefore(lastLineID, 3014) && (DialogueManager.IsDialoguePassed(3024) || DialogueManager.IsDialoguePassed(3006) || DialogueManager.IsDialoguePassed(3009)))
             DialogueMenu.AddToDialogueOptions(3014);
@@ -106,7 +105,7 @@ public class Sentinel : MonoBehaviour
                 SentinelBlocker.TryingToSneakPast = false;
 
                 break;
-            case 2: //SITUATION 2
+            case 2: //SITUATION 2   //ask sentinel what he wants
                 DialogueMenu.AddToDialogueOptions(3024);
                 DialogueMenu.AddToDialogueOptions(3006);
                 DialogueMenu.AddToDialogueOptions(3018);
@@ -129,15 +128,6 @@ public class Sentinel : MonoBehaviour
 
     public static void TriggerDialogue(int dialogueOptionID)
     {
-        //if (dialogueOptionID == 3001)   // hold it there
-        //{
-        //    AddToDialogue(3001);
-        //    AddToDialogue(3002);
-        //    AddToDialogue(3003);
-
-        //    DialoguePlayback.EndingDialogue = true;
-        //}
-
         if (dialogueOptionID == 3024)
         {
             DialoguePlayback.DeleteLineID = 3024;

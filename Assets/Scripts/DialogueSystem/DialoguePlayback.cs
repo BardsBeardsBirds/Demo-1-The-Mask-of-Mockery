@@ -109,9 +109,8 @@ public class DialoguePlayback : MonoBehaviour
 
                     if (spokenLine.ID == 3003) //The Sentinel makes the hero turn back
                     {
-                        TimeManager.Instance.CreateRotator(GameManager.Player.transform, GameObject.Find("Pushed Back Target").transform, 50f, 3f);
-
                         Sentinel.PushBack = true;
+                        TimeManager.Instance.CreateRotator(GameManager.Player.transform, GameObject.Find("Pushed Back Target").transform, 50f, 3f);
                     }
                 }
             }
@@ -195,6 +194,7 @@ public class DialoguePlayback : MonoBehaviour
 
     public static void DialogueNumberToSituation(int id)
     {
+        Debug.LogWarning("incoming " + id);
         switch (NPC)
         {
             case Character.Ay:

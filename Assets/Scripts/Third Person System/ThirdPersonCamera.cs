@@ -285,7 +285,8 @@ public class ThirdPersonCamera : MonoBehaviour
             case CamStates.Behind:
                 ResetCamera();
                 // Only update camera look direction if moving
-                if (_follow.Speed > _follow.LocomotionThreshold && _follow.IsInLocomotion() && !_follow.IsInPivot())
+                //      if (_follow.Speed > _follow.LocomotionThreshold && _follow.IsInLocomotion() && !_follow.IsInPivot())
+                      if (_follow.Speed > _follow.LocomotionThreshold && _follow.IsInLocomotion())
                 {
 
                     _lookDir = Vector3.Lerp(_followXForm.right * (leftX < 0 ? 1f : -1f), _followXForm.forward * (leftY < 0 ? -1f : 1f), Mathf.Abs(Vector3.Dot(this.transform.forward, _followXForm.forward)));

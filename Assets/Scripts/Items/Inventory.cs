@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour
         //////////////////////////
         /// This is here Items are added before the start of the game
         //////////////////////////
-        ItemManager.AddItem(ItemType.MaskOfMockery);
+        //ItemManager.AddItem(ItemType.MaskOfMockery);
         //ItemManager.AddItem(ItemType.RoughneckShot);
         //ItemManager.AddItem(ItemType.AysSecretIngredients);
         //ItemManager.AddItem(ItemType.BookOfMusicalWildlife);

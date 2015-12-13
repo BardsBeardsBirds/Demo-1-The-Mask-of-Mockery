@@ -291,9 +291,9 @@ public static class ObjectCommentary
                 CurrentDialogueIDs.Add(7006);
                 break;
             case ObjectsInLevel.Lute:
-                AskingLute = true;
                 if (!WorldEvents.EmmonSawTheLute)
                 {
+                    AskingLute = true;
                     WorldEvents.EmmonSawTheLute = true;
                     BennyTwospoons.Instance.StartDialogue();
                 }
